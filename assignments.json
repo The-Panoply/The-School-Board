@@ -190,5 +190,57 @@
       "review": "verify",
       "next": "Recent flag; verify whether work remains."
     }
-  ]
+  ],
+  "classes": [
+    {
+      "id": "algebra",
+      "name": "Algebra 1",
+      "period": 1,
+      "teacher": "Rachel Dineen",
+      "verification": "Period and teacher from October 2026 school records"
+    },
+    {
+      "id": "english",
+      "name": "English 9 Honors",
+      "period": 2,
+      "teacher": null,
+      "verification": "Period from first-quarter school records; teacher not verified"
+    },
+    {
+      "id": "history",
+      "name": "World History/Geography 2",
+      "period": 3,
+      "teacher": null,
+      "verification": "Period from first-quarter school records; teacher not verified"
+    },
+    {
+      "id": "marketing",
+      "name": "Marketing 1",
+      "period": 5,
+      "teacher": "Gene Robinson",
+      "verification": "Period and teacher from October 2026 school records"
+    },
+    {
+      "id": "biology",
+      "name": "Biology 1",
+      "period": 6,
+      "teacher": null,
+      "verification": "Period from first-quarter school records; teacher not verified"
+    },
+    {
+      "id": "photography",
+      "name": "Photography 1",
+      "period": 7,
+      "teacher": null,
+      "verification": "Period from first-quarter school records; teacher not verified"
+    },
+    {
+      "id": "pe",
+      "name": "Health & PE 9",
+      "period": 8,
+      "teacher": null,
+      "verification": "Period from first-quarter school records; teacher not verified"
+    }
+  ],
+  "schedule_note": "Periods reflect available first-quarter 2026 records, not an independently reconfirmed current timetable. Period 4 and teachers not listed here have not been verified."
 }
