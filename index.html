@@ -161,6 +161,16 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 .syllabus-contacts{font-size:12px;line-height:1.6;color:var(--muted);padding-left:19px;margin:8px 0}.syllabus-contacts a{color:var(--blue);overflow-wrap:anywhere;text-decoration:underline;text-underline-offset:2px}
 .flag-policy-preview{font-size:11px;line-height:1.55;font-weight:400;color:var(--muted);opacity:.84;margin:7px 0 2px}
 .flag-policy-preview strong{font-weight:700}
+.flag-timing-label{font-weight:800;opacity:1}
+.flag-timing-label.timing-past{color:#b32632}
+.flag-timing-label.timing-near{color:#8c6100}
+.flag-timing-label.timing-clear{color:#176d40}
+.flag-timing-label.timing-unverified{color:var(--muted)}
+@media(prefers-color-scheme:dark){
+ .flag-timing-label.timing-past{color:#ff929b}
+ .flag-timing-label.timing-near{color:#ffd16d}
+ .flag-timing-label.timing-clear{color:#86d6a8}
+}
 .timing-detail{border-top:1px solid var(--line);margin-top:15px;padding-top:13px}
 .timing-detail h3{font-size:14px;font-weight:800;margin:0 0 7px}
 .timing-detail p{font-size:12px;line-height:1.55;color:var(--muted);margin:0 0 8px}
@@ -324,7 +334,16 @@ function classButton(course,display,extra){return '<button class="item-link '+(e
 function assignmentButton(x,extra){return '<button class="item-link '+(extra||"")+'" type="button" data-assignment="'+escapeHTML(x.id)+'" aria-label="View assignment details: '+escapeHTML(x.title)+'">'+escapeHTML(x.title)+'</button>';}
 function focusHtml(x,today){var optional=/Optional/i.test(x.type);var weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(parseDate(x.date));return '<article class="focus-card"><span class="course-icon '+iconStyle(x.course)+'" aria-hidden="true">'+icon(x.course)+'</span><div><div class="focus-meta"><span>'+classButton(x.course,x.course.toUpperCase(),"focus-class")+'</span><span class="chip '+(optional?"optional":"")+'"><span class="chip-main">'+escapeHTML(when(x.date,today))+'</span><span class="chip-day">'+escapeHTML(weekday)+'</span></span></div><h3 class="focus-title">'+assignmentButton(x)+'</h3><p class="focus-action">'+escapeHTML(x.action)+'</p>'+(x.id==="english-reassessment"?'<p class="micro" style="margin:8px 0 0">Calendar note: prerequisite steps before 3 PM on Nov 9.</p>':"")+'</div></article>';}
 function eventHtml(x){var dt=parseDate(x.date),mon=monthFmt.format(dt),day=dt.getUTCDate(),weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(dt);return '<article class="event"><div class="event-date" aria-label="'+escapeHTML(weekday+", "+displayDate(x.date))+'"><div class="date-mon">'+escapeHTML(mon)+'</div><div class="date-day">'+day+'</div><div class="date-weekday">'+escapeHTML(weekday)+'</div></div><div><h3 class="event-title">'+assignmentButton(x)+'</h3><div class="event-meta">'+classButton(x.course,x.course,"event-class")+' · '+escapeHTML(x.type)+(x.end?' · through '+escapeHTML(displayDate(x.end)):'')+'</div><p class="event-action">'+escapeHTML(x.action)+'</p>'+(x.source==="calendar"?'<span class="event-source">Found in calendar only — verify details</span>':"")+'</div></article>';}
-function flagHtml(x){return '<article class="flag"><div class="flag-heading">'+classButton(x.course,x.course,"flag-class")+'<span class="flag-date">Dated '+escapeHTML(displayDate(x.date))+'</span></div><h3 class="flag-title">'+assignmentButton(x)+'</h3><p class="flag-next">'+escapeHTML(x.next)+'</p>'+(x.syllabus_timing?'<p class="flag-policy-preview"><strong>Syllabus timing:</strong> '+escapeHTML(x.syllabus_timing.summary)+'</p>':'')+'<span class="flag-status">'+(x.review==="reconcile"?"May be resolved — reconcile":x.review==="priority"?"Verify priority":"Needs status check")+'</span></article>';}
+function syllabusTimingTone(x){
+ var p=x.syllabus_timing||{};
+ if(p.color_basis==="no-penalty")return "timing-clear";
+ if(p.color_basis!=="dated"||!/^\d{4}-\d{2}-\d{2}$/.test(p.reference_date||""))return "timing-unverified";
+ var today=isoToday(),days=Math.round((parseDate(p.reference_date)-parseDate(today))/86400000);
+ if(days<0)return "timing-past";
+ if(days<=7)return "timing-near";
+ return "timing-unverified";
+}
+function flagHtml(x){return '<article class="flag"><div class="flag-heading">'+classButton(x.course,x.course,"flag-class")+'<span class="flag-date">Dated '+escapeHTML(displayDate(x.date))+'</span></div><h3 class="flag-title">'+assignmentButton(x)+'</h3><p class="flag-next">'+escapeHTML(x.next)+'</p>'+(x.syllabus_timing?'<p class="flag-policy-preview"><strong class="flag-timing-label '+syllabusTimingTone(x)+'">Syllabus timing:</strong> '+escapeHTML(x.syllabus_timing.summary)+'</p>':'')+'<span class="flag-status">'+(x.review==="reconcile"?"May be resolved — reconcile":x.review==="priority"?"Verify priority":"Needs status check")+'</span></article>';}
 function renderFlags(){var items=data.flagged.filter(function(x){return selectedCourse==="All"||x.course===selectedCourse;});document.getElementById("flags").innerHTML=items.length?items.map(flagHtml).join(""):'<p class="empty">No items in this subject.</p>';}
 function renderFilters(){var courses=["All"];data.flagged.forEach(function(x){if(courses.indexOf(x.course)===-1)courses.push(x.course);});var holder=document.getElementById("filters");holder.replaceChildren();courses.forEach(function(course){var b=document.createElement("button");b.type="button";b.className="filter"+(selectedCourse===course?" selected":"");b.textContent=course==="All"?"All subjects":course;b.setAttribute("aria-pressed",selectedCourse===course?"true":"false");b.addEventListener("click",function(){selectedCourse=course;renderFilters();renderFlags();});holder.appendChild(b);});}
 function render(d){data=d;var today=isoToday();var all=[].concat(d.upcoming||[]).sort(function(a,b){return a.date.localeCompare(b.date);});var upcoming=all.filter(function(x){return x.date>=today;});var focus=upcoming.filter(function(x){return x.date<=isoAdd(today,1);});var usingNext=focus.length===0;var displayed=usingNext?upcoming.slice(0,2):focus;document.getElementById("focus-title").textContent=usingNext?"Next on the Calendar":"Today & Tomorrow";document.getElementById("focus-sub").textContent=usingNext?"Nothing immediately due in this reviewed snapshot.":"Just the next decisions—not the whole list.";document.getElementById("focus").innerHTML=displayed.length?displayed.map(function(x){return focusHtml(x,today);}).join(""):'<div class="empty">No future school dates in this snapshot. Refresh the school check to see newer items.</div>';
