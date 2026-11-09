@@ -1,0 +1,194 @@
+{
+  "version": 1,
+  "snapshot": "2026-11-08",
+  "source_note": "Janie-only items from the Schoology daily email received Nov 8, 2026; reconciled with the verified Schoology calendar for Nov 8–Dec 14. A snapshot, not a live Schoology feed.",
+  "upcoming": [
+    {
+      "id": "biology-4",
+      "date": "2026-11-09",
+      "course": "Biology",
+      "title": "Unit 4 Test",
+      "type": "Test",
+      "importance": "high",
+      "action": "Confirm what is covered and whether a brief review would help.",
+      "detail": "Scheduled assessment; no specific class time supplied.",
+      "source": "both"
+    },
+    {
+      "id": "english-reassessment",
+      "date": "2026-11-09",
+      "course": "English Honors",
+      "title": "Optional Q1 Essay Reassessment",
+      "type": "Optional",
+      "importance": "high",
+      "action": "Check whether this is worth pursuing and whether the prerequisites are complete.",
+      "detail": "Schoology calendar: all prerequisite steps before 3 PM Nov 9; passage from A Wizard of Earthsea chapters 7–10.",
+      "source": "both"
+    },
+    {
+      "id": "photo-retakes",
+      "date": "2026-11-13",
+      "course": "School event",
+      "title": "Underclass Picture Retakes",
+      "type": "Event",
+      "importance": "info",
+      "action": "Only needs attention if a retake is wanted.",
+      "detail": "Calendar shows a picture-retake entry at 8 AM.",
+      "source": "both"
+    },
+    {
+      "id": "positive-posts",
+      "date": "2026-11-19",
+      "course": "Course to verify",
+      "title": "Positive Posts",
+      "type": "Assignment",
+      "importance": "normal",
+      "action": "Check what the assignment requires and which class it belongs to.",
+      "detail": "Calendar due time: 11:59 PM. This item was absent from the Nov 8 digest.",
+      "source": "calendar"
+    },
+    {
+      "id": "biology-4-remediation",
+      "date": "2026-11-23",
+      "course": "Biology",
+      "title": "Unit 4 Remediation & Retake — Final Deadline",
+      "type": "Optional recovery",
+      "importance": "normal",
+      "action": "Check whether remediation or a retake is needed; plan before the weekend.",
+      "detail": "Optional deadline; applicability not confirmed.",
+      "source": "both"
+    },
+    {
+      "id": "biology-5",
+      "date": "2026-11-23",
+      "course": "Biology",
+      "title": "Unit 5 Test",
+      "type": "Test",
+      "importance": "normal",
+      "action": "Prepare ahead of time; another Biology deadline falls the same day.",
+      "detail": "Scheduled summative assessment.",
+      "source": "both"
+    },
+    {
+      "id": "thanksgiving",
+      "date": "2026-11-25",
+      "end": "2026-11-27",
+      "course": "School calendar",
+      "title": "Thanksgiving Break — No School",
+      "type": "Break",
+      "importance": "info",
+      "action": "No school Nov 25–27.",
+      "detail": "Shown in Schoology calendar and digest.",
+      "source": "both"
+    },
+    {
+      "id": "biology-5-remediation",
+      "date": "2026-12-14",
+      "course": "Biology",
+      "title": "Unit 5 Remediation & Retake — Final Deadline",
+      "type": "Optional recovery",
+      "importance": "normal",
+      "action": "Check whether a worksheet or retake is needed after the test.",
+      "detail": "Optional deadline; applicability not confirmed.",
+      "source": "both"
+    }
+  ],
+  "flagged": [
+    {
+      "id": "mkt-persona",
+      "date": "2026-09-09",
+      "course": "Marketing",
+      "title": "Customer Persona Assignment Submission",
+      "review": "verify",
+      "next": "Confirm submission and whether work remains."
+    },
+    {
+      "id": "mkt-exit",
+      "date": "2026-09-22",
+      "course": "Marketing",
+      "title": "Exit Ticket",
+      "review": "reconcile",
+      "next": "Previously reported as graded; check whether flag is stale."
+    },
+    {
+      "id": "mkt-brand",
+      "date": "2026-09-30",
+      "course": "Marketing",
+      "title": "Brand Assignment",
+      "review": "reconcile",
+      "next": "Previously reported as excused; check whether flag is stale."
+    },
+    {
+      "id": "mkt-fall",
+      "date": "2026-10-08",
+      "course": "Marketing",
+      "title": "Fall Product Summative",
+      "review": "priority",
+      "next": "Confirm whether work remains and what recovery options exist."
+    },
+    {
+      "id": "mkt-promo",
+      "date": "2026-10-29",
+      "course": "Marketing",
+      "title": "Promotional Mix Group Assignment",
+      "review": "priority",
+      "next": "Check group submission, individual contribution, and next steps."
+    },
+    {
+      "id": "bio-safety",
+      "date": "2026-08-28",
+      "course": "Biology",
+      "title": "FCPS Science Safety Agreement Form",
+      "review": "verify",
+      "next": "Check whether the administrative form is complete."
+    },
+    {
+      "id": "bio-unit2",
+      "date": "2026-09-25",
+      "course": "Biology",
+      "title": "Unit 2 Assessment — Water and Macromolecules",
+      "review": "priority",
+      "next": "Confirm status and any available makeup opportunity."
+    },
+    {
+      "id": "photo-zine",
+      "date": "2026-09-03",
+      "course": "Photography",
+      "title": "ZINE UNIT — Submit on Paper",
+      "review": "reconcile",
+      "next": "Paper submission may not clear the online flag."
+    },
+    {
+      "id": "photo-enlarger",
+      "date": "2026-09-08",
+      "course": "Photography",
+      "title": "Learn the Enlarger",
+      "review": "verify",
+      "next": "Check status with teacher before redoing anything."
+    },
+    {
+      "id": "photo-portfolio",
+      "date": "2026-10-09",
+      "course": "Photography",
+      "title": "Process Portfolio — Ongoing All Year",
+      "review": "reconcile",
+      "next": "Ongoing item; confirm what the dated flag means."
+    },
+    {
+      "id": "history-person",
+      "date": "2026-10-21",
+      "course": "World History",
+      "title": "Person of the Century",
+      "review": "verify",
+      "next": "Confirm submission and any follow-up."
+    },
+    {
+      "id": "eng-bookthief",
+      "date": "2026-11-05",
+      "course": "English Honors",
+      "title": "The Book Thief Pre-Reading WebQuest",
+      "review": "verify",
+      "next": "Recent flag; verify whether work remains."
+    }
+  ]
+}
