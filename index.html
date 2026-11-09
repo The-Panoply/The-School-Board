@@ -323,7 +323,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
   <div id="stale-warning" class="notice" role="status"></div>
   <div class="school-layout">
     <section class="panel progress-panel" aria-label="Family assignment progress">
-      <div><p class="progress-heading">My Progress</p><div id="progress-count" class="progress-count" aria-live="polite">0 assignments marked complete</div><p id="progress-device" class="progress-device">Saved on this device only.</p></div>
+      <div><p class="progress-heading">My Progress</p><div id="progress-count" class="progress-count" aria-live="polite">0 assignments marked complete</div><p id="progress-device" class="progress-device" hidden></p></div>
       <div class="progress-actions"><button type="button" id="progress-share" class="progress-share"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V2m0 0 4 4m-4-4-4 4"/><path d="M7 10H5.5A2.5 2.5 0 0 0 3 12.5v7A2.5 2.5 0 0 0 5.5 22h13a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 18.5 10H17"/></svg><span>Share Progress</span></button><p class="progress-caption">Send a progress update to a parent or family member using your phone’s share menu.</p></div>
     </section>
     <section class="panel focus-panel pad" aria-labelledby="focus-title">
@@ -432,7 +432,7 @@ function trackable(x){return !!(x&&x.id&&!/^(School event|School calendar)$/i.te
 function isComplete(id){return Object.prototype.hasOwnProperty.call(completed,id);}
 function allAssignments(){return data?(data.upcoming||[]).concat(data.flagged||[]).filter(trackable):[];}
 function completeList(){return allAssignments().filter(function(x){return isComplete(x.id);});}
-function renderProgress(){var n=completeList().length;document.getElementById("progress-count").textContent=n+" assignment"+(n===1?"":"s")+" marked complete";document.getElementById("progress-device").textContent=storageAvailable?"Saved on this device only.":"Browser storage unavailable; changes may be lost on refresh.";}
+function renderProgress(){var n=completeList().length;document.getElementById("progress-count").textContent=n+" assignment"+(n===1?"":"s")+" marked complete";document.getElementById("progress-device").textContent=storageAvailable?"":"Browser storage unavailable; changes may be lost on refresh.";document.getElementById("progress-device").hidden=storageAvailable;}
 function completeButton(x,inside){
  if(!trackable(x))return "";
  return '<div class="'+(inside?'detail-complete':'completion-row')+'"><button class="complete-toggle'+(isComplete(x.id)?' is-complete':'')+'" type="button" data-complete="'+escapeHTML(x.id)+'" aria-pressed="'+(isComplete(x.id)?'true':'false')+'">'+(isComplete(x.id)?'✓ Completed · Undo':'Mark as Completed')+'</button>'+(inside?'<p class="share-muted">A personal completion mark, not a school-verified submission.</p>':'')+'</div>';
