@@ -281,11 +281,11 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 .progress-heading{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--muted);margin:0 0 4px}
 .progress-count{font-size:15px;font-weight:800}
 .progress-device,.progress-caption{font-size:10px;line-height:1.45;color:var(--muted);margin:4px 0 0}
-.progress-actions{display:flex;flex-direction:column;align-items:flex-end;text-align:right;gap:4px}.progress-caption{max-width:305px}
+.progress-actions{display:flex;flex-direction:column;align-items:flex-end;text-align:right;gap:11px}.progress-caption{max-width:270px;font-size:8px;line-height:1.45;opacity:.72;margin:0}
 .progress-share,.share-send{border:1px solid #365f88;border-radius:11px;background:#284f78;color:#fff;padding:10px 15px;font-size:12px;font-weight:800}
 .progress-share{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:6px 10px;font-size:11px;font-weight:750;border-radius:8px}.progress-share svg{display:block;flex:none;width:14px;height:14px}.progress-share:hover,.share-send:hover{filter:brightness(1.12)}
 .completion-row{display:flex;justify-content:flex-end;margin-top:7px}
-.complete-toggle{border:1px solid var(--blue);border-radius:5px;background:var(--blue-soft);color:var(--blue);padding:3px 7px;font-size:9px;font-weight:700;min-height:23px;line-height:1.2;white-space:nowrap;box-shadow:0 1px 2px rgba(38,70,110,.1)}
+.complete-toggle{border:1px solid var(--line);border-radius:5px;background:color-mix(in srgb,var(--paper) 88%,var(--blue-soft) 12%);color:var(--blue);padding:3px 7px;font-size:9px;font-weight:700;min-height:23px;line-height:1.2;white-space:nowrap;box-shadow:0 1px 2px rgba(38,70,110,.035)}
 .complete-toggle:hover{border-color:var(--blue);filter:brightness(.97)}
 .complete-toggle.is-complete{border-color:var(--sage);background:var(--sage-soft);color:var(--sage)}
 .completion-mark{margin-left:7px;color:var(--sage);font-weight:900}
@@ -302,7 +302,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 .share-muted{font-size:11px!important;color:var(--muted);line-height:1.5}
 .detail-complete{margin-top:17px;padding-top:15px;border-top:1px solid var(--line)}.detail-complete .complete-toggle{width:auto;padding:3px 7px}
 .progress-share:focus-visible,.complete-toggle:focus-visible,.share-send:focus-visible,.share-copy:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
-@media(max-width:520px){.school-layout .progress-panel{padding-right:35px}.progress-actions{width:100%;align-items:flex-end;text-align:right}.progress-caption{max-width:305px}.share-dialog{padding:18px}}
+@media(max-width:520px){.school-layout .progress-panel{padding-right:35px}.progress-actions{width:100%;align-items:flex-end;text-align:right}.progress-caption{max-width:270px}.share-dialog{padding:18px}}
 @media(prefers-color-scheme:dark){.progress-share,.share-send{background:#426d9a;border-color:#7899c1}}
 </style>
 </head>
@@ -435,7 +435,7 @@ function completeList(){return allAssignments().filter(function(x){return isComp
 function renderProgress(){var n=completeList().length;document.getElementById("progress-count").textContent=n+" assignment"+(n===1?"":"s")+" marked complete";document.getElementById("progress-device").textContent=storageAvailable?"":"Browser storage unavailable; changes may be lost on refresh.";document.getElementById("progress-device").hidden=storageAvailable;}
 function completeButton(x,inside){
  if(!trackable(x))return "";
- return '<div class="'+(inside?'detail-complete':'completion-row')+'"><button class="complete-toggle'+(isComplete(x.id)?' is-complete':'')+'" type="button" data-complete="'+escapeHTML(x.id)+'" aria-pressed="'+(isComplete(x.id)?'true':'false')+'">'+(isComplete(x.id)?'✓ Completed · Undo':'Mark as Completed')+'</button>'+(inside?'<p class="share-muted">A personal completion mark, not a school-verified submission.</p>':'')+'</div>';
+ return '<div class="'+(inside?'detail-complete':'completion-row')+'"><button class="complete-toggle'+(isComplete(x.id)?' is-complete':'')+'" type="button" data-complete="'+escapeHTML(x.id)+'" aria-pressed="'+(isComplete(x.id)?'true':'false')+'">'+(isComplete(x.id)?'✓ Completed · Undo':'Mark Complete')+'</button>'+(inside?'<p class="share-muted">A personal completion mark, not a school-verified submission.</p>':'')+'</div>';
 }
 function updateCompletion(id){
  var item=allAssignments().find(function(x){return x.id===id;});if(!item)return;
