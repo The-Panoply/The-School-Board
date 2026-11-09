@@ -96,6 +96,14 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 .footer-line{max-width:55px}
 }
 
+
+/* More explicit dates in the daily and upcoming cards */
+.focus-meta .chip{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;border-radius:11px;padding:6px 9px!important;line-height:1.2}
+.focus-meta .chip .chip-main{font-size:11px;font-weight:850;color:inherit}
+.focus-meta .chip .chip-day{font-size:10px;font-weight:650;color:inherit;opacity:.84;white-space:nowrap}
+.event-date{min-height:84px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.date-weekday{font-size:10px;line-height:1.25;color:#667890;font-weight:750;letter-spacing:-.25px}
+@media(max-width:520px){.event-date{min-height:80px}.date-weekday{font-size:9px}}
 </style>
 </head>
 <body>
@@ -137,7 +145,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
     </section>
     <section class="panel older-panel pad" aria-labelledby="older-title">
       <div class="section-head">
-        <div><span class="small-label">Not for tonight</span><h2 class="section-title" id="older-title">Overdue</h2><p class="section-sub">Some Schoology flags may already be graded, excused, or submitted.</p></div>
+        <div><h2 class="section-title" id="older-title">Overdue</h2><p class="section-sub">Some Schoology flags may already be graded, excused, or submitted.</p></div>
         <span class="section-icon" aria-hidden="true">⌁</span>
       </div>
       <details class="disclosure" id="older-details">
@@ -171,13 +179,6 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
       </div>
       <p class="micro" id="calendar-range"></p>
     </section>
-    <aside class="reminder-strip" aria-label="A gentle catch-up reminder">
-      <span class="reminder-ornament" aria-hidden="true">✦</span>
-      <div>
-        <h2 class="reminder-title">A little reminder for Heather</h2>
-        <p class="reminder-body">Confirm what really needs attention, then choose just one manageable next step. Everything doesn't have to be solved today.</p>
-      </div>
-    </aside>
   </div>
   <footer class="school-footer"><span class="footer-line" aria-hidden="true"></span><span class="school-footer-copy">The School Board — Part of The Panoply</span><span class="footer-line" aria-hidden="true"></span></footer>
 </main>
@@ -198,8 +199,8 @@ function escapeHTML(value){return String(value==null?"":value).replace(/[&<>"']/
 function icon(course){return /Biology/i.test(course)?"✳":/English/i.test(course)?"✎":/Picture|School/i.test(course)?"▤":"◈";}
 function iconStyle(course){return /English/i.test(course)?"english":/School|Picture/i.test(course)?"general":"";}
 function when(s,today){if(s===today)return "Today";if(s===isoAdd(today,1))return "Tomorrow";return weekdayFmt.format(parseDate(s))+" · "+displayDate(s);}
-function focusHtml(x,today){var optional=/Optional/i.test(x.type);return '<article class="focus-card"><span class="course-icon '+iconStyle(x.course)+'" aria-hidden="true">'+icon(x.course)+'</span><div><div class="focus-meta"><span>'+escapeHTML(x.course.toUpperCase())+'</span><span class="chip '+(optional?"optional":"")+'">'+escapeHTML(when(x.date,today))+'</span></div><h3 class="focus-title">'+escapeHTML(x.title)+'</h3><p class="focus-action">'+escapeHTML(x.action)+'</p>'+(x.id==="english-reassessment"?'<p class="micro" style="margin:8px 0 0">Calendar note: prerequisite steps before 3 PM on Nov 9.</p>':"")+'</div></article>';}
-function eventHtml(x){var dt=parseDate(x.date),mon=monthFmt.format(dt),day=dt.getUTCDate();return '<article class="event"><div class="event-date" aria-label="'+escapeHTML(displayDate(x.date))+'"><div class="date-mon">'+escapeHTML(mon)+'</div><div class="date-day">'+day+'</div></div><div><h3 class="event-title">'+escapeHTML(x.title)+'</h3><div class="event-meta">'+escapeHTML(x.course)+' · '+escapeHTML(x.type)+(x.end?' · through '+escapeHTML(displayDate(x.end)):'')+'</div><p class="event-action">'+escapeHTML(x.action)+'</p>'+(x.source==="calendar"?'<span class="event-source">Found in calendar only — verify details</span>':"")+'</div></article>';}
+function focusHtml(x,today){var optional=/Optional/i.test(x.type);var weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(parseDate(x.date));return '<article class="focus-card"><span class="course-icon '+iconStyle(x.course)+'" aria-hidden="true">'+icon(x.course)+'</span><div><div class="focus-meta"><span>'+escapeHTML(x.course.toUpperCase())+'</span><span class="chip '+(optional?"optional":"")+'"><span class="chip-main">'+escapeHTML(when(x.date,today))+'</span><span class="chip-day">'+escapeHTML(weekday+" · "+displayDate(x.date))+'</span></span></div><h3 class="focus-title">'+escapeHTML(x.title)+'</h3><p class="focus-action">'+escapeHTML(x.action)+'</p>'+(x.id==="english-reassessment"?'<p class="micro" style="margin:8px 0 0">Calendar note: prerequisite steps before 3 PM on Nov 9.</p>':"")+'</div></article>';}
+function eventHtml(x){var dt=parseDate(x.date),mon=monthFmt.format(dt),day=dt.getUTCDate(),weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(dt);return '<article class="event"><div class="event-date" aria-label="'+escapeHTML(weekday+", "+displayDate(x.date))+'"><div class="date-mon">'+escapeHTML(mon)+'</div><div class="date-day">'+day+'</div><div class="date-weekday">'+escapeHTML(weekday)+'</div></div><div><h3 class="event-title">'+escapeHTML(x.title)+'</h3><div class="event-meta">'+escapeHTML(x.course)+' · '+escapeHTML(x.type)+(x.end?' · through '+escapeHTML(displayDate(x.end)):'')+'</div><p class="event-action">'+escapeHTML(x.action)+'</p>'+(x.source==="calendar"?'<span class="event-source">Found in calendar only — verify details</span>':"")+'</div></article>';}
 function flagHtml(x){return '<article class="flag"><div class="flag-heading"><span class="flag-class">'+escapeHTML(x.course)+'</span><span class="flag-date">Dated '+escapeHTML(displayDate(x.date))+'</span></div><h3 class="flag-title">'+escapeHTML(x.title)+'</h3><p class="flag-next">'+escapeHTML(x.next)+'</p><span class="flag-status">'+(x.review==="reconcile"?"May be resolved — reconcile":x.review==="priority"?"Verify priority":"Needs status check")+'</span></article>';}
 function renderFlags(){var items=data.flagged.filter(function(x){return selectedCourse==="All"||x.course===selectedCourse;});document.getElementById("flags").innerHTML=items.length?items.map(flagHtml).join(""):'<p class="empty">No items in this subject.</p>';}
 function renderFilters(){var courses=["All"];data.flagged.forEach(function(x){if(courses.indexOf(x.course)===-1)courses.push(x.course);});var holder=document.getElementById("filters");holder.replaceChildren();courses.forEach(function(course){var b=document.createElement("button");b.type="button";b.className="filter"+(selectedCourse===course?" selected":"");b.textContent=course==="All"?"All subjects":course;b.setAttribute("aria-pressed",selectedCourse===course?"true":"false");b.addEventListener("click",function(){selectedCourse=course;renderFilters();renderFlags();});holder.appendChild(b);});}
