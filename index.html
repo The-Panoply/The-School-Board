@@ -158,6 +158,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 .policy-list{display:grid;gap:11px;margin:0}
 .policy-list dt{font-size:11px;font-weight:800;color:var(--ink);margin:0 0 3px}
 .policy-list dd{font-size:12px;line-height:1.5;color:var(--muted);margin:0}
+.syllabus-contacts{font-size:12px;line-height:1.6;color:var(--muted);padding-left:19px;margin:8px 0}.syllabus-contacts a{color:var(--blue);overflow-wrap:anywhere;text-decoration:underline;text-underline-offset:2px}
 @media(max-width:520px){.class-schedule{grid-template-columns:1fr}.detail-dialog{padding:18px}.wordmark-main{font-size:clamp(26px,6.7vw,38px)}}
 @media(prefers-reduced-motion:reduce){#older-details>summary::after{transition:none}}
 @media(prefers-color-scheme:dark){
@@ -326,6 +327,13 @@ function courseInfo(course){
 }
 function rowHtml(label,value){return '<dt>'+escapeHTML(label)+'</dt><dd>'+escapeHTML(value==null?"Not verified":value)+'</dd>';}
 function emailRow(email){if(!email||!/^[A-Z0-9._%+-]+@fcps\.edu$/i.test(email))return rowHtml("Email","Not yet verified");return '<dt>Email</dt><dd><a href="mailto:'+escapeHTML(email)+'">'+escapeHTML(email)+'</a></dd>';}
+function syllabusContactsHtml(info){
+ if(!info||!Array.isArray(info.syllabus_contacts)||!info.syllabus_contacts.length)return "";
+ var items=info.syllabus_contacts.filter(function(x){return x.name&&/^[A-Z0-9._%+-]+@fcps\\.edu$/i.test(x.email);});
+ return '<section class="policy-section" aria-label="Course syllabus teacher contacts"><h3 class="policy-title">Teachers listed in course syllabus</h3>'+
+ '<p class="policy-intro">These are department contacts, not verified as the teacher for this class. Confirm the assigned teacher in SIS or Schoology.</p>'+
+ '<ul class="syllabus-contacts">'+items.map(function(x){return '<li>'+escapeHTML(x.name)+' — <a href="mailto:'+escapeHTML(x.email)+'">'+escapeHTML(x.email)+'</a></li>';}).join("")+'</ul></section>';
+}
 function policyHtml(info){
  if(!info||!info.grading_policy)return "";
  var p=info.grading_policy;
@@ -361,7 +369,7 @@ function openDetails(kind,value){
  var note=item?(item.next||item.action||""):"";
  var detail=item?(item.detail||""):(info?info.verification||"":"Teacher and period details have not been verified for this item.");
  var status=item&&item.review?"An overdue flag does not establish a missing submission or grade. Verify before repeating any work.":"";
- section.innerHTML='<h2 class="detail-heading" id="detail-heading">'+escapeHTML(title)+'</h2><dl class="detail-list">'+rows+'</dl>'+(note?'<p class="detail-note"><strong>Next step:</strong> '+escapeHTML(note)+'</p>':'')+(detail?'<p class="detail-note">'+escapeHTML(detail)+'</p>':'')+(status?'<p class="detail-note">'+escapeHTML(status)+'</p>':'')+(!item?policyHtml(info):'');
+ section.innerHTML='<h2 class="detail-heading" id="detail-heading">'+escapeHTML(title)+'</h2><dl class="detail-list">'+rows+'</dl>'+(note?'<p class="detail-note"><strong>Next step:</strong> '+escapeHTML(note)+'</p>':'')+(detail?'<p class="detail-note">'+escapeHTML(detail)+'</p>':'')+(status?'<p class="detail-note">'+escapeHTML(status)+'</p>':'')+(!item?syllabusContactsHtml(info)+policyHtml(info):'');
  var dialog=document.getElementById("detail-dialog");
  if(typeof dialog.showModal==="function")dialog.showModal();else dialog.setAttribute("open","");
 }
