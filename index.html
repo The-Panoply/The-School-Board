@@ -24,26 +24,170 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 @media(max-width:820px){.layout{grid-template-columns:1fr}.sidecol{display:contents}.maincol{display:contents}.focus-panel{order:1}.timeline-panel{order:2}.plan-panel{order:3}.older-panel{order:4}.source-panel{order:5}.support{order:6}.date-pill{display:none}.intro{align-items:flex-start}}
 @media(max-width:520px){.shell{width:calc(100% - 24px)}.mast-inner{min-height:69px}.brand-name{font-size:17px}.brand-icon{height:36px;width:36px}.brand-sub{font-size:10px}main{padding:26px 0 45px}.intro{margin-bottom:20px;display:block}.intro p{font-size:13px}.refresh-label{margin-top:14px}.pad{padding:19px}.section-title{font-size:19px}.focus-card{padding:15px;gap:11px}.focus-title{font-size:16px}.course-icon{width:37px;height:37px}.event{grid-template-columns:64px 1fr}.event-date{min-height:58px}.date-day{font-size:21px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* The Panoply wordmark / compact action-first editorial revision */
+.school-mast{background:linear-gradient(110deg,#ffffff 0%,#fbfcff 72%,#f5f8fc 100%);border-bottom:1px solid #e3e8ef}
+.school-mast-inner{min-height:170px;padding:24px 0;display:flex;align-items:center;justify-content:space-between;gap:26px}
+.mast-title-group{min-width:0}
+.school-brand{display:inline-block;text-decoration:none}
+.school-brand .brand-name{display:flex;flex-direction:column;align-items:flex-start;gap:1px;font-size:initial;letter-spacing:normal}
+.wordmark-the{font-size:clamp(14px,2vw,19px);letter-spacing:.25em;line-height:1;font-weight:850;color:#6d7e96}
+.wordmark-main{font-size:clamp(33px,5.3vw,60px);font-weight:850;letter-spacing:-.065em;line-height:1.03;color:#253750;white-space:nowrap}
+.mast-title-group .brand-sub{margin-top:11px;letter-spacing:.11em;font-size:10px;font-weight:750}
+.mast-metadata{display:block;color:#8090a3;font-size:11px;margin-top:6px}
+.school-emblem{flex:none;width:clamp(110px,26vw,250px);line-height:0}
+.school-emblem svg{width:100%;height:auto;display:block}
+.school-main{max-width:920px}
+.school-main .intro{margin-bottom:20px}
+.school-main h1{font-size:clamp(24px,3vw,30px);letter-spacing:-.8px;line-height:1.15;margin:6px 0 8px}
+.school-main .intro p{font-size:13px;max-width:530px;line-height:1.6}
+.school-main .eyebrow{font-size:10px}
+.school-layout{display:flex;flex-direction:column;gap:15px;align-items:stretch}
+.school-layout .focus-panel{order:1}
+.school-layout .older-panel{order:2}
+.school-layout .timeline-panel{order:3}
+.school-layout .source-panel{order:4}
+.school-layout .reminder-strip{order:5}
+.school-layout .pad{padding:21px}
+.school-layout .section-title{font-size:17px;letter-spacing:-.3px}
+.school-layout .section-sub{font-size:12px}
+.school-layout .section-icon{width:31px;height:31px;font-size:16px}
+.school-layout .focus-title{font-size:15px;letter-spacing:-.15px}
+.school-layout .focus-action{font-size:12px;line-height:1.6}
+.school-layout .disclosure-title{font-size:13px}
+.school-layout .older-description{font-size:12px}
+.school-layout .source-panel{padding:15px 18px}
+.source-panel .small-label{letter-spacing:.1em;font-size:10px}
+.source-panel .source-list{gap:6px;margin-top:9px}
+.source-panel .source-row{font-size:11px;line-height:1.45}
+.source-panel .source-dot{width:5px;height:5px;margin-top:5px}
+.source-panel .micro{font-size:10px;margin-top:10px!important}
+.reminder-strip{border:1px solid #dfeae4;background:#f3f8f5;border-radius:15px;padding:14px 18px;display:flex;align-items:flex-start;gap:12px}
+.reminder-ornament{font-size:18px;color:#729988;line-height:1.1;flex:none}
+.reminder-title{font-size:12px;color:#426e5e;font-weight:800;margin:0 0 3px;letter-spacing:.01em}
+.reminder-body{color:#597a6d;font-size:12px;line-height:1.55;margin:0}
+.school-footer{display:flex;align-items:center;justify-content:center;gap:15px;padding:17px 0 0;margin-top:26px;text-align:center;color:#73839a;font-weight:700;letter-spacing:.07em;font-size:11px}
+.footer-line{height:1px;background:linear-gradient(90deg,transparent,#afc0d3);flex:1;max-width:160px}
+.footer-line:last-child{transform:rotate(180deg)}
+.school-footer-copy{white-space:nowrap}
+@media(max-width:820px){
+.school-layout{display:flex}
+.school-layout .focus-panel{order:1}
+.school-layout .older-panel{order:2}
+.school-layout .timeline-panel{order:3}
+.school-layout .source-panel{order:4}
+.school-layout .reminder-strip{order:5}
+.school-mast-inner{min-height:150px}
+}
+@media(max-width:520px){
+.school-mast-inner{min-height:128px;padding:18px 0;gap:9px}
+.wordmark-the{font-size:13px}
+.wordmark-main{font-size:clamp(29px,7vw,39px);letter-spacing:-.07em}
+.school-emblem{width:105px}
+.mast-title-group .brand-sub{font-size:9px;margin-top:10px}
+.mast-metadata{font-size:10px}
+.school-main .intro{margin-bottom:16px}
+.school-main .intro p{font-size:12px}
+.school-layout .pad{padding:17px}
+.school-layout .section-title{font-size:16px}
+.school-layout .focus-title{font-size:15px}
+.reminder-strip{padding:12px 14px}
+.school-footer{font-size:9px;letter-spacing:.02em;gap:8px}
+.footer-line{max-width:55px}
+}
+
 </style>
 </head>
 <body>
-<header class="mast"><div class="shell mast-inner"><a class="brand" href="./" aria-label="The School Board home"><span class="brand-icon" aria-hidden="true">▦</span><span><span class="brand-name">The School Board</span><span class="brand-sub">A simpler school day</span></span></a><span class="date-pill" id="header-date">Latest assignment snapshot</span></div></header>
-<main class="shell">
-<div class="intro"><div><span class="eyebrow">A little clarity for the week</span><h1>One thing at a time.</h1><p>What's next, what's coming, and what can wait. The older assignment list is here when you need it—not in your way.</p></div><span class="refresh-label" id="snapshot-label">● Loading snapshot</span></div>
-<div id="stale-warning" class="notice" role="status"></div>
-<div class="layout">
-<div class="maincol">
-<section class="panel focus-panel pad" aria-labelledby="focus-title"><div class="section-head"><div><span class="small-label">Start here</span><h2 class="section-title" id="focus-title">Today & tomorrow</h2><p class="section-sub" id="focus-sub">The few things worth checking first.</p></div><span class="section-icon" aria-hidden="true">☀</span></div><div id="focus" class="focus-list"><div class="empty">Loading upcoming school items…</div></div></section>
-<section class="panel timeline-panel pad" aria-labelledby="timeline-title"><div class="section-head"><div><span class="small-label">A gentle look ahead</span><h2 class="section-title" id="timeline-title">On the horizon</h2><p class="section-sub">Upcoming dates, in order. Optional items are labeled.</p></div><span class="section-icon" aria-hidden="true">▤</span></div><div id="upcoming"><div class="empty">Loading calendar items…</div></div><div id="past-wrap" hidden style="margin-top:17px"><details class="disclosure"><summary><span><span class="disclosure-title">Earlier listed dates</span><span class="disclosure-hint">Past events are not assumed complete</span></span></summary><div class="disclosure-body" id="past-events"></div></details></div></section>
-<section class="panel older-panel pad" aria-labelledby="older-title"><div class="section-head"><div><span class="small-label">Not for tonight</span><h2 class="section-title" id="older-title">Older items to sort out</h2><p class="section-sub">Some Schoology flags may already be graded, excused, or submitted.</p></div><span class="section-icon" aria-hidden="true">⌁</span></div><details class="disclosure" id="older-details"><summary><span><span class="disclosure-title">Browse assignments needing verification</span><span class="disclosure-hint" id="older-summary">Details are tucked away until you're ready</span></span></summary><div class="disclosure-body"><p class="older-description">A Schoology overdue flag is <strong>not</strong> proof of missing work. Check the actual status before making a catch-up plan.</p><div class="filters" id="filters" aria-label="Filter older items by course"></div><div id="flags" aria-live="polite"></div></div></details></section>
-</div>
-<aside class="sidecol">
-<section class="panel plan-panel pad" aria-labelledby="plan-title"><span class="small-label">Catch-up without overwhelm</span><h2 class="section-title" id="plan-title" style="margin-top:5px">A simple plan</h2><p class="section-sub">We don't need to solve a whole semester today.</p><div class="steps"><div class="step"><span class="step-num">1</span><div><h3>Verify what counts</h3><p>Ask which items are genuinely outstanding, already graded, or excused.</p></div></div><div class="step"><span class="step-num">2</span><div><h3>Find the useful work</h3><p>Prioritize tasks that still matter and can earn credit.</p></div></div><div class="step"><span class="step-num">3</span><div><h3>Choose one next step</h3><p>Make it manageable. Confirm submission before moving on.</p></div></div></div></section>
-<section class="panel source-panel pad" aria-labelledby="source-title"><span class="small-label">Where this comes from</span><h2 class="section-title" id="source-title" style="margin-top:5px">Checked against the calendar</h2><div class="source-list" style="margin-top:14px"><div class="source-row"><span class="source-dot"></span><span>Daily Schoology summary, Janie's items only</span></div><div class="source-row"><span class="source-dot"></span><span>Verified Schoology calendar for school dates and omitted assignments</span></div><div class="source-row"><span class="source-dot"></span><span>Older assignment flags are marked for verification, not assumed missing</span></div></div><p class="micro" style="margin:14px 0 0" id="calendar-range"></p></section>
-<div class="support"><h2>A smaller plan is a real plan.</h2><p>Focus on the next decision. Keep older work in view without making it the first thing anyone sees.</p></div>
-</aside>
-</div>
-<footer class="footer">The School Board · A manually reviewed school-assignment snapshot, not a live gradebook or submission tracker.</footer>
+<header class="mast school-mast">
+  <div class="shell school-mast-inner">
+    <div class="mast-title-group">
+      <a class="school-brand" href="./" aria-label="The School Board home">
+        <span class="brand-name"><span class="wordmark-the">THE</span><span class="wordmark-main">SCHOOL BOARD</span></span>
+      </a>
+      <span class="brand-sub">A simpler school day</span>
+      <span class="mast-metadata" id="header-date">Latest assignment snapshot</span>
+    </div>
+    <div class="school-emblem" aria-hidden="true">
+      <svg viewBox="0 0 270 185" xmlns="http://www.w3.org/2000/svg" role="presentation">
+        <g stroke-linejoin="round" stroke-linecap="round">
+          <circle cx="139" cy="87" r="73" fill="#f2f5fb"/>
+          <path d="M56 62 138 28l82 34-82 34Z" fill="#e1e9f5" stroke="#405b81" stroke-width="3.4"/>
+          <path d="M82 79v35c22 21 88 21 111 0V79" fill="#d4e2f3" stroke="#405b81" stroke-width="3.2"/>
+          <path d="m220 62 0 55" fill="none" stroke="#405b81" stroke-width="3.2"/>
+          <path d="M215 118c2-10 9-10 11 0l4 13h-19Z" fill="#d8c18a" stroke="#99815a" stroke-width="2"/>
+          <path d="M58 144c27-9 51-8 79 7 29-15 54-16 83-7v20c-29-9-54-8-83 7-27-15-51-16-79-7Z" fill="#fff" stroke="#5a7091" stroke-width="3"/>
+          <path d="M137 151v20" stroke="#5a7091" stroke-width="2.5"/>
+          <path d="M68 151c24-6 44-4 58 4M148 155c20-8 42-10 62-4" fill="none" stroke="#b4c2d7" stroke-width="2"/>
+          <path d="m58 21 7-7m130 7 7 7m-99-16 1-8" fill="none" stroke="#c3a96e" stroke-width="3"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+<main class="shell school-main">
+  <div class="intro">
+    <div>
+      <span class="eyebrow">A little clarity for the week</span>
+      <h1>One thing at a time.</h1>
+      <p>What's next, what's coming, and what can wait. Older assignments are available whenever you want to review them.</p>
+    </div>
+    <span class="refresh-label" id="snapshot-label">● Loading snapshot</span>
+  </div>
+  <div id="stale-warning" class="notice" role="status"></div>
+  <div class="school-layout">
+    <section class="panel focus-panel pad" aria-labelledby="focus-title">
+      <div class="section-head">
+        <div><span class="small-label">Start here</span><h2 class="section-title" id="focus-title">Today & tomorrow</h2><p class="section-sub" id="focus-sub">The few things worth checking first.</p></div>
+        <span class="section-icon" aria-hidden="true">☀</span>
+      </div>
+      <div id="focus" class="focus-list"><div class="empty">Loading upcoming school items…</div></div>
+    </section>
+    <section class="panel older-panel pad" aria-labelledby="older-title">
+      <div class="section-head">
+        <div><span class="small-label">Not for tonight</span><h2 class="section-title" id="older-title">Older items to sort out</h2><p class="section-sub">Some Schoology flags may already be graded, excused, or submitted.</p></div>
+        <span class="section-icon" aria-hidden="true">⌁</span>
+      </div>
+      <details class="disclosure" id="older-details">
+        <summary><span><span class="disclosure-title">Browse assignments needing verification</span><span class="disclosure-hint" id="older-summary">Details are tucked away until you're ready</span></span></summary>
+        <div class="disclosure-body">
+          <p class="older-description">A Schoology overdue flag is <strong>not</strong> proof of missing work. Check the actual status before making a catch-up plan.</p>
+          <div class="filters" id="filters" aria-label="Filter older items by course"></div>
+          <div id="flags" aria-live="polite"></div>
+        </div>
+      </details>
+    </section>
+    <section class="panel timeline-panel pad" aria-labelledby="timeline-title">
+      <div class="section-head">
+        <div><span class="small-label">A gentle look ahead</span><h2 class="section-title" id="timeline-title">On the horizon</h2><p class="section-sub">Upcoming dates, in order. Optional items are labeled.</p></div>
+        <span class="section-icon" aria-hidden="true">▤</span>
+      </div>
+      <div id="upcoming"><div class="empty">Loading calendar items…</div></div>
+      <div id="past-wrap" hidden style="margin-top:17px">
+        <details class="disclosure">
+          <summary><span><span class="disclosure-title">Earlier listed dates</span><span class="disclosure-hint">Past events are not assumed complete</span></span></summary>
+          <div class="disclosure-body" id="past-events"></div>
+        </details>
+      </div>
+    </section>
+    <section class="panel source-panel" aria-labelledby="source-title">
+      <span class="small-label" id="source-title">Sources</span>
+      <div class="source-list">
+        <div class="source-row"><span class="source-dot"></span><span>Daily Schoology summary — Janie's assignments only</span></div>
+        <div class="source-row"><span class="source-dot"></span><span>Verified Schoology calendar — school dates and assignments omitted from the digest</span></div>
+        <div class="source-row"><span class="source-dot"></span><span>Older Schoology flags require verification; they are not assumed missing</span></div>
+      </div>
+      <p class="micro" id="calendar-range"></p>
+    </section>
+    <aside class="reminder-strip" aria-label="A gentle catch-up reminder">
+      <span class="reminder-ornament" aria-hidden="true">✦</span>
+      <div>
+        <h2 class="reminder-title">A little reminder for Heather</h2>
+        <p class="reminder-body">Confirm what really needs attention, then choose just one manageable next step. Everything doesn't have to be solved today.</p>
+      </div>
+    </aside>
+  </div>
+  <footer class="school-footer"><span class="footer-line" aria-hidden="true"></span><span class="school-footer-copy">The School Board — Part of The Panoply</span><span class="footer-line" aria-hidden="true"></span></footer>
 </main>
 <script>
 (function(){
