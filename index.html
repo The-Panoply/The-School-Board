@@ -195,6 +195,18 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 }
 
 
+/* Lower visual emphasis for explanatory copy, especially in the calendar and older-item sections. */
+.school-layout .timeline-panel .section-sub,
+.school-layout .older-panel .section-sub{font-size:11px;font-weight:400;line-height:1.5;opacity:.76}
+.school-layout .older-panel .older-description{font-size:11px;font-weight:400;line-height:1.55;opacity:.76}
+.school-layout .timeline-panel .event-action{font-size:11px;font-weight:400;line-height:1.55;opacity:.78}
+@media(prefers-color-scheme:dark){
+ .school-layout .timeline-panel .section-sub,
+ .school-layout .older-panel .section-sub,
+ .school-layout .older-panel .older-description,
+ .school-layout .timeline-panel .event-action{opacity:.87}
+}
+
 /* Simple typographic wordmark and compact horizontal date pills */
 .school-brand{gap:0}
 .focus-meta .chip{
