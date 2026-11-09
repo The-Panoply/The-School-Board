@@ -151,6 +151,13 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 .detail-list dt{font-size:12px;color:var(--muted)}
 .detail-list dd{margin:0;font-size:13px;font-weight:700}
 .detail-note{font-size:13px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line);padding-top:13px}
+.detail-list a{color:var(--blue);overflow-wrap:anywhere;text-decoration:underline;text-underline-offset:2px}
+.policy-section{border-top:1px solid var(--line);padding-top:14px;margin-top:15px}
+.policy-title{font-size:15px;font-weight:800;margin:0 0 9px}
+.policy-intro,.policy-source{font-size:12px;line-height:1.55;color:var(--muted);margin:0 0 12px}
+.policy-list{display:grid;gap:11px;margin:0}
+.policy-list dt{font-size:11px;font-weight:800;color:var(--ink);margin:0 0 3px}
+.policy-list dd{font-size:12px;line-height:1.5;color:var(--muted);margin:0}
 @media(max-width:520px){.class-schedule{grid-template-columns:1fr}.detail-dialog{padding:18px}.wordmark-main{font-size:clamp(26px,6.7vw,38px)}}
 @media(prefers-reduced-motion:reduce){#older-details>summary::after{transition:none}}
 @media(prefers-color-scheme:dark){
@@ -318,6 +325,16 @@ function courseInfo(course){
  return target?(data.classes||[]).find(function(c){return c.name===target[1];}):null;
 }
 function rowHtml(label,value){return '<dt>'+escapeHTML(label)+'</dt><dd>'+escapeHTML(value==null?"Not verified":value)+'</dd>';}
+function emailRow(email){if(!email||!/^[A-Z0-9._%+-]+@fcps\.edu$/i.test(email))return rowHtml("Email","Not yet verified");return '<dt>Email</dt><dd><a href="mailto:'+escapeHTML(email)+'">'+escapeHTML(email)+'</a></dd>';}
+function policyHtml(info){
+ if(!info||!info.grading_policy)return "";
+ var p=info.grading_policy;
+ var lines=[["Grading structure",p.weights],["Reassessment",p.reassessment],["Late and missing work",p.late_work]];
+ return '<section class="policy-section" aria-label="Grading policy"><h3 class="policy-title">Grading policy · 2026–27 syllabus</h3>'+
+ '<p class="policy-intro">'+escapeHTML(data.rolling_gradebook_note||"Rolling gradebook; verify grades in SIS/ParentVUE.")+'</p>'+
+ '<dl class="policy-list">'+lines.filter(function(x){return x[1];}).map(function(x){return '<div><dt>'+escapeHTML(x[0])+'</dt><dd>'+escapeHTML(x[1])+'</dd></div>';}).join("")+'</dl>'+
+ '<p class="policy-source">Course syllabus summary only. Confirm current deadlines, assessment eligibility and exceptions with the teacher; a Schoology overdue flag alone does not establish missing work.</p></section>';
+}
 function renderSchedule(){
  var host=document.getElementById("class-schedule");
  var classes=(data.classes||[]).slice().sort(function(a,b){return a.period-b.period;});
@@ -335,7 +352,7 @@ function openDetails(kind,value){
  var section=document.getElementById("detail-body");
  document.getElementById("detail-kicker").textContent=item?"Assignment details":"Class details";
  var rows="";
- if(info)rows+=rowHtml("Class",info.name)+rowHtml("Period","Period "+info.period)+rowHtml("Teacher",info.teacher||"Not verified");
+ if(info){rows+=rowHtml("Class",info.name)+rowHtml("Period","Period "+info.period)+rowHtml("Teacher",info.teacher||"Not verified");if(!item)rows+=emailRow(info.teacher_email);}
  else rows+=rowHtml("Class",course==="School calendar"||course==="School event"?"School event (not a class)":course==="Course to verify"?"Course not verified":course);
  if(item){
    rows+=rowHtml("Date",new Intl.DateTimeFormat("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric",timeZone:"UTC"}).format(parseDate(item.date)));
@@ -344,7 +361,7 @@ function openDetails(kind,value){
  var note=item?(item.next||item.action||""):"";
  var detail=item?(item.detail||""):(info?info.verification||"":"Teacher and period details have not been verified for this item.");
  var status=item&&item.review?"An overdue flag does not establish a missing submission or grade. Verify before repeating any work.":"";
- section.innerHTML='<h2 class="detail-heading" id="detail-heading">'+escapeHTML(title)+'</h2><dl class="detail-list">'+rows+'</dl>'+(note?'<p class="detail-note"><strong>Next step:</strong> '+escapeHTML(note)+'</p>':'')+(detail?'<p class="detail-note">'+escapeHTML(detail)+'</p>':'')+(status?'<p class="detail-note">'+escapeHTML(status)+'</p>':'');
+ section.innerHTML='<h2 class="detail-heading" id="detail-heading">'+escapeHTML(title)+'</h2><dl class="detail-list">'+rows+'</dl>'+(note?'<p class="detail-note"><strong>Next step:</strong> '+escapeHTML(note)+'</p>':'')+(detail?'<p class="detail-note">'+escapeHTML(detail)+'</p>':'')+(status?'<p class="detail-note">'+escapeHTML(status)+'</p>':'')+(!item?policyHtml(info):'');
  var dialog=document.getElementById("detail-dialog");
  if(typeof dialog.showModal==="function")dialog.showModal();else dialog.setAttribute("open","");
 }
