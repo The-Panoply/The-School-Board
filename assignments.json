@@ -103,7 +103,9 @@
       "next": "Confirm submission and whether work remains.",
       "syllabus_timing": {
         "summary": "Two-week reference: Sep 23.",
-        "explanation": "Marketing syllabus: assignments submitted within 14 days of the listed Sep 9 date would reach a Sep 23 reference date, with a stated 10% late penalty. Confirm the actual due date, submission status and whether the teacher has directed any further action."
+        "explanation": "Marketing syllabus: assignments submitted within 14 days of the listed Sep 9 date would reach a Sep 23 reference date, with a stated 10% late penalty. Confirm the actual due date, submission status and whether the teacher has directed any further action.",
+        "reference_date": "2026-09-23",
+        "color_basis": "dated"
       }
     },
     {
@@ -115,7 +117,9 @@
       "next": "Previously reported as graded; check whether flag is stale.",
       "syllabus_timing": {
         "summary": "Two-week reference: Oct 6.",
-        "explanation": "Marketing's two-week rule would put the reference date at Oct 6 for the Sep 22 listed date, with a stated 10% late penalty. This item was previously reported as graded; reconcile the Schoology flag before asking for work to be redone."
+        "explanation": "Marketing's two-week rule would put the reference date at Oct 6 for the Sep 22 listed date, with a stated 10% late penalty. This item was previously reported as graded; reconcile the Schoology flag before asking for work to be redone.",
+        "reference_date": "2026-10-06",
+        "color_basis": "dated"
       }
     },
     {
@@ -127,7 +131,9 @@
       "next": "Previously reported as excused; check whether flag is stale.",
       "syllabus_timing": {
         "summary": "Two-week reference: Oct 14.",
-        "explanation": "Marketing's two-week rule would put the reference date at Oct 14 for the Sep 30 listed date, with a stated 10% late penalty. This item was previously reported as excused; verify SIS/teacher records rather than treating the flag as missing work."
+        "explanation": "Marketing's two-week rule would put the reference date at Oct 14 for the Sep 30 listed date, with a stated 10% late penalty. This item was previously reported as excused; verify SIS/teacher records rather than treating the flag as missing work.",
+        "reference_date": "2026-10-14",
+        "color_basis": "dated"
       }
     },
     {
@@ -139,7 +145,9 @@
       "next": "Confirm whether work remains and what recovery options exist.",
       "syllabus_timing": {
         "summary": "Two-week reference: Oct 22; ask about reassessment.",
-        "explanation": "The Oct 8 listed date plus Marketing's 14-day late-work window gives an Oct 22 reference date and a stated 10% late penalty. Because this is labeled summative, separately ask whether later demonstrated mastery can replace an earlier major-assessment score or whether a teacher-scheduled retake with remediation applies. No option is guaranteed."
+        "explanation": "The Oct 8 listed date plus Marketing's 14-day late-work window gives an Oct 22 reference date and a stated 10% late penalty. Because this is labeled summative, separately ask whether later demonstrated mastery can replace an earlier major-assessment score or whether a teacher-scheduled retake with remediation applies. No option is guaranteed.",
+        "reference_date": "2026-10-22",
+        "color_basis": "dated"
       }
     },
     {
@@ -151,7 +159,9 @@
       "next": "Check group submission, individual contribution, and next steps.",
       "syllabus_timing": {
         "summary": "Two-week reference: Nov 12; confirm group status.",
-        "explanation": "The Oct 29 listed date plus Marketing's 14-day late-work window gives a Nov 12 reference date, subject to its 10% late penalty and actual teacher deadlines. Group-project submissions and individual remediation may be treated separately; confirm what was submitted and any remaining teacher-directed steps."
+        "explanation": "The Oct 29 listed date plus Marketing's 14-day late-work window gives a Nov 12 reference date, subject to its 10% late penalty and actual teacher deadlines. Group-project submissions and individual remediation may be treated separately; confirm what was submitted and any remaining teacher-directed steps.",
+        "reference_date": "2026-11-12",
+        "color_basis": "dated"
       }
     },
     {
@@ -163,7 +173,8 @@
       "next": "Check whether the administrative form is complete.",
       "syllabus_timing": {
         "summary": "Administrative form: verify directly.",
-        "explanation": "The Aug 28 item is a science safety agreement form. Do not apply Biology's summative late-work or reassessment rule to an administrative form without teacher confirmation. Ask whether the form is already on file."
+        "explanation": "The Aug 28 item is a science safety agreement form. Do not apply Biology's summative late-work or reassessment rule to an administrative form without teacher confirmation. Ask whether the form is already on file.",
+        "color_basis": "unverified"
       }
     },
     {
@@ -175,7 +186,9 @@
       "next": "Confirm status and any available makeup opportunity.",
       "syllabus_timing": {
         "summary": "Q1 retake reference: Oct 30; confirm test status.",
-        "explanation": "This Sep 25 entry is an assessment, not necessarily late written work. Biology's retake policy requires remediation and completion within the same quarter; the first quarter ended Oct 30. That does not establish the student's eligibility or whether a makeup or retake was arranged. Check the SIS assessment entry and teacher directions."
+        "explanation": "This Sep 25 entry is an assessment, not necessarily late written work. Biology's retake policy requires remediation and completion within the same quarter; the first quarter ended Oct 30. That does not establish the student's eligibility or whether a makeup or retake was arranged. Check the SIS assessment entry and teacher directions.",
+        "reference_date": "2026-10-30",
+        "color_basis": "dated"
       }
     },
     {
@@ -187,7 +200,9 @@
       "next": "Paper submission may not clear the online flag.",
       "syllabus_timing": {
         "summary": "Q1 cutoff: Oct 30; paper status unknown.",
-        "explanation": "The Photography syllabus sets the first-quarter missing-work cutoff at Oct 30, with a 10% late penalty. This Sep 3 item specifically calls for paper submission, which may not clear a Schoology flag. If it was submitted as a summative project, later revisions may be possible; verify both facts with the teacher."
+        "explanation": "The Photography syllabus sets the first-quarter missing-work cutoff at Oct 30, with a 10% late penalty. This Sep 3 item specifically calls for paper submission, which may not clear a Schoology flag. If it was submitted as a summative project, later revisions may be possible; verify both facts with the teacher.",
+        "reference_date": "2026-10-30",
+        "color_basis": "dated"
       }
     },
     {
@@ -199,7 +214,9 @@
       "next": "Check status with teacher before redoing anything.",
       "syllabus_timing": {
         "summary": "Q1 cutoff: Oct 30; check work type.",
-        "explanation": "The Photography syllabus uses an Oct 30 first-quarter missing-work cutoff and a 10% late penalty. However, studio practice cannot generally be made up, while previously submitted summative projects may be revised. Determine what this Sep 8 activity involved and whether it was completed in class before applying either rule."
+        "explanation": "The Photography syllabus uses an Oct 30 first-quarter missing-work cutoff and a 10% late penalty. However, studio practice cannot generally be made up, while previously submitted summative projects may be revised. Determine what this Sep 8 activity involved and whether it was completed in class before applying either rule.",
+        "reference_date": "2026-10-30",
+        "color_basis": "dated"
       }
     },
     {
@@ -211,7 +228,8 @@
       "next": "Ongoing item; confirm what the dated flag means.",
       "syllabus_timing": {
         "summary": "Ongoing portfolio: Oct 9 is not a confirmed cutoff.",
-        "explanation": "Although Photography's general first-quarter missing-work cutoff was Oct 30, this Oct 9 flag is explicitly for a process portfolio continuing all year. Previously submitted summative work may be revised. Confirm the particular checkpoint, physical/digital submission status and whether any Q1 formative item was separately closed."
+        "explanation": "Although Photography's general first-quarter missing-work cutoff was Oct 30, this Oct 9 flag is explicitly for a process portfolio continuing all year. Previously submitted summative work may be revised. Confirm the particular checkpoint, physical/digital submission status and whether any Q1 formative item was separately closed.",
+        "color_basis": "unverified"
       }
     },
     {
@@ -223,7 +241,9 @@
       "next": "Confirm submission and any follow-up.",
       "syllabus_timing": {
         "summary": "Two-week reference: Nov 4.",
-        "explanation": "World History's written 14-day late-work period applies to formative and summative submissions, with a stated 10% penalty. The Oct 21 listed date gives a Nov 4 reference date. Confirm whether the item was already submitted and whether the actual class deadline or any exceptions differ."
+        "explanation": "World History's written 14-day late-work period applies to formative and summative submissions, with a stated 10% penalty. The Oct 21 listed date gives a Nov 4 reference date. Confirm whether the item was already submitted and whether the actual class deadline or any exceptions differ.",
+        "reference_date": "2026-11-04",
+        "color_basis": "dated"
       }
     },
     {
@@ -235,7 +255,9 @@
       "next": "Recent flag; verify whether work remains.",
       "syllabus_timing": {
         "summary": "If summative: Nov 19; category not verified.",
-        "explanation": "English Honors accepts summative work within two weeks of the listed Nov 5 date, giving a Nov 19 reference date with a 10% late penalty. Its syllabus instead states that late formative work receives zero. This WebQuest's category and actual submission status have not been verified; do not apply the summative window automatically."
+        "explanation": "English Honors accepts summative work within two weeks of the listed Nov 5 date, giving a Nov 19 reference date with a 10% late penalty. Its syllabus instead states that late formative work receives zero. This WebQuest's category and actual submission status have not been verified; do not apply the summative window automatically.",
+        "reference_date": "2026-11-19",
+        "color_basis": "conditional"
       }
     }
   ],
