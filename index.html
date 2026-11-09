@@ -277,13 +277,13 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 @media(prefers-color-scheme:dark){.install-panel{background:linear-gradient(110deg,#23374f,#1b2635);border-color:var(--line)}.install-icon{background:#f8fbff}.install-title,.install-step strong{color:#accbec}.install-kicker,.install-sub,.install-foot{color:#b8cbe0}.install-step{background:#243349;border-color:var(--line);color:#c7d6e6}}
 
 /* Assignment completion and family sharing — intentionally saved only on this device. */
-.school-layout .progress-panel{order:0;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px 20px;background:linear-gradient(110deg,var(--paper),var(--blue-soft))}
+.school-layout .progress-panel{order:0;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px 39px 16px 20px;background:linear-gradient(110deg,var(--paper),var(--blue-soft))}
 .progress-heading{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--muted);margin:0 0 4px}
 .progress-count{font-size:15px;font-weight:800}
 .progress-device,.progress-caption{font-size:10px;line-height:1.45;color:var(--muted);margin:4px 0 0}
-.progress-actions{text-align:center}.progress-caption{max-width:305px}
+.progress-actions{display:flex;flex-direction:column;align-items:flex-end;text-align:right;gap:4px}.progress-caption{max-width:305px}
 .progress-share,.share-send{border:1px solid #365f88;border-radius:11px;background:#284f78;color:#fff;padding:10px 15px;font-size:12px;font-weight:800}
-.progress-share:hover,.share-send:hover{filter:brightness(1.12)}
+.progress-share{display:inline-flex;align-items:center;justify-content:center;gap:7px}.progress-share svg{display:block;flex:none}.progress-share:hover,.share-send:hover{filter:brightness(1.12)}
 .completion-row{display:flex;justify-content:flex-end;margin-top:7px}
 .complete-toggle{border:1px solid var(--line);border-radius:7px;background:var(--blue-soft);color:var(--blue);padding:5px 9px;font-size:10px;font-weight:700;min-height:29px;line-height:1.3;white-space:nowrap}
 .complete-toggle:hover{border-color:var(--blue);filter:brightness(.97)}
@@ -302,7 +302,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 .share-muted{font-size:11px!important;color:var(--muted);line-height:1.5}
 .detail-complete{margin-top:17px;padding-top:15px;border-top:1px solid var(--line)}.detail-complete .complete-toggle{width:auto;padding:6px 10px}
 .progress-share:focus-visible,.complete-toggle:focus-visible,.share-send:focus-visible,.share-copy:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
-@media(max-width:520px){.progress-actions{width:100%}.progress-caption{max-width:none}.share-dialog{padding:18px}}
+@media(max-width:520px){.school-layout .progress-panel{padding-right:35px}.progress-actions{width:100%;align-items:flex-end;text-align:right}.progress-caption{max-width:305px}.share-dialog{padding:18px}}
 @media(prefers-color-scheme:dark){.progress-share,.share-send{background:#426d9a;border-color:#7899c1}}
 </style>
 </head>
@@ -324,7 +324,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
   <div class="school-layout">
     <section class="panel progress-panel" aria-label="Family assignment progress">
       <div><p class="progress-heading">My Progress</p><div id="progress-count" class="progress-count" aria-live="polite">0 assignments marked complete</div><p id="progress-device" class="progress-device">Saved on this device only.</p></div>
-      <div class="progress-actions"><button type="button" id="progress-share" class="progress-share">↗ &nbsp;Share Progress</button><p class="progress-caption">Send a progress update to a parent or family member using your phone’s share menu.</p></div>
+      <div class="progress-actions"><button type="button" id="progress-share" class="progress-share"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V2m0 0 4 4m-4-4-4 4"/><path d="M7 10H5.5A2.5 2.5 0 0 0 3 12.5v7A2.5 2.5 0 0 0 5.5 22h13a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 18.5 10H17"/></svg><span>Share Progress</span></button><p class="progress-caption">Send a progress update to a parent or family member using your phone’s share menu.</p></div>
     </section>
     <section class="panel focus-panel pad" aria-labelledby="focus-title">
       <div class="section-head">
