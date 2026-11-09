@@ -223,13 +223,35 @@
       "name": "World History/Geography 2",
       "period": 3,
       "teacher": null,
-      "verification": "Period 3 comes from prior student-specific records. Assigned teacher remains unverified; the department-wide syllabus does not identify the section teacher.",
+      "verification": "Period 3 from prior student-specific records. The 2026–27 World History II syllabus lists five department contacts; it does not identify the assigned teacher for this section.",
       "teacher_email": null,
       "grading_policy": {
         "weights": "Rolling gradebook; category percentages not specified in the reviewed syllabus.",
         "reassessment": "Multiple summative reassessment opportunities with remediation; reassessment scores capped at 90%, higher attempt retained.",
         "late_work": "Summative and formative work accepted up to two weeks late with a 10% penalty; unsubmitted work recorded as 0%. Verify that the department syllabus applies to this exact section."
-      }
+      },
+      "syllabus_contacts": [
+        {
+          "name": "Kevin Curtin",
+          "email": "kjcurtin@fcps.edu"
+        },
+        {
+          "name": "Sandi Dougherty",
+          "email": "sldougherty@fcps.edu"
+        },
+        {
+          "name": "Michael Smith",
+          "email": "mgsmith@fcps.edu"
+        },
+        {
+          "name": "Sarah Smith",
+          "email": "sasmith2@fcps.edu"
+        },
+        {
+          "name": "Dean Wood",
+          "email": "rdwood@fcps.edu"
+        }
+      ]
     },
     {
       "id": "marketing",
