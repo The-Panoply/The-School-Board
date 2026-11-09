@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f6f7fa">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f7fa">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111924">
 <meta name="description" content="A calm, clear view of upcoming school assignments and older items to verify.">
 <title>The School Board</title>
 <style>
@@ -115,6 +116,76 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
   .school-mark{width:clamp(42px,12vw,58px)}
   .wordmark-main{font-size:clamp(27px,6.7vw,39px)}
 }
+
+/* Bookish Panoply wordmark, accessible interaction and compact class details */
+:root{color-scheme:light}
+.wordmark-main{font-family:"Iowan Old Style",Baskerville,"Palatino Linotype",Georgia,serif;font-weight:700;letter-spacing:-.042em}
+.school-mark{opacity:.94}
+#older-details{border-color:#d9e2ef;box-shadow:0 1px 4px rgba(39,63,94,.05);overflow:hidden}
+#older-details>summary{display:flex;align-items:center;justify-content:space-between;min-height:54px;background:var(--blue-soft);color:var(--ink);padding:13px 17px;gap:10px}
+#older-details>summary .disclosure-title{font-weight:800;font-size:14px}
+#older-details>summary::after{content:"";display:block;width:11px;height:11px;flex:none;border-right:2px solid var(--blue);border-bottom:2px solid var(--blue);transform:rotate(45deg);margin:0 4px 5px 8px;transition:transform .15s ease,margin .15s ease}
+#older-details[open]>summary::after{transform:rotate(225deg);margin-bottom:-4px}
+#older-details>summary:hover{filter:brightness(.985)}
+#older-details>summary:focus-visible,.item-link:focus-visible,.schedule-item:focus-visible,.filter:focus-visible,.detail-close:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.overdue-icon{color:var(--blue)}
+.school-layout .schedule-panel{order:4}
+.school-layout .source-panel{order:5}
+.class-schedule{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.schedule-item{display:flex;align-items:center;text-align:left;gap:10px;border:1px solid var(--line);border-radius:13px;background:var(--paper);padding:11px 12px;color:var(--ink);width:100%;min-width:0}
+.schedule-item:hover{border-color:var(--blue);background:var(--blue-soft)}
+.schedule-period{display:grid;place-items:center;flex:none;width:39px;height:37px;border-radius:9px;background:var(--blue-soft);color:var(--blue);font-size:12px;font-weight:850}
+.schedule-name{display:block;font-size:12px;line-height:1.25;font-weight:800}
+.schedule-teacher{display:block;font-size:10px;color:var(--muted);margin-top:2px}
+.schedule-arrow{margin-left:auto;color:var(--muted);font-size:17px}
+.schedule-note{margin:11px 0 0;line-height:1.45}
+.item-link{appearance:none;border:none;background:none;padding:0;margin:0;color:inherit;font:inherit;font-weight:inherit;text-align:left;cursor:pointer;line-height:inherit}
+.item-link:hover{text-decoration:underline;text-decoration-color:var(--blue);text-underline-offset:3px}
+.flag-class.item-link,.event-class.item-link,.focus-class.item-link{color:var(--blue);font-weight:800}
+.detail-dialog{border:1px solid var(--line);border-radius:20px;max-width:min(470px,calc(100vw - 28px));width:100%;padding:22px;box-shadow:0 16px 70px rgba(8,16,30,.25);background:var(--paper);color:var(--ink);max-height:85dvh;overflow:auto}
+.detail-dialog::backdrop{background:rgba(12,21,36,.55)}
+.detail-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.detail-close{width:35px;height:35px;display:grid;place-items:center;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--muted);font-size:24px}
+.detail-heading{font-size:22px;font-weight:800;line-height:1.2;letter-spacing:-.5px;margin:14px 0}
+.detail-list{display:grid;grid-template-columns:90px 1fr;gap:10px 12px;margin:17px 0}
+.detail-list dt{font-size:12px;color:var(--muted)}
+.detail-list dd{margin:0;font-size:13px;font-weight:700}
+.detail-note{font-size:13px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line);padding-top:13px}
+@media(max-width:520px){.class-schedule{grid-template-columns:1fr}.detail-dialog{padding:18px}.wordmark-main{font-size:clamp(26px,6.7vw,38px)}}
+@media(prefers-reduced-motion:reduce){#older-details>summary::after{transition:none}}
+@media(prefers-color-scheme:dark){
+ :root{color-scheme:dark;--ink:#e9eef7;--muted:#a8b5c6;--line:#354154;--paper:#1b2635;--wash:#111924;--blue:#a0bcdf;--blue-soft:#2c3b50;--sage:#91c6b3;--sage-soft:#274238;--amber:#dcb878;--amber-soft:#403323;--purple:#c8b0e8;--purple-soft:#363049;--shadow:0 12px 30px rgba(0,0,0,.15)}
+ body{background:var(--wash);color:var(--ink)}
+ .mast,.school-mast{background:linear-gradient(110deg,#1c2635,#172232);border-color:var(--line)}
+ .wordmark-the,.wordmark-main{color:var(--ink)}
+ .mast-title-group .brand-sub,.mast-metadata,.date-pill{color:var(--muted)}
+ .school-mark svg{filter:brightness(1.6) saturate(.8)}
+ .school-main .intro p,.section-sub,.disclosure-hint,.flag-date,.flag-class,.event-meta,.source-row,.micro{color:var(--muted)}
+ .panel,.disclosure,.focus-card,.detail-dialog,.schedule-item{background:var(--paper);border-color:var(--line);color:var(--ink)}
+ .focus-panel{background:linear-gradient(145deg,#222f40,#1b2635 68%);border-color:#435672}
+ .focus-card{background:#243349;border-color:#3c516e}
+ .focus-action{color:#c6d4e5}
+ .course-icon{background:#344764;color:#b2c9ec}
+ .course-icon.english{background:var(--purple-soft);color:var(--purple)}
+ .course-icon.general{background:var(--sage-soft);color:var(--sage)}
+ .section-icon,.event-date,.empty,.filter,.flag-status,.detail-close{background:#2a384b;color:var(--ink);border-color:var(--line)}
+ .date-mon,.date-weekday,.event-source,.schedule-period,.schedule-arrow{color:var(--blue)}
+ .event-action,.flag-next,.older-description,.detail-note{color:#bbcada}
+ .divider{background:var(--line)}
+ .chip{background:var(--blue-soft);color:var(--blue)}
+ .chip.optional{background:var(--purple-soft);color:var(--purple)}
+ .filter.selected{background:#9ab9df;color:#142234;border-color:#9ab9df}
+ .filter:hover,.schedule-item:hover{background:#33445c}
+ #older-details>summary{background:#2b3b53}
+ #older-details>summary:hover{filter:brightness(1.12)}
+ .schedule-period{background:#314760}
+ .notice.show{background:#453923;color:#ffe6ac;border-color:#80683c}
+ .error{background:#462e31;color:#ffd7d7;border-color:#87535c}
+ .footer-line{background:linear-gradient(90deg,transparent,#71839b)}
+ .school-footer{color:#9aa9bd}
+ .detail-dialog::backdrop{background:rgba(0,0,0,.68)}
+}
+
 </style>
 </head>
 <body>
@@ -147,7 +218,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
   <div class="school-layout">
     <section class="panel focus-panel pad" aria-labelledby="focus-title">
       <div class="section-head">
-        <div><h2 class="section-title" id="focus-title">Today & tomorrow</h2><p class="section-sub" id="focus-sub">The few things worth checking first.</p></div>
+        <div><h2 class="section-title" id="focus-title">Today & Tomorrow</h2><p class="section-sub" id="focus-sub">The few things worth checking first.</p></div>
         <span class="section-icon" aria-hidden="true">☀</span>
       </div>
       <div id="focus" class="focus-list"><div class="empty">Loading upcoming school items…</div></div>
@@ -155,10 +226,10 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
     <section class="panel older-panel pad" aria-labelledby="older-title">
       <div class="section-head">
         <div><h2 class="section-title" id="older-title">Overdue</h2><p class="section-sub">Some Schoology flags may already be graded, excused, or submitted.</p></div>
-        <span class="section-icon" aria-hidden="true">⌁</span>
+        <span class="section-icon overdue-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.5 2"/></svg></span>
       </div>
       <details class="disclosure" id="older-details">
-        <summary><span><span class="disclosure-title">Assignments</span><span class="disclosure-hint" id="older-summary">Details are tucked away until you're ready</span></span></summary>
+        <summary aria-label="Expand or collapse overdue assignments"><span class="disclosure-title">Assignments</span></summary>
         <div class="disclosure-body">
           <p class="older-description">A Schoology overdue flag is <strong>not</strong> proof of missing work. Check the actual status before making a catch-up plan.</p>
           <div class="filters" id="filters" aria-label="Filter older items by course"></div>
@@ -168,7 +239,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
     </section>
     <section class="panel timeline-panel pad" aria-labelledby="timeline-title">
       <div class="section-head">
-        <div><h2 class="section-title" id="timeline-title">On the horizon</h2><p class="section-sub">Upcoming dates, in order. Optional items are labeled.</p></div>
+        <div><h2 class="section-title" id="timeline-title">On the Horizon</h2><p class="section-sub">Upcoming dates, in order. Optional items are labeled.</p></div>
         <span class="section-icon" aria-hidden="true">▤</span>
       </div>
       <div id="upcoming"><div class="empty">Loading calendar items…</div></div>
@@ -178,6 +249,15 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
           <div class="disclosure-body" id="past-events"></div>
         </details>
       </div>
+    </section>
+    <section class="panel schedule-panel pad" aria-labelledby="schedule-title">
+      <div class="section-head">
+        <div><h2 class="section-title" id="schedule-title">Class Schedule</h2>
+          <p class="section-sub">Tap a class for its period and teacher.</p></div>
+        <span class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 13h3M14 13h3M8 17h3"/></svg></span>
+      </div>
+      <div id="class-schedule" class="class-schedule"><p class="empty">Loading classes…</p></div>
+      <p class="micro schedule-note" id="schedule-note"></p>
     </section>
     <section class="panel source-panel" aria-labelledby="source-title">
       <span class="small-label" id="source-title">Sources</span>
@@ -191,6 +271,10 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
   </div>
   <footer class="school-footer"><span class="footer-line" aria-hidden="true"></span><span class="school-footer-copy">The School Board — Part of The Panoply</span><span class="footer-line" aria-hidden="true"></span></footer>
 </main>
+<dialog id="detail-dialog" class="detail-dialog" aria-labelledby="detail-heading">
+  <div class="detail-top"><span class="small-label" id="detail-kicker">Class information</span><button type="button" id="detail-close" class="detail-close" aria-label="Close details">×</button></div>
+  <div id="detail-body"></div>
+</dialog>
 <script>
 (function(){
 "use strict";
@@ -208,19 +292,70 @@ function escapeHTML(value){return String(value==null?"":value).replace(/[&<>"']/
 function icon(course){return /Biology/i.test(course)?"✳":/English/i.test(course)?"✎":/Picture|School/i.test(course)?"▤":"◈";}
 function iconStyle(course){return /English/i.test(course)?"english":/School|Picture/i.test(course)?"general":"";}
 function when(s,today){if(s===today)return "Today";if(s===isoAdd(today,1))return "Tomorrow";return weekdayFmt.format(parseDate(s))+" · "+displayDate(s);}
-function focusHtml(x,today){var optional=/Optional/i.test(x.type);var weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(parseDate(x.date));return '<article class="focus-card"><span class="course-icon '+iconStyle(x.course)+'" aria-hidden="true">'+icon(x.course)+'</span><div><div class="focus-meta"><span>'+escapeHTML(x.course.toUpperCase())+'</span><span class="chip '+(optional?"optional":"")+'"><span class="chip-main">'+escapeHTML(when(x.date,today))+'</span><span class="chip-day">'+escapeHTML(weekday+" · "+displayDate(x.date))+'</span></span></div><h3 class="focus-title">'+escapeHTML(x.title)+'</h3><p class="focus-action">'+escapeHTML(x.action)+'</p>'+(x.id==="english-reassessment"?'<p class="micro" style="margin:8px 0 0">Calendar note: prerequisite steps before 3 PM on Nov 9.</p>':"")+'</div></article>';}
-function eventHtml(x){var dt=parseDate(x.date),mon=monthFmt.format(dt),day=dt.getUTCDate(),weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(dt);return '<article class="event"><div class="event-date" aria-label="'+escapeHTML(weekday+", "+displayDate(x.date))+'"><div class="date-mon">'+escapeHTML(mon)+'</div><div class="date-day">'+day+'</div><div class="date-weekday">'+escapeHTML(weekday)+'</div></div><div><h3 class="event-title">'+escapeHTML(x.title)+'</h3><div class="event-meta">'+escapeHTML(x.course)+' · '+escapeHTML(x.type)+(x.end?' · through '+escapeHTML(displayDate(x.end)):'')+'</div><p class="event-action">'+escapeHTML(x.action)+'</p>'+(x.source==="calendar"?'<span class="event-source">Found in calendar only — verify details</span>':"")+'</div></article>';}
-function flagHtml(x){return '<article class="flag"><div class="flag-heading"><span class="flag-class">'+escapeHTML(x.course)+'</span><span class="flag-date">Dated '+escapeHTML(displayDate(x.date))+'</span></div><h3 class="flag-title">'+escapeHTML(x.title)+'</h3><p class="flag-next">'+escapeHTML(x.next)+'</p><span class="flag-status">'+(x.review==="reconcile"?"May be resolved — reconcile":x.review==="priority"?"Verify priority":"Needs status check")+'</span></article>';}
+function classButton(course,display,extra){return '<button class="item-link '+(extra||"")+'" type="button" data-course="'+escapeHTML(course)+'" aria-label="View class details: '+escapeHTML(course)+'">'+escapeHTML(display||course)+'</button>';}
+function assignmentButton(x,extra){return '<button class="item-link '+(extra||"")+'" type="button" data-assignment="'+escapeHTML(x.id)+'" aria-label="View assignment details: '+escapeHTML(x.title)+'">'+escapeHTML(x.title)+'</button>';}
+function focusHtml(x,today){var optional=/Optional/i.test(x.type);var weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(parseDate(x.date));return '<article class="focus-card"><span class="course-icon '+iconStyle(x.course)+'" aria-hidden="true">'+icon(x.course)+'</span><div><div class="focus-meta"><span>'+classButton(x.course,x.course.toUpperCase(),"focus-class")+'</span><span class="chip '+(optional?"optional":"")+'"><span class="chip-main">'+escapeHTML(when(x.date,today))+'</span><span class="chip-day">'+escapeHTML(weekday+" · "+displayDate(x.date))+'</span></span></div><h3 class="focus-title">'+assignmentButton(x)+'</h3><p class="focus-action">'+escapeHTML(x.action)+'</p>'+(x.id==="english-reassessment"?'<p class="micro" style="margin:8px 0 0">Calendar note: prerequisite steps before 3 PM on Nov 9.</p>':"")+'</div></article>';}
+function eventHtml(x){var dt=parseDate(x.date),mon=monthFmt.format(dt),day=dt.getUTCDate(),weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(dt);return '<article class="event"><div class="event-date" aria-label="'+escapeHTML(weekday+", "+displayDate(x.date))+'"><div class="date-mon">'+escapeHTML(mon)+'</div><div class="date-day">'+day+'</div><div class="date-weekday">'+escapeHTML(weekday)+'</div></div><div><h3 class="event-title">'+assignmentButton(x)+'</h3><div class="event-meta">'+classButton(x.course,x.course,"event-class")+' · '+escapeHTML(x.type)+(x.end?' · through '+escapeHTML(displayDate(x.end)):'')+'</div><p class="event-action">'+escapeHTML(x.action)+'</p>'+(x.source==="calendar"?'<span class="event-source">Found in calendar only — verify details</span>':"")+'</div></article>';}
+function flagHtml(x){return '<article class="flag"><div class="flag-heading">'+classButton(x.course,x.course,"flag-class")+'<span class="flag-date">Dated '+escapeHTML(displayDate(x.date))+'</span></div><h3 class="flag-title">'+assignmentButton(x)+'</h3><p class="flag-next">'+escapeHTML(x.next)+'</p><span class="flag-status">'+(x.review==="reconcile"?"May be resolved — reconcile":x.review==="priority"?"Verify priority":"Needs status check")+'</span></article>';}
 function renderFlags(){var items=data.flagged.filter(function(x){return selectedCourse==="All"||x.course===selectedCourse;});document.getElementById("flags").innerHTML=items.length?items.map(flagHtml).join(""):'<p class="empty">No items in this subject.</p>';}
 function renderFilters(){var courses=["All"];data.flagged.forEach(function(x){if(courses.indexOf(x.course)===-1)courses.push(x.course);});var holder=document.getElementById("filters");holder.replaceChildren();courses.forEach(function(course){var b=document.createElement("button");b.type="button";b.className="filter"+(selectedCourse===course?" selected":"");b.textContent=course==="All"?"All subjects":course;b.setAttribute("aria-pressed",selectedCourse===course?"true":"false");b.addEventListener("click",function(){selectedCourse=course;renderFilters();renderFlags();});holder.appendChild(b);});}
-function render(d){data=d;var today=isoToday();var all=[].concat(d.upcoming||[]).sort(function(a,b){return a.date.localeCompare(b.date);});var upcoming=all.filter(function(x){return x.date>=today;});var focus=upcoming.filter(function(x){return x.date<=isoAdd(today,1);});var usingNext=focus.length===0;var displayed=usingNext?upcoming.slice(0,2):focus;document.getElementById("focus-title").textContent=usingNext?"Next on the calendar":"Today & tomorrow";document.getElementById("focus-sub").textContent=usingNext?"Nothing immediately due in this reviewed snapshot.":"Just the next decisions—not the whole list.";document.getElementById("focus").innerHTML=displayed.length?displayed.map(function(x){return focusHtml(x,today);}).join(""):'<div class="empty">No future school dates in this snapshot. Refresh the school check to see newer items.</div>';
+function render(d){data=d;var today=isoToday();var all=[].concat(d.upcoming||[]).sort(function(a,b){return a.date.localeCompare(b.date);});var upcoming=all.filter(function(x){return x.date>=today;});var focus=upcoming.filter(function(x){return x.date<=isoAdd(today,1);});var usingNext=focus.length===0;var displayed=usingNext?upcoming.slice(0,2):focus;document.getElementById("focus-title").textContent=usingNext?"Next on the Calendar":"Today & Tomorrow";document.getElementById("focus-sub").textContent=usingNext?"Nothing immediately due in this reviewed snapshot.":"Just the next decisions—not the whole list.";document.getElementById("focus").innerHTML=displayed.length?displayed.map(function(x){return focusHtml(x,today);}).join(""):'<div class="empty">No future school dates in this snapshot. Refresh the school check to see newer items.</div>';
 var ids=new Set(displayed.map(function(x){return x.id}));var later=upcoming.filter(function(x){return !ids.has(x.id)});document.getElementById("upcoming").innerHTML=later.length?later.map(eventHtml).join(""):'<p class="empty">No other upcoming dates are listed in this snapshot.</p>';var past=all.filter(function(x){return x.date<today;});document.getElementById("past-wrap").hidden=!past.length;document.getElementById("past-events").innerHTML=past.map(eventHtml).join("");
-document.getElementById("older-summary").textContent=d.flagged.length+" Schoology flags to verify · not confirmed missing";renderFilters();renderFlags();
+renderFilters();renderFlags();renderSchedule();
 document.getElementById("header-date").textContent="Reviewed "+longDate(d.snapshot);
 document.getElementById("calendar-range").textContent="Calendar checked: Nov 8–Dec 14, 2026. Snapshot reviewed: "+longDate(d.snapshot)+".";
 var days=Math.floor((parseDate(today)-parseDate(d.snapshot))/86400000);if(days>2){var note=document.getElementById("stale-warning");note.classList.add("show");note.textContent="This board was last reviewed "+longDate(d.snapshot)+". Upcoming items may have changed. Run a new school check before relying on these dates.";}
 }
-fetch("./assignments.json",{cache:"no-store"}).then(function(res){if(!res.ok)throw new Error("Data request failed");return res.json();}).then(function(payload){if(!payload||!Array.isArray(payload.upcoming)||!Array.isArray(payload.flagged))throw new Error("Unexpected data format");render(payload);}).catch(function(){var error='<div class="error">The assignment data could not be loaded. Please refresh the page or check back after the next update.</div>';document.getElementById("focus").innerHTML=error;document.getElementById("upcoming").innerHTML=error;document.getElementById("older-summary").textContent="Assignment data unavailable";});
+
+function courseInfo(course){
+ var text=String(course||"").toLowerCase();
+ var match=(data.classes||[]).find(function(c){return c.name.toLowerCase()===text;});
+ if(match)return match;
+ var patterns=[["Biology","Biology 1"],["English","English 9 Honors"],["Marketing","Marketing 1"],["Photography","Photography 1"],["History","World History/Geography 2"],["Algebra","Algebra 1"],["Health","Health & PE 9"]];
+ var target=patterns.find(function(x){return text.indexOf(x[0].toLowerCase())>=0;});
+ return target?(data.classes||[]).find(function(c){return c.name===target[1];}):null;
+}
+function rowHtml(label,value){return '<dt>'+escapeHTML(label)+'</dt><dd>'+escapeHTML(value==null?"Not verified":value)+'</dd>';}
+function renderSchedule(){
+ var host=document.getElementById("class-schedule");
+ var classes=(data.classes||[]).slice().sort(function(a,b){return a.period-b.period;});
+ host.innerHTML=classes.length?classes.map(function(x){
+ return '<button type="button" class="schedule-item" data-course="'+escapeHTML(x.name)+'" aria-label="View '+escapeHTML(x.name)+' class details"><span class="schedule-period">P'+escapeHTML(x.period)+'</span><span><span class="schedule-name">'+escapeHTML(x.name)+'</span>'+(x.teacher?'<span class="schedule-teacher">'+escapeHTML(x.teacher)+'</span>':'')+'</span><span class="schedule-arrow" aria-hidden="true">›</span></button>';
+ }).join(""):'<p class="empty">Class schedule not yet available.</p>';
+ document.getElementById("schedule-note").textContent=data.schedule_note||"";
+}
+function openDetails(kind,value){
+ var course=kind==="class"?value:"";
+ var item=null;
+ if(kind==="assignment"){item=(data.upcoming||[]).concat(data.flagged||[]).find(function(x){return x.id===value;});if(!item)return;course=item.course;}
+ var info=courseInfo(course);
+ var title=item?item.title:info?info.name:course||"School item";
+ var section=document.getElementById("detail-body");
+ document.getElementById("detail-kicker").textContent=item?"Assignment details":"Class details";
+ var rows="";
+ if(info)rows+=rowHtml("Class",info.name)+rowHtml("Period","Period "+info.period)+rowHtml("Teacher",info.teacher||"Not verified");
+ else rows+=rowHtml("Class",course==="School calendar"||course==="School event"?"School event (not a class)":course==="Course to verify"?"Course not verified":course);
+ if(item){
+   rows+=rowHtml("Date",new Intl.DateTimeFormat("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric",timeZone:"UTC"}).format(parseDate(item.date)));
+   rows+=rowHtml("Status",item.review?"Schoology overdue flag — status unverified":item.type||"Scheduled");
+ }
+ var note=item?(item.next||item.action||""):"";
+ var detail=item?(item.detail||""):(info?info.verification||"":"Teacher and period details have not been verified for this item.");
+ var status=item&&item.review?"An overdue flag does not establish a missing submission or grade. Verify before repeating any work.":"";
+ section.innerHTML='<h2 class="detail-heading" id="detail-heading">'+escapeHTML(title)+'</h2><dl class="detail-list">'+rows+'</dl>'+(note?'<p class="detail-note"><strong>Next step:</strong> '+escapeHTML(note)+'</p>':'')+(detail?'<p class="detail-note">'+escapeHTML(detail)+'</p>':'')+(status?'<p class="detail-note">'+escapeHTML(status)+'</p>':'');
+ var dialog=document.getElementById("detail-dialog");
+ if(typeof dialog.showModal==="function")dialog.showModal();else dialog.setAttribute("open","");
+}
+document.addEventListener("click",function(e){
+ var classTarget=e.target.closest("[data-course]");
+ var assignmentTarget=e.target.closest("[data-assignment]");
+ if(assignmentTarget){openDetails("assignment",assignmentTarget.getAttribute("data-assignment"));}
+ else if(classTarget){openDetails("class",classTarget.getAttribute("data-course"));}
+});
+document.getElementById("detail-close").addEventListener("click",function(){document.getElementById("detail-dialog").close();});
+document.getElementById("detail-dialog").addEventListener("click",function(e){if(e.target===this)this.close();});
+
+fetch("./assignments.json",{cache:"no-store"}).then(function(res){if(!res.ok)throw new Error("Data request failed");return res.json();}).then(function(payload){if(!payload||!Array.isArray(payload.upcoming)||!Array.isArray(payload.flagged))throw new Error("Unexpected data format");render(payload);}).catch(function(){var error='<div class="error">The assignment data could not be loaded. Please refresh the page or check back after the next update.</div>';document.getElementById("focus").innerHTML=error;document.getElementById("upcoming").innerHTML=error;document.getElementById("class-schedule").innerHTML='<p class="empty">Class schedule unavailable.</p>';});
 })();
 </script>
 </body>
