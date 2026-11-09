@@ -126,14 +126,6 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
   </div>
 </header>
 <main class="shell school-main">
-  <div class="intro">
-    <div>
-      <span class="eyebrow">A little clarity for the week</span>
-      <h1>One thing at a time.</h1>
-      <p>What's next, what's coming, and what can wait. Older assignments are available whenever you want to review them.</p>
-    </div>
-    <span class="refresh-label" id="snapshot-label">● Loading snapshot</span>
-  </div>
   <div id="stale-warning" class="notice" role="status"></div>
   <div class="school-layout">
     <section class="panel focus-panel pad" aria-labelledby="focus-title">
@@ -214,7 +206,7 @@ function renderFilters(){var courses=["All"];data.flagged.forEach(function(x){if
 function render(d){data=d;var today=isoToday();var all=[].concat(d.upcoming||[]).sort(function(a,b){return a.date.localeCompare(b.date);});var upcoming=all.filter(function(x){return x.date>=today;});var focus=upcoming.filter(function(x){return x.date<=isoAdd(today,1);});var usingNext=focus.length===0;var displayed=usingNext?upcoming.slice(0,2):focus;document.getElementById("focus-title").textContent=usingNext?"Next on the calendar":"Today & tomorrow";document.getElementById("focus-sub").textContent=usingNext?"Nothing immediately due in this reviewed snapshot.":"Just the next decisions—not the whole list.";document.getElementById("focus").innerHTML=displayed.length?displayed.map(function(x){return focusHtml(x,today);}).join(""):'<div class="empty">No future school dates in this snapshot. Refresh the school check to see newer items.</div>';
 var ids=new Set(displayed.map(function(x){return x.id}));var later=upcoming.filter(function(x){return !ids.has(x.id)});document.getElementById("upcoming").innerHTML=later.length?later.map(eventHtml).join(""):'<p class="empty">No other upcoming dates are listed in this snapshot.</p>';var past=all.filter(function(x){return x.date<today;});document.getElementById("past-wrap").hidden=!past.length;document.getElementById("past-events").innerHTML=past.map(eventHtml).join("");
 document.getElementById("older-summary").textContent=d.flagged.length+" Schoology flags to verify · not confirmed missing";renderFilters();renderFlags();
-document.getElementById("header-date").textContent="Reviewed "+longDate(d.snapshot);document.getElementById("snapshot-label").textContent="● Reviewed "+displayDate(d.snapshot);
+document.getElementById("header-date").textContent="Reviewed "+longDate(d.snapshot);
 document.getElementById("calendar-range").textContent="Calendar checked: Nov 8–Dec 14, 2026. Snapshot reviewed: "+longDate(d.snapshot)+".";
 var days=Math.floor((parseDate(today)-parseDate(d.snapshot))/86400000);if(days>2){var note=document.getElementById("stale-warning");note.classList.add("show");note.textContent="This board was last reviewed "+longDate(d.snapshot)+". Upcoming items may have changed. Run a new school check before relying on these dates.";}
 }
