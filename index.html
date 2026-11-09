@@ -239,6 +239,11 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
   .focus-meta .chip{gap:5px;padding:5px 8px!important}
   .focus-meta .chip .chip-day{font-size:9px}
 }
+
+/* User-provided school emblem sits beside the title, not above it. */
+.school-brand{display:inline-flex;align-items:center;gap:14px;vertical-align:middle}
+.school-brand-logo{width:clamp(82px,10vw,112px);height:auto;display:block;flex:none}
+@media(max-width:520px){.school-brand{gap:8px}.school-brand-logo{width:62px}.school-brand .wordmark-main{font-size:clamp(25px,7vw,33px)}.school-brand .wordmark-the{font-size:12px}}
 </style>
 </head>
 <body>
@@ -246,6 +251,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
   <div class="shell school-mast-inner">
     <div class="mast-title-group">
       <a class="school-brand" href="./" aria-label="The School Board home">
+        <img class="school-brand-logo" src="data:image/png;base64,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" alt="" aria-hidden="true" width="220" height="164">
         <span class="brand-name"><span class="wordmark-the">THE</span><span class="wordmark-main">SCHOOL BOARD</span></span>
       </a>
       <span class="brand-sub">A simpler school day</span>
