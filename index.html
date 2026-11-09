@@ -244,6 +244,14 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 .school-brand{display:inline-flex;align-items:center;gap:14px;vertical-align:middle}
 .school-brand-logo{width:clamp(82px,10vw,112px);height:auto;display:block;flex:none}
 @media(max-width:520px){.school-brand{gap:8px}.school-brand-logo{width:62px}.school-brand .wordmark-main{font-size:clamp(25px,7vw,33px)}.school-brand .wordmark-the{font-size:12px}}
+
+/* Match title lettering to the supplied laurel-and-books logo. */
+.school-brand .wordmark-the{color:#df9a22}
+.school-brand .wordmark-main{color:#003e66}
+@media(prefers-color-scheme:dark){
+ .school-brand .wordmark-the{color:#df9a22}
+ .school-brand .wordmark-main{color:#9bc7ea}
+}
 </style>
 </head>
 <body>
