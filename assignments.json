@@ -197,49 +197,91 @@
       "name": "Algebra 1",
       "period": 1,
       "teacher": "Rachel Dineen",
-      "verification": "Teacher Rachel Dineen independently identified by FCPS progress email dated October 21, 2026; period 1 also appears in Schoology."
+      "verification": "Identified in student-specific FCPS progress correspondence; verify current section assignment in SIS.",
+      "teacher_email": "redineen@fcps.edu",
+      "grading_policy": {
+        "weights": "Tests 70%; quizzes 20%; homework and classwork 10%.",
+        "reassessment": "One summative retake after required remediation and homework; replacement capped at 90%, higher attempt kept. Flex retakes generally occur around two weeks after the assessment.",
+        "late_work": "Work generally accepted before its related retake (roughly two weeks). Formative remediation is generally within two weeks; late formative work may receive zero."
+      }
     },
     {
       "id": "english",
       "name": "English 9 Honors",
       "period": 2,
-      "teacher": "P. Mohan",
-      "verification": "Teacher surname and initial shown in the Janie-only Schoology summary dated November 8, 2026, as 'Mohan, P (02)'; first name and contact address not verified."
+      "teacher": "Patrick Mohan",
+      "verification": "Student-specific Schoology summary identifies 'Mohan, P' for period 2; 2026–27 departmental syllabus identifies Patrick Mohan and school email. Reconfirm in SIS.",
+      "teacher_email": "pjmohan@fcps.edu",
+      "grading_policy": {
+        "weights": "Rolling gradebook; no separate category percentages specified in the reviewed syllabus.",
+        "reassessment": "One summative reassessment, capped at 90%, with the higher attempt retained. Remediation within two weeks of receiving the graded assessment; follow the teacher's posted schedule.",
+        "late_work": "Summative work accepted within two weeks with a 10% late penalty. The syllabus states that formative work submitted late receives zero."
+      }
     },
     {
       "id": "history",
       "name": "World History/Geography 2",
       "period": 3,
       "teacher": null,
-      "verification": "Period from first-quarter school records; teacher not verified"
+      "verification": "Period 3 comes from prior student-specific records. Assigned teacher remains unverified; the department-wide syllabus does not identify the section teacher.",
+      "teacher_email": null,
+      "grading_policy": {
+        "weights": "Rolling gradebook; category percentages not specified in the reviewed syllabus.",
+        "reassessment": "Multiple summative reassessment opportunities with remediation; reassessment scores capped at 90%, higher attempt retained.",
+        "late_work": "Summative and formative work accepted up to two weeks late with a 10% penalty; unsubmitted work recorded as 0%. Verify that the department syllabus applies to this exact section."
+      }
     },
     {
       "id": "marketing",
       "name": "Marketing 1",
       "period": 5,
       "teacher": "Gene Robinson",
-      "verification": "Teacher Gene Robinson independently identified by FCPS progress email dated October 1, 2026; period 5 confirmed by October teacher email and Schoology. A separate Evangeline Fashion Marketing 1 section is not Janie's course."
+      "verification": "Identified in student-specific FCPS progress correspondence and the 2026–27 course syllabus; verify current section assignment in SIS.",
+      "teacher_email": "Gsrobinson@fcps.edu",
+      "grading_policy": {
+        "weights": "Rolling gradebook; later demonstrated mastery may replace an earlier major-assessment score, including across quarters.",
+        "reassessment": "One summative reassessment, capped at 90%, higher attempt kept. Teacher sets remediation deadline; group-project remediation may be individual.",
+        "late_work": "All assignments accepted up to two weeks after the due date with a 10% late penalty; unsubmitted work recorded as 0%."
+      }
     },
     {
       "id": "biology",
       "name": "Biology 1",
       "period": 6,
-      "teacher": "A. Camire",
-      "verification": "Teacher surname and initial shown in the Janie-only Schoology summary dated November 8, 2026, as 'Camire, A (06)'; first name and contact address not verified."
+      "teacher": "Amy Camire",
+      "verification": "Student-specific Schoology summary identifies 'Camire, A' for period 6; 2026–27 departmental syllabus identifies Amy Camire and school email. Reconfirm in SIS.",
+      "teacher_email": "ajcamire@fcps.edu",
+      "grading_policy": {
+        "weights": "Rolling gradebook; category percentages not specified in the reviewed syllabus.",
+        "reassessment": "One summative reassessment, capped at 90%, higher attempt kept; remediation paper required and retake must be completed before the close of the same quarter.",
+        "late_work": "Summative late work accepted within two weeks. The written syllabus specifies 50% for unsubmitted assignments; confirm actual gradebook entries in SIS rather than assuming a guaranteed grade floor."
+      }
     },
     {
       "id": "photography",
       "name": "Photography 1",
       "period": 7,
-      "teacher": "A. Kahnell",
-      "verification": "Teacher surname and initial shown in the Janie-only Schoology summary dated November 8, 2026, as 'Kahnell, A (07)'; first name and contact address not verified."
+      "teacher": "Amanda Kahnell",
+      "verification": "Student-specific Schoology summary identifies 'Kahnell, A' for period 7; 2026–27 departmental syllabus identifies Amanda Kahnell and school email. Reconfirm in SIS.",
+      "teacher_email": "ARKahnell@fcps.edu",
+      "grading_policy": {
+        "weights": "Formative studio/artmaking 30%; summative portfolio and projects 70%.",
+        "reassessment": "Previously submitted summative projects can be revised and resubmitted during the year. Studio participation cannot be made up; clarify any generic retake language with the teacher.",
+        "late_work": "Missing work is due by the end of its quarter, with a 10% late penalty; unsubmitted formative work becomes NLA after quarter-end. Paper and ongoing portfolio items need status confirmation."
+      }
     },
     {
       "id": "pe",
       "name": "Health & PE 9",
       "period": 8,
-      "teacher": "D. Rozmiarek",
-      "verification": "Teacher surname and initial shown in the Janie-only Schoology summary dated November 8, 2026, as 'Rozmiarek, D (08)'; first name and contact address not verified."
+      "teacher": "Dave Rozmiarek",
+      "verification": "Student-specific Schoology summary identifies 'Rozmiarek, D' for period 8; 2026–27 departmental syllabus identifies Dave Rozmiarek and school email. Reconfirm in SIS.",
+      "teacher_email": "dwrozmiarek@fcps.edu",
+      "grading_policy": {
+        "weights": "Rolling gradebook; weekly PE work includes movement, safety/rules, and social interaction.",
+        "reassessment": "One summative reassessment, capped at 90%, higher attempt retained.",
+        "late_work": "Summative late work accepted within two weeks with a 10% penalty; formative late work is teacher-dependent. Excused PE absences have a separate one-hour activity form, generally due within a week and ordinarily limited to two per quarter; exceptions are individualized."
+      }
     }
   ],
   "schedule_note": "Periods reflect available first-quarter 2026 records, not an independently reconfirmed current timetable. Period 4 and teachers not listed here have not been verified.",
@@ -247,5 +289,7 @@
     "schoology_digest": "Gmail message 1a1bd36603df3555, 2026-11-08; carefully selected Genevieve section, not Evangeline.",
     "algebra_progress": "Gmail message 1a15edc4b3126cc9, 2026-10-21",
     "marketing_progress": "Gmail message 1a0f7f53d8943dfd, 2026-10-01"
-  }
+  },
+  "class_policy_source": "2026–27 George C. Marshall High School course syllabi reviewed Nov 8, 2026. Course-wide summaries, not individualized eligibility decisions.",
+  "rolling_gradebook_note": "All seven syllabi describe rolling grades. Quarter marks are progress snapshots; the final course grade is not described as an average of quarterly grades. SIS/ParentVUE is the gradebook of record."
 }
