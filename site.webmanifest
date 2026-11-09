@@ -1,0 +1,25 @@
+{
+  "name": "The School Board",
+  "short_name": "School Board",
+  "description": "A calm view of school assignments and family progress.",
+  "id": "/The-School-Board/",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f7fa",
+  "theme_color": "#003e66",
+  "icons": [
+    {
+      "src": "./school-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./school-icon.png",
+      "sizes": "220x164",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
