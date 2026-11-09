@@ -104,6 +104,17 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 .event-date{min-height:84px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
 .date-weekday{font-size:10px;line-height:1.25;color:#667890;font-weight:750;letter-spacing:-.25px}
 @media(max-width:520px){.event-date{min-height:80px}.date-weekday{font-size:9px}}
+
+/* Compact book-and-pencil masthead mark, integrated beside the wordmark */
+.school-mast-inner{justify-content:flex-start}
+.school-brand{display:inline-flex;align-items:center;gap:clamp(12px,2vw,22px)}
+.school-mark{display:block;width:clamp(65px,9vw,101px);height:auto;flex:0 0 auto;line-height:0}
+.school-mark svg{display:block;width:100%;height:auto}
+@media(max-width:520px){
+  .school-brand{gap:8px}
+  .school-mark{width:clamp(42px,12vw,58px)}
+  .wordmark-main{font-size:clamp(27px,6.7vw,39px)}
+}
 </style>
 </head>
 <body>
@@ -112,24 +123,22 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
     <div class="mast-title-group">
       <a class="school-brand" href="./" aria-label="The School Board home">
         <span class="brand-name"><span class="wordmark-the">THE</span><span class="wordmark-main">SCHOOL BOARD</span></span>
+        <span class="school-mark" aria-hidden="true">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="presentation">
+            <g stroke="#415a79" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+              <path d="M18 30c11-5 21-4 32 2 10-6 21-7 32-2v47c-11-5-22-4-32 2-11-6-21-7-32-2Z" fill="#f9fbfe"/>
+              <path d="M50 32v47"/>
+              <path d="M26 41c6-2 12-1 17 1M26 49c6-2 12-1 17 1M26 57c6-2 12-1 17 1"/>
+              <path d="M57 41c5-2 11-3 17-1M57 49c5-2 11-3 17-1" stroke="#a2b5c9" stroke-width="2"/>
+              <path d="m63 13 21 20-29 32-8 3 3-9Z" fill="#e4bd78"/>
+              <path d="m75 22 5-5 8 8-5 5Z" fill="#f4e0b9"/>
+              <path d="m47 68 8-3-5-6Z" fill="#415a79"/>
+            </g>
+          </svg>
+        </span>
       </a>
       <span class="brand-sub">A simpler school day</span>
       <span class="mast-metadata" id="header-date">Latest assignment snapshot</span>
-    </div>
-    <div class="school-emblem" aria-hidden="true">
-      <svg viewBox="0 0 270 185" xmlns="http://www.w3.org/2000/svg" role="presentation">
-        <g stroke-linejoin="round" stroke-linecap="round">
-          <circle cx="139" cy="87" r="73" fill="#f2f5fb"/>
-          <path d="M56 62 138 28l82 34-82 34Z" fill="#e1e9f5" stroke="#405b81" stroke-width="3.4"/>
-          <path d="M82 79v35c22 21 88 21 111 0V79" fill="#d4e2f3" stroke="#405b81" stroke-width="3.2"/>
-          <path d="m220 62 0 55" fill="none" stroke="#405b81" stroke-width="3.2"/>
-          <path d="M215 118c2-10 9-10 11 0l4 13h-19Z" fill="#d8c18a" stroke="#99815a" stroke-width="2"/>
-          <path d="M58 144c27-9 51-8 79 7 29-15 54-16 83-7v20c-29-9-54-8-83 7-27-15-51-16-79-7Z" fill="#fff" stroke="#5a7091" stroke-width="3"/>
-          <path d="M137 151v20" stroke="#5a7091" stroke-width="2.5"/>
-          <path d="M68 151c24-6 44-4 58 4M148 155c20-8 42-10 62-4" fill="none" stroke="#b4c2d7" stroke-width="2"/>
-          <path d="m58 21 7-7m130 7 7 7m-99-16 1-8" fill="none" stroke="#c3a96e" stroke-width="3"/>
-        </g>
-      </svg>
     </div>
   </div>
 </header>
@@ -138,7 +147,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
   <div class="school-layout">
     <section class="panel focus-panel pad" aria-labelledby="focus-title">
       <div class="section-head">
-        <div><span class="small-label">Start here</span><h2 class="section-title" id="focus-title">Today & tomorrow</h2><p class="section-sub" id="focus-sub">The few things worth checking first.</p></div>
+        <div><h2 class="section-title" id="focus-title">Today & tomorrow</h2><p class="section-sub" id="focus-sub">The few things worth checking first.</p></div>
         <span class="section-icon" aria-hidden="true">☀</span>
       </div>
       <div id="focus" class="focus-list"><div class="empty">Loading upcoming school items…</div></div>
@@ -159,7 +168,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
     </section>
     <section class="panel timeline-panel pad" aria-labelledby="timeline-title">
       <div class="section-head">
-        <div><span class="small-label">A gentle look ahead</span><h2 class="section-title" id="timeline-title">On the horizon</h2><p class="section-sub">Upcoming dates, in order. Optional items are labeled.</p></div>
+        <div><h2 class="section-title" id="timeline-title">On the horizon</h2><p class="section-sub">Upcoming dates, in order. Optional items are labeled.</p></div>
         <span class="section-icon" aria-hidden="true">▤</span>
       </div>
       <div id="upcoming"><div class="empty">Loading calendar items…</div></div>
