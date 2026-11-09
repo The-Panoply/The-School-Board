@@ -186,6 +186,21 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
  .detail-dialog::backdrop{background:rgba(0,0,0,.68)}
 }
 
+
+/* Simple typographic wordmark and compact horizontal date pills */
+.school-brand{gap:0}
+.focus-meta .chip{
+  display:inline-flex;flex-direction:row;align-items:baseline;flex-wrap:nowrap;
+  gap:6px;border-radius:999px;padding:5px 10px!important;line-height:1.2;
+  white-space:nowrap;max-width:100%;
+}
+.focus-meta .chip .chip-main{font-size:11px;font-weight:850}
+.focus-meta .chip .chip-day{font-size:10px;font-weight:550;opacity:.58;white-space:nowrap}
+.schedule-teacher{display:block;font-size:11px;line-height:1.35;color:var(--muted);margin-top:3px}
+@media(max-width:520px){
+  .focus-meta .chip{gap:5px;padding:5px 8px!important}
+  .focus-meta .chip .chip-day{font-size:9px}
+}
 </style>
 </head>
 <body>
@@ -194,19 +209,6 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
     <div class="mast-title-group">
       <a class="school-brand" href="./" aria-label="The School Board home">
         <span class="brand-name"><span class="wordmark-the">THE</span><span class="wordmark-main">SCHOOL BOARD</span></span>
-        <span class="school-mark" aria-hidden="true">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="presentation">
-            <g stroke="#415a79" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
-              <path d="M18 30c11-5 21-4 32 2 10-6 21-7 32-2v47c-11-5-22-4-32 2-11-6-21-7-32-2Z" fill="#f9fbfe"/>
-              <path d="M50 32v47"/>
-              <path d="M26 41c6-2 12-1 17 1M26 49c6-2 12-1 17 1M26 57c6-2 12-1 17 1"/>
-              <path d="M57 41c5-2 11-3 17-1M57 49c5-2 11-3 17-1" stroke="#a2b5c9" stroke-width="2"/>
-              <path d="m63 13 21 20-29 32-8 3 3-9Z" fill="#e4bd78"/>
-              <path d="m75 22 5-5 8 8-5 5Z" fill="#f4e0b9"/>
-              <path d="m47 68 8-3-5-6Z" fill="#415a79"/>
-            </g>
-          </svg>
-        </span>
       </a>
       <span class="brand-sub">A simpler school day</span>
       <span class="mast-metadata" id="header-date">Latest assignment snapshot</span>
@@ -253,7 +255,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
     <section class="panel schedule-panel pad" aria-labelledby="schedule-title">
       <div class="section-head">
         <div><h2 class="section-title" id="schedule-title">Class Schedule</h2>
-          <p class="section-sub">Tap a class for its period and teacher.</p></div>
+          </div>
         <span class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 13h3M14 13h3M8 17h3"/></svg></span>
       </div>
       <div id="class-schedule" class="class-schedule"><p class="empty">Loading classes…</p></div>
@@ -291,10 +293,10 @@ function isoAdd(s,days){var d=new Date(s+"T12:00:00Z");d.setUTCDate(d.getUTCDate
 function escapeHTML(value){return String(value==null?"":value).replace(/[&<>"']/g,function(ch){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch];});}
 function icon(course){return /Biology/i.test(course)?"✳":/English/i.test(course)?"✎":/Picture|School/i.test(course)?"▤":"◈";}
 function iconStyle(course){return /English/i.test(course)?"english":/School|Picture/i.test(course)?"general":"";}
-function when(s,today){if(s===today)return "Today";if(s===isoAdd(today,1))return "Tomorrow";return weekdayFmt.format(parseDate(s))+" · "+displayDate(s);}
+function when(s,today){if(s===today)return "Today";if(s===isoAdd(today,1))return "Tomorrow";return displayDate(s);}
 function classButton(course,display,extra){return '<button class="item-link '+(extra||"")+'" type="button" data-course="'+escapeHTML(course)+'" aria-label="View class details: '+escapeHTML(course)+'">'+escapeHTML(display||course)+'</button>';}
 function assignmentButton(x,extra){return '<button class="item-link '+(extra||"")+'" type="button" data-assignment="'+escapeHTML(x.id)+'" aria-label="View assignment details: '+escapeHTML(x.title)+'">'+escapeHTML(x.title)+'</button>';}
-function focusHtml(x,today){var optional=/Optional/i.test(x.type);var weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(parseDate(x.date));return '<article class="focus-card"><span class="course-icon '+iconStyle(x.course)+'" aria-hidden="true">'+icon(x.course)+'</span><div><div class="focus-meta"><span>'+classButton(x.course,x.course.toUpperCase(),"focus-class")+'</span><span class="chip '+(optional?"optional":"")+'"><span class="chip-main">'+escapeHTML(when(x.date,today))+'</span><span class="chip-day">'+escapeHTML(weekday+" · "+displayDate(x.date))+'</span></span></div><h3 class="focus-title">'+assignmentButton(x)+'</h3><p class="focus-action">'+escapeHTML(x.action)+'</p>'+(x.id==="english-reassessment"?'<p class="micro" style="margin:8px 0 0">Calendar note: prerequisite steps before 3 PM on Nov 9.</p>':"")+'</div></article>';}
+function focusHtml(x,today){var optional=/Optional/i.test(x.type);var weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(parseDate(x.date));return '<article class="focus-card"><span class="course-icon '+iconStyle(x.course)+'" aria-hidden="true">'+icon(x.course)+'</span><div><div class="focus-meta"><span>'+classButton(x.course,x.course.toUpperCase(),"focus-class")+'</span><span class="chip '+(optional?"optional":"")+'"><span class="chip-main">'+escapeHTML(when(x.date,today))+'</span><span class="chip-day">'+escapeHTML(weekday)+'</span></span></div><h3 class="focus-title">'+assignmentButton(x)+'</h3><p class="focus-action">'+escapeHTML(x.action)+'</p>'+(x.id==="english-reassessment"?'<p class="micro" style="margin:8px 0 0">Calendar note: prerequisite steps before 3 PM on Nov 9.</p>':"")+'</div></article>';}
 function eventHtml(x){var dt=parseDate(x.date),mon=monthFmt.format(dt),day=dt.getUTCDate(),weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(dt);return '<article class="event"><div class="event-date" aria-label="'+escapeHTML(weekday+", "+displayDate(x.date))+'"><div class="date-mon">'+escapeHTML(mon)+'</div><div class="date-day">'+day+'</div><div class="date-weekday">'+escapeHTML(weekday)+'</div></div><div><h3 class="event-title">'+assignmentButton(x)+'</h3><div class="event-meta">'+classButton(x.course,x.course,"event-class")+' · '+escapeHTML(x.type)+(x.end?' · through '+escapeHTML(displayDate(x.end)):'')+'</div><p class="event-action">'+escapeHTML(x.action)+'</p>'+(x.source==="calendar"?'<span class="event-source">Found in calendar only — verify details</span>':"")+'</div></article>';}
 function flagHtml(x){return '<article class="flag"><div class="flag-heading">'+classButton(x.course,x.course,"flag-class")+'<span class="flag-date">Dated '+escapeHTML(displayDate(x.date))+'</span></div><h3 class="flag-title">'+assignmentButton(x)+'</h3><p class="flag-next">'+escapeHTML(x.next)+'</p><span class="flag-status">'+(x.review==="reconcile"?"May be resolved — reconcile":x.review==="priority"?"Verify priority":"Needs status check")+'</span></article>';}
 function renderFlags(){var items=data.flagged.filter(function(x){return selectedCourse==="All"||x.course===selectedCourse;});document.getElementById("flags").innerHTML=items.length?items.map(flagHtml).join(""):'<p class="empty">No items in this subject.</p>';}
@@ -320,7 +322,7 @@ function renderSchedule(){
  var host=document.getElementById("class-schedule");
  var classes=(data.classes||[]).slice().sort(function(a,b){return a.period-b.period;});
  host.innerHTML=classes.length?classes.map(function(x){
- return '<button type="button" class="schedule-item" data-course="'+escapeHTML(x.name)+'" aria-label="View '+escapeHTML(x.name)+' class details"><span class="schedule-period">P'+escapeHTML(x.period)+'</span><span><span class="schedule-name">'+escapeHTML(x.name)+'</span>'+(x.teacher?'<span class="schedule-teacher">'+escapeHTML(x.teacher)+'</span>':'')+'</span><span class="schedule-arrow" aria-hidden="true">›</span></button>';
+ return '<button type="button" class="schedule-item" data-course="'+escapeHTML(x.name)+'" aria-label="View '+escapeHTML(x.name)+' class details"><span class="schedule-period">P'+escapeHTML(x.period)+'</span><span><span class="schedule-name">'+escapeHTML(x.name)+'</span>'+'<span class="schedule-teacher">'+escapeHTML(x.teacher||'Teacher not yet verified')+'</span>'+'</span><span class="schedule-arrow" aria-hidden="true">›</span></button>';
  }).join(""):'<p class="empty">Class schedule not yet available.</p>';
  document.getElementById("schedule-note").textContent=data.schedule_note||"";
 }
