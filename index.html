@@ -404,7 +404,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 <dialog id="share-dialog" class="share-dialog" aria-labelledby="share-title">
   <div class="detail-top"><span class="small-label">The School Board</span><button id="share-close" class="detail-close" type="button" aria-label="Close sharing">×</button></div>
   <h2 id="share-title">Share Progress</h2>
-  <p class="share-muted">Review completed assignments on this board and this device. Add a note if you'd like.</p>
+  <p class="share-muted">Only new completion marks appear here. Once recorded on the shared board, they won't be included again.</p>
   <label for="share-note">Add a note (optional)</label><textarea id="share-note" maxlength="500" rows="2" placeholder="Anything else you'd like to share?"></textarea>
   <label for="share-preview">Progress update</label><textarea id="share-preview" readonly rows="8" aria-label="Progress update ready to share"></textarea>
   <div class="share-buttons"><button type="button" id="share-send" class="share-send">Share update</button><button type="button" id="share-copy" class="share-copy">Copy text</button></div>
@@ -439,6 +439,20 @@ function trackable(x){return !!(x&&x.id&&!/^(School event|School calendar)$/i.te
 function isComplete(id){return Object.prototype.hasOwnProperty.call(completed,id)||!!(data&&(data.upcoming||[]).concat(data.flagged||[]).find(function(x){return x.id===id&&x.family_completed_on;}));}
 function allAssignments(){return data?(data.upcoming||[]).concat(data.flagged||[]).filter(trackable):[];}
 function completeList(){return allAssignments().filter(function(x){return isComplete(x.id);});}
+function pendingList(){
+ return allAssignments().filter(function(x){return !x.family_completed_on&&Object.prototype.hasOwnProperty.call(completed,x.id);});
+}
+function reconcileRecordedCompletions(){
+ // A local completion is acknowledged only after the shared GitHub data confirms it.
+ // Remove acknowledged local marks so old reports cannot resurrect them later.
+ var changed=false;
+ allAssignments().forEach(function(x){
+  if(x.family_completed_on&&Object.prototype.hasOwnProperty.call(completed,x.id)){
+   delete completed[x.id];changed=true;
+  }
+ });
+ if(changed)saveProgress();
+}
 function renderProgress(){var n=completeList().length;document.getElementById("progress-count").textContent=n+" assignment"+(n===1?"":"s")+" marked complete";document.getElementById("progress-device").textContent=storageAvailable?"":"Browser storage unavailable; changes may be lost on refresh.";document.getElementById("progress-device").hidden=storageAvailable;}
 function completeButton(x,inside){
  if(!trackable(x))return "";
@@ -455,18 +469,29 @@ function updateCompletion(id){
 }
 function calmState(title,body,done){return '<div class="quiet-empty"><span class="quiet-symbol" aria-hidden="true">'+(done?'✦':'☼')+'</span><div class="quiet-copy"><strong>'+escapeHTML(title)+'</strong><p>'+escapeHTML(body)+'</p></div></div>';}
 function progressText(){
- var items=completeList();
- var out=["The School Board — Progress Update",longDate(isoToday()),"",items.length?"Marked as completed:":"No assignments marked complete on this board or device."];
- items.forEach(function(x){out.push("✓ "+x.course+" — "+x.title+(x.family_completed_on?" (completed "+longDate(x.family_completed_on)+", family reported)":""));});
- if(items.length)out.push("",items.length+" assignment"+(items.length===1?"":"s")+" marked complete.");
+ var items=pendingList();
+ var out=["The School Board — Progress Update",longDate(isoToday()),"",items.length?"New completions to record:":"No new completions to share."];
+ items.forEach(function(x){out.push("✓ "+x.course+" — "+x.title);});
+ if(items.length)out.push("",items.length+" new completion"+(items.length===1?"":"s")+" to record.");
  var note=document.getElementById("share-note").value.trim();if(note)out.push("","Note: "+note);
- out.push("","Personal completion marks; submission has not been independently verified.");
+ out.push("","Personal completion marks; school submission status has not been independently verified.");
  return out.join("\n");
 }
-function refreshPreview(){document.getElementById("share-preview").value=progressText();}
-function shareOpen(){refreshPreview();document.getElementById("share-feedback").textContent="";document.getElementById("share-send").textContent=typeof navigator.share==="function"?"Share update":"Copy update";var d=document.getElementById("share-dialog");if(typeof d.showModal==="function")d.showModal();else d.setAttribute("open","");}
+function refreshPreview(){
+ var count=pendingList().length;
+ document.getElementById("share-preview").value=progressText();
+ document.getElementById("share-send").disabled=count===0;
+ document.getElementById("share-copy").disabled=count===0;
+}
+function shareOpen(){
+ document.getElementById("share-send").textContent=typeof navigator.share==="function"?"Share update":"Copy update";
+ refreshPreview();
+ document.getElementById("share-feedback").textContent=pendingList().length?"":completeList().length?"Everything reported so far is already on the shared board. Nothing new to send.":"No new completions yet. Mark an assignment complete to prepare an update.";
+ var d=document.getElementById("share-dialog");if(typeof d.showModal==="function")d.showModal();else d.setAttribute("open","");
+}
 function shareClose(){var d=document.getElementById("share-dialog");if(typeof d.close==="function")d.close();else d.removeAttribute("open");}
 async function shareCopy(){
+ if(!pendingList().length)return;
  var report=progressText(),msg=document.getElementById("share-feedback");
  try{
   if(!navigator.clipboard||!navigator.clipboard.writeText)throw Error("Clipboard unavailable");
@@ -484,6 +509,7 @@ document.getElementById("share-note").addEventListener("input",refreshPreview);
 document.getElementById("share-copy").addEventListener("click",shareCopy);
 document.getElementById("share-dialog").addEventListener("click",function(e){if(e.target===this)shareClose();});
 document.getElementById("share-send").addEventListener("click",async function(){
+ if(!pendingList().length)return;
  if(typeof navigator.share!=="function"){await shareCopy();return;}
  try{await navigator.share({title:"The School Board — Progress Update",text:progressText()});document.getElementById("share-feedback").textContent="Share menu closed.";}
  catch(e){if(e&&e.name!=="AbortError")document.getElementById("share-feedback").textContent="Sharing unavailable. Try Copy text.";}
@@ -507,7 +533,7 @@ function syllabusTimingTone(x){
 function flagHtml(x){return '<article class="flag"><div class="flag-heading">'+classButton(x.course,x.course,"flag-class")+'<span class="flag-date">Dated '+escapeHTML(displayDate(x.date))+'</span></div><h3 class="flag-title">'+assignmentButton(x)+'</h3><p class="flag-next">'+escapeHTML(x.next)+'</p>'+(x.syllabus_timing?'<p class="flag-policy-preview"><strong class="flag-timing-label '+syllabusTimingTone(x)+'">Syllabus timing:</strong> '+escapeHTML(x.syllabus_timing.summary)+'</p>':'')+'<span class="flag-status">'+(x.review==="reconcile"?"May be resolved — reconcile":x.review==="priority"?"Verify priority":"Needs status check")+'</span>'+completeButton(x,false)+'</article>';}
 function renderFlags(){var items=data.flagged.filter(function(x){return selectedCourse==="All"||x.course===selectedCourse;});document.getElementById("flags").innerHTML=items.length?items.map(flagHtml).join(""):'<p class="empty">No items in this subject.</p>';}
 function renderFilters(){var courses=["All"];data.flagged.forEach(function(x){if(courses.indexOf(x.course)===-1)courses.push(x.course);});var holder=document.getElementById("filters");holder.replaceChildren();courses.forEach(function(course){var b=document.createElement("button");b.type="button";b.className="filter"+(selectedCourse===course?" selected":"");b.textContent=course==="All"?"All subjects":course;b.setAttribute("aria-pressed",selectedCourse===course?"true":"false");b.addEventListener("click",function(){selectedCourse=course;renderFilters();renderFlags();});holder.appendChild(b);});}
-function render(d){data=d;var today=isoToday();var all=[].concat(d.upcoming||[]).sort(function(a,b){return a.date.localeCompare(b.date);});var upcoming=all.filter(function(x){return x.date>=today;});var carryover=all.filter(function(x){return x.date<today&&trackable(x)&&!isComplete(x.id);});var focus=carryover.concat(upcoming.filter(function(x){return x.date<=isoAdd(today,1);}));var tasks=focus.filter(trackable);var done=tasks.length>0&&tasks.every(function(x){return isComplete(x.id);});document.getElementById("focus-title").textContent="Today & Tomorrow";document.getElementById("focus-sub").textContent=carryover.length?"Past-dated assignments needing a status check remain here until marked complete.":focus.length===0?"A calmer look at the next two days.":done?"All listed assignments are marked complete on this device.":"Just the next decisions—not the whole list.";document.getElementById("focus").innerHTML=focus.length?(done?calmState("Nicely done!","All assignments listed for today and tomorrow are marked complete. You can still review them below.",true):"")+focus.map(function(x){return focusHtml(x,today);}).join(""):calmState("A little breathing room","Nothing is listed for today or tomorrow in this reviewed snapshot. Enjoy the lighter schedule!",false);
+function render(d){data=d;reconcileRecordedCompletions();var today=isoToday();var all=[].concat(d.upcoming||[]).sort(function(a,b){return a.date.localeCompare(b.date);});var upcoming=all.filter(function(x){return x.date>=today;});var carryover=all.filter(function(x){return x.date<today&&trackable(x)&&!isComplete(x.id);});var focus=carryover.concat(upcoming.filter(function(x){return x.date<=isoAdd(today,1);}));var tasks=focus.filter(trackable);var done=tasks.length>0&&tasks.every(function(x){return isComplete(x.id);});document.getElementById("focus-title").textContent="Today & Tomorrow";document.getElementById("focus-sub").textContent=carryover.length?"Past-dated assignments needing a status check remain here until marked complete.":focus.length===0?"A calmer look at the next two days.":done?"All listed assignments are marked complete on this device.":"Just the next decisions—not the whole list.";document.getElementById("focus").innerHTML=focus.length?(done?calmState("Nicely done!","All assignments listed for today and tomorrow are marked complete. You can still review them below.",true):"")+focus.map(function(x){return focusHtml(x,today);}).join(""):calmState("A little breathing room","Nothing is listed for today or tomorrow in this reviewed snapshot. Enjoy the lighter schedule!",false);
 var ids=new Set(focus.map(function(x){return x.id}));var later=upcoming.filter(function(x){return !ids.has(x.id)});document.getElementById("upcoming").innerHTML=later.length?later.map(eventHtml).join(""):'<p class="empty">No other upcoming dates are listed in this snapshot.</p>';var past=all.filter(function(x){return x.date<today&&!ids.has(x.id);});document.getElementById("past-wrap").hidden=!past.length;document.getElementById("past-events").innerHTML=past.map(eventHtml).join("");
 renderFilters();renderFlags();renderSchedule();renderProgress();
 document.getElementById("header-date").textContent="Reviewed "+longDate(d.snapshot);
