@@ -404,7 +404,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 <dialog id="share-dialog" class="share-dialog" aria-labelledby="share-title">
   <div class="detail-top"><span class="small-label">The School Board</span><button id="share-close" class="detail-close" type="button" aria-label="Close sharing">×</button></div>
   <h2 id="share-title">Share Progress</h2>
-  <p class="share-muted">Review what's marked complete on this device. Add a note if you'd like.</p>
+  <p class="share-muted">Review completed assignments on this board and this device. Add a note if you'd like.</p>
   <label for="share-note">Add a note (optional)</label><textarea id="share-note" maxlength="500" rows="2" placeholder="Anything else you'd like to share?"></textarea>
   <label for="share-preview">Progress update</label><textarea id="share-preview" readonly rows="8" aria-label="Progress update ready to share"></textarea>
   <div class="share-buttons"><button type="button" id="share-send" class="share-send">Share update</button><button type="button" id="share-copy" class="share-copy">Copy text</button></div>
@@ -436,16 +436,17 @@ function loadProgress(){
 }
 function saveProgress(){try{localStorage.setItem(progressKey,JSON.stringify(completed));storageAvailable=true;}catch(e){storageAvailable=false;}}
 function trackable(x){return !!(x&&x.id&&!/^(School event|School calendar)$/i.test(x.course||"")&&!/^(Event|Break)$/i.test(x.type||""));}
-function isComplete(id){return Object.prototype.hasOwnProperty.call(completed,id);}
+function isComplete(id){return Object.prototype.hasOwnProperty.call(completed,id)||!!(data&&(data.upcoming||[]).concat(data.flagged||[]).find(function(x){return x.id===id&&x.family_completed_on;}));}
 function allAssignments(){return data?(data.upcoming||[]).concat(data.flagged||[]).filter(trackable):[];}
 function completeList(){return allAssignments().filter(function(x){return isComplete(x.id);});}
 function renderProgress(){var n=completeList().length;document.getElementById("progress-count").textContent=n+" assignment"+(n===1?"":"s")+" marked complete";document.getElementById("progress-device").textContent=storageAvailable?"":"Browser storage unavailable; changes may be lost on refresh.";document.getElementById("progress-device").hidden=storageAvailable;}
 function completeButton(x,inside){
  if(!trackable(x))return "";
+ if(x.family_completed_on)return '<div class="'+(inside?'detail-complete':'completion-row')+'"><span class="complete-toggle is-complete" aria-label="Family-reported completed on '+escapeHTML(longDate(x.family_completed_on))+'">✓ Completed '+escapeHTML(displayDate(x.family_completed_on))+'</span>'+(inside?'<p class="share-muted">Family-reported completion; school record not independently verified.</p>':'')+'</div>';
  return '<div class="'+(inside?'detail-complete':'completion-row')+'"><button class="complete-toggle'+(isComplete(x.id)?' is-complete':'')+'" type="button" data-complete="'+escapeHTML(x.id)+'" aria-pressed="'+(isComplete(x.id)?'true':'false')+'">'+(isComplete(x.id)?'✓ Completed · Undo':'Mark Complete')+'</button>'+(inside?'<p class="share-muted">A personal completion mark, not a school-verified submission.</p>':'')+'</div>';
 }
 function updateCompletion(id){
- var item=allAssignments().find(function(x){return x.id===id;});if(!item)return;
+ var item=allAssignments().find(function(x){return x.id===id;});if(!item||item.family_completed_on)return;
  if(isComplete(id))delete completed[id];else completed[id]=new Date().toISOString();
  saveProgress();render(data);
  var dlg=document.getElementById("detail-dialog");
@@ -455,8 +456,8 @@ function updateCompletion(id){
 function calmState(title,body,done){return '<div class="quiet-empty"><span class="quiet-symbol" aria-hidden="true">'+(done?'✦':'☼')+'</span><div class="quiet-copy"><strong>'+escapeHTML(title)+'</strong><p>'+escapeHTML(body)+'</p></div></div>';}
 function progressText(){
  var items=completeList();
- var out=["The School Board — Progress Update",longDate(isoToday()),"",items.length?"Marked as completed:":"No assignments marked complete on this device."];
- items.forEach(function(x){out.push("✓ "+x.course+" — "+x.title);});
+ var out=["The School Board — Progress Update",longDate(isoToday()),"",items.length?"Marked as completed:":"No assignments marked complete on this board or device."];
+ items.forEach(function(x){out.push("✓ "+x.course+" — "+x.title+(x.family_completed_on?" (completed "+longDate(x.family_completed_on)+", family reported)":""));});
  if(items.length)out.push("",items.length+" assignment"+(items.length===1?"":"s")+" marked complete.");
  var note=document.getElementById("share-note").value.trim();if(note)out.push("","Note: "+note);
  out.push("","Personal completion marks; submission has not been independently verified.");
@@ -562,7 +563,7 @@ function openDetails(kind,value){
  if(item){
    rows+=rowHtml("Date",new Intl.DateTimeFormat("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric",timeZone:"UTC"}).format(parseDate(item.date)));
    rows+=rowHtml("Status",item.review?"Schoology overdue flag — status unverified":item.type||"Scheduled");
-    if(trackable(item))rows+=rowHtml("My progress",isComplete(item.id)?"Marked complete on this device":"Not marked complete");
+    if(trackable(item))rows+=rowHtml("My progress",item.family_completed_on?"Family-reported complete "+longDate(item.family_completed_on)+"; school status unverified":isComplete(item.id)?"Marked complete on this device":"Not marked complete");
  }
  var note=item?(item.next||item.action||""):"";
  var detail=item?(item.detail||""):(info?info.verification||"":"Teacher and period details have not been verified for this item.");
