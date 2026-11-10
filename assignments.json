@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "snapshot": "2026-11-08",
-  "source_note": "Janie-only items from the Schoology daily email received Nov 8, 2026; reconciled with the verified Schoology calendar for Nov 8–Dec 14. A snapshot, not a live Schoology feed.",
+  "snapshot": "2026-11-09",
+  "source_note": "Latest Genevieve-only Schoology daily summary received Nov 9, 2026, covering Nov 8–9; reconciled against the separately reviewed Nov 8 Schoology calendar (through Dec 14). Items omitted from a later digest are retained pending verification, not assumed completed, canceled, or missing. This is a reviewed snapshot, not a live Schoology feed.",
   "upcoming": [
     {
       "id": "biology-4",
@@ -12,7 +12,8 @@
       "importance": "high",
       "action": "Confirm what is covered and whether a brief review would help.",
       "detail": "Scheduled assessment; no specific class time supplied.",
-      "source": "both"
+      "source": "both",
+      "last_seen_in_digest": "2026-11-09"
     },
     {
       "id": "english-reassessment",
@@ -23,7 +24,8 @@
       "importance": "high",
       "action": "Check whether this is worth pursuing and whether the prerequisites are complete.",
       "detail": "Schoology calendar: all prerequisite steps before 3 PM Nov 9; passage from A Wizard of Earthsea chapters 7–10.",
-      "source": "both"
+      "source": "both",
+      "last_seen_in_digest": "2026-11-09"
     },
     {
       "id": "photo-retakes",
@@ -34,7 +36,8 @@
       "importance": "info",
       "action": "Only needs attention if a retake is wanted.",
       "detail": "Calendar shows a picture-retake entry at 8 AM.",
-      "source": "both"
+      "source": "both",
+      "last_seen_in_digest": "2026-11-09"
     },
     {
       "id": "positive-posts",
@@ -44,7 +47,7 @@
       "type": "Assignment",
       "importance": "normal",
       "action": "Check what the assignment requires and which class it belongs to.",
-      "detail": "Calendar due time: 11:59 PM. This item was absent from the Nov 8 digest.",
+      "detail": "Calendar-listed due time: 11:59 PM. Present in the earlier verified Schoology calendar but absent from the Nov 8 and Nov 9 daily summaries. Course and applicability still require verification; retained rather than removed.",
       "source": "calendar"
     },
     {
@@ -56,7 +59,8 @@
       "importance": "normal",
       "action": "Check whether remediation or a retake is needed; plan before the weekend.",
       "detail": "Optional deadline; applicability not confirmed.",
-      "source": "both"
+      "source": "both",
+      "last_seen_in_digest": "2026-11-09"
     },
     {
       "id": "biology-5",
@@ -67,7 +71,8 @@
       "importance": "normal",
       "action": "Prepare ahead of time; another Biology deadline falls the same day.",
       "detail": "Scheduled summative assessment.",
-      "source": "both"
+      "source": "both",
+      "last_seen_in_digest": "2026-11-09"
     },
     {
       "id": "thanksgiving",
@@ -79,7 +84,8 @@
       "importance": "info",
       "action": "No school Nov 25–27.",
       "detail": "Shown in Schoology calendar and digest.",
-      "source": "both"
+      "source": "both",
+      "last_seen_in_digest": "2026-11-09"
     },
     {
       "id": "biology-5-remediation",
@@ -90,7 +96,8 @@
       "importance": "normal",
       "action": "Check whether a worksheet or retake is needed after the test.",
       "detail": "Optional deadline; applicability not confirmed.",
-      "source": "both"
+      "source": "both",
+      "last_seen_in_digest": "2026-11-09"
     }
   ],
   "flagged": [
@@ -106,7 +113,8 @@
         "explanation": "Marketing syllabus: assignments submitted within 14 days of the listed Sep 9 date would reach a Sep 23 reference date, with a stated 10% late penalty. Confirm the actual due date, submission status and whether the teacher has directed any further action.",
         "reference_date": "2026-09-23",
         "color_basis": "dated"
-      }
+      },
+      "last_seen_in_digest": "2026-11-09"
     },
     {
       "id": "mkt-exit",
@@ -120,7 +128,8 @@
         "explanation": "Marketing's two-week rule would put the reference date at Oct 6 for the Sep 22 listed date, with a stated 10% late penalty. This item was previously reported as graded; reconcile the Schoology flag before asking for work to be redone.",
         "reference_date": "2026-10-06",
         "color_basis": "dated"
-      }
+      },
+      "last_seen_in_digest": "2026-11-09"
     },
     {
       "id": "mkt-brand",
@@ -134,7 +143,8 @@
         "explanation": "Marketing's two-week rule would put the reference date at Oct 14 for the Sep 30 listed date, with a stated 10% late penalty. This item was previously reported as excused; verify SIS/teacher records rather than treating the flag as missing work.",
         "reference_date": "2026-10-14",
         "color_basis": "dated"
-      }
+      },
+      "last_seen_in_digest": "2026-11-09"
     },
     {
       "id": "mkt-fall",
@@ -148,7 +158,8 @@
         "explanation": "The Oct 8 listed date plus Marketing's 14-day late-work window gives an Oct 22 reference date and a stated 10% late penalty. Because this is labeled summative, separately ask whether later demonstrated mastery can replace an earlier major-assessment score or whether a teacher-scheduled retake with remediation applies. No option is guaranteed.",
         "reference_date": "2026-10-22",
         "color_basis": "dated"
-      }
+      },
+      "last_seen_in_digest": "2026-11-09"
     },
     {
       "id": "mkt-promo",
@@ -162,7 +173,8 @@
         "explanation": "The Oct 29 listed date plus Marketing's 14-day late-work window gives a Nov 12 reference date, subject to its 10% late penalty and actual teacher deadlines. Group-project submissions and individual remediation may be treated separately; confirm what was submitted and any remaining teacher-directed steps.",
         "reference_date": "2026-11-12",
         "color_basis": "dated"
-      }
+      },
+      "last_seen_in_digest": "2026-11-09"
     },
     {
       "id": "bio-safety",
@@ -175,7 +187,8 @@
         "summary": "Administrative form: verify directly.",
         "explanation": "The Aug 28 item is a science safety agreement form. Do not apply Biology's summative late-work or reassessment rule to an administrative form without teacher confirmation. Ask whether the form is already on file.",
         "color_basis": "unverified"
-      }
+      },
+      "last_seen_in_digest": "2026-11-09"
     },
     {
       "id": "bio-unit2",
@@ -189,7 +202,8 @@
         "explanation": "This Sep 25 entry is an assessment, not necessarily late written work. Biology's retake policy requires remediation and completion within the same quarter; the first quarter ended Oct 30. That does not establish the student's eligibility or whether a makeup or retake was arranged. Check the SIS assessment entry and teacher directions.",
         "reference_date": "2026-10-30",
         "color_basis": "dated"
-      }
+      },
+      "last_seen_in_digest": "2026-11-09"
     },
     {
       "id": "photo-zine",
@@ -203,7 +217,8 @@
         "explanation": "The Photography syllabus sets the first-quarter missing-work cutoff at Oct 30, with a 10% late penalty. This Sep 3 item specifically calls for paper submission, which may not clear a Schoology flag. If it was submitted as a summative project, later revisions may be possible; verify both facts with the teacher.",
         "reference_date": "2026-10-30",
         "color_basis": "dated"
-      }
+      },
+      "last_seen_in_digest": "2026-11-09"
     },
     {
       "id": "photo-enlarger",
@@ -217,7 +232,8 @@
         "explanation": "The Photography syllabus uses an Oct 30 first-quarter missing-work cutoff and a 10% late penalty. However, studio practice cannot generally be made up, while previously submitted summative projects may be revised. Determine what this Sep 8 activity involved and whether it was completed in class before applying either rule.",
         "reference_date": "2026-10-30",
         "color_basis": "dated"
-      }
+      },
+      "last_seen_in_digest": "2026-11-09"
     },
     {
       "id": "photo-portfolio",
@@ -230,7 +246,8 @@
         "summary": "Ongoing portfolio: Oct 9 is not a confirmed cutoff.",
         "explanation": "Although Photography's general first-quarter missing-work cutoff was Oct 30, this Oct 9 flag is explicitly for a process portfolio continuing all year. Previously submitted summative work may be revised. Confirm the particular checkpoint, physical/digital submission status and whether any Q1 formative item was separately closed.",
         "color_basis": "unverified"
-      }
+      },
+      "last_seen_in_digest": "2026-11-09"
     },
     {
       "id": "history-person",
@@ -244,7 +261,8 @@
         "explanation": "World History's written 14-day late-work period applies to formative and summative submissions, with a stated 10% penalty. The Oct 21 listed date gives a Nov 4 reference date. Confirm whether the item was already submitted and whether the actual class deadline or any exceptions differ.",
         "reference_date": "2026-11-04",
         "color_basis": "dated"
-      }
+      },
+      "last_seen_in_digest": "2026-11-09"
     },
     {
       "id": "eng-bookthief",
@@ -258,7 +276,8 @@
         "explanation": "English Honors accepts summative work within two weeks of the listed Nov 5 date, giving a Nov 19 reference date with a 10% late penalty. Its syllabus instead states that late formative work receives zero. This WebQuest's category and actual submission status have not been verified; do not apply the summative window automatically.",
         "reference_date": "2026-11-19",
         "color_basis": "conditional"
-      }
+      },
+      "last_seen_in_digest": "2026-11-09"
     }
   ],
   "classes": [
@@ -300,6 +319,13 @@
         "reassessment": "Multiple summative reassessment opportunities with remediation; reassessment scores capped at 90%, higher attempt retained.",
         "late_work": "Summative and formative work accepted up to two weeks late with a 10% penalty; unsubmitted work recorded as 0%. Verify that the department syllabus applies to this exact section."
       }
+    },
+    {
+      "id": "advisory",
+      "name": "Advisory 9",
+      "period": 4,
+      "teacher": "J. Vargo",
+      "verification": "Listed as 'Advisory 9: Vargo, J (04)' in the Genevieve section of the Nov 9, 2026 Schoology daily summary. The teacher's full name and email and any advisory-specific grading policy are not independently verified."
     },
     {
       "id": "marketing",
@@ -354,14 +380,15 @@
       }
     }
   ],
-  "schedule_note": "Periods reflect available first-quarter 2026 records, not an independently reconfirmed current timetable. Period 4 and teachers not listed here have not been verified.",
+  "schedule_note": "Periods 1–8 are supported by the student-specific Nov 9 Schoology course summary and earlier FCPS records. Period 4 is Advisory 9 (Vargo, J); the teacher's full name, email, and advisory-specific policies have not been verified. Confirm current period assignments in SIS as needed.",
   "teacher_source": {
-    "schoology_digest": "Gmail message 1a1bd36603df3555, 2026-11-08; carefully selected Genevieve section, not Evangeline.",
+    "schoology_digest": "Gmail message 1a1c2602d36132c1, received 2026-11-09 (daily summary for 11/08–11/09); Genevieve section only, not Evangeline.",
     "algebra_progress": "Gmail message 1a15edc4b3126cc9, 2026-10-21",
-    "marketing_progress": "Gmail message 1a0f7f53d8943dfd, 2026-10-01"
+    "marketing_progress": "Gmail message 1a0f7f53d8943dfd, 2026-10-01",
+    "schoology_digest_previous": "Gmail message 1a1bd36603df3555, 2026-11-08; carefully selected Genevieve section, not Evangeline."
   },
   "class_policy_source": "2026–27 George C. Marshall High School course syllabi reviewed Nov 8, 2026. Course-wide summaries, not individualized eligibility decisions.",
   "rolling_gradebook_note": "All seven syllabi describe rolling grades. Quarter marks are progress snapshots; the final course grade is not described as an average of quarterly grades. SIS/ParentVUE is the gradebook of record.",
-  "syllabus_timing_notice": "Date comparisons use the dates shown in the Nov 8, 2026 Schoology snapshot and 2026–27 course syllabi. A Schoology flag or listed date is not proof of an actual missing submission, a confirmed due date, or credit eligibility. SIS/ParentVUE and individual teacher instructions control.",
+  "syllabus_timing_notice": "Date comparisons use the Nov 9, 2026 Schoology daily summary, the previously reviewed Nov 8 calendar snapshot, and the 2026–27 course syllabi. A Schoology flag or listed date does not prove that work is missing, a due date is final, or any specific credit option applies. Check SIS/ParentVUE and the teacher's current instructions.",
   "syllabus_timing_reviewed": "2026-11-08"
 }
