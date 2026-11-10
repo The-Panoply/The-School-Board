@@ -510,7 +510,7 @@ function render(d){data=d;var today=isoToday();var all=[].concat(d.upcoming||[])
 var ids=new Set(focus.map(function(x){return x.id}));var later=upcoming.filter(function(x){return !ids.has(x.id)});document.getElementById("upcoming").innerHTML=later.length?later.map(eventHtml).join(""):'<p class="empty">No other upcoming dates are listed in this snapshot.</p>';var past=all.filter(function(x){return x.date<today&&!ids.has(x.id);});document.getElementById("past-wrap").hidden=!past.length;document.getElementById("past-events").innerHTML=past.map(eventHtml).join("");
 renderFilters();renderFlags();renderSchedule();renderProgress();
 document.getElementById("header-date").textContent="Reviewed "+longDate(d.snapshot);
-document.getElementById("calendar-range").textContent="Calendar checked: Nov 8–Dec 14, 2026. Snapshot reviewed: "+longDate(d.snapshot)+".";
+document.getElementById("calendar-range").textContent="Schoology digest reviewed: "+longDate(d.snapshot)+" (covering Nov 8–9). Prior calendar checked Nov 8 through Dec 14. Earlier items retained for reconciliation.";
 var days=Math.floor((parseDate(today)-parseDate(d.snapshot))/86400000);if(days>2){var note=document.getElementById("stale-warning");note.classList.add("show");note.textContent="This board was last reviewed "+longDate(d.snapshot)+". Upcoming items may have changed. Run a new school check before relying on these dates.";}
 }
 
