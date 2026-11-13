@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "snapshot": "2026-11-09",
-  "source_note": "Latest Genevieve-only Schoology daily summary received Nov 9, 2026, covering Nov 8–9; reconciled against the separately reviewed Nov 8 Schoology calendar (through Dec 14). Items omitted from a later digest are retained pending verification, not assumed completed, canceled, or missing. This is a reviewed snapshot, not a live Schoology feed.",
+  "snapshot": "2026-11-12",
+  "source_note": "Janie-only Schoology daily summaries received Nov 8–12, 2026, reconciled with Janie's Nov 12 source-linked Drive evidence and previously checked Nov 8 Schoology calendar. Earlier items remain pending reconciliation when not repeated by newer digests. ParentVUE/teacher recovery cutoffs are identified separately from Schoology original due dates. Static reviewed snapshot, not a live school feed.",
   "upcoming": [
     {
       "id": "biology-4",
@@ -30,6 +30,19 @@
       "last_seen_in_digest": "2026-11-09"
     },
     {
+      "id": "photo-pinhole-research",
+      "date": "2026-11-12",
+      "course": "Photography",
+      "title": "Pinhole Research — Slide Work",
+      "type": "Assignment",
+      "importance": "high",
+      "action": "Confirm whether the slide work was finished or submitted; Schoology listed 11:59 PM.",
+      "detail": "The November 12 Schoology digest lists Pinhole Research Assignment — Slide work day. No submission or grading confirmation. Listed date and time are from the daily digest.",
+      "source": "Schoology daily digest",
+      "source_ref": "JDL-0007; EMAIL-029",
+      "source_status": "scheduled; completion unverified"
+    },
+    {
       "id": "photo-retakes",
       "date": "2026-11-13",
       "course": "School event",
@@ -42,6 +55,84 @@
       "last_seen_in_digest": "2026-11-09"
     },
     {
+      "id": "algebra-3-quiz",
+      "date": "2026-11-18",
+      "course": "Algebra 1",
+      "title": "Unit 3 Quiz (Period 1)",
+      "type": "Quiz",
+      "importance": "normal",
+      "action": "Review Unit 3 material and confirm any testing support needed.",
+      "detail": "The November 12 Janie-specific Schoology digest lists a Unit 3 Quiz for Period 1 on Nov 18. A separate period-8 quiz on Nov 19 is not assumed applicable.",
+      "source": "Schoology daily digest",
+      "source_ref": "JDL-0008; EMAIL-029",
+      "source_status": "scheduled; completion unverified"
+    },
+    {
+      "id": "algebra-u2-retake-nov19",
+      "date": "2026-11-19",
+      "course": "Algebra 1",
+      "title": "Unit 2 Test — Retake Deadline",
+      "type": "Recovery deadline",
+      "importance": "high",
+      "action": "Check teacher-required corrections and whether the retake was arranged or completed.",
+      "detail": "Teacher/ParentVUE source specifies Nov 19 as a retake cutoff, not the original test date. Status of corrections and retake is unverified; verify current availability with teacher.",
+      "source": "Teacher / ParentVUE",
+      "source_ref": "JDL-0001",
+      "source_status": "recovery deadline; action unconfirmed"
+    },
+    {
+      "id": "algebra-u2-slope-corrections",
+      "date": "2026-11-19",
+      "course": "Algebra 1",
+      "title": "Unit 2 Slope Quiz — Corrections Cutoff",
+      "type": "Recovery deadline",
+      "importance": "high",
+      "action": "Verify whether corrections can be submitted and whether they are already complete.",
+      "detail": "Teacher note in ParentVUE identified Nov 19 for quiz corrections to recover points. This is a recovery opportunity, not the original quiz due date.",
+      "source": "Teacher / ParentVUE",
+      "source_ref": "JDL-0002",
+      "source_status": "recovery deadline; action unconfirmed"
+    },
+    {
+      "id": "algebra-parallel-perp-hw",
+      "date": "2026-11-19",
+      "course": "Algebra 1",
+      "title": "Parallel & Perpendicular Lines Homework — Full-Credit Cutoff",
+      "type": "Recovery deadline",
+      "importance": "high",
+      "action": "Check submission status and teacher instructions for full-credit recovery.",
+      "detail": "ParentVUE teacher note identifies Nov 19 as the full-credit late-work cutoff, not the original due date. Completion and any extensions are unverified.",
+      "source": "Teacher / ParentVUE",
+      "source_ref": "JDL-0003",
+      "source_status": "recovery deadline; action unconfirmed"
+    },
+    {
+      "id": "algebra-u2-linear-functions-review",
+      "date": "2026-11-19",
+      "course": "Algebra 1",
+      "title": "Unit 2 Linear Functions Review — Full-Credit Cutoff",
+      "type": "Recovery deadline",
+      "importance": "high",
+      "action": "Confirm whether the review still needs to be submitted.",
+      "detail": "ParentVUE teacher note lists Nov 19 as a full-credit late-work opportunity, not the original review due date. Current status unverified.",
+      "source": "Teacher / ParentVUE",
+      "source_ref": "JDL-0004",
+      "source_status": "recovery deadline; action unconfirmed"
+    },
+    {
+      "id": "algebra-u2-d4-practice",
+      "date": "2026-11-19",
+      "course": "Algebra 1",
+      "title": "Unit 2 Day 4 Practice Quiz — Full-Credit Cutoff",
+      "type": "Recovery deadline",
+      "importance": "high",
+      "action": "Confirm completion and how to submit before the teacher-noted cutoff.",
+      "detail": "ParentVUE teacher note lists Nov 19 as a full-credit late-work cutoff, not the original practice-quiz due date. Current status unverified.",
+      "source": "Teacher / ParentVUE",
+      "source_ref": "JDL-0005",
+      "source_status": "recovery deadline; action unconfirmed"
+    },
+    {
       "id": "positive-posts",
       "date": "2026-11-19",
       "course": "Course to verify",
@@ -51,6 +142,19 @@
       "action": "Check what the assignment requires and which class it belongs to.",
       "detail": "Calendar-listed due time: 11:59 PM. Present in the earlier verified Schoology calendar but absent from the Nov 8 and Nov 9 daily summaries. Course and applicability still require verification; retained rather than removed.",
       "source": "calendar"
+    },
+    {
+      "id": "history-unit3-test",
+      "date": "2026-11-20",
+      "course": "World History",
+      "title": "Unit 3 Test",
+      "type": "Test",
+      "importance": "normal",
+      "action": "Plan review and check any testing arrangements.",
+      "detail": "The Janie-specific November 12 Schoology digest lists World History Unit 3 Test on Nov 20, without a specific time.",
+      "source": "Schoology daily digest",
+      "source_ref": "JDL-0009; EMAIL-029",
+      "source_status": "scheduled; completion unverified"
     },
     {
       "id": "biology-4-remediation",
@@ -280,6 +384,23 @@
         "color_basis": "conditional"
       },
       "last_seen_in_digest": "2026-11-09"
+    },
+    {
+      "id": "mkt-promotion-submission",
+      "date": "2026-11-12",
+      "course": "Marketing",
+      "title": "Promotion Assignment Submission",
+      "review": "priority",
+      "next": "Verify whether this was submitted or excused. Two automated notices report conflicting due times.",
+      "source": "Schoology daily digest and two individual notices",
+      "source_ref": "JDL-0006; ASG-048; ASG-053; ASG-054; EMAIL-027–029",
+      "schoology_assignment_id": "8648848203",
+      "status_note": "Schoology displayed this as overdue November 12. Individual emails disagree on the exact due time: 11:15 AM versus 1:20 PM; the daily digest lists 1:20 PM. This is one assignment, not two; the current submission, excusal, and gradebook status are unverified.",
+      "syllabus_timing": {
+        "summary": "Due time disputed; confirm status and options directly.",
+        "explanation": "Two Schoology messages for assignment 8648848203 report conflicting Nov 12 due times (11:15 AM and 1:20 PM). The daily digest uses 1:20 PM. Marketing's syllabus discusses late-work options, but actual eligibility and teacher directions must be verified; the automated overdue notices alone do not establish that work remains unsubmitted.",
+        "color_basis": "unverified"
+      }
     }
   ],
   "classes": [
@@ -392,5 +513,35 @@
   "class_policy_source": "2026–27 George C. Marshall High School course syllabi reviewed Nov 8, 2026. Course-wide summaries, not individualized eligibility decisions.",
   "rolling_gradebook_note": "All seven syllabi describe rolling grades. Quarter marks are progress snapshots; the final course grade is not described as an average of quarterly grades. SIS/ParentVUE is the gradebook of record.",
   "syllabus_timing_notice": "Date comparisons use the Nov 9, 2026 Schoology daily summary, the previously reviewed Nov 8 calendar snapshot, and the 2026–27 course syllabi. A Schoology flag or listed date does not prove that work is missing, a due date is final, or any specific credit option applies. Check SIS/ParentVUE and the teacher's current instructions.",
-  "syllabus_timing_reviewed": "2026-11-08"
+  "syllabus_timing_reviewed": "2026-11-08",
+  "source_range_note": "Schoology daily digests Nov 8–12; prior school calendar reviewed Nov 8 through Dec 14. ParentVUE/teacher recovery cutoffs are separately sourced. Earlier entries retained pending reconciliation.",
+  "submission_notifications": [
+    {
+      "course": "Health & PE 9",
+      "title": "Digital Wellness Project",
+      "date": "2026-11-09",
+      "reported_time_local": "14:26",
+      "evidence_ref": "ASG-049; EMAIL-023",
+      "status": "Schoology reported submitted; grading not confirmed"
+    },
+    {
+      "course": "Health & PE 9",
+      "title": "What is Wellness? Self-Assessment",
+      "date": "2026-11-11",
+      "reported_time_local": "13:42",
+      "evidence_ref": "ASG-051; EMAIL-026",
+      "status": "Schoology reported submitted; grading not confirmed"
+    },
+    {
+      "course": "Health & PE 9",
+      "title": "Dimensions of Wellness Character Analysis",
+      "date": "2026-11-11",
+      "reported_time_local": "13:58",
+      "evidence_ref": "ASG-050; EMAIL-026",
+      "status": "Schoology reported submitted; grading not confirmed"
+    }
+  ],
+  "submission_summary": "Three Health & PE submission notifications were reported Nov 9 and Nov 11; these are not teacher-verified grades or family completion marks.",
+  "reconciliation_note": "Nov 12 Schoology digest listed 13 Janie overdue flags. All 12 previously tracked flags were retained; one Marketing Promotion Assignment Submission was added (two notifications for the same Schoology ID, disputed due time). The older Positive Posts calendar-only entry remains pending confirmation. Biology Unit 4 Test was family-reported completed Nov 9, independently corroborated as scored in Nov 9 Schoology digest; the public board intentionally does not publish the score.",
+  "schoology_last_digest_id": "1a1d1d1f969f07f6"
 }
