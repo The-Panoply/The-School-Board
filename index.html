@@ -348,6 +348,17 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 .grades-caution{font-size:10px;color:var(--muted);line-height:1.55;margin:12px 0 0}
 .grades-empty{font-size:11px;color:var(--muted);margin:0}
 @media(max-width:580px){.school-layout .grades-panel{padding:17px}.grades-grid{grid-template-columns:1fr}.grades-heading-row{align-items:flex-start}}
+
+/* Dark-mode Lucide subject accents: course glyphs inherit currentColor. */
+@media(prefers-color-scheme:dark){
+ .course-icon.algebra{background:#303e5c;color:#b8caff}
+ .course-icon.history{background:#453b31;color:#ead2a4}
+ .course-icon.advisory{background:#304638;color:#b1e0b4}
+ .course-icon.marketing{background:#4b3b2a;color:#ffd399}
+ .course-icon.biology{background:#29473c;color:#9ee2c2}
+ .course-icon.photography{background:#433650;color:#e0bdf2}
+ .course-icon.pe{background:#294456;color:#b3dff8}
+}
 </style>
 </head>
 <body>
@@ -592,18 +603,12 @@ document.getElementById("share-send").addEventListener("click",async function(){
  try{await navigator.share({title:"The School Board — Progress Update",text:progressText()});document.getElementById("share-feedback").textContent="Share menu closed.";}
  catch(e){if(e&&e.name!=="AbortError")document.getElementById("share-feedback").textContent="Sharing unavailable. Try Copy text.";}
 });
+// Inline Lucide icons preserve theme-aware strokes without external image dependencies.
 function icon(course){
  var name=String(course||"");
- var file=/Algebra/i.test(name)?"education-learning-math-mathematics-school-study-svgrepo-com.svg":
- /English/i.test(name)?"book-shelf-books-education-learning-school-study-svgrepo-com.svg":
- /World History|History/i.test(name)?"earth-globe-map-world-svgrepo-com.svg":
- /Advisory/i.test(name)?"learning-teacher-svgrepo-com.svg":
- /Marketing/i.test(name)?"marketing-market-social-svgrepo-com.svg":
- /Biology/i.test(name)?"chemical-chemistry-education-liquid-svgrepo-com.svg":
- /Photography|Photo/i.test(name)?"photography-trophy-svgrepo-com.svg":
- /Health|PE/i.test(name)?"ball-basket-education-football-learning-school-svgrepo-com.svg":
- "book-shelf-books-education-learning-school-study-svgrepo-com.svg";
- return '<img class="course-art" src="./icons/'+file+'" alt="" aria-hidden="true">';
+ var key=/Algebra/i.test(name)?"algebra":/English/i.test(name)?"english":/World History|History/i.test(name)?"history":/Advisory/i.test(name)?"advisory":/Marketing/i.test(name)?"marketing":/Biology/i.test(name)?"biology":/Photography|Photo/i.test(name)?"photography":/Health|PE/i.test(name)?"pe":"english";
+ var paths={"algebra":"<rect width=\"16\" height=\"20\" x=\"4\" y=\"2\" rx=\"2\" /> <line x1=\"8\" x2=\"16\" y1=\"6\" y2=\"6\" /> <line x1=\"16\" x2=\"16\" y1=\"14\" y2=\"18\" /> <path d=\"M16 10h.01\" /> <path d=\"M12 10h.01\" /> <path d=\"M8 10h.01\" /> <path d=\"M12 14h.01\" /> <path d=\"M8 14h.01\" /> <path d=\"M12 18h.01\" /> <path d=\"M8 18h.01\" />","english":"<path d=\"M12 5v16\" /> <path d=\"M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z\" />","history":"<circle cx=\"12\" cy=\"12\" r=\"10\" /> <path d=\"M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20\" /> <path d=\"M2 12h20\" />","advisory":"<path d=\"M2 3h20\" /> <path d=\"M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3\" /> <path d=\"m7 21 5-5 5 5\" />","marketing":"<path d=\"M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z\" /> <path d=\"M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14\" /> <path d=\"M8 6v8\" />","biology":"<path d=\"M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2\" /> <path d=\"M6.453 15h11.094\" /> <path d=\"M8.5 2h7\" />","photography":"<path d=\"M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z\" /> <circle cx=\"12\" cy=\"13\" r=\"3\" />","pe":"<path d=\"M17.596 12.768a2 2 0 1 0 2.829-2.829l-1.768-1.767a2 2 0 0 0 2.828-2.829l-2.828-2.828a2 2 0 0 0-2.829 2.828l-1.767-1.768a2 2 0 1 0-2.829 2.829z\" /> <path d=\"m2.5 21.5 1.4-1.4\" /> <path d=\"m20.1 3.9 1.4-1.4\" /> <path d=\"M5.343 21.485a2 2 0 1 0 2.829-2.828l1.767 1.768a2 2 0 1 0 2.829-2.829l-6.364-6.364a2 2 0 1 0-2.829 2.829l1.768 1.767a2 2 0 0 0-2.828 2.829z\" /> <path d=\"m9.6 14.4 4.8-4.8\" />"};
+ return '<svg class="course-glyph" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">'+paths[key]+'</svg>';
 }
 function iconStyle(course){var name=String(course||"");return /English/i.test(name)?"english":/Algebra/i.test(name)?"algebra":/World History|History/i.test(name)?"history":/Advisory/i.test(name)?"advisory":/Marketing/i.test(name)?"marketing":/Biology/i.test(name)?"biology":/Photography|Photo/i.test(name)?"photography":/Health|PE/i.test(name)?"pe":/School|Picture/i.test(name)?"general":"general";}
 function when(s,today){if(s===today)return "Today";if(s===isoAdd(today,1))return "Tomorrow";return displayDate(s);}
