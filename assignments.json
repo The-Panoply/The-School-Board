@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "snapshot": "2026-11-12",
-  "source_note": "Janie-only Schoology daily summaries received Nov 8–12, 2026, reconciled with Janie's Nov 12 source-linked Drive evidence and previously checked Nov 8 Schoology calendar. Earlier items remain pending reconciliation when not repeated by newer digests. ParentVUE/teacher recovery cutoffs are identified separately from Schoology original due dates. Static reviewed snapshot, not a live school feed.",
+  "snapshot": "2026-11-13",
+  "source_note": "Janie-only reviewed snapshot from authenticated ParentVUE Q2 grade summaries and selected assignment details observed Nov 13, 2026, plus Schoology parent Home activity/events observed Nov 13 and existing authenticated assignment-detail observations from Nov 12. This is a bounded, partial snapshot: Schoology course-by-course assignment pages and announcements were not all inspected. Older Schoology email flags remain flags, not proof of missing work. Today & Tomorrow past-dated items stay in place with Needs Follow-up until family action; no work is removed or moved into the overdue list by this update.",
   "upcoming": [
     {
       "id": "biology-4",
@@ -11,7 +11,7 @@
       "type": "Test",
       "importance": "high",
       "action": "Completed November 9 (family report). Confirm the school record only if reconciliation is needed.",
-      "detail": "Scheduled Biology Unit 4 assessment. Family reports Janie completed it on November 9, 2026; the school record has not been independently reconciled.",
+      "detail": "Scheduled Biology Unit 4 assessment. Family reports Janie completed it on November 9, 2026; the school record has not been independently reconciled. ParentVUE Recent History separately lists “Unit 4 Summative” due Nov 6, score 24/27, while Schoology/website observation is Unit 4 Test dated Nov 9 with the same 24/27. Same assessment is plausible but title/date discrepancy remains unresolved. (SCHOOL-046; ASG-066)",
       "source": "both",
       "last_seen_in_digest": "2026-11-09",
       "family_completed_on": "2026-11-09",
@@ -135,13 +135,14 @@
     {
       "id": "positive-posts",
       "date": "2026-11-19",
-      "course": "Course to verify",
+      "course": "Health & PE 9",
       "title": "Positive Posts",
       "type": "Assignment",
       "importance": "normal",
-      "action": "Check what the assignment requires and which class it belongs to.",
-      "detail": "Calendar-listed due time: 11:59 PM. Present in the earlier verified Schoology calendar but absent from the Nov 8 and Nov 9 daily summaries. Course and applicability still require verification; retained rather than removed.",
-      "source": "calendar"
+      "action": "Schoology shows submitted Nov 5; grade is N/A. ParentVUE shows a same-title Nov 3 row not graded; confirm whether these are the same item.",
+      "detail": "Schoology assignment 8638370734: due Nov 19 at 11:59 p.m.; submitted on time Nov 5 at 2:16 p.m.; grade N/A. Schoology parent Home lists it as recently completed/submitted but not graded. ParentVUE shows a same-title row due Nov 3 and Not Graded. Whether the ParentVUE row is stale or separate is unresolved.",
+      "source": "Authenticated Schoology parent assignment page; ParentVUE comparison",
+      "source_ref": "SCHOOL-045, SCHOOL-047; ASG-056, ASG-071, ASG-074"
     },
     {
       "id": "history-unit3-test",
@@ -151,7 +152,7 @@
       "type": "Test",
       "importance": "normal",
       "action": "Plan review and check any testing arrangements.",
-      "detail": "The Janie-specific November 12 Schoology digest lists World History Unit 3 Test on Nov 20, without a specific time.",
+      "detail": "The Janie-specific November 12 Schoology digest lists World History Unit 3 Test on Nov 20, without a specific time. ParentVUE also lists “Unit 3 MC,” 100 points due Nov 20; Schoology calls it “Unit 3 Test.” Same date/course suggests a match, but title identity is unconfirmed; do not count twice. (SCHOOL-046; ASG-064)",
       "source": "Schoology daily digest",
       "source_ref": "JDL-0009; EMAIL-029",
       "source_status": "scheduled; completion unverified"
@@ -204,6 +205,102 @@
       "detail": "Optional deadline; applicability not confirmed.",
       "source": "both",
       "last_seen_in_digest": "2026-11-09"
+    },
+    {
+      "id": "alg-u3d1-homework",
+      "date": "2026-11-06",
+      "course": "Algebra 1",
+      "title": "U3D1 Homework",
+      "type": "Assignment",
+      "importance": "normal",
+      "action": "ParentVUE shows Not Turned In (0/1). Check whether this remains actionable or the record has changed.",
+      "detail": "Due Nov 6. ParentVUE Q2 course detail explicitly displayed Not Turned In; recent-history summary showed 0 out of 1. Due time and teacher comment were not displayed.",
+      "source": "ParentVUE current Q2 gradebook",
+      "source_ref": "SCHOOL-046; ASG-057"
+    },
+    {
+      "id": "alg-u3d2-homework",
+      "date": "2026-11-10",
+      "course": "Algebra 1",
+      "title": "U3D2 Homework (DeltaMath)",
+      "type": "Assignment",
+      "importance": "normal",
+      "action": "ParentVUE shows Not Turned In (0/1). Check whether this remains actionable or the record has changed.",
+      "detail": "Due Nov 10. ParentVUE Q2 course detail explicitly displayed Not Turned In; recent-history summary showed 0 out of 1. Due time and teacher comment were not displayed.",
+      "source": "ParentVUE current Q2 gradebook",
+      "source_ref": "SCHOOL-046; ASG-058"
+    },
+    {
+      "id": "alg-u3d3-exit-ticket",
+      "date": "2026-11-10",
+      "course": "Algebra 1",
+      "title": "U3D3 Exit Ticket — Domain & Range",
+      "type": "Assignment",
+      "importance": "normal",
+      "action": "ParentVUE shows Not Turned In (0/1). Check whether this remains actionable or the record has changed.",
+      "detail": "Due Nov 10. ParentVUE Q2 course detail explicitly displayed Not Turned In; recent-history summary showed 0 out of 1. Due time and teacher comment were not displayed.",
+      "source": "ParentVUE current Q2 gradebook",
+      "source_ref": "SCHOOL-046; ASG-059"
+    },
+    {
+      "id": "alg-u3d4-homework",
+      "date": "2026-11-16",
+      "course": "Algebra 1",
+      "title": "U3 D4 Homework — Domain & Range",
+      "type": "Assignment",
+      "importance": "normal",
+      "action": "Complete the one-point homework by Nov 16.",
+      "detail": "ParentVUE lists this as upcoming, 1 point. No submission status or instructions were available in the summary.",
+      "source": "ParentVUE current Q2 gradebook",
+      "source_ref": "SCHOOL-046; ASG-060"
+    },
+    {
+      "id": "eng-q2-individual-oral",
+      "date": "2026-11-12",
+      "course": "English Honors",
+      "title": "Q2 Individual Oral Q&A",
+      "type": "Assignment",
+      "importance": "normal",
+      "action": "ParentVUE says Not Graded; verify whether submitted/status has posted. Not Graded does not mean missing.",
+      "detail": "ParentVUE Recent History shows due Nov 12 and Not Graded; no score, submission timestamp, teacher comment, or missing indicator was displayed.",
+      "source": "ParentVUE current Q2 gradebook",
+      "source_ref": "SCHOOL-046; ASG-061"
+    },
+    {
+      "id": "wh-q2-formative1",
+      "date": "2026-11-17",
+      "course": "World History",
+      "title": "Q2 Formative #1",
+      "type": "Assessment",
+      "importance": "normal",
+      "action": "Prepare for the Nov 17 formative; ParentVUE showed 0 NTI before the due date.",
+      "detail": "ParentVUE lists 10 points due Nov 17 with displayed status “0 NTI.” The date is future relative to the Nov 13 observation; no overdue inference.",
+      "source": "ParentVUE current Q2 gradebook",
+      "source_ref": "SCHOOL-046; ASG-063"
+    },
+    {
+      "id": "hpe-nutrition-peardeck",
+      "date": "2026-11-12",
+      "course": "Health & PE 9",
+      "title": "Nutrition Peardeck",
+      "type": "Assignment",
+      "importance": "normal",
+      "action": "ParentVUE says Not Graded; verify submission/status if needed. Not Graded does not establish missing work.",
+      "detail": "ParentVUE Recent History shows due Nov 12 and Not Graded; no score, submission timestamp, or comment was displayed.",
+      "source": "ParentVUE current Q2 gradebook",
+      "source_ref": "SCHOOL-046; ASG-069"
+    },
+    {
+      "id": "hpe-build-menu",
+      "date": "2026-11-16",
+      "course": "Health & PE 9",
+      "title": "Build a Menu Project",
+      "type": "Assignment",
+      "importance": "normal",
+      "action": "Complete the 20-point project by Nov 16.",
+      "detail": "ParentVUE lists this as an upcoming summative assignment worth 20 points. No submission status or instructions were displayed in the summary.",
+      "source": "ParentVUE current Q2 gradebook",
+      "source_ref": "SCHOOL-046; ASG-072"
     }
   ],
   "flagged": [
@@ -391,11 +488,11 @@
       "course": "Marketing",
       "title": "Promotion Assignment Submission",
       "review": "priority",
-      "next": "Verify whether this was submitted or excused. Two automated notices report conflicting due times.",
+      "next": "Check whether submission can be confirmed; the parent-facing Submissions panel was blank, so current submission status remains unknown.",
       "source": "Schoology daily digest and two individual notices",
-      "source_ref": "JDL-0006; ASG-048; ASG-053; ASG-054; EMAIL-027–029",
+      "source_ref": "SCHOOL-045; ASG-055; JDL-0006; ASG-048; ASG-053; ASG-054",
       "schoology_assignment_id": "8648848203",
-      "status_note": "Schoology displayed this as overdue November 12. Individual emails disagree on the exact due time: 11:15 AM versus 1:20 PM; the daily digest lists 1:20 PM. This is one assignment, not two; the current submission, excusal, and gradebook status are unverified.",
+      "status_note": "Schoology assignment page confirms due Nov 12 at 1:20 p.m., posted Nov 12 at 9:46 a.m., Grade N/A, no comments; parent-facing Submissions panel rendered blank. This resolves the email due-time conflict (11:15 vs 1:20) in favor of 1:20, but does not establish whether a submission exists. One assignment, ID 8648848203. Source: SCHOOL-045; ASG-055.",
       "syllabus_timing": {
         "summary": "Due time disputed; confirm status and options directly.",
         "explanation": "Two Schoology messages for assignment 8648848203 report conflicting Nov 12 due times (11:15 AM and 1:20 PM). The daily digest uses 1:20 PM. Marketing's syllabus discusses late-work options, but actual eligibility and teacher directions must be verified; the automated overdue notices alone do not establish that work remains unsubmitted.",
@@ -514,7 +611,7 @@
   "rolling_gradebook_note": "All seven syllabi describe rolling grades. Quarter marks are progress snapshots; the final course grade is not described as an average of quarterly grades. SIS/ParentVUE is the gradebook of record.",
   "syllabus_timing_notice": "Date comparisons use the Nov 9, 2026 Schoology daily summary, the previously reviewed Nov 8 calendar snapshot, and the 2026–27 course syllabi. A Schoology flag or listed date does not prove that work is missing, a due date is final, or any specific credit option applies. Check SIS/ParentVUE and the teacher's current instructions.",
   "syllabus_timing_reviewed": "2026-11-08",
-  "source_range_note": "Schoology daily digests Nov 8–12; prior school calendar reviewed Nov 8 through Dec 14. ParentVUE/teacher recovery cutoffs are separately sourced. Earlier entries retained pending reconciliation.",
+  "source_range_note": "ParentVUE: Q2 summary grades and course detail/recent history/upcoming items; selected assignment rows Nov 5–17. Schoology: parent Home recent activity/upcoming events Nov 13; prior Nov 12 assignment details. Course-wide instructions, teacher announcements, complete submission records, and all Schoology course assignment pages were not captured.",
   "submission_notifications": [
     {
       "course": "Health & PE 9",
@@ -545,55 +642,156 @@
   "reconciliation_note": "Nov 12 Schoology digest listed 13 Janie overdue flags. All 12 previously tracked flags were retained; one Marketing Promotion Assignment Submission was added (two notifications for the same Schoology ID, disputed due time). The older Positive Posts calendar-only entry remains pending confirmation. Biology Unit 4 Test was family-reported completed Nov 9, independently corroborated as scored in Nov 9 Schoology digest; the public board intentionally does not publish the score.",
   "schoology_last_digest_id": "1a1d1d1f969f07f6",
   "grade_snapshot": {
-    "as_of": "2026-10-25",
-    "grading_period": "2026–27 First Quarter",
-    "source": "FCPS ParentVUE grade summary email",
-    "source_scope": "Genevieve-specific grades from October 25, 2026; matched against existing Janie Q1 grade progression CSV",
-    "status": "Historical Q1 snapshot — not a live gradebook or confirmed final Q1 marks",
-    "note": "The Oct 25 email predates the Oct 30 end of Q1. No newer Genevieve-specific ParentVUE course-grade summary was found in the connected mailbox through November 12. These values must not be treated as current Q2 grades or final transcript results.",
+    "as_of": "2026-11-13",
+    "grading_period": "2026–27 Second Quarter",
+    "source": "Authenticated FCPS ParentVUE Grade Book — Qtr 2 summary",
+    "source_scope": "Genevieve-specific current Q2 summary for seven graded courses, observed Nov 13, 2026. ParentVUE Course detail sometimes differs by 0.3–0.4 percentage points because of display rounding; the summary values below are shown.",
+    "status": "Working Q2 grades — not finalized",
+    "note": "These are current working Q2 values, not official final grades. Official finalized Q1 report-card letter marks are shown separately as a small historical reference. ParentVUE summary/detail rounding differences: Algebra 54.3 vs 54.0; English 70.7 vs 71.0; World History 44.6 vs 45.0; Photography 93.6 vs 94.0; Health & PE 90.2 vs 90.0. Marketing detail rows appeared stale and older than Q2; Q2 summary used.",
     "marks": [
       {
         "period": 1,
         "course": "Algebra 1",
-        "score_pct": 45.8,
-        "letter": "F"
+        "score_pct": 54.3,
+        "letter": "F",
+        "missing_count": 6,
+        "q1_final": "F"
       },
       {
         "period": 2,
         "course": "English 9 Honors",
-        "score_pct": 71.2,
-        "letter": "C−"
+        "score_pct": 70.7,
+        "letter": "C−",
+        "missing_count": 1,
+        "q1_final": "C"
       },
       {
         "period": 3,
         "course": "World History/Geography 2",
-        "score_pct": 71.1,
-        "letter": "C−"
+        "score_pct": 44.6,
+        "letter": "F",
+        "missing_count": 1,
+        "q1_final": "F"
       },
       {
         "period": 5,
         "course": "Marketing 1",
-        "score_pct": 24.5,
-        "letter": "F"
+        "score_pct": 29.4,
+        "letter": "F",
+        "missing_count": 1,
+        "q1_final": "F"
       },
       {
         "period": 6,
         "course": "Biology 1",
-        "score_pct": 74.9,
-        "letter": "C"
+        "score_pct": 80.1,
+        "letter": "B−",
+        "missing_count": 1,
+        "q1_final": "C"
       },
       {
         "period": 7,
         "course": "Photography 1",
-        "score_pct": 100,
-        "letter": "A"
+        "score_pct": 93.6,
+        "letter": "A",
+        "missing_count": 0,
+        "q1_final": "F"
       },
       {
         "period": 8,
         "course": "Health & PE 9",
-        "score_pct": 84.5,
-        "letter": "B"
+        "score_pct": 90.2,
+        "letter": "A−",
+        "missing_count": 0,
+        "q1_final": "A−"
       }
-    ]
+    ],
+    "finalized_first_quarter": {
+      "as_of": "2026-11-12",
+      "source": "ParentVUE First Quarter Report Card",
+      "status": "Official finalized report-card marks",
+      "marks": [
+        {
+          "course": "Algebra 1",
+          "letter": "F"
+        },
+        {
+          "course": "English 9 Honors",
+          "letter": "C"
+        },
+        {
+          "course": "World History/Geography 2",
+          "letter": "F"
+        },
+        {
+          "course": "Marketing 1",
+          "letter": "F"
+        },
+        {
+          "course": "Biology 1",
+          "letter": "C"
+        },
+        {
+          "course": "Photography 1",
+          "letter": "F"
+        },
+        {
+          "course": "Health & PE 9",
+          "letter": "A−"
+        }
+      ]
+    },
+    "historical_snapshot": {
+      "as_of": "2026-10-25",
+      "grading_period": "2026–27 First Quarter",
+      "source": "FCPS ParentVUE grade summary email",
+      "source_scope": "Genevieve-specific grades from October 25, 2026; matched against existing Janie Q1 grade progression CSV",
+      "status": "Historical Q1 snapshot — not a live gradebook or confirmed final Q1 marks",
+      "note": "The Oct 25 email predates the Oct 30 end of Q1. No newer Genevieve-specific ParentVUE course-grade summary was found in the connected mailbox through November 12. These values must not be treated as current Q2 grades or final transcript results.",
+      "marks": [
+        {
+          "period": 1,
+          "course": "Algebra 1",
+          "score_pct": 45.8,
+          "letter": "F"
+        },
+        {
+          "period": 2,
+          "course": "English 9 Honors",
+          "score_pct": 71.2,
+          "letter": "C−"
+        },
+        {
+          "period": 3,
+          "course": "World History/Geography 2",
+          "score_pct": 71.1,
+          "letter": "C−"
+        },
+        {
+          "period": 5,
+          "course": "Marketing 1",
+          "score_pct": 24.5,
+          "letter": "F"
+        },
+        {
+          "period": 6,
+          "course": "Biology 1",
+          "score_pct": 74.9,
+          "letter": "C"
+        },
+        {
+          "period": 7,
+          "course": "Photography 1",
+          "score_pct": 100,
+          "letter": "A"
+        },
+        {
+          "period": 8,
+          "course": "Health & PE 9",
+          "score_pct": 84.5,
+          "letter": "B"
+        }
+      ]
+    }
   }
 }
