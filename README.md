@@ -17,7 +17,7 @@ The visual design is stored in `index.html` and reads assignment information fro
 
 The data file includes a **snapshot date** and Schoology-source descriptions. The site warns when its snapshot is more than two days old and does not pretend to be connected to Schoology in real time.
 
-The current draft is based on Janie's November 8, 2026 Schoology digest, reconciled against the designated Schoology calendar covering November 8–December 14, 2026. It displays school assignments and events only, and does not display grades, attendance, clinical information, or family notes.
+The current data snapshot is dated November 12, 2026 and reflects reviewed Schoology summaries, selected assignment notices, and calendar information. The site also displays a ParentVUE Grade Snapshot panel below Class Schedule. That panel currently contains historical first-quarter grade information from a weekly email dated October 25, 2026; it is not a live gradebook view and does not establish finalized quarter grades. The site does not display attendance, clinical information, or family notes.
 
 ## Publication
 
