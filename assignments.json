@@ -1,7 +1,7 @@
 {
   "version": 1,
   "snapshot": "2026-11-13",
-  "source_note": "Janie-only reviewed snapshot from authenticated ParentVUE Q2 grade summaries and selected assignment details observed Nov 13, 2026, plus Schoology parent Home activity/events observed Nov 13 and existing authenticated assignment-detail observations from Nov 12. This is a bounded, partial snapshot: Schoology course-by-course assignment pages and announcements were not all inspected. Older Schoology email flags remain flags, not proof of missing work. Today & Tomorrow past-dated items stay in place with Needs Follow-up until family action; no work is removed or moved into the overdue list by this update.",
+  "source_note": "Janie-only reviewed snapshot from authenticated ParentVUE Q2 grade summaries and selected assignment details observed Nov 13, 2026, plus Schoology parent Home activity/events observed Nov 13 and existing authenticated assignment-detail observations from Nov 12. This is a bounded, partial snapshot: Schoology course-by-course assignment pages and announcements were not all inspected. Older Schoology email flags remain flags, not proof of missing work. Today & Tomorrow past-dated items stay in place with Needs Follow-up until family action. Five Algebra 1 assignments with Nov 19 recovery opportunities are also listed in Overdue using their original due dates and last observed statuses; their recovery cutoffs remain on the horizon. Each is one assignment shown in two views. ParentVUE item statuses shown here were last observed Nov 9 and have not been rechecked since.",
   "upcoming": [
     {
       "id": "biology-4",
@@ -75,7 +75,7 @@
       "type": "Recovery deadline",
       "importance": "high",
       "action": "Check teacher-required corrections and whether the retake was arranged or completed.",
-      "detail": "Teacher/ParentVUE source specifies Nov 19 as a retake cutoff, not the original test date. Status of corrections and retake is unverified; verify current availability with teacher.",
+      "detail": "Original Unit 2 Test due Oct 29; ParentVUE showed 66/100 graded on Nov 9 (not missing). The Nov 19 retake cutoff remains; correction/retake completion is unverified.",
       "source": "Teacher / ParentVUE",
       "source_ref": "JDL-0001",
       "source_status": "recovery deadline; action unconfirmed"
@@ -88,7 +88,7 @@
       "type": "Recovery deadline",
       "importance": "high",
       "action": "Verify whether corrections can be submitted and whether they are already complete.",
-      "detail": "Teacher note in ParentVUE identified Nov 19 for quiz corrections to recover points. This is a recovery opportunity, not the original quiz due date.",
+      "detail": "Original Unit 2 Slope Quiz due Oct 21; ParentVUE showed 50/100 graded on Nov 9 (not missing). Teacher note says corrections may recover points by Nov 19; completion is unverified.",
       "source": "Teacher / ParentVUE",
       "source_ref": "JDL-0002",
       "source_status": "recovery deadline; action unconfirmed"
@@ -101,7 +101,7 @@
       "type": "Recovery deadline",
       "importance": "high",
       "action": "Check submission status and teacher instructions for full-credit recovery.",
-      "detail": "ParentVUE teacher note identifies Nov 19 as the full-credit late-work cutoff, not the original due date. Completion and any extensions are unverified.",
+      "detail": "Original due date Oct 27; ParentVUE showed Not Turned In, 0/1 on Nov 9. Teacher note allows full credit through Nov 19; later submission/status is unverified.",
       "source": "Teacher / ParentVUE",
       "source_ref": "JDL-0003",
       "source_status": "recovery deadline; action unconfirmed"
@@ -114,7 +114,7 @@
       "type": "Recovery deadline",
       "importance": "high",
       "action": "Confirm whether the review still needs to be submitted.",
-      "detail": "ParentVUE teacher note lists Nov 19 as a full-credit late-work opportunity, not the original review due date. Current status unverified.",
+      "detail": "Original due date Oct 27; ParentVUE showed Not Turned In, 0/1 on Nov 9. Teacher note lists Nov 19 as a full-credit cutoff; later submission/status is unverified.",
       "source": "Teacher / ParentVUE",
       "source_ref": "JDL-0004",
       "source_status": "recovery deadline; action unconfirmed"
@@ -127,7 +127,7 @@
       "type": "Recovery deadline",
       "importance": "high",
       "action": "Confirm completion and how to submit before the teacher-noted cutoff.",
-      "detail": "ParentVUE teacher note lists Nov 19 as a full-credit late-work cutoff, not the original practice-quiz due date. Current status unverified.",
+      "detail": "Original due date Oct 21; ParentVUE showed Not Turned In, 0/1 on Nov 9. Teacher note lists Nov 19 as a full-credit cutoff; later submission/status is unverified.",
       "source": "Teacher / ParentVUE",
       "source_ref": "JDL-0005",
       "source_status": "recovery deadline; action unconfirmed"
@@ -378,6 +378,81 @@
         "color_basis": "dated"
       },
       "last_seen_in_digest": "2026-11-09"
+    },
+    {
+      "id": "algebra-u2-retake-nov19",
+      "date": "2026-10-29",
+      "course": "Algebra 1",
+      "title": "Unit 2 Test",
+      "review": "priority",
+      "display_status": "Graded 66/100; retake pending",
+      "source": "ParentVUE gradebook; teacher/TalkingPoints recovery record",
+      "source_ref": "JDL-0001",
+      "source_status": "Graded 66/100 in ParentVUE on Nov 9; retake/correction completion unverified. Graded, not missing.",
+      "observed_on": "2026-11-09",
+      "recovery_deadline": "2026-11-19",
+      "next": "ParentVUE showed 66/100 graded on Nov 9 (not missing). Teacher/TalkingPoints set a Nov 19 retake cutoff; correction/retake completion is unverified.",
+      "detail": "Original test due Oct 29. Nov 19 is a separate recovery cutoff, not the original due date. The item-level status has not been rechecked since Nov 9."
+    },
+    {
+      "id": "algebra-u2-slope-corrections",
+      "date": "2026-10-21",
+      "course": "Algebra 1",
+      "title": "Unit 2 Quiz — Slope",
+      "review": "priority",
+      "display_status": "Graded 50/100; corrections pending",
+      "source": "ParentVUE gradebook; teacher recovery note",
+      "source_ref": "JDL-0002",
+      "source_status": "Graded 50/100 in ParentVUE on Nov 9; teacher note says corrections may recover points by Nov 19. Graded, not missing; correction completion unverified.",
+      "observed_on": "2026-11-09",
+      "recovery_deadline": "2026-11-19",
+      "next": "ParentVUE showed 50/100 graded on Nov 9 (not missing). Teacher note: corrections may recover points by Nov 19; completion is unverified.",
+      "detail": "Original quiz due Oct 21. The Nov 19 date is a separate correction-credit cutoff. Exact correction procedure and current completion have not been rechecked."
+    },
+    {
+      "id": "algebra-parallel-perp-hw",
+      "date": "2026-10-27",
+      "course": "Algebra 1",
+      "title": "U2 D6 HW — Parallel & Perpendicular Lines",
+      "review": "priority",
+      "display_status": "Not Turned In; 0/1 (observed Nov 9)",
+      "source": "ParentVUE gradebook; teacher recovery note",
+      "source_ref": "JDL-0003",
+      "source_status": "ParentVUE showed Not Turned In; 0/1 on Nov 9. Teacher note says submit by Nov 19 for full credit; later status unverified.",
+      "observed_on": "2026-11-09",
+      "recovery_deadline": "2026-11-19",
+      "next": "ParentVUE showed Not Turned In, 0/1 on Nov 9. Teacher note allows full credit through Nov 19; recheck for a later submission or status change.",
+      "detail": "Original due date Oct 27. The Nov 19 date is a separate full-credit late-work cutoff. The item-level status has not been rechecked since Nov 9."
+    },
+    {
+      "id": "algebra-u2-linear-functions-review",
+      "date": "2026-10-27",
+      "course": "Algebra 1",
+      "title": "U2 Review — Linear Functions",
+      "review": "priority",
+      "display_status": "Not Turned In; 0/1 (observed Nov 9)",
+      "source": "ParentVUE gradebook; teacher recovery note",
+      "source_ref": "JDL-0004",
+      "source_status": "ParentVUE showed Not Turned In; 0/1 on Nov 9. Teacher note lists Nov 19 as a full-credit cutoff; later status unverified.",
+      "observed_on": "2026-11-09",
+      "recovery_deadline": "2026-11-19",
+      "next": "ParentVUE showed Not Turned In, 0/1 on Nov 9. Teacher note allows full credit through Nov 19; recheck whether it has since been submitted or adjusted.",
+      "detail": "Original due date Oct 27. The Nov 19 date is a separate full-credit late-work cutoff. The item-level status has not been rechecked since Nov 9."
+    },
+    {
+      "id": "algebra-u2-d4-practice",
+      "date": "2026-10-21",
+      "course": "Algebra 1",
+      "title": "U2 D4 Practice Quiz",
+      "review": "priority",
+      "display_status": "Not Turned In; 0/1 (observed Nov 9)",
+      "source": "ParentVUE gradebook; teacher recovery note",
+      "source_ref": "JDL-0005",
+      "source_status": "ParentVUE showed Not Turned In; 0/1 on Nov 9. Teacher note lists Nov 19 as a full-credit cutoff; later status unverified.",
+      "observed_on": "2026-11-09",
+      "recovery_deadline": "2026-11-19",
+      "next": "ParentVUE showed Not Turned In, 0/1 on Nov 9. Teacher note allows full credit through Nov 19; recheck whether it has since been submitted or adjusted.",
+      "detail": "Original due date Oct 21. The Nov 19 date is a separate full-credit late-work cutoff. The item-level status has not been rechecked since Nov 9."
     },
     {
       "id": "bio-safety",
