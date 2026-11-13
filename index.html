@@ -331,7 +331,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 @media(max-width:520px){.school-main>.completed-panel{padding:17px}.completed-entry-actions{gap:8px}.completed-header{align-items:center}}
 
 /* Dated ParentVUE grade reference, deliberately not labeled live. */
-.school-layout .grades-panel{order:0;padding:18px 21px}
+.school-layout .grades-panel{order:4;padding:18px 21px}
 .grades-heading-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
 .grades-kicker{font-size:9px;letter-spacing:.11em;text-transform:uppercase;font-weight:800;color:var(--muted)}
 .grades-title{font-size:17px;letter-spacing:-.3px;line-height:1.2;font-weight:800;margin:3px 0 2px}
@@ -368,14 +368,6 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
     <section class="panel progress-panel" aria-label="Family assignment progress">
       <div><p class="progress-heading">Ready to Share</p><div id="progress-count" class="progress-count" aria-live="polite">No new completions to share</div><p id="progress-device" class="progress-device" hidden></p></div>
       <div class="progress-actions"><button type="button" id="progress-share" class="progress-share"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V2m0 0 4 4m-4-4-4 4"/><path d="M7 10H5.5A2.5 2.5 0 0 0 3 12.5v7A2.5 2.5 0 0 0 5.5 22h13a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 18.5 10H17"/></svg><span>Share Progress</span></button><p class="progress-caption">Send a progress update to a parent or family member using your phone’s share menu.</p></div>
-    </section>
-    <section class="panel grades-panel pad" aria-labelledby="grades-title">
-      <div class="grades-heading-row">
-        <div><span class="grades-kicker">ParentVUE reference</span><h2 id="grades-title" class="grades-title">Grade Snapshot</h2><p id="grades-source-date" class="grades-subtitle">Loading grade snapshot…</p></div>
-        <span class="grades-historical-tag">Historical Q1</span>
-      </div>
-      <div id="grades-grid" class="grades-grid" aria-label="Course grade snapshot"><p class="grades-empty">Loading grade snapshot…</p></div>
-      <p id="grades-caution" class="grades-caution">Not live grades. Check ParentVUE for current information.</p>
     </section>
     <section class="panel focus-panel pad" aria-labelledby="focus-title">
       <div class="section-head">
@@ -419,6 +411,14 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
       </div>
       <div id="class-schedule" class="class-schedule"><p class="empty">Loading classes…</p></div>
       <p class="micro schedule-note" id="schedule-note"></p>
+    </section>
+    <section class="panel grades-panel pad" aria-labelledby="grades-title">
+      <div class="grades-heading-row">
+        <div><span class="grades-kicker">ParentVUE reference</span><h2 id="grades-title" class="grades-title">Grade Snapshot</h2><p id="grades-source-date" class="grades-subtitle">Loading grade snapshot…</p></div>
+        <span class="grades-historical-tag">Historical Q1</span>
+      </div>
+      <div id="grades-grid" class="grades-grid" aria-label="Course grade snapshot"><p class="grades-empty">Loading grade snapshot…</p></div>
+      <p id="grades-caution" class="grades-caution">Not live grades. Check ParentVUE for current information.</p>
     </section>
     <section class="panel source-panel" aria-labelledby="source-title">
       <span class="small-label" id="source-title">Sources</span>
