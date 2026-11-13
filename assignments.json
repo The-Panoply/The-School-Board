@@ -543,5 +543,57 @@
   ],
   "submission_summary": "Three Health & PE submission notifications were reported Nov 9 and Nov 11; these are not teacher-verified grades or family completion marks.",
   "reconciliation_note": "Nov 12 Schoology digest listed 13 Janie overdue flags. All 12 previously tracked flags were retained; one Marketing Promotion Assignment Submission was added (two notifications for the same Schoology ID, disputed due time). The older Positive Posts calendar-only entry remains pending confirmation. Biology Unit 4 Test was family-reported completed Nov 9, independently corroborated as scored in Nov 9 Schoology digest; the public board intentionally does not publish the score.",
-  "schoology_last_digest_id": "1a1d1d1f969f07f6"
+  "schoology_last_digest_id": "1a1d1d1f969f07f6",
+  "grade_snapshot": {
+    "as_of": "2026-10-25",
+    "grading_period": "2026–27 First Quarter",
+    "source": "FCPS ParentVUE grade summary email",
+    "source_scope": "Genevieve-specific grades from October 25, 2026; matched against existing Janie Q1 grade progression CSV",
+    "status": "Historical Q1 snapshot — not a live gradebook or confirmed final Q1 marks",
+    "note": "The Oct 25 email predates the Oct 30 end of Q1. No newer Genevieve-specific ParentVUE course-grade summary was found in the connected mailbox through November 12. These values must not be treated as current Q2 grades or final transcript results.",
+    "marks": [
+      {
+        "period": 1,
+        "course": "Algebra 1",
+        "score_pct": 45.8,
+        "letter": "F"
+      },
+      {
+        "period": 2,
+        "course": "English 9 Honors",
+        "score_pct": 71.2,
+        "letter": "C−"
+      },
+      {
+        "period": 3,
+        "course": "World History/Geography 2",
+        "score_pct": 71.1,
+        "letter": "C−"
+      },
+      {
+        "period": 5,
+        "course": "Marketing 1",
+        "score_pct": 24.5,
+        "letter": "F"
+      },
+      {
+        "period": 6,
+        "course": "Biology 1",
+        "score_pct": 74.9,
+        "letter": "C"
+      },
+      {
+        "period": 7,
+        "course": "Photography 1",
+        "score_pct": 100,
+        "letter": "A"
+      },
+      {
+        "period": 8,
+        "course": "Health & PE 9",
+        "score_pct": 84.5,
+        "letter": "B"
+      }
+    ]
+  }
 }
