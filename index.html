@@ -359,6 +359,48 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
  .course-icon.photography{background:#433650;color:#e0bdf2}
  .course-icon.pe{background:#294456;color:#b3dff8}
 }
+
+/* Curated academic-recovery queue: compact by default and expandable on demand. */
+.school-layout .priority-panel{order:1;padding:20px 21px;border-color:var(--line);background:var(--paper)}
+.priority-heading{align-items:flex-start}
+.priority-eyebrow{display:block;font-size:10px;letter-spacing:.09em;text-transform:uppercase;font-weight:800;color:var(--sage);margin-bottom:5px}
+.priority-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.priority-item{min-width:0;min-height:0;border:1px solid var(--line);border-radius:14px;background:var(--paper);padding:13px 14px}
+.priority-item.priority-immediate{border-left:4px solid var(--amber)}
+.priority-item-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.priority-rank{display:grid;place-items:center;flex:none;width:22px;height:22px;border-radius:7px;background:var(--blue-soft);color:var(--blue);font-size:10px;font-weight:800}
+.priority-course{display:flex;align-items:center;gap:6px;min-width:0;font-size:11px;font-weight:750;color:var(--muted)}
+.priority-course .course-icon{width:21px;height:21px;border-radius:6px}
+.priority-course .course-glyph{width:14px;height:14px}
+.priority-group{margin-left:auto;font-size:9px;font-weight:800;white-space:nowrap;background:var(--blue-soft);color:var(--blue);padding:4px 7px;border-radius:99px}
+.priority-immediate .priority-group{background:#fff0d9;color:#80521a}
+.priority-item h3{margin:0 0 7px;font-size:13px;line-height:1.4;font-weight:800;letter-spacing:-.1px}
+.priority-short,.priority-next,.priority-reason,.priority-date{font-size:11px;line-height:1.5;margin:0 0 7px}
+.priority-reason{color:var(--muted)}
+.priority-next{margin-bottom:8px}
+.priority-date{font-weight:750;color:var(--blue);margin-bottom:8px}
+.priority-status{display:inline-block;font-size:9px;line-height:1.2;font-weight:750;color:var(--muted);border:1px solid var(--line);border-radius:7px;padding:4px 6px;max-width:100%}
+.priority-details{margin-top:10px;border-top:1px solid var(--line)}
+.priority-details summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 1px 3px;color:var(--blue);font-size:11px;font-weight:800}
+.priority-details summary::after{content:"+";font-size:17px;font-weight:450;line-height:1}
+.priority-details[open] summary::after{content:"−"}
+.priority-details summary:focus-visible,.historical-details summary:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.priority-detail-content{padding-top:9px;font-size:11px;line-height:1.6;color:var(--muted)}
+.priority-detail-content p{margin:0 0 9px}
+.priority-detail-content strong{color:var(--ink)}
+.priority-related{display:flex;flex-wrap:wrap;gap:7px;margin:4px 0 8px}
+.priority-related .item-link{display:inline-block;padding:6px 8px;border:1px solid var(--line);background:var(--blue-soft);border-radius:7px;font-size:10px;color:var(--blue);font-weight:700}
+.priority-related .item-link:hover{background:var(--paper)}
+.priority-footer-note{font-size:10px;line-height:1.55;margin:12px 1px 0;color:var(--muted)}
+.historical-wrap{margin-top:17px}
+.historical-details .disclosure-body{display:grid;gap:10px}
+.historical-item{border-bottom:1px solid var(--line);padding:0 0 10px}
+.historical-item:last-child{border-bottom:0;padding-bottom:0}
+.historical-date{display:inline-block;font-size:10px;color:var(--muted);font-weight:700;margin-bottom:4px}
+.historical-item h3{font-size:12px;margin:0 0 5px}
+.historical-item p{font-size:11px;line-height:1.55;color:var(--muted);margin:0}
+@media(max-width:650px){.priority-list{grid-template-columns:1fr}.school-layout .priority-panel{padding:17px}.priority-heading{gap:9px}.priority-item{padding:12px 13px}}
+@media(prefers-color-scheme:dark){.priority-immediate .priority-group{background:#493827;color:#ffd49e}}
 </style>
 </head>
 <body>
@@ -388,6 +430,14 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
       </div>
       <div id="focus" class="focus-list"><div class="empty">Loading upcoming school items…</div></div>
     </section>
+    <section class="panel priority-panel pad" aria-labelledby="priority-title">
+      <div class="section-head priority-heading">
+        <div><span class="priority-eyebrow">A manageable path forward</span><h2 class="section-title" id="priority-title">Academic Recovery Priorities</h2><p class="section-sub" id="priority-updated">Teacher-informed priorities, not another overdue list.</p></div>
+        <span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>
+      </div>
+      <div id="priority-list" class="priority-list" aria-live="polite"><p class="empty">Loading academic priorities…</p></div>
+      <p class="priority-footer-note">A teacher-approved extension may replace an earlier cutoff. Original dates remain available below for reference. This list is reviewed evidence, not a live gradebook.</p>
+    </section>
     <section class="panel older-panel pad" aria-labelledby="older-title">
       <div class="section-head">
         <div><h2 class="section-title" id="older-title">Overdue Assignments</h2><p class="section-sub">Some Schoology flags may already be graded, excused, or submitted.</p></div>
@@ -412,6 +462,12 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
         <details class="disclosure">
           <summary><span><span class="disclosure-title">Earlier listed dates</span><span class="disclosure-hint">Past events are not assumed complete</span></span></summary>
           <div class="disclosure-body" id="past-events"></div>
+        </details>
+      </div>
+      <div id="historical-wrap" class="historical-wrap" hidden>
+        <details class="disclosure historical-details" id="historical-details">
+          <summary><span><span class="disclosure-title">Original dates &amp; teacher-approved exceptions</span><span class="disclosure-hint">Historical reference only — these are not active deadlines</span></span></summary>
+          <div class="disclosure-body" id="historical-items"></div>
         </details>
       </div>
     </section>
@@ -644,9 +700,47 @@ function renderGrades(){
   "These are current Q2 working grades, not final marks. Large letters show the Q2 mark; the smaller percentage is ancillary. Q1 final report-card marks appear below each course. Summary percentages are shown when course detail rounds differently.":
   "Current grades are unavailable. Check ParentVUE for current information.";
 }
-function render(d){data=d;reconcileRecordedCompletions();var today=isoToday();var all=[].concat(d.upcoming||[]).sort(function(a,b){return a.date.localeCompare(b.date);});var upcoming=all.filter(function(x){return x.date>=today;});var carryover=all.filter(function(x){return x.date<today&&trackable(x)&&!isComplete(x.id);});var focus=carryover.concat(upcoming.filter(function(x){return x.date<=isoAdd(today,1);}));var tasks=focus.filter(trackable);var done=tasks.length>0&&tasks.every(function(x){return isComplete(x.id);});document.getElementById("focus-title").textContent="Today & Tomorrow";document.getElementById("focus-sub").textContent=carryover.length?"Past-dated assignments needing a status check remain here until marked complete.":focus.length===0?"A calmer look at the next two days.":done?"All listed assignments are marked complete on this device.":"Just the next decisions—not the whole list.";document.getElementById("focus").innerHTML=focus.length?(done?calmState("Nicely done!","All assignments listed for today and tomorrow are marked complete. You can still review them below.",true):"")+focus.map(function(x){return focusHtml(x,today);}).join(""):calmState("A little breathing room","Nothing is listed for today or tomorrow in this reviewed snapshot. Enjoy the lighter schedule!",false);
+function renderPriorities(){
+ var box=document.getElementById("priority-list");
+ var snapshot=data.recovery_priorities||{},items=Array.isArray(snapshot.items)?snapshot.items:[];
+ document.getElementById("priority-updated").textContent="Teacher-informed action plan · reviewed "+(snapshot.reviewed_on?longDate(snapshot.reviewed_on):"date not available")+" · check latest school status";
+ var all=(data.flagged||[]).concat(data.upcoming||[]);
+ box.innerHTML=items.length?items.map(function(p,index){
+  var linked=(p.related_assignment_ids||[]).map(function(id){
+   var item=all.find(function(x){return x.id===id;});
+   if(!item)return "";
+   return assignmentButton(item,"priority-related-item",(data.flagged||[]).some(function(x){return x.id===id;})?"flagged":"upcoming");
+  }).filter(Boolean).join("");
+  var details='<p><strong>Teacher guidance:</strong> '+escapeHTML(p.teacher_guidance||"No additional guidance verified.")+'</p>'+
+   '<p><strong>Uncertainty:</strong> '+escapeHTML(p.uncertainty||"Check the current school record.")+'</p>'+
+   (p.historical_reference?'<p><strong>Original date / approved exception:</strong> '+escapeHTML(p.historical_reference)+'</p>':"")+
+   (linked?'<p><strong>Existing school items:</strong></p><div class="priority-related">'+linked+'</div>':"")+
+   '<p><strong>Evidence:</strong> '+escapeHTML(p.evidence||"Source not specified")+' · as of '+escapeHTML(p.source_as_of?longDate(p.source_as_of):"date unavailable")+'</p>';
+  var immediate=p.group==="Immediate";
+  return '<article class="priority-item'+(immediate?' priority-immediate':'')+'">'+
+   '<div class="priority-item-top"><span class="priority-rank">'+String(index+1).padStart(2,"0")+'</span>'+
+   '<span class="priority-course"><span class="course-icon '+iconStyle(p.course)+'" aria-hidden="true">'+icon(p.course)+'</span>'+escapeHTML(p.course)+'</span>'+
+   '<span class="priority-group">'+escapeHTML(p.group||"Review")+'</span></div>'+
+   '<h3>'+escapeHTML(p.title)+'</h3>'+
+   '<p class="priority-short">'+escapeHTML(p.short||"")+'</p>'+
+   '<p class="priority-date">'+escapeHTML(p.date_label||"Date pending")+'</p>'+
+   '<p class="priority-reason"><strong>Why:</strong> '+escapeHTML(p.reason||"Teacher-recommended work")+'</p>'+
+   '<p class="priority-next"><strong>Next:</strong> '+escapeHTML(p.next_step||"Verify status")+'</p>'+
+   '<span class="priority-status">Status: '+escapeHTML(p.status||"Needs verification")+'</span>'+
+   '<details class="priority-details"><summary aria-label="More details for '+escapeHTML(p.title)+'">Teacher guidance &amp; details</summary><div class="priority-detail-content">'+details+'</div></details>'+
+   '</article>';
+ }).join(""):'<p class="empty">No approved priorities in this snapshot. Check the current school records.</p>';
+}
+function renderHistorical(){
+ var items=(data.upcoming||[]).filter(function(x){return !!x.historical_only;}).slice().sort(function(a,b){return a.date.localeCompare(b.date)||a.title.localeCompare(b.title);});
+ document.getElementById("historical-wrap").hidden=!items.length;
+ document.getElementById("historical-items").innerHTML=items.map(function(x){
+  return '<article class="historical-item"><span class="historical-date">Original reference date: '+escapeHTML(longDate(x.date))+'</span><h3>'+assignmentButton(x,"","upcoming")+'</h3><p>'+escapeHTML(x.date_status||"Historical school date — verify current applicability")+'</p></article>';
+ }).join("");
+}
+function render(d){data=d;reconcileRecordedCompletions();var today=isoToday();var all=[].concat(d.upcoming||[]).filter(function(x){return !x.historical_only;}).sort(function(a,b){return a.date.localeCompare(b.date);});var upcoming=all.filter(function(x){return x.date>=today;});var carryover=all.filter(function(x){return x.date<today&&trackable(x)&&!isComplete(x.id);});var focus=carryover.concat(upcoming.filter(function(x){return x.date<=isoAdd(today,1);}));var tasks=focus.filter(trackable);var done=tasks.length>0&&tasks.every(function(x){return isComplete(x.id);});document.getElementById("focus-title").textContent="Today & Tomorrow";document.getElementById("focus-sub").textContent=carryover.length?"Past-dated assignments needing a status check remain here until marked complete.":focus.length===0?"A calmer look at the next two days.":done?"All listed assignments are marked complete on this device.":"Just the next decisions—not the whole list.";document.getElementById("focus").innerHTML=focus.length?(done?calmState("Nicely done!","All assignments listed for today and tomorrow are marked complete. You can still review them below.",true):"")+focus.map(function(x){return focusHtml(x,today);}).join(""):calmState("A little breathing room","Nothing is listed for today or tomorrow in this reviewed snapshot. Enjoy the lighter schedule!",false);
 var ids=new Set(focus.map(function(x){return x.id}));var later=upcoming.filter(function(x){return !ids.has(x.id)});document.getElementById("upcoming").innerHTML=later.length?later.map(eventHtml).join(""):'<p class="empty">No other upcoming dates are listed in this snapshot.</p>';var past=all.filter(function(x){return x.date<today&&!ids.has(x.id);});document.getElementById("past-wrap").hidden=!past.length;document.getElementById("past-events").innerHTML=past.map(eventHtml).join("");
-renderFilters();renderFlags();renderSchedule();renderProgress();renderCompleted();renderGrades();
+renderFilters();renderFlags();renderSchedule();renderProgress();renderCompleted();renderGrades();renderPriorities();renderHistorical();
 var notices=d.submission_notifications||[];document.getElementById("schoology-submission-note").textContent=notices.length?notices.length+" recent Health & PE submissions reported by Schoology (Nov 9–11); teacher grading not verified.":"";
 document.getElementById("header-date").textContent="Reviewed "+longDate(d.snapshot);
 document.getElementById("calendar-range").textContent=(d.source_range_note||"Schoology reviewed through "+longDate(d.snapshot)+". Earlier items retained for reconciliation.")+" Reviewed: "+longDate(d.snapshot)+".";
@@ -700,7 +794,7 @@ function openDetails(kind,value,view){
  else rows+=rowHtml("Class",course==="School calendar"||course==="School event"?"School event (not a class)":course==="Course to verify"?"Course not verified":course);
  if(item){
    rows+=rowHtml("Date",new Intl.DateTimeFormat("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric",timeZone:"UTC"}).format(parseDate(item.date)));
-   rows+=rowHtml("Status",item.source_status||(item.review?"Schoology overdue flag — status unverified":item.type||"Scheduled"));if(item.source)rows+=rowHtml("Source",item.source);if(item.observed_on)rows+=rowHtml("Last observed",longDate(item.observed_on));if(item.recovery_deadline)rows+=rowHtml("Recovery cutoff",longDate(item.recovery_deadline));
+   rows+=rowHtml("Status",item.source_status||(item.review?"Schoology overdue flag — status unverified":item.type||"Scheduled"));if(item.source)rows+=rowHtml("Source",item.source);if(item.observed_on)rows+=rowHtml("Last observed",longDate(item.observed_on));if(item.recovery_deadline)rows+=rowHtml(item.recovery_deadline_status==="superseded_for_janie"?"Former recovery cutoff — waived":"Recovery cutoff",longDate(item.recovery_deadline));if(item.historical_only)rows+=rowHtml("Historical date / exception",item.date_status||"Historical only");if(item.recovery_deadline_note)rows+=rowHtml("Teacher-approved concession",item.recovery_deadline_note);
     if(trackable(item))rows+=rowHtml("My progress",item.family_completed_on?"Family-reported complete "+longDate(item.family_completed_on)+"; school status unverified":isComplete(item.id)?"Marked complete on this device":"Not marked complete");
  }
  var note=item?(item.next||item.action||""):"";
@@ -722,7 +816,7 @@ document.addEventListener("click",function(e){
 document.getElementById("detail-close").addEventListener("click",function(){document.getElementById("detail-dialog").close();});
 document.getElementById("detail-dialog").addEventListener("click",function(e){if(e.target===this)this.close();});
 
-fetch("./assignments.json",{cache:"no-store"}).then(function(res){if(!res.ok)throw new Error("Data request failed");return res.json();}).then(function(payload){if(!payload||!Array.isArray(payload.upcoming)||!Array.isArray(payload.flagged))throw new Error("Unexpected data format");render(payload);}).catch(function(){var error='<div class="error">The assignment data could not be loaded. Please refresh the page or check back after the next update.</div>';document.getElementById("focus").innerHTML=error;document.getElementById("upcoming").innerHTML=error;document.getElementById("class-schedule").innerHTML='<p class="empty">Class schedule unavailable.</p>';});
+fetch("./assignments.json",{cache:"no-store"}).then(function(res){if(!res.ok)throw new Error("Data request failed");return res.json();}).then(function(payload){if(!payload||!Array.isArray(payload.upcoming)||!Array.isArray(payload.flagged))throw new Error("Unexpected data format");render(payload);}).catch(function(){var error='<div class="error">The assignment data could not be loaded. Please refresh the page or check back after the next update.</div>';document.getElementById("focus").innerHTML=error;document.getElementById("upcoming").innerHTML=error;document.getElementById("class-schedule").innerHTML='<p class="empty">Class schedule unavailable.</p>';document.getElementById("priority-list").innerHTML='<p class="empty">Academic priorities unavailable.</p>';});
 })();
 </script>
 </body>
