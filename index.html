@@ -519,7 +519,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
       </div>
       <div id="upcoming"><div class="empty">Loading calendar items…</div></div><details id="later-wrap" class="disclosure later-wrap" hidden><summary><span id="later-label" class="disclosure-title">More upcoming dates</span></summary><div id="later-events" class="disclosure-body"></div></details>
     </section>
-    <section class="panel parent-panel pad" aria-labelledby="parent-title"><div class="section-head"><div><h2 class="section-title" id="parent-title">For Parents &amp; School</h2></div><span class="section-icon" aria-hidden="true">✓</span></div><div class="parent-review-list-heading">Waiting for school</div><div id="parent-review-list" class="parent-review-list"><p class="empty">Loading adult follow-ups…</p></div><h3 class="parent-subtitle">Overdue &amp; assignment records</h3><div class="parent-records">
+    <section class="panel parent-panel pad" aria-labelledby="parent-title"><div class="section-head"><div><h2 class="section-title" id="parent-title">For Parents &amp; School</h2></div><span class="section-icon" aria-hidden="true">✓</span></div><div class="parent-review-list-heading">Waiting for school</div><div id="parent-review-list" class="parent-review-list"><p class="empty">Loading adult follow-ups…</p></div><div class="parent-records">
       <details class="disclosure" id="older-details">
         <summary aria-label="Expand or collapse overdue assignment records"><span class="disclosure-title">Overdue &amp; assignment records</span></summary>
         <div class="disclosure-body">
@@ -744,7 +744,7 @@ function assignmentButton(x,extra,view){return '<button class="item-link '+(extr
 function focusHtml(x,today){
  var optional=/Optional/i.test(x.type),weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(parseDate(x.date));
  return '<article class="focus-card"><span class="course-icon '+iconStyle(x.course)+'" aria-hidden="true">'+icon(x.course)+'</span><div><div class="focus-meta"><span>'+classButton(x.course,x.course.toUpperCase(),"focus-class")+'</span><span class="chip '+(optional?"optional":"")+'"><span class="chip-main">'+escapeHTML(when(x.date,today))+'</span><span class="chip-day">'+escapeHTML(weekday)+'</span></span></div>'+
- '<h3 class="focus-title">'+assignmentButton(x)+'</h3><p class="focus-action">'+(linkedPriorityIds().has(x.id)?'This is already included in the recovery plan above; open for one detailed record.':escapeHTML(x.action))+'</p>'+schoolConfirmationHTML(x)+
+ '<h3 class="focus-title">'+assignmentButton(x)+'</h3><p class="focus-action">'+(x.teacher_recovery_view?escapeHTML(x.action):linkedPriorityIds().has(x.id)?'Recovery guidance is in the plan below; this is the same assignment.':escapeHTML(x.action))+'</p>'+schoolConfirmationHTML(x)+
  '<div class="focus-bottom-row">'+completeButton(x,false)+'</div></div></article>';
 }
 function eventHtml(x){
@@ -830,13 +830,13 @@ function priorityItemHtml(p,index,all){
 }
 function renderPriorities(){
  var snap=data.recovery_priorities||{},items=Array.isArray(snap.items)?snap.items:[],all=(data.flagged||[]).concat(data.upcoming||[]);
- document.getElementById("priority-updated").textContent="Recovery plan · reviewed "+(snap.reviewed_on?longDate(snap.reviewed_on):"date unavailable")+" · check school status";
+ document.getElementById("priority-updated").textContent="Reviewed "+(snap.reviewed_on?longDate(snap.reviewed_on):"date unavailable");
  var student=items.filter(function(p){return p.id!=="RP-006"&&p.id!=="RP-007";});
  var active=student.filter(function(p){return !priorityFamilyDone(p);}),done=student.filter(priorityFamilyDone);
  var top=active.slice(0,3),rest=active.slice(3).concat(done);
  document.getElementById("priority-list").innerHTML=top.length?top.map(function(p){return priorityItemHtml(p,items.indexOf(p),all);}).join(""):calmState("No immediate recovery moves","Family-marked work stays available under other priorities pending school confirmation.",true);
  document.getElementById("priority-more").hidden=!rest.length;
- document.getElementById("priority-more-label").textContent="Other student priorities · "+rest.length;
+ document.getElementById("priority-more-label").textContent="More priorities · "+rest.length;
  document.getElementById("priority-more-list").innerHTML=rest.map(function(p){return priorityItemHtml(p,items.indexOf(p),all);}).join("");
  var adults=items.filter(function(p){return p.id==="RP-006"||p.id==="RP-007";});
  document.getElementById("parent-review-list").innerHTML=adults.map(function(p){
@@ -851,39 +851,72 @@ function renderHistorical(){
   return '<article class="historical-item"><span class="historical-date">Original reference date: '+escapeHTML(longDate(x.date))+'</span><h3>'+assignmentButton(x,"","upcoming")+'</h3><p>'+escapeHTML(x.date_status||"Historical school date — verify current applicability")+'</p></article>';
  }).join("");
 }
+function reviewedRecoveryViews(d){
+ // Teacher-verified recovery opportunities re-use the underlying assignment ID.
+ var items=((d.recovery_priorities||{}).items||[]),source=[].concat(d.flagged||[],d.upcoming||[]);
+ return items.filter(function(p){
+  return p.date_kind==="teacher credit opportunity"&&/^\d{4}-\d{2}-\d{2}$/.test(p.date||"")&&
+   /^\d{4}-\d{2}-\d{2}$/.test(p.source_as_of||"")&&Array.isArray(p.related_assignment_ids)&&p.related_assignment_ids.length===1;
+ }).map(function(p){
+  var original=source.find(function(x){return x.id===p.related_assignment_ids[0];});
+  if(!original||original.historical_only||/^(submitted|graded|excused)$/.test((original.school_confirmation||{}).state||""))return null;
+  return Object.assign({},original,{
+   date:p.date,
+   original_date:original.date,
+   type:"Teacher-approved recovery opportunity",
+   teacher_recovery_view:true,
+   action:p.short+" Teacher's recovery date is "+displayDate(p.date)+"; the exact cutoff time was not provided.",
+   recovery_source_as_of:p.source_as_of
+  });
+ }).filter(Boolean);
+}
 function render(d){
  data=d;reconcileRecordedCompletions();
- var today=isoToday(),all=[].concat(d.upcoming||[]).filter(function(x){return !x.historical_only;}).sort(function(a,b){return a.date.localeCompare(b.date);});
+ var today=isoToday(),weekday=parseDate(today).getUTCDay();
+ var weekStart=isoAdd(today,-((weekday+6)%7)),weekEnd=isoAdd(weekStart,6);
+ var all=[].concat(d.upcoming||[]).filter(function(x){return !x.historical_only;}).sort(function(a,b){return a.date.localeCompare(b.date);});
  var future=all.filter(function(x){return x.date>=today;});
- var immediate=future.filter(function(x){return x.date<=isoAdd(today,1)&&trackable(x);});
- var carryover=all.filter(function(x){return x.date<today&&trackable(x)&&!isComplete(x.id);}).sort(function(a,b){return b.date.localeCompare(a.date);});
- var focusTasks=immediate.filter(trackable),done=focusTasks.length>0&&focusTasks.every(function(x){return isComplete(x.id);});
- document.getElementById("focus-title").textContent="Today & Tomorrow";
- document.getElementById("focus-sub").textContent=immediate.length?(done?"Marked done by family; confirm with school separately.":"Only current dated items; past work is in Needs Follow-Up."):"No dated items today or tomorrow in this snapshot.";
- document.getElementById("focus").innerHTML=immediate.length?(done?calmState("Family marked today's tasks done","Confirm submission or grading separately.",true):"")+immediate.map(function(x){return focusHtml(x,today);}).join(""):calmState("A little breathing room","Nothing dated today or tomorrow in this snapshot.",false);
+ var scheduled=future.filter(function(x){return x.date<=weekEnd&&trackable(x)&&!!x.source;});
+ var recovery=reviewedRecoveryViews(d),weekly=scheduled.slice();
+ recovery.filter(function(x){return x.date>=today&&x.date<=weekEnd;}).forEach(function(x){
+  if(!weekly.some(function(y){return y.id===x.id;}))weekly.push(x);
+ });
+ weekly.sort(function(a,b){return a.date.localeCompare(b.date)||a.course.localeCompare(b.course);});
+ var carryover=all.filter(function(x){return x.date<today&&trackable(x)&&!isComplete(x.id);});
+ recovery.filter(function(x){return x.date<today&&!isComplete(x.id);}).forEach(function(x){
+  if(!carryover.some(function(y){return y.id===x.id;}))carryover.push(x);
+ });
+ carryover.sort(function(a,b){return b.date.localeCompare(a.date);});
+ var tasks=weekly.filter(trackable),done=tasks.length>0&&tasks.every(function(x){return isComplete(x.id);});
+ document.getElementById("focus-title").textContent="This Week";
+ document.getElementById("focus-sub").textContent=displayDate(weekStart)+" – "+displayDate(weekEnd);
+ document.getElementById("focus").innerHTML=weekly.length?(done?calmState("Marked done by family","School submissions and grades are confirmed separately.",true):"")+weekly.map(function(x){return focusHtml(x,today);}).join(""):calmState("A little breathing room","Nothing newly due this week in this reviewed snapshot.",false);
  document.getElementById("followup-wrap").hidden=!carryover.length;
  document.getElementById("followup-count").textContent="Needs Follow-Up · "+carryover.length;
  document.getElementById("followup-preview").innerHTML=carryover.slice(0,2).map(followupHtml).join("");
  document.getElementById("followup-more").hidden=carryover.length<=2;
- document.getElementById("followup-more-label").textContent="See "+Math.max(0,carryover.length-2)+" more follow-up"+(carryover.length-2===1?"":"s");
+ document.getElementById("followup-more-label").textContent="More follow-ups · "+Math.max(0,carryover.length-2);
  document.getElementById("followups").innerHTML=carryover.slice(2).map(followupHtml).join("");
- var focusIds=new Set(immediate.map(function(x){return x.id;})),later=future.filter(function(x){return !focusIds.has(x.id);});
- document.getElementById("upcoming").innerHTML=later.length?later.slice(0,4).map(eventHtml).join(""):'<p class="empty">No additional dates in this snapshot.</p>';
+ // Horizon is strictly after this Sunday. No record appears in both time windows.
+ var weeklyIds=new Set(weekly.map(function(x){return x.id;}));
+ var later=future.filter(function(x){return x.date>weekEnd&&!weeklyIds.has(x.id);});
+ document.getElementById("upcoming").innerHTML=later.length?later.slice(0,4).map(eventHtml).join(""):'<p class="empty">No later dates in this reviewed snapshot.</p>';
  document.getElementById("later-wrap").hidden=later.length<=4;
- document.getElementById("later-label").textContent="More upcoming dates · "+Math.max(0,later.length-4);
+ document.getElementById("later-label").textContent="More dates · "+Math.max(0,later.length-4);
  document.getElementById("later-events").innerHTML=later.slice(4).map(eventHtml).join("");
- var followIds=new Set(carryover.map(function(x){return x.id;})),past=all.filter(function(x){return x.date<today&&!followIds.has(x.id);});
- document.getElementById("past-wrap").hidden=!past.length;document.getElementById("past-events").innerHTML=past.map(eventHtml).join("");
+ var followIds=new Set(carryover.map(function(x){return x.id;}));
+ var past=all.filter(function(x){return x.date<today&&!followIds.has(x.id);});
+ document.getElementById("past-wrap").hidden=!past.length;
+ document.getElementById("past-events").innerHTML=past.map(eventHtml).join("");
  renderFilters();renderFlags();renderSchedule();renderProgress();renderCompleted();renderGrades();renderPriorities();renderHistorical();
  var notices=d.submission_notifications||[];
- document.getElementById("schoology-submission-note").textContent=notices.length?notices.length+" recent Health & PE submissions reported by Schoology (Nov 9–11); teacher grading not verified.":"";
+ document.getElementById("schoology-submission-note").textContent=notices.length?notices.length+" Health & PE submission notifications from Nov 9–11; grading not verified.":"";
  document.getElementById("header-date").textContent="Reviewed "+longDate(d.snapshot);
  document.getElementById("calendar-range").textContent=(d.source_range_note||"Schoology reviewed through "+longDate(d.snapshot)+". Earlier items retained for reconciliation.")+" Reviewed: "+longDate(d.snapshot)+".";
  var days=Math.floor((parseDate(today)-parseDate(d.snapshot))/86400000),note=document.getElementById("stale-warning");
  note.classList.toggle("show",days>2);
  note.textContent=days>2?"This board was last reviewed "+longDate(d.snapshot)+". Upcoming items may have changed. Run a new school check before relying on these dates.":"";
 }
-
 function courseInfo(course){
  var text=String(course||"").toLowerCase();
  var match=(data.classes||[]).find(function(c){return c.name.toLowerCase()===text;});
