@@ -505,7 +505,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
     </section>
     <section class="panel priority-panel pad" aria-labelledby="priority-title">
       <div class="section-head priority-heading">
-        <div><h2 class="section-title" id="priority-title">Recovery Plan</h2><p class="section-sub" id="priority-updated">Reviewed November 13, 2026</p></div>
+        <div><h2 class="section-title" id="priority-title">Recovery Plan</h2></div>
         <span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>
       </div>
       <div id="priority-list" class="priority-list" aria-live="polite"><p class="empty">Loading priorities…</p></div>
@@ -830,7 +830,6 @@ function priorityItemHtml(p,index,all){
 }
 function renderPriorities(){
  var snap=data.recovery_priorities||{},items=Array.isArray(snap.items)?snap.items:[],all=(data.flagged||[]).concat(data.upcoming||[]);
- document.getElementById("priority-updated").textContent="Reviewed "+(snap.reviewed_on?longDate(snap.reviewed_on):"date unavailable");
  var student=items.filter(function(p){return p.id!=="RP-006"&&p.id!=="RP-007";});
  var active=student.filter(function(p){return !priorityFamilyDone(p);}),done=student.filter(priorityFamilyDone);
  var top=active.slice(0,3),rest=active.slice(3).concat(done);
