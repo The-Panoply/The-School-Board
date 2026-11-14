@@ -441,6 +441,10 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 .school-confirmation.confirmed{color:var(--sage)}.family-completion-note{font-size:10px;font-weight:750;color:var(--sage)}
 .later-wrap,.historical-wrap{margin-top:12px}
 @media(max-width:650px){.priority-more .disclosure-body{padding:9px}.parent-review-card{padding:11px}}
+/* Clear expansion affordance for records grouped by verification state. */
+.record-group>summary::after{content:"+";font-size:18px;line-height:1;font-weight:500;color:var(--blue)}
+.record-group[open]>summary::after{content:"−"}
+.record-group>summary:focus-visible,.followup-more>summary:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
 </style>
 </head>
 <body>
@@ -832,7 +836,7 @@ function render(d){
  var today=isoToday(),all=[].concat(d.upcoming||[]).filter(function(x){return !x.historical_only;}).sort(function(a,b){return a.date.localeCompare(b.date);});
  var future=all.filter(function(x){return x.date>=today;});
  var immediate=future.filter(function(x){return x.date<=isoAdd(today,1)&&trackable(x);});
- var carryover=all.filter(function(x){return x.date<today&&trackable(x)&&!isComplete(x.id);});
+ var carryover=all.filter(function(x){return x.date<today&&trackable(x)&&!isComplete(x.id);}).sort(function(a,b){return b.date.localeCompare(a.date);});
  var focusTasks=immediate.filter(trackable),done=focusTasks.length>0&&focusTasks.every(function(x){return isComplete(x.id);});
  document.getElementById("focus-title").textContent="Today & Tomorrow";
  document.getElementById("focus-sub").textContent=immediate.length?(done?"Marked done by family; confirm with school separately.":"Only current dated items; past work is in Needs Follow-Up."):"No dated items today or tomorrow in this snapshot.";
