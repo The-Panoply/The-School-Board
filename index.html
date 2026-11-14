@@ -445,6 +445,34 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 .record-group>summary::after{content:"+";font-size:18px;line-height:1;font-weight:500;color:var(--blue)}
 .record-group[open]>summary::after{content:"−"}
 .record-group>summary:focus-visible,.followup-more>summary:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+
+/* Simplified reading order and unified chevrons, preserving original data and controls. */
+.school-layout .progress-panel{order:0}
+.school-layout .focus-panel{order:1}
+.school-layout .priority-panel{order:2}
+.school-layout .timeline-panel{order:3}
+.school-layout .parent-panel{order:4}
+.school-layout .schedule-panel{order:5}
+.school-layout .grades-panel{order:6}
+.school-layout .source-panel{order:7}
+.school-layout .reminder-strip{order:8}
+.parent-review-list-heading{font-size:12px;font-weight:800;margin:8px 0 10px}
+.parent-subtitle{font-size:12px;font-weight:800;margin:16px 0 10px}
+.parent-records{border-top:1px solid var(--line);padding-top:8px}
+.parent-records #older-details>summary{min-height:48px}
+.school-layout .focus-panel .section-sub:empty,.school-layout .timeline-panel .section-sub:empty{display:none}
+.school-layout .priority-panel .priority-heading{margin-bottom:12px}
+.disclosure>summary::after,.priority-details>summary::after,.record-group>summary::after,.followup-more>summary::after,#older-details>summary::after{
+ content:"";display:block;flex:none;width:9px;height:9px;border-right:2px solid var(--blue);border-bottom:2px solid var(--blue);border-left:0;border-top:0;transform:rotate(45deg);margin:0 4px 4px auto;transition:transform .15s ease;
+}
+.disclosure[open]>summary::after,.priority-details[open]>summary::after,.record-group[open]>summary::after,.followup-more[open]>summary::after,#older-details[open]>summary::after{transform:rotate(225deg);margin-bottom:-4px}
+.record-group>summary{display:grid;grid-template-columns:minmax(0,1fr) auto 16px;align-items:center;column-gap:10px}
+.record-group>summary span:first-child{min-width:0}
+.record-group>summary span:last-child{font-size:10px;white-space:nowrap;color:var(--muted)}
+.record-group>summary::after{grid-column:3;justify-self:center;margin:0 0 4px 0}
+.record-group[open]>summary::after{margin-bottom:-4px}
+.followup-more>summary{display:flex;justify-content:space-between;align-items:center;gap:12px}
+@media(prefers-reduced-motion:reduce){.disclosure>summary::after,.priority-details>summary::after,.record-group>summary::after,.followup-more>summary::after,#older-details>summary::after{transition:none}}
 </style>
 </head>
 <body>
@@ -467,58 +495,33 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
       <div><p class="progress-heading">Ready to Share</p><div id="progress-count" class="progress-count" aria-live="polite">No new completions to share</div><p id="progress-device" class="progress-device" hidden></p></div>
       <div class="progress-actions"><button type="button" id="progress-share" class="progress-share"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V2m0 0 4 4m-4-4-4 4"/><path d="M7 10H5.5A2.5 2.5 0 0 0 3 12.5v7A2.5 2.5 0 0 0 5.5 22h13a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 18.5 10H17"/></svg><span>Share Progress</span></button><p class="progress-caption">Send a progress update to a parent or family member using your phone’s share menu.</p></div>
     </section>
-    <div class="layer-band layer-do"><span class="layer-num">01</span><div><h2>What to do</h2><p>Small next steps, not every old flag.</p></div></div>
-    <section class="panel priority-panel pad" aria-labelledby="priority-title">
-      <div class="section-head priority-heading">
-        <div><span class="priority-eyebrow">A manageable path forward</span><h2 class="section-title" id="priority-title">Your Next 3 Moves</h2><p class="section-sub" id="priority-updated">Teacher-informed priorities, not another overdue list.</p></div>
-        <span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>
-      </div>
-      <div id="priority-list" class="priority-list" aria-live="polite"><p class="empty">Loading priorities…</p></div>
-      <details id="priority-more" class="disclosure priority-more" hidden><summary><span id="priority-more-label" class="disclosure-title">Other student priorities</span></summary><div id="priority-more-list" class="priority-list disclosure-body"></div></details>
-      <p class="priority-footer-note">A teacher-approved extension may replace an earlier cutoff. Original dates remain available below for reference. This list is reviewed evidence, not a live gradebook.</p>
-    </section>
     <section class="panel focus-panel pad" aria-labelledby="focus-title">
       <div class="section-head">
-        <div><h2 class="section-title" id="focus-title">Today & Tomorrow</h2><p class="section-sub" id="focus-sub">The few things worth checking first.</p></div>
+        <div><h2 class="section-title" id="focus-title">This Week</h2><p class="section-sub" id="focus-sub"></p></div>
         <span class="section-icon" aria-hidden="true">☀</span>
       </div>
       <div id="focus" class="focus-list"><div class="empty">Loading upcoming school items…</div></div>
       <div id="followup-wrap" class="followup-wrap" hidden><div class="followup-heading"><strong id="followup-count">Needs Follow-Up</strong><p>Past dates need a check, but aren't automatically urgent homework.</p></div><div id="followup-preview" class="followup-list"></div><details id="followup-more" class="followup-more" hidden><summary id="followup-more-label">Other follow-ups</summary><div id="followups" class="followup-list"></div></details></div>
     </section>
-    <section class="panel parent-panel pad" aria-labelledby="parent-title"><div class="section-head"><div><span class="priority-eyebrow">For parents &amp; school</span><h2 class="section-title" id="parent-title">Waiting &amp; Verification</h2><p class="section-sub">Adult and teacher follow-ups, not student homework.</p></div><span class="section-icon" aria-hidden="true">✓</span></div><div id="parent-review-list" class="parent-review-list"><p class="empty">Loading adult follow-ups…</p></div></section>
-    <div class="layer-band layer-coming"><span class="layer-num">02</span><div><h2>What's coming</h2><p>Dates and assessments ahead.</p></div></div>
+    <section class="panel priority-panel pad" aria-labelledby="priority-title">
+      <div class="section-head priority-heading">
+        <div><h2 class="section-title" id="priority-title">Recovery Plan</h2><p class="section-sub" id="priority-updated">Reviewed November 13, 2026</p></div>
+        <span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>
+      </div>
+      <div id="priority-list" class="priority-list" aria-live="polite"><p class="empty">Loading priorities…</p></div>
+      <details id="priority-more" class="disclosure priority-more" hidden><summary><span id="priority-more-label" class="disclosure-title">Other student priorities</span></summary><div id="priority-more-list" class="priority-list disclosure-body"></div></details>
+      
+    </section>
     <section class="panel timeline-panel pad" aria-labelledby="timeline-title">
       <div class="section-head">
-        <div><h2 class="section-title" id="timeline-title">On the Horizon</h2><p class="section-sub">Upcoming dates, in order. Optional items are labeled.</p></div>
+        <div><h2 class="section-title" id="timeline-title">On the Horizon</h2><p class="section-sub"></p></div>
         <span class="section-icon" aria-hidden="true">▤</span>
       </div>
       <div id="upcoming"><div class="empty">Loading calendar items…</div></div><details id="later-wrap" class="disclosure later-wrap" hidden><summary><span id="later-label" class="disclosure-title">More upcoming dates</span></summary><div id="later-events" class="disclosure-body"></div></details>
     </section>
-    <div class="layer-band layer-reference"><span class="layer-num">03</span><div><h2>Classes &amp; records</h2><p>Schedule and grades upfront; older records available below.</p></div></div>
-    <section class="panel schedule-panel pad" aria-labelledby="schedule-title">
-      <div class="section-head">
-        <div><h2 class="section-title" id="schedule-title">Class Schedule</h2>
-          </div>
-        <span class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 13h3M14 13h3M8 17h3"/></svg></span>
-      </div>
-      <div id="class-schedule" class="class-schedule"><p class="empty">Loading classes…</p></div>
-      <p class="micro schedule-note" id="schedule-note"></p>
-    </section>
-    <section class="panel grades-panel pad" aria-labelledby="grades-title">
-      <div class="grades-heading-row">
-        <div><span class="grades-kicker">ParentVUE reference</span><h2 id="grades-title" class="grades-title">Grade Snapshot</h2><p id="grades-source-date" class="grades-subtitle">Loading grade snapshot…</p></div>
-        <span class="grades-historical-tag">Q2 WORKING</span>
-      </div>
-      <div id="grades-grid" class="grades-grid" aria-label="Course grade snapshot"><p class="grades-empty">Loading grade snapshot…</p></div>
-      <p id="grades-caution" class="grades-caution">Not live grades. Check ParentVUE for current information.</p>
-    </section>
-    <section class="panel older-panel pad" aria-labelledby="older-title">
-      <div class="section-head">
-        <div><h2 class="section-title" id="older-title">Overdue &amp; Status Records</h2><p class="section-sub">Original assignment dates, school confirmations and recovery evidence — not another action queue.</p></div>
-        <span class="section-icon overdue-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.5 2"/></svg></span>
-      </div>
+    <section class="panel parent-panel pad" aria-labelledby="parent-title"><div class="section-head"><div><h2 class="section-title" id="parent-title">For Parents &amp; School</h2></div><span class="section-icon" aria-hidden="true">✓</span></div><div class="parent-review-list-heading">Waiting for school</div><div id="parent-review-list" class="parent-review-list"><p class="empty">Loading adult follow-ups…</p></div><h3 class="parent-subtitle">Overdue &amp; assignment records</h3><div class="parent-records">
       <details class="disclosure" id="older-details">
-        <summary aria-label="Expand or collapse overdue assignments"><span class="disclosure-title">Assignments</span></summary>
+        <summary aria-label="Expand or collapse overdue assignment records"><span class="disclosure-title">Overdue &amp; assignment records</span></summary>
         <div class="disclosure-body">
           <p class="older-description">A Schoology overdue flag is <strong>not</strong> proof of missing work. Check the actual status before making a catch-up plan.</p>
           <div class="filters" id="filters" aria-label="Filter older items by course"></div>
@@ -538,6 +541,23 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 
         </div>
       </details>
+</div></section>
+    <section class="panel schedule-panel pad" aria-labelledby="schedule-title">
+      <div class="section-head">
+        <div><h2 class="section-title" id="schedule-title">Class Schedule</h2>
+          </div>
+        <span class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 13h3M14 13h3M8 17h3"/></svg></span>
+      </div>
+      <div id="class-schedule" class="class-schedule"><p class="empty">Loading classes…</p></div>
+      <p class="micro schedule-note" id="schedule-note"></p>
+    </section>
+    <section class="panel grades-panel pad" aria-labelledby="grades-title">
+      <div class="grades-heading-row">
+        <div><span class="grades-kicker">ParentVUE reference</span><h2 id="grades-title" class="grades-title">Grade Snapshot</h2><p id="grades-source-date" class="grades-subtitle">Loading grade snapshot…</p></div>
+        <span class="grades-historical-tag">Q2 WORKING</span>
+      </div>
+      <div id="grades-grid" class="grades-grid" aria-label="Course grade snapshot"><p class="grades-empty">Loading grade snapshot…</p></div>
+      <p id="grades-caution" class="grades-caution">Not live grades. Check ParentVUE for current information.</p>
     </section>
     <section class="panel source-panel" aria-labelledby="source-title">
       <span class="small-label" id="source-title">Sources</span>
