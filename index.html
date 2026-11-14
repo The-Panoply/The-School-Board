@@ -635,8 +635,8 @@ function renderCompleted(){
  document.getElementById("completed-total").textContent=items.length+" total";
  document.getElementById("completed-items").innerHTML=items.length?items.map(function(x){
   var hasShared=!!x.family_completed_on;
-  return '<div class="completed-entry"><div><div class="completed-name">✓ '+escapeHTML(x.title)+'</div><p class="completed-course">'+escapeHTML(x.course)+'</p></div>'+
-   '<div class="completed-entry-actions"><span class="completed-status'+(hasShared?' is-recorded':'')+'">'+(hasShared?'Recorded · '+escapeHTML(displayDate(x.family_completed_on)):'Ready to share')+'</span>'+
+  return '<div class="completed-entry"><div><div class="completed-name">✓ '+escapeHTML(x.title)+'</div><p class="completed-course">'+escapeHTML(x.course)+'</p>'+schoolConfirmationHTML(x)+'</div>'+
+   '<div class="completed-entry-actions"><span class="completed-status'+(hasShared?' is-recorded':'')+'">'+(hasShared?'Marked done by family · recorded '+escapeHTML(displayDate(x.family_completed_on)):'Marked done by family · ready to share')+'</span>'+
    (hasShared?'':'<button class="completed-undo" type="button" data-undo-completion="'+escapeHTML(x.id)+'" aria-label="Undo completion of '+escapeHTML(x.title)+'">Undo</button>')+'</div></div>';
  }).join(""):'<p class="completed-empty">Nothing marked complete yet.</p>';
 }
