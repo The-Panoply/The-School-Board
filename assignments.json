@@ -74,13 +74,13 @@
       "title": "Unit 2 Test — Retake Deadline",
       "type": "Recovery deadline",
       "importance": "high",
-      "action": "Check teacher-required corrections and whether the retake was arranged or completed.",
-      "detail": "Original Unit 2 Test due Oct 29; ParentVUE showed 66/100 graded on Nov 9 (not missing). The Nov 19 retake cutoff remains; correction/retake completion is unverified.",
+      "action": "Historical November 19 recovery cutoff, waived for Janie by Ms. Dineen on Nov 13. Use the revised test-corrections plan; this is not an active deadline.",
+      "detail": "Original Unit 2 Test due Oct 29; ParentVUE showed 66/100 graded on Nov 9 (not missing). The former Nov 19 cutoff was waived for Janie by teacher on Nov 13; corrections remain useful, but completion remains unverified.",
       "source": "Teacher / ParentVUE",
       "source_ref": "JDL-0001",
-      "source_status": "recovery deadline; action unconfirmed",
+      "source_status": "Historical recovery window — teacher-approved waiver Nov 13",
       "historical_only": true,
-      "date_status": "Superseded for Janie by Nov 13 teacher instructions; Nov 19 is not a firm deadline."
+      "date_status": "Original recovery cutoff: November 19, 2026. Ms. Dineen expressly waived this for Janie on November 13. Historical reference only; new cutoff not set."
     },
     {
       "id": "algebra-u2-slope-corrections",
@@ -89,13 +89,13 @@
       "title": "Unit 2 Slope Quiz — Corrections Cutoff",
       "type": "Recovery deadline",
       "importance": "high",
-      "action": "Verify whether corrections can be submitted and whether they are already complete.",
-      "detail": "Original Unit 2 Slope Quiz due Oct 21; ParentVUE showed 50/100 graded on Nov 9 (not missing). Teacher note says corrections may recover points by Nov 19; completion is unverified.",
+      "action": "Historical November 19 recovery cutoff, waived for Janie by Ms. Dineen on Nov 13. Use the revised test-corrections plan; this is not an active deadline.",
+      "detail": "Original Unit 2 Slope Quiz due Oct 21; ParentVUE showed 50/100 graded on Nov 9 (not missing). The former Nov 19 cutoff was waived by the teacher for Janie on Nov 13. Correction status unverified.",
       "source": "Teacher / ParentVUE",
       "source_ref": "JDL-0002",
-      "source_status": "recovery deadline; action unconfirmed",
+      "source_status": "Historical recovery window — teacher-approved waiver Nov 13",
       "historical_only": true,
-      "date_status": "Superseded for Janie by Nov 13 teacher instructions; Nov 19 is not a firm deadline."
+      "date_status": "Original recovery cutoff: November 19, 2026. Ms. Dineen expressly waived this for Janie on November 13. Historical reference only; new cutoff not set."
     },
     {
       "id": "algebra-parallel-perp-hw",
@@ -104,13 +104,13 @@
       "title": "Parallel & Perpendicular Lines Homework — Full-Credit Cutoff",
       "type": "Recovery deadline",
       "importance": "high",
-      "action": "Check submission status and teacher instructions for full-credit recovery.",
-      "detail": "Original due date Oct 27; ParentVUE showed Not Turned In, 0/1 on Nov 9. Teacher note allows full credit through Nov 19; later submission/status is unverified.",
+      "action": "Historical November 19 recovery cutoff, waived for Janie by Ms. Dineen on Nov 13. Use the revised test-corrections plan; this is not an active deadline.",
+      "detail": "Original due date Oct 27; ParentVUE showed Not Turned In, 0/1 on Nov 9. The former Nov 19 full-credit cutoff was waived for Janie on Nov 13; homework may be excused if agreed. Later status unverified.",
       "source": "Teacher / ParentVUE",
       "source_ref": "JDL-0003",
-      "source_status": "recovery deadline; action unconfirmed",
+      "source_status": "Historical recovery window — teacher-approved waiver Nov 13",
       "historical_only": true,
-      "date_status": "Superseded for Janie by Nov 13 teacher instructions; Nov 19 is not a firm deadline."
+      "date_status": "Original recovery cutoff: November 19, 2026. Ms. Dineen expressly waived this for Janie on November 13. Historical reference only; new cutoff not set."
     },
     {
       "id": "algebra-u2-linear-functions-review",
@@ -119,13 +119,13 @@
       "title": "Unit 2 Linear Functions Review — Full-Credit Cutoff",
       "type": "Recovery deadline",
       "importance": "high",
-      "action": "Confirm whether the review still needs to be submitted.",
-      "detail": "Original due date Oct 27; ParentVUE showed Not Turned In, 0/1 on Nov 9. Teacher note lists Nov 19 as a full-credit cutoff; later submission/status is unverified.",
+      "action": "Historical November 19 recovery cutoff, waived for Janie by Ms. Dineen on Nov 13. Use the revised test-corrections plan; this is not an active deadline.",
+      "detail": "Original due date Oct 27; ParentVUE showed Not Turned In, 0/1 on Nov 9. The former Nov 19 full-credit cutoff was waived for Janie on Nov 13; homework/quiz may be excused if agreed. Later status unverified.",
       "source": "Teacher / ParentVUE",
       "source_ref": "JDL-0004",
-      "source_status": "recovery deadline; action unconfirmed",
+      "source_status": "Historical recovery window — teacher-approved waiver Nov 13",
       "historical_only": true,
-      "date_status": "Superseded for Janie by Nov 13 teacher instructions; Nov 19 is not a firm deadline."
+      "date_status": "Original recovery cutoff: November 19, 2026. Ms. Dineen expressly waived this for Janie on November 13. Historical reference only; new cutoff not set."
     },
     {
       "id": "algebra-u2-d4-practice",
@@ -134,13 +134,13 @@
       "title": "Unit 2 Day 4 Practice Quiz — Full-Credit Cutoff",
       "type": "Recovery deadline",
       "importance": "high",
-      "action": "Confirm completion and how to submit before the teacher-noted cutoff.",
-      "detail": "Original due date Oct 21; ParentVUE showed Not Turned In, 0/1 on Nov 9. Teacher note lists Nov 19 as a full-credit cutoff; later submission/status is unverified.",
+      "action": "Historical November 19 recovery cutoff, waived for Janie by Ms. Dineen on Nov 13. Use the revised test-corrections plan; this is not an active deadline.",
+      "detail": "Original due date Oct 21; ParentVUE showed Not Turned In, 0/1 on Nov 9. The former Nov 19 full-credit cutoff was waived for Janie on Nov 13; homework/quiz may be excused if agreed. Later status unverified.",
       "source": "Teacher / ParentVUE",
       "source_ref": "JDL-0005",
-      "source_status": "recovery deadline; action unconfirmed",
+      "source_status": "Historical recovery window — teacher-approved waiver Nov 13",
       "historical_only": true,
-      "date_status": "Superseded for Janie by Nov 13 teacher instructions; Nov 19 is not a firm deadline."
+      "date_status": "Original recovery cutoff: November 19, 2026. Ms. Dineen expressly waived this for Janie on November 13. Historical reference only; new cutoff not set."
     },
     {
       "id": "positive-posts",
@@ -174,12 +174,13 @@
       "title": "Unit 4 Remediation & Retake — Final Deadline",
       "type": "Optional recovery",
       "importance": "normal",
-      "action": "Check whether remediation or a retake is needed; plan before the weekend.",
-      "detail": "Optional deadline; applicability not confirmed.",
+      "action": "Historical Nov 23 optional Unit 4 remediation cutoff. Ms. Camire says Unit 4 went well and no remediation or retake is needed.",
+      "detail": "Original optional school remediation date was Nov 23. The teacher's Nov 13 guidance confirms Janie does not need Unit 4 remediation/retake. The old date is retained to document the teacher-approved exception.",
       "source": "both",
       "last_seen_in_digest": "2026-11-09",
       "historical_only": true,
-      "date_status": "Not needed per Nov 13 Biology teacher guidance. Original school schedule date retained for provenance."
+      "date_status": "Original optional remediation cutoff: November 23, 2026. Not needed for Janie per teacher Nov 13.",
+      "source_status": "Optional recovery date — not required for Janie"
     },
     {
       "id": "biology-5",
@@ -407,9 +408,10 @@
       "observed_on": "2026-11-09",
       "recovery_deadline": "2026-11-19",
       "next": "Teacher says Unit 2 test corrections are useful, but the former Nov 19 cutoff is waived for Janie. A retake is not a current firm requirement.",
-      "detail": "Original test due Oct 29. Nov 19 is a separate recovery cutoff, not the original due date. The item-level status has not been rechecked since Nov 9.",
+      "detail": "Original test due Oct 29. Nov 19 is a separate recovery cutoff, not the original due date. The item-level status has not been rechecked since Nov 9. Teacher confirmed Nov 13 that Janie is not bound by the original Nov 19 date; this remains visible solely for historical comparison.",
       "recovery_deadline_status": "superseded_for_janie",
-      "recovery_update_as_of": "2026-11-13"
+      "recovery_update_as_of": "2026-11-13",
+      "recovery_deadline_note": "Original November 19, 2026 cutoff retained as historical evidence. Teacher explicitly waived it for Janie on November 13; no new firm cutoff given."
     },
     {
       "id": "algebra-u2-slope-corrections",
@@ -420,13 +422,14 @@
       "display_status": "Needs teacher reconciliation",
       "source": "ParentVUE gradebook; teacher recovery note",
       "source_ref": "JDL-0002",
-      "source_status": "Graded 50/100 in ParentVUE on Nov 9; teacher note says corrections may recover points by Nov 19. Graded, not missing; correction completion unverified.",
+      "source_status": "Graded 50/100 in ParentVUE on Nov 9; an earlier teacher note listed Nov 19 for corrections, superseded by Nov 13 waiver. Graded, not missing; correction completion unverified.",
       "observed_on": "2026-11-09",
       "recovery_deadline": "2026-11-19",
       "next": "Teacher says only tests are required; old Nov 19 cutoff is waived for Janie. Homework and quiz excusals may be arranged but are not confirmed.",
-      "detail": "Original quiz due Oct 21. The Nov 19 date is a separate correction-credit cutoff. Exact correction procedure and current completion have not been rechecked.",
+      "detail": "Original quiz due Oct 21. The Nov 19 date is a separate correction-credit cutoff. Exact correction procedure and current completion have not been rechecked. Teacher confirmed Nov 13 that Janie is not bound by the original Nov 19 date; this remains visible solely for historical comparison.",
       "recovery_deadline_status": "superseded_for_janie",
-      "recovery_update_as_of": "2026-11-13"
+      "recovery_update_as_of": "2026-11-13",
+      "recovery_deadline_note": "Original November 19, 2026 cutoff retained as historical evidence. Teacher explicitly waived it for Janie on November 13; no new firm cutoff given."
     },
     {
       "id": "algebra-parallel-perp-hw",
@@ -437,13 +440,14 @@
       "display_status": "Needs teacher reconciliation",
       "source": "ParentVUE gradebook; teacher recovery note",
       "source_ref": "JDL-0003",
-      "source_status": "ParentVUE showed Not Turned In; 0/1 on Nov 9. Teacher note says submit by Nov 19 for full credit; later status unverified.",
+      "source_status": "ParentVUE showed Not Turned In; 0/1 on Nov 9. Earlier teacher note listed Nov 19 for full credit; superseded by Nov 13 waiver; later status unverified.",
       "observed_on": "2026-11-09",
       "recovery_deadline": "2026-11-19",
       "next": "Teacher says only tests are required; old Nov 19 cutoff is waived for Janie. Homework and quiz excusals may be arranged but are not confirmed.",
-      "detail": "Original due date Oct 27. The Nov 19 date is a separate full-credit late-work cutoff. The item-level status has not been rechecked since Nov 9.",
+      "detail": "Original due date Oct 27. The Nov 19 date is a separate full-credit late-work cutoff. The item-level status has not been rechecked since Nov 9. Teacher confirmed Nov 13 that Janie is not bound by the original Nov 19 date; this remains visible solely for historical comparison.",
       "recovery_deadline_status": "superseded_for_janie",
-      "recovery_update_as_of": "2026-11-13"
+      "recovery_update_as_of": "2026-11-13",
+      "recovery_deadline_note": "Original November 19, 2026 cutoff retained as historical evidence. Teacher explicitly waived it for Janie on November 13; no new firm cutoff given."
     },
     {
       "id": "algebra-u2-linear-functions-review",
@@ -454,13 +458,14 @@
       "display_status": "Needs teacher reconciliation",
       "source": "ParentVUE gradebook; teacher recovery note",
       "source_ref": "JDL-0004",
-      "source_status": "ParentVUE showed Not Turned In; 0/1 on Nov 9. Teacher note lists Nov 19 as a full-credit cutoff; later status unverified.",
+      "source_status": "ParentVUE showed Not Turned In; 0/1 on Nov 9. Earlier teacher note listed Nov 19, superseded by Nov 13 waiver; later status unverified.",
       "observed_on": "2026-11-09",
       "recovery_deadline": "2026-11-19",
       "next": "Teacher says only tests are required; old Nov 19 cutoff is waived for Janie. Homework and quiz excusals may be arranged but are not confirmed.",
-      "detail": "Original due date Oct 27. The Nov 19 date is a separate full-credit late-work cutoff. The item-level status has not been rechecked since Nov 9.",
+      "detail": "Original due date Oct 27. The Nov 19 date is a separate full-credit late-work cutoff. The item-level status has not been rechecked since Nov 9. Teacher confirmed Nov 13 that Janie is not bound by the original Nov 19 date; this remains visible solely for historical comparison.",
       "recovery_deadline_status": "superseded_for_janie",
-      "recovery_update_as_of": "2026-11-13"
+      "recovery_update_as_of": "2026-11-13",
+      "recovery_deadline_note": "Original November 19, 2026 cutoff retained as historical evidence. Teacher explicitly waived it for Janie on November 13; no new firm cutoff given."
     },
     {
       "id": "algebra-u2-d4-practice",
@@ -471,13 +476,14 @@
       "display_status": "Needs teacher reconciliation",
       "source": "ParentVUE gradebook; teacher recovery note",
       "source_ref": "JDL-0005",
-      "source_status": "ParentVUE showed Not Turned In; 0/1 on Nov 9. Teacher note lists Nov 19 as a full-credit cutoff; later status unverified.",
+      "source_status": "ParentVUE showed Not Turned In; 0/1 on Nov 9. Earlier teacher note listed Nov 19, superseded by Nov 13 waiver; later status unverified.",
       "observed_on": "2026-11-09",
       "recovery_deadline": "2026-11-19",
       "next": "Teacher says only tests are required; old Nov 19 cutoff is waived for Janie. Homework and quiz excusals may be arranged but are not confirmed.",
-      "detail": "Original due date Oct 21. The Nov 19 date is a separate full-credit late-work cutoff. The item-level status has not been rechecked since Nov 9.",
+      "detail": "Original due date Oct 21. The Nov 19 date is a separate full-credit late-work cutoff. The item-level status has not been rechecked since Nov 9. Teacher confirmed Nov 13 that Janie is not bound by the original Nov 19 date; this remains visible solely for historical comparison.",
       "recovery_deadline_status": "superseded_for_janie",
-      "recovery_update_as_of": "2026-11-13"
+      "recovery_update_as_of": "2026-11-13",
+      "recovery_deadline_note": "Original November 19, 2026 cutoff retained as historical evidence. Teacher explicitly waived it for Janie on November 13; no new firm cutoff given."
     },
     {
       "id": "bio-safety",
@@ -966,7 +972,8 @@
           "algebra-u2-retake-nov19"
         ],
         "source_as_of": "2026-11-13",
-        "evidence": "Algebra teacher email"
+        "evidence": "Algebra teacher email",
+        "historical_reference": "Original November 19, 2026 retake/correction/full-credit cutoffs remain in the archived dates. On November 13, Ms. Dineen waived that deadline for Janie. No replacement deadline supplied."
       },
       {
         "id": "RP-004",
@@ -1044,7 +1051,8 @@
           "bio-safety"
         ],
         "source_as_of": "2026-11-13",
-        "evidence": "Biology teacher email"
+        "evidence": "Biology teacher email",
+        "historical_reference": "Original November 23, 2026 optional Unit 4 remediation date remains in the archived dates. On November 13, Ms. Camire said it is unnecessary for Janie."
       }
     ]
   }
