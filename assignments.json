@@ -262,8 +262,8 @@
       "title": "U3 D4 Homework — Domain & Range",
       "type": "Assignment",
       "importance": "normal",
-      "action": "Complete the one-point homework by Nov 16.",
-      "detail": "ParentVUE lists this as upcoming, 1 point. No submission status or instructions were available in the summary.",
+      "action": "ParentVUE listed Nov 16 as the original due date. Ms. Dineen says test work is the current recovery priority; homework excusal may be arranged, but is not yet confirmed. Verify before prioritizing.",
+      "detail": "ParentVUE lists this as upcoming, 1 point. No submission status or instructions were available in the summary. Teacher's Nov 13 accommodations make missing tests/corrections the current focus; homework/quiz excusals are offered but not yet confirmed.",
       "source": "ParentVUE current Q2 gradebook",
       "source_ref": "SCHOOL-046; ASG-060"
     },
@@ -988,10 +988,9 @@
         "reason": "A scheduled assessment is a more immediate priority than older, recoverable work.",
         "teacher_guidance": "Parent-reported guidance from Ms. Dougherty emphasizes the Unit 3 study guide. Person of the Year can reportedly be completed over winter break; a submitted late assignment should be brought to the teacher's attention.",
         "next_step": "Start short study-guide sessions; check the original test instructions and any testing arrangements.",
-        "uncertainty": "World History guidance came through a parent report, not reviewed written teacher instructions. The earlier Africa essay was reportedly completed with a B. Winter-break cutoff is unknown; a later in-class essay is expected Dec 7 or 8, not two separate events.",
+        "uncertainty": "World History guidance came through a parent report, not reviewed written teacher instructions. The earlier Africa essay was reportedly completed with a B. Winter-break cutoff is unknown; a later in-class essay is expected Dec 7 or 8, not two separate events. The teacher described a Person of the Year assignment, while the existing flagged item is titled Person of the Century; their identity has not been confirmed.",
         "related_assignment_ids": [
-          "history-unit3-test",
-          "history-person"
+          "history-unit3-test"
         ],
         "source_as_of": "2026-11-13",
         "evidence": "Parent-reported teacher guidance and Schoology test date"
