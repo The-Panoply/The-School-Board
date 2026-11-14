@@ -464,14 +464,6 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
       <div class="progress-actions"><button type="button" id="progress-share" class="progress-share"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V2m0 0 4 4m-4-4-4 4"/><path d="M7 10H5.5A2.5 2.5 0 0 0 3 12.5v7A2.5 2.5 0 0 0 5.5 22h13a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 18.5 10H17"/></svg><span>Share Progress</span></button><p class="progress-caption">Send a progress update to a parent or family member using your phone’s share menu.</p></div>
     </section>
     <div class="layer-band layer-do"><span class="layer-num">01</span><div><h2>What to do</h2><p>Small next steps, not every old flag.</p></div></div>
-    <section class="panel focus-panel pad" aria-labelledby="focus-title">
-      <div class="section-head">
-        <div><h2 class="section-title" id="focus-title">Today & Tomorrow</h2><p class="section-sub" id="focus-sub">The few things worth checking first.</p></div>
-        <span class="section-icon" aria-hidden="true">☀</span>
-      </div>
-      <div id="focus" class="focus-list"><div class="empty">Loading upcoming school items…</div></div>
-      <div id="followup-wrap" class="followup-wrap" hidden><div class="followup-heading"><strong id="followup-count">Needs Follow-Up</strong><p>Past dates need a check, but aren't automatically urgent homework.</p></div><div id="followup-preview" class="followup-list"></div><details id="followup-more" class="followup-more" hidden><summary id="followup-more-label">Other follow-ups</summary><div id="followups" class="followup-list"></div></details></div>
-    </section>
     <section class="panel priority-panel pad" aria-labelledby="priority-title">
       <div class="section-head priority-heading">
         <div><span class="priority-eyebrow">A manageable path forward</span><h2 class="section-title" id="priority-title">Your Next 3 Moves</h2><p class="section-sub" id="priority-updated">Teacher-informed priorities, not another overdue list.</p></div>
@@ -481,8 +473,41 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
       <details id="priority-more" class="disclosure priority-more" hidden><summary><span id="priority-more-label" class="disclosure-title">Other student priorities</span></summary><div id="priority-more-list" class="priority-list disclosure-body"></div></details>
       <p class="priority-footer-note">A teacher-approved extension may replace an earlier cutoff. Original dates remain available below for reference. This list is reviewed evidence, not a live gradebook.</p>
     </section>
+    <section class="panel focus-panel pad" aria-labelledby="focus-title">
+      <div class="section-head">
+        <div><h2 class="section-title" id="focus-title">Today & Tomorrow</h2><p class="section-sub" id="focus-sub">The few things worth checking first.</p></div>
+        <span class="section-icon" aria-hidden="true">☀</span>
+      </div>
+      <div id="focus" class="focus-list"><div class="empty">Loading upcoming school items…</div></div>
+      <div id="followup-wrap" class="followup-wrap" hidden><div class="followup-heading"><strong id="followup-count">Needs Follow-Up</strong><p>Past dates need a check, but aren't automatically urgent homework.</p></div><div id="followup-preview" class="followup-list"></div><details id="followup-more" class="followup-more" hidden><summary id="followup-more-label">Other follow-ups</summary><div id="followups" class="followup-list"></div></details></div>
+    </section>
     <section class="panel parent-panel pad" aria-labelledby="parent-title"><div class="section-head"><div><span class="priority-eyebrow">For parents &amp; school</span><h2 class="section-title" id="parent-title">Waiting &amp; Verification</h2><p class="section-sub">Adult and teacher follow-ups, not student homework.</p></div><span class="section-icon" aria-hidden="true">✓</span></div><div id="parent-review-list" class="parent-review-list"><p class="empty">Loading adult follow-ups…</p></div></section>
     <div class="layer-band layer-coming"><span class="layer-num">02</span><div><h2>What's coming</h2><p>Dates and assessments ahead.</p></div></div>
+    <section class="panel timeline-panel pad" aria-labelledby="timeline-title">
+      <div class="section-head">
+        <div><h2 class="section-title" id="timeline-title">On the Horizon</h2><p class="section-sub">Upcoming dates, in order. Optional items are labeled.</p></div>
+        <span class="section-icon" aria-hidden="true">▤</span>
+      </div>
+      <div id="upcoming"><div class="empty">Loading calendar items…</div></div><details id="later-wrap" class="disclosure later-wrap" hidden><summary><span id="later-label" class="disclosure-title">More upcoming dates</span></summary><div id="later-events" class="disclosure-body"></div></details>
+    </section>
+    <div class="layer-band layer-reference"><span class="layer-num">03</span><div><h2>Classes &amp; records</h2><p>Schedule and grades upfront; older records available below.</p></div></div>
+    <section class="panel schedule-panel pad" aria-labelledby="schedule-title">
+      <div class="section-head">
+        <div><h2 class="section-title" id="schedule-title">Class Schedule</h2>
+          </div>
+        <span class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 13h3M14 13h3M8 17h3"/></svg></span>
+      </div>
+      <div id="class-schedule" class="class-schedule"><p class="empty">Loading classes…</p></div>
+      <p class="micro schedule-note" id="schedule-note"></p>
+    </section>
+    <section class="panel grades-panel pad" aria-labelledby="grades-title">
+      <div class="grades-heading-row">
+        <div><span class="grades-kicker">ParentVUE reference</span><h2 id="grades-title" class="grades-title">Grade Snapshot</h2><p id="grades-source-date" class="grades-subtitle">Loading grade snapshot…</p></div>
+        <span class="grades-historical-tag">Q2 WORKING</span>
+      </div>
+      <div id="grades-grid" class="grades-grid" aria-label="Course grade snapshot"><p class="grades-empty">Loading grade snapshot…</p></div>
+      <p id="grades-caution" class="grades-caution">Not live grades. Check ParentVUE for current information.</p>
+    </section>
     <section class="panel older-panel pad" aria-labelledby="older-title">
       <div class="section-head">
         <div><h2 class="section-title" id="older-title">Overdue &amp; Status Records</h2><p class="section-sub">Original assignment dates, school confirmations and recovery evidence — not another action queue.</p></div>
@@ -509,31 +534,6 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 
         </div>
       </details>
-    </section>
-    <section class="panel timeline-panel pad" aria-labelledby="timeline-title">
-      <div class="section-head">
-        <div><h2 class="section-title" id="timeline-title">On the Horizon</h2><p class="section-sub">Upcoming dates, in order. Optional items are labeled.</p></div>
-        <span class="section-icon" aria-hidden="true">▤</span>
-      </div>
-      <div id="upcoming"><div class="empty">Loading calendar items…</div></div><details id="later-wrap" class="disclosure later-wrap" hidden><summary><span id="later-label" class="disclosure-title">More upcoming dates</span></summary><div id="later-events" class="disclosure-body"></div></details>
-    </section>
-    <div class="layer-band layer-reference"><span class="layer-num">03</span><div><h2>Classes &amp; records</h2><p>Schedule and grades upfront; older records available below.</p></div></div>
-    <section class="panel schedule-panel pad" aria-labelledby="schedule-title">
-      <div class="section-head">
-        <div><h2 class="section-title" id="schedule-title">Class Schedule</h2>
-          </div>
-        <span class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 13h3M14 13h3M8 17h3"/></svg></span>
-      </div>
-      <div id="class-schedule" class="class-schedule"><p class="empty">Loading classes…</p></div>
-      <p class="micro schedule-note" id="schedule-note"></p>
-    </section>
-    <section class="panel grades-panel pad" aria-labelledby="grades-title">
-      <div class="grades-heading-row">
-        <div><span class="grades-kicker">ParentVUE reference</span><h2 id="grades-title" class="grades-title">Grade Snapshot</h2><p id="grades-source-date" class="grades-subtitle">Loading grade snapshot…</p></div>
-        <span class="grades-historical-tag">Q2 WORKING</span>
-      </div>
-      <div id="grades-grid" class="grades-grid" aria-label="Course grade snapshot"><p class="grades-empty">Loading grade snapshot…</p></div>
-      <p id="grades-caution" class="grades-caution">Not live grades. Check ParentVUE for current information.</p>
     </section>
     <section class="panel source-panel" aria-labelledby="source-title">
       <span class="small-label" id="source-title">Sources</span>
@@ -831,7 +831,7 @@ function render(d){
  data=d;reconcileRecordedCompletions();
  var today=isoToday(),all=[].concat(d.upcoming||[]).filter(function(x){return !x.historical_only;}).sort(function(a,b){return a.date.localeCompare(b.date);});
  var future=all.filter(function(x){return x.date>=today;});
- var immediate=future.filter(function(x){return x.date<=isoAdd(today,1);});
+ var immediate=future.filter(function(x){return x.date<=isoAdd(today,1)&&trackable(x);});
  var carryover=all.filter(function(x){return x.date<today&&trackable(x)&&!isComplete(x.id);});
  var focusTasks=immediate.filter(trackable),done=focusTasks.length>0&&focusTasks.every(function(x){return isComplete(x.id);});
  document.getElementById("focus-title").textContent="Today & Tomorrow";
