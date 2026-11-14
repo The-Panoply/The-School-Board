@@ -401,6 +401,46 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 .historical-item p{font-size:11px;line-height:1.55;color:var(--muted);margin:0}
 @media(max-width:650px){.priority-list{grid-template-columns:1fr}.school-layout .priority-panel{padding:17px}.priority-heading{gap:9px}.priority-item{padding:12px 13px}}
 @media(prefers-color-scheme:dark){.priority-immediate .priority-group{background:#493827;color:#ffd49e}}
+
+/* Three-layer layout, overriding legacy order values without dropping panels. */
+.school-layout .progress-panel{order:0}
+.school-layout .layer-do{order:1}
+.school-layout .priority-panel{order:2}
+.school-layout .focus-panel{order:3}
+.school-layout .parent-panel{order:4}
+.school-layout .layer-coming{order:5}
+.school-layout .timeline-panel{order:6}
+.school-layout .layer-reference{order:7}
+.school-layout .schedule-panel{order:8}
+.school-layout .grades-panel{order:9}
+.school-layout .older-panel{order:10}
+.school-layout .source-panel{order:11}
+.school-layout .reminder-strip{order:12}
+.layer-band{display:flex;align-items:center;gap:11px;padding:0 3px;margin:2px 0 -13px}
+.layer-num{width:30px;height:30px;flex:none;display:grid;place-items:center;border-radius:10px;background:var(--blue-soft);color:var(--blue);font-size:10px;font-weight:850}
+.layer-band h2{font-size:15px;margin:0;line-height:1.3;font-weight:850}.layer-band p{font-size:10px;line-height:1.5;margin:2px 0 0;color:var(--muted)}
+.priority-list{grid-template-columns:1fr;gap:9px}.priority-item{padding:12px 14px}.priority-item-top{margin-bottom:6px}
+.priority-reason{display:none}.priority-short{font-size:11px;color:var(--ink)}
+.priority-more{margin-top:12px}.priority-more .disclosure-body{padding:12px;display:grid;gap:9px}
+.priority-direct{display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap;margin-top:10px}
+.priority-direct .completion-row{margin:0}.priority-direct .complete-toggle{font-size:10px;min-height:28px}
+.parent-review-list{display:grid;gap:8px}.parent-review-card{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:11px;padding:12px;background:var(--paper)}
+.parent-review-card .course-icon{width:25px;height:25px;border-radius:7px}.parent-review-card .course-glyph{width:16px;height:16px}
+.parent-review-card strong{display:block;font-size:12px;line-height:1.4}.parent-review-card p{font-size:11px;line-height:1.5;color:var(--muted);margin:3px 0}
+.parent-review-tag{font-size:10px;color:var(--blue);font-weight:750}
+.followup-wrap{margin-top:14px;padding-top:13px;border-top:1px solid var(--line)}.followup-heading strong{font-size:12px}
+.followup-heading p{font-size:10px;color:var(--muted);line-height:1.5;margin:3px 0 9px}
+.followup-list{display:grid;gap:6px}.followup-item{display:flex;align-items:center;flex-wrap:wrap;gap:8px 11px;padding:8px 10px;border:1px solid var(--line);background:var(--paper);border-radius:9px}
+.followup-main{flex:1 1 175px;min-width:0}.followup-main .item-link{font-size:11px;font-weight:750}
+.followup-meta{display:block;font-size:10px;line-height:1.4;color:var(--muted)}.followup-item .completion-row{margin:0}
+.followup-more{margin-top:7px}.followup-more summary{padding:7px 0;font-size:11px;font-weight:800;color:var(--blue)}
+.record-group{border-top:1px solid var(--line);margin-top:8px}.record-group:first-child{border-top:0}
+.record-group summary{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 0;font-size:12px;font-weight:800}
+.record-group summary span:last-child{font-size:10px;color:var(--muted)}.record-group-body{padding-bottom:8px}
+.school-confirmation{display:inline-block;font-size:10px;line-height:1.45;font-weight:750;color:var(--muted)}
+.school-confirmation.confirmed{color:var(--sage)}.family-completion-note{font-size:10px;font-weight:750;color:var(--sage)}
+.later-wrap,.historical-wrap{margin-top:12px}
+@media(max-width:650px){.priority-more .disclosure-body{padding:9px}.parent-review-card{padding:11px}}
 </style>
 </head>
 <body>
@@ -423,24 +463,29 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
       <div><p class="progress-heading">Ready to Share</p><div id="progress-count" class="progress-count" aria-live="polite">No new completions to share</div><p id="progress-device" class="progress-device" hidden></p></div>
       <div class="progress-actions"><button type="button" id="progress-share" class="progress-share"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V2m0 0 4 4m-4-4-4 4"/><path d="M7 10H5.5A2.5 2.5 0 0 0 3 12.5v7A2.5 2.5 0 0 0 5.5 22h13a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 18.5 10H17"/></svg><span>Share Progress</span></button><p class="progress-caption">Send a progress update to a parent or family member using your phone’s share menu.</p></div>
     </section>
+    <div class="layer-band layer-do"><span class="layer-num">01</span><div><h2>What to do</h2><p>Small next steps, not every old flag.</p></div></div>
     <section class="panel focus-panel pad" aria-labelledby="focus-title">
       <div class="section-head">
         <div><h2 class="section-title" id="focus-title">Today & Tomorrow</h2><p class="section-sub" id="focus-sub">The few things worth checking first.</p></div>
         <span class="section-icon" aria-hidden="true">☀</span>
       </div>
       <div id="focus" class="focus-list"><div class="empty">Loading upcoming school items…</div></div>
+      <div id="followup-wrap" class="followup-wrap" hidden><div class="followup-heading"><strong id="followup-count">Needs Follow-Up</strong><p>Past dates need a check, but aren't automatically urgent homework.</p></div><div id="followup-preview" class="followup-list"></div><details id="followup-more" class="followup-more" hidden><summary id="followup-more-label">Other follow-ups</summary><div id="followups" class="followup-list"></div></details></div>
     </section>
     <section class="panel priority-panel pad" aria-labelledby="priority-title">
       <div class="section-head priority-heading">
-        <div><span class="priority-eyebrow">A manageable path forward</span><h2 class="section-title" id="priority-title">Academic Recovery Priorities</h2><p class="section-sub" id="priority-updated">Teacher-informed priorities, not another overdue list.</p></div>
+        <div><span class="priority-eyebrow">A manageable path forward</span><h2 class="section-title" id="priority-title">Your Next 3 Moves</h2><p class="section-sub" id="priority-updated">Teacher-informed priorities, not another overdue list.</p></div>
         <span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>
       </div>
-      <div id="priority-list" class="priority-list" aria-live="polite"><p class="empty">Loading academic priorities…</p></div>
+      <div id="priority-list" class="priority-list" aria-live="polite"><p class="empty">Loading priorities…</p></div>
+      <details id="priority-more" class="disclosure priority-more" hidden><summary><span id="priority-more-label" class="disclosure-title">Other student priorities</span></summary><div id="priority-more-list" class="priority-list disclosure-body"></div></details>
       <p class="priority-footer-note">A teacher-approved extension may replace an earlier cutoff. Original dates remain available below for reference. This list is reviewed evidence, not a live gradebook.</p>
     </section>
+    <section class="panel parent-panel pad" aria-labelledby="parent-title"><div class="section-head"><div><span class="priority-eyebrow">For parents &amp; school</span><h2 class="section-title" id="parent-title">Waiting &amp; Verification</h2><p class="section-sub">Adult and teacher follow-ups, not student homework.</p></div><span class="section-icon" aria-hidden="true">✓</span></div><div id="parent-review-list" class="parent-review-list"><p class="empty">Loading adult follow-ups…</p></div></section>
+    <div class="layer-band layer-coming"><span class="layer-num">02</span><div><h2>What's coming</h2><p>Dates and assessments ahead.</p></div></div>
     <section class="panel older-panel pad" aria-labelledby="older-title">
       <div class="section-head">
-        <div><h2 class="section-title" id="older-title">Overdue Assignments</h2><p class="section-sub">Some Schoology flags may already be graded, excused, or submitted.</p></div>
+        <div><h2 class="section-title" id="older-title">Overdue &amp; Status Records</h2><p class="section-sub">Original assignment dates, school confirmations and recovery evidence — not another action queue.</p></div>
         <span class="section-icon overdue-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.5 2"/></svg></span>
       </div>
       <details class="disclosure" id="older-details">
@@ -449,15 +494,6 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
           <p class="older-description">A Schoology overdue flag is <strong>not</strong> proof of missing work. Check the actual status before making a catch-up plan.</p>
           <div class="filters" id="filters" aria-label="Filter older items by course"></div>
           <div id="flags" aria-live="polite"></div>
-        </div>
-      </details>
-    </section>
-    <section class="panel timeline-panel pad" aria-labelledby="timeline-title">
-      <div class="section-head">
-        <div><h2 class="section-title" id="timeline-title">On the Horizon</h2><p class="section-sub">Upcoming dates, in order. Optional items are labeled.</p></div>
-        <span class="section-icon" aria-hidden="true">▤</span>
-      </div>
-      <div id="upcoming"><div class="empty">Loading calendar items…</div></div>
       <div id="past-wrap" hidden style="margin-top:17px">
         <details class="disclosure">
           <summary><span><span class="disclosure-title">Earlier listed dates</span><span class="disclosure-hint">Past events are not assumed complete</span></span></summary>
@@ -470,7 +506,18 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
           <div class="disclosure-body" id="historical-items"></div>
         </details>
       </div>
+
+        </div>
+      </details>
     </section>
+    <section class="panel timeline-panel pad" aria-labelledby="timeline-title">
+      <div class="section-head">
+        <div><h2 class="section-title" id="timeline-title">On the Horizon</h2><p class="section-sub">Upcoming dates, in order. Optional items are labeled.</p></div>
+        <span class="section-icon" aria-hidden="true">▤</span>
+      </div>
+      <div id="upcoming"><div class="empty">Loading calendar items…</div></div><details id="later-wrap" class="disclosure later-wrap" hidden><summary><span id="later-label" class="disclosure-title">More upcoming dates</span></summary><div id="later-events" class="disclosure-body"></div></details>
+    </section>
+    <div class="layer-band layer-reference"><span class="layer-num">03</span><div><h2>Classes &amp; records</h2><p>Schedule and grades upfront; older records available below.</p></div></div>
     <section class="panel schedule-panel pad" aria-labelledby="schedule-title">
       <div class="section-head">
         <div><h2 class="section-title" id="schedule-title">Class Schedule</h2>
@@ -601,8 +648,8 @@ function undoLocalCompletion(id){
 }
 function completeButton(x,inside){
  if(!trackable(x))return "";
- if(x.family_completed_on)return '<div class="'+(inside?'detail-complete':'completion-row')+'"><span class="complete-toggle is-complete" aria-label="Family-reported completed on '+escapeHTML(longDate(x.family_completed_on))+'">✓ Completed '+escapeHTML(displayDate(x.family_completed_on))+'</span>'+(inside?'<p class="share-muted">Family-reported completion; school record not independently verified.</p>':'')+'</div>';
- return '<div class="'+(inside?'detail-complete':'completion-row')+'"><button class="complete-toggle'+(isComplete(x.id)?' is-complete':'')+'" type="button" data-complete="'+escapeHTML(x.id)+'" aria-pressed="'+(isComplete(x.id)?'true':'false')+'">'+(isComplete(x.id)?'✓ Completed · Undo':'Mark Complete')+'</button>'+(inside?'<p class="share-muted">A personal completion mark, not a school-verified submission.</p>':'')+'</div>';
+ if(x.family_completed_on)return '<div class="'+(inside?'detail-complete':'completion-row')+'"><span class="complete-toggle is-complete" aria-label="Family-reported completed on '+escapeHTML(longDate(x.family_completed_on))+'">✓ Marked done by family '+escapeHTML(displayDate(x.family_completed_on))+'</span>'+(inside?'<p class="share-muted">Family-reported completion; school record not independently verified.</p>':'')+'</div>';
+ return '<div class="'+(inside?'detail-complete':'completion-row')+'"><button class="complete-toggle'+(isComplete(x.id)?' is-complete':'')+'" type="button" data-complete="'+escapeHTML(x.id)+'" aria-pressed="'+(isComplete(x.id)?'true':'false')+'">'+(isComplete(x.id)?'✓ Marked done by family · Undo':'Mark Complete')+'</button>'+(inside?'<p class="share-muted">Marked done by family does not mean submitted, graded, or excused.</p>':'')+'</div>';
 }
 function updateCompletion(id){
  var item=allAssignments().find(function(x){return x.id===id;});if(!item||item.family_completed_on)return;
@@ -619,7 +666,7 @@ function progressText(){
  items.forEach(function(x){out.push("✓ "+x.course+" — "+x.title);});
  if(items.length)out.push("",items.length+" new completion"+(items.length===1?"":"s")+" to record.");
  var note=document.getElementById("share-note").value.trim();if(note)out.push("","Note: "+note);
- out.push("","Personal completion marks; school submission status has not been independently verified.");
+ out.push("","Marked done by family; school confirmation is a separate status.");
  return out.join("\n");
 }
 function refreshPreview(){
@@ -670,8 +717,17 @@ function iconStyle(course){var name=String(course||"");return /English/i.test(na
 function when(s,today){if(s===today)return "Today";if(s===isoAdd(today,1))return "Tomorrow";return displayDate(s);}
 function classButton(course,display,extra){var smallIcon=extra==="event-class"||extra==="flag-class"?'<span class="course-icon inline-course-icon '+iconStyle(course)+'" aria-hidden="true">'+icon(course)+'</span>':"";return '<button class="item-link '+(extra||"")+'" type="button" data-course="'+escapeHTML(course)+'" aria-label="View class details: '+escapeHTML(course)+'">'+smallIcon+escapeHTML(display||course)+'</button>';}
 function assignmentButton(x,extra,view){return '<button class="item-link '+(extra||"")+'" type="button" data-assignment="'+escapeHTML(x.id)+'"'+(view?' data-assignment-view="'+escapeHTML(view)+'"':'')+' aria-label="View assignment details: '+escapeHTML(x.title)+'">'+escapeHTML(x.title)+(isComplete(x.id)?'<span class="completion-mark" aria-hidden="true">✓</span>':'')+'</button>';}
-function focusHtml(x,today){var optional=/Optional/i.test(x.type);var weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(parseDate(x.date));return '<article class="focus-card"><span class="course-icon '+iconStyle(x.course)+'" aria-hidden="true">'+icon(x.course)+'</span><div><div class="focus-meta"><span>'+classButton(x.course,x.course.toUpperCase(),"focus-class")+'</span><span class="chip '+(optional?"optional":"")+'"><span class="chip-main">'+escapeHTML(when(x.date,today))+'</span><span class="chip-day">'+escapeHTML(weekday)+'</span></span></div><h3 class="focus-title">'+assignmentButton(x)+'</h3><p class="focus-action">'+escapeHTML(x.action)+'</p>'+(x.id==="english-reassessment"?'<p class="micro" style="margin:8px 0 0">Calendar note: prerequisite steps before 3 PM on Nov 9.</p>':"")+'<div class="focus-bottom-row">'+(x.date<today&&!isComplete(x.id)?'<span class="needs-follow-up">Needs follow-up</span>':'')+completeButton(x,false)+'</div></div></article>';}
-function eventHtml(x){var dt=parseDate(x.date),mon=monthFmt.format(dt),day=dt.getUTCDate(),weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(dt);return '<article class="event"><div class="event-date" aria-label="'+escapeHTML(weekday+", "+displayDate(x.date))+'"><div class="date-mon">'+escapeHTML(mon)+'</div><div class="date-day">'+day+'</div><div class="date-weekday">'+escapeHTML(weekday)+'</div></div><div><h3 class="event-title">'+assignmentButton(x)+'</h3><div class="event-meta">'+classButton(x.course,x.course,"event-class")+' · '+escapeHTML(x.type)+(x.end?' · through '+escapeHTML(displayDate(x.end)):'')+'</div><p class="event-action">'+escapeHTML(x.action)+'</p>'+(x.source==="calendar"?'<span class="event-source">Found in calendar only — verify details</span>':"")+'</div></article>';}
+function focusHtml(x,today){
+ var optional=/Optional/i.test(x.type),weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(parseDate(x.date));
+ return '<article class="focus-card"><span class="course-icon '+iconStyle(x.course)+'" aria-hidden="true">'+icon(x.course)+'</span><div><div class="focus-meta"><span>'+classButton(x.course,x.course.toUpperCase(),"focus-class")+'</span><span class="chip '+(optional?"optional":"")+'"><span class="chip-main">'+escapeHTML(when(x.date,today))+'</span><span class="chip-day">'+escapeHTML(weekday)+'</span></span></div>'+
+ '<h3 class="focus-title">'+assignmentButton(x)+'</h3><p class="focus-action">'+(linkedPriorityIds().has(x.id)?'This is already included in the recovery plan above; open for one detailed record.':escapeHTML(x.action))+'</p>'+schoolConfirmationHTML(x)+
+ '<div class="focus-bottom-row">'+completeButton(x,false)+'</div></div></article>';
+}
+function eventHtml(x){
+ var dt=parseDate(x.date),mon=monthFmt.format(dt),day=dt.getUTCDate(),weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(dt);
+ return '<article class="event"><div class="event-date" aria-label="'+escapeHTML(weekday+", "+displayDate(x.date))+'"><div class="date-mon">'+escapeHTML(mon)+'</div><div class="date-day">'+day+'</div><div class="date-weekday">'+escapeHTML(weekday)+'</div></div><div><h3 class="event-title">'+assignmentButton(x)+'</h3><div class="event-meta">'+classButton(x.course,x.course,"event-class")+' · '+escapeHTML(x.type)+(x.end?' · through '+escapeHTML(displayDate(x.end)):'')+'</div>'+
+ '<p class="event-action">'+(linkedPriorityIds().has(x.id)?'Already in the recovery plan; open for details.':escapeHTML(x.action))+'</p>'+schoolConfirmationHTML(x)+'</div></article>';
+}
 function syllabusTimingTone(x){
  var p=x.syllabus_timing||{};
  if(p.color_basis==="no-penalty")return "timing-clear";
@@ -681,8 +737,26 @@ function syllabusTimingTone(x){
  if(days<=7)return "timing-near";
  return "timing-unverified";
 }
-function flagHtml(x){var status=x.display_status||(x.review==="reconcile"?"May be resolved — reconcile":x.review==="priority"?"Verify priority":"Needs status check");return '<article class="flag"><div class="flag-heading">'+classButton(x.course,x.course,"flag-class")+'<span class="flag-date">Dated '+escapeHTML(displayDate(x.date))+'</span></div><h3 class="flag-title">'+assignmentButton(x,"","flagged")+'</h3><p class="flag-next">'+escapeHTML(x.next)+'</p>'+(x.syllabus_timing?'<p class="flag-policy-preview"><strong class="flag-timing-label '+syllabusTimingTone(x)+'">Syllabus timing:</strong> '+escapeHTML(x.syllabus_timing.summary)+'</p>':'')+'<span class="flag-status">'+escapeHTML(status)+'</span>'+completeButton(x,false)+'</article>';}
-function renderFlags(){var items=data.flagged.filter(function(x){return selectedCourse==="All"||x.course===selectedCourse;});document.getElementById("flags").innerHTML=items.length?items.map(flagHtml).join(""):'<p class="empty">No items in this subject.</p>';}
+function recordGroup(x){
+ var s=(x.school_confirmation||{}).state||"";
+ if(x.id==="mkt-exit"||s==="excused"||s==="reported_excused")return "resolved";
+ if(s==="not_submitted"||x.review==="priority")return "action";
+ return "check";
+}
+function flagHtml(x){
+ var linked=linkedPriorityIds().has(x.id);
+ return '<article class="flag"><div class="flag-heading">'+classButton(x.course,x.course,"flag-class")+'<span class="flag-date">Original '+escapeHTML(displayDate(x.date))+'</span></div>'+
+ '<h3 class="flag-title">'+assignmentButton(x,"","flagged")+'</h3><p class="flag-next">'+(linked?'Main plan in Your Next Moves; open for source history.':'Open for original instructions and verified dates.')+'</p>'+
+ schoolConfirmationHTML(x)+(x.recovery_deadline_status==="superseded_for_janie"?'<p class="flag-next">Former Nov 19 cutoff waived for Janie; historical date preserved.</p>':'')+completeButton(x,false)+'</article>';
+}
+function renderFlags(){
+ var items=(data.flagged||[]).filter(function(x){return selectedCourse==="All"||x.course===selectedCourse;});
+ var groups=[["action","Action or recovery to verify"],["check","Waiting for verification / teacher plan"],["resolved","Graded or reported resolved"]];
+ document.getElementById("flags").innerHTML=items.length?groups.map(function(g){
+  var list=items.filter(function(x){return recordGroup(x)===g[0];});
+  return list.length?'<details class="record-group"><summary><span>'+escapeHTML(g[1])+'</span><span>'+list.length+' record'+(list.length===1?'':'s')+'</span></summary><div class="record-group-body">'+list.map(flagHtml).join("")+'</div></details>':"";
+ }).join(""):'<p class="empty">No records in this subject.</p>';
+}
 function renderFilters(){var courses=["All"];data.flagged.forEach(function(x){if(courses.indexOf(x.course)===-1)courses.push(x.course);});var holder=document.getElementById("filters");holder.replaceChildren();courses.forEach(function(course){var b=document.createElement("button");b.type="button";b.className="filter"+(selectedCourse===course?" selected":"");b.innerHTML=course==="All"?"All subjects":'<span class="course-icon filter-course-icon '+iconStyle(course)+'" aria-hidden="true">'+icon(course)+'</span>'+escapeHTML(course);b.setAttribute("aria-pressed",selectedCourse===course?"true":"false");b.addEventListener("click",function(){selectedCourse=course;renderFilters();renderFlags();});holder.appendChild(b);});}
 function renderGrades(){
  var snapshot=data.grade_snapshot||{},grades=Array.isArray(snapshot.marks)?snapshot.marks:[];
@@ -700,36 +774,51 @@ function renderGrades(){
   "These are current Q2 working grades, not final marks. Large letters show the Q2 mark; the smaller percentage is ancillary. Q1 final report-card marks appear below each course. Summary percentages are shown when course detail rounds differently.":
   "Current grades are unavailable. Check ParentVUE for current information.";
 }
+function schoolConfirmationHTML(x){
+ var c=x&&x.school_confirmation||{},s=c.state||"";
+ var label=s==="graded"?"Graded":s==="submitted"?"Submitted to school":s==="excused"?"Excused":s==="reported_excused"?"Reported excused — verify":s==="not_submitted"?"Not submitted at last check":s==="teacher_correction_pending"?"Teacher correction pending":"School status not verified";
+ return '<span class="school-confirmation'+(/^(graded|submitted|excused)$/.test(s)?' confirmed':'')+'">'+escapeHTML(label)+(c.label?' · '+escapeHTML(c.label):'')+(c.as_of?' · as of '+escapeHTML(displayDate(c.as_of)):'')+'</span>';
+}
+function linkedPriorityIds(){
+ var ids=new Set();
+ ((data.recovery_priorities||{}).items||[]).forEach(function(p){(p.related_assignment_ids||[]).forEach(function(id){ids.add(id);});});
+ return ids;
+}
+function followupHtml(x){
+ return '<div class="followup-item"><div class="followup-main">'+assignmentButton(x,"","upcoming")+'<span class="followup-meta">'+escapeHTML(x.course)+' · original '+escapeHTML(displayDate(x.date))+'</span>'+schoolConfirmationHTML(x)+'</div>'+completeButton(x,false)+'</div>';
+}
+function priorityFamilyDone(p){
+ return (p.id==="RP-001"||p.id==="RP-004")&&p.related_assignment_ids&&p.related_assignment_ids.length===1&&isComplete(p.related_assignment_ids[0]);
+}
+function priorityItemHtml(p,index,all){
+ var linked=(p.related_assignment_ids||[]).map(function(id){var x=all.find(function(y){return y.id===id;});return x?assignmentButton(x,"priority-related-item",(data.flagged||[]).some(function(y){return y.id===id;})?"flagged":"upcoming"):"";}).filter(Boolean).join("");
+ var direct=(p.id==="RP-001"||p.id==="RP-004")&&p.related_assignment_ids&&p.related_assignment_ids.length===1?all.find(function(x){return x.id===p.related_assignment_ids[0];}):null;
+ var detail='<p><strong>Why:</strong> '+escapeHTML(p.reason||"")+'</p><p><strong>Teacher guidance:</strong> '+escapeHTML(p.teacher_guidance||"")+'</p><p><strong>Uncertainty:</strong> '+escapeHTML(p.uncertainty||"")+'</p>'+
+ (p.historical_reference?'<p><strong>Original date / teacher exception:</strong> '+escapeHTML(p.historical_reference)+'</p>':"")+
+ (linked?'<p><strong>Existing assignments:</strong></p><div class="priority-related">'+linked+'</div>':"")+
+ '<p><strong>Evidence:</strong> '+escapeHTML(p.evidence||"")+' · as of '+escapeHTML(p.source_as_of?longDate(p.source_as_of):"date unavailable")+'</p>';
+ var status=priorityFamilyDone(p)?"Marked done by family · school status separate":p.status||"Needs verification";
+ var action=direct?'<div class="priority-direct"><span class="priority-status">'+escapeHTML(status)+'</span>'+completeButton(direct,false)+'</div>':'<span class="priority-status">'+escapeHTML(status)+'</span>';
+ return '<article class="priority-item'+(p.group==="Immediate"?' priority-immediate':'')+'"><div class="priority-item-top"><span class="priority-rank">'+String(index+1).padStart(2,"0")+'</span>'+
+ '<span class="priority-course"><span class="course-icon '+iconStyle(p.course)+'" aria-hidden="true">'+icon(p.course)+'</span>'+escapeHTML(p.course)+'</span><span class="priority-group">'+escapeHTML(p.group||"Review")+'</span></div>'+
+ '<h3>'+escapeHTML(p.title)+'</h3><p class="priority-short">'+escapeHTML(p.short||"")+'</p><p class="priority-date">'+escapeHTML(p.date_label||"Date pending")+'</p>'+
+ action+'<details class="priority-details"><summary>Teacher guidance &amp; details</summary><div class="priority-detail-content">'+detail+'</div></details></article>';
+}
 function renderPriorities(){
- var box=document.getElementById("priority-list");
- var snapshot=data.recovery_priorities||{},items=Array.isArray(snapshot.items)?snapshot.items:[];
- document.getElementById("priority-updated").textContent="Teacher-informed action plan · reviewed "+(snapshot.reviewed_on?longDate(snapshot.reviewed_on):"date not available")+" · check latest school status";
- var all=(data.flagged||[]).concat(data.upcoming||[]);
- box.innerHTML=items.length?items.map(function(p,index){
-  var linked=(p.related_assignment_ids||[]).map(function(id){
-   var item=all.find(function(x){return x.id===id;});
-   if(!item)return "";
-   return assignmentButton(item,"priority-related-item",(data.flagged||[]).some(function(x){return x.id===id;})?"flagged":"upcoming");
-  }).filter(Boolean).join("");
-  var details='<p><strong>Teacher guidance:</strong> '+escapeHTML(p.teacher_guidance||"No additional guidance verified.")+'</p>'+
-   '<p><strong>Uncertainty:</strong> '+escapeHTML(p.uncertainty||"Check the current school record.")+'</p>'+
-   (p.historical_reference?'<p><strong>Original date / approved exception:</strong> '+escapeHTML(p.historical_reference)+'</p>':"")+
-   (linked?'<p><strong>Existing school items:</strong></p><div class="priority-related">'+linked+'</div>':"")+
-   '<p><strong>Evidence:</strong> '+escapeHTML(p.evidence||"Source not specified")+' · as of '+escapeHTML(p.source_as_of?longDate(p.source_as_of):"date unavailable")+'</p>';
-  var immediate=p.group==="Immediate";
-  return '<article class="priority-item'+(immediate?' priority-immediate':'')+'">'+
-   '<div class="priority-item-top"><span class="priority-rank">'+String(index+1).padStart(2,"0")+'</span>'+
-   '<span class="priority-course"><span class="course-icon '+iconStyle(p.course)+'" aria-hidden="true">'+icon(p.course)+'</span>'+escapeHTML(p.course)+'</span>'+
-   '<span class="priority-group">'+escapeHTML(p.group||"Review")+'</span></div>'+
-   '<h3>'+escapeHTML(p.title)+'</h3>'+
-   '<p class="priority-short">'+escapeHTML(p.short||"")+'</p>'+
-   '<p class="priority-date">'+escapeHTML(p.date_label||"Date pending")+'</p>'+
-   '<p class="priority-reason"><strong>Why:</strong> '+escapeHTML(p.reason||"Teacher-recommended work")+'</p>'+
-   '<p class="priority-next"><strong>Next:</strong> '+escapeHTML(p.next_step||"Verify status")+'</p>'+
-   '<span class="priority-status">Status: '+escapeHTML(p.status||"Needs verification")+'</span>'+
-   '<details class="priority-details"><summary aria-label="More details for '+escapeHTML(p.title)+'">Teacher guidance &amp; details</summary><div class="priority-detail-content">'+details+'</div></details>'+
-   '</article>';
- }).join(""):'<p class="empty">No approved priorities in this snapshot. Check the current school records.</p>';
+ var snap=data.recovery_priorities||{},items=Array.isArray(snap.items)?snap.items:[],all=(data.flagged||[]).concat(data.upcoming||[]);
+ document.getElementById("priority-updated").textContent="Recovery plan · reviewed "+(snap.reviewed_on?longDate(snap.reviewed_on):"date unavailable")+" · check school status";
+ var student=items.filter(function(p){return p.id!=="RP-006"&&p.id!=="RP-007";});
+ var active=student.filter(function(p){return !priorityFamilyDone(p);}),done=student.filter(priorityFamilyDone);
+ var top=active.slice(0,3),rest=active.slice(3).concat(done);
+ document.getElementById("priority-list").innerHTML=top.length?top.map(function(p){return priorityItemHtml(p,items.indexOf(p),all);}).join(""):calmState("No immediate recovery moves","Family-marked work stays available under other priorities pending school confirmation.",true);
+ document.getElementById("priority-more").hidden=!rest.length;
+ document.getElementById("priority-more-label").textContent="Other student priorities · "+rest.length;
+ document.getElementById("priority-more-list").innerHTML=rest.map(function(p){return priorityItemHtml(p,items.indexOf(p),all);}).join("");
+ var adults=items.filter(function(p){return p.id==="RP-006"||p.id==="RP-007";});
+ document.getElementById("parent-review-list").innerHTML=adults.map(function(p){
+  return '<article class="parent-review-card"><span class="course-icon '+iconStyle(p.course)+'" aria-hidden="true">'+icon(p.course)+'</span><div><strong>'+escapeHTML(p.course)+' — '+escapeHTML(p.title)+'</strong>'+
+  '<p>'+escapeHTML(p.short||"")+'</p><p>Adult follow-up: '+escapeHTML(p.next_step||"")+'</p><span class="parent-review-tag">'+escapeHTML(p.status||"Needs verification")+' · reviewed '+escapeHTML(p.source_as_of?displayDate(p.source_as_of):"date unavailable")+'</span></div></article>';
+ }).join("")||'<p class="empty">No adult-only follow-ups in this snapshot.</p>';
 }
 function renderHistorical(){
  var items=(data.upcoming||[]).filter(function(x){return !!x.historical_only;}).slice().sort(function(a,b){return a.date.localeCompare(b.date)||a.title.localeCompare(b.title);});
@@ -738,13 +827,37 @@ function renderHistorical(){
   return '<article class="historical-item"><span class="historical-date">Original reference date: '+escapeHTML(longDate(x.date))+'</span><h3>'+assignmentButton(x,"","upcoming")+'</h3><p>'+escapeHTML(x.date_status||"Historical school date — verify current applicability")+'</p></article>';
  }).join("");
 }
-function render(d){data=d;reconcileRecordedCompletions();var today=isoToday();var all=[].concat(d.upcoming||[]).filter(function(x){return !x.historical_only;}).sort(function(a,b){return a.date.localeCompare(b.date);});var upcoming=all.filter(function(x){return x.date>=today;});var carryover=all.filter(function(x){return x.date<today&&trackable(x)&&!isComplete(x.id);});var focus=carryover.concat(upcoming.filter(function(x){return x.date<=isoAdd(today,1);}));var tasks=focus.filter(trackable);var done=tasks.length>0&&tasks.every(function(x){return isComplete(x.id);});document.getElementById("focus-title").textContent="Today & Tomorrow";document.getElementById("focus-sub").textContent=carryover.length?"Past-dated assignments needing a status check remain here until marked complete.":focus.length===0?"A calmer look at the next two days.":done?"All listed assignments are marked complete on this device.":"Just the next decisions—not the whole list.";document.getElementById("focus").innerHTML=focus.length?(done?calmState("Nicely done!","All assignments listed for today and tomorrow are marked complete. You can still review them below.",true):"")+focus.map(function(x){return focusHtml(x,today);}).join(""):calmState("A little breathing room","Nothing is listed for today or tomorrow in this reviewed snapshot. Enjoy the lighter schedule!",false);
-var ids=new Set(focus.map(function(x){return x.id}));var later=upcoming.filter(function(x){return !ids.has(x.id)});document.getElementById("upcoming").innerHTML=later.length?later.map(eventHtml).join(""):'<p class="empty">No other upcoming dates are listed in this snapshot.</p>';var past=all.filter(function(x){return x.date<today&&!ids.has(x.id);});document.getElementById("past-wrap").hidden=!past.length;document.getElementById("past-events").innerHTML=past.map(eventHtml).join("");
-renderFilters();renderFlags();renderSchedule();renderProgress();renderCompleted();renderGrades();renderPriorities();renderHistorical();
-var notices=d.submission_notifications||[];document.getElementById("schoology-submission-note").textContent=notices.length?notices.length+" recent Health & PE submissions reported by Schoology (Nov 9–11); teacher grading not verified.":"";
-document.getElementById("header-date").textContent="Reviewed "+longDate(d.snapshot);
-document.getElementById("calendar-range").textContent=(d.source_range_note||"Schoology reviewed through "+longDate(d.snapshot)+". Earlier items retained for reconciliation.")+" Reviewed: "+longDate(d.snapshot)+".";
-var days=Math.floor((parseDate(today)-parseDate(d.snapshot))/86400000);var note=document.getElementById("stale-warning");note.classList.toggle("show",days>2);note.textContent=days>2?"This board was last reviewed "+longDate(d.snapshot)+". Upcoming items may have changed. Run a new school check before relying on these dates.":"";
+function render(d){
+ data=d;reconcileRecordedCompletions();
+ var today=isoToday(),all=[].concat(d.upcoming||[]).filter(function(x){return !x.historical_only;}).sort(function(a,b){return a.date.localeCompare(b.date);});
+ var future=all.filter(function(x){return x.date>=today;});
+ var immediate=future.filter(function(x){return x.date<=isoAdd(today,1);});
+ var carryover=all.filter(function(x){return x.date<today&&trackable(x)&&!isComplete(x.id);});
+ var focusTasks=immediate.filter(trackable),done=focusTasks.length>0&&focusTasks.every(function(x){return isComplete(x.id);});
+ document.getElementById("focus-title").textContent="Today & Tomorrow";
+ document.getElementById("focus-sub").textContent=immediate.length?(done?"Marked done by family; confirm with school separately.":"Only current dated items; past work is in Needs Follow-Up."):"No dated items today or tomorrow in this snapshot.";
+ document.getElementById("focus").innerHTML=immediate.length?(done?calmState("Family marked today's tasks done","Confirm submission or grading separately.",true):"")+immediate.map(function(x){return focusHtml(x,today);}).join(""):calmState("A little breathing room","Nothing dated today or tomorrow in this snapshot.",false);
+ document.getElementById("followup-wrap").hidden=!carryover.length;
+ document.getElementById("followup-count").textContent="Needs Follow-Up · "+carryover.length;
+ document.getElementById("followup-preview").innerHTML=carryover.slice(0,2).map(followupHtml).join("");
+ document.getElementById("followup-more").hidden=carryover.length<=2;
+ document.getElementById("followup-more-label").textContent="See "+Math.max(0,carryover.length-2)+" more follow-up"+(carryover.length-2===1?"":"s");
+ document.getElementById("followups").innerHTML=carryover.slice(2).map(followupHtml).join("");
+ var focusIds=new Set(immediate.map(function(x){return x.id;})),later=future.filter(function(x){return !focusIds.has(x.id);});
+ document.getElementById("upcoming").innerHTML=later.length?later.slice(0,4).map(eventHtml).join(""):'<p class="empty">No additional dates in this snapshot.</p>';
+ document.getElementById("later-wrap").hidden=later.length<=4;
+ document.getElementById("later-label").textContent="More upcoming dates · "+Math.max(0,later.length-4);
+ document.getElementById("later-events").innerHTML=later.slice(4).map(eventHtml).join("");
+ var followIds=new Set(carryover.map(function(x){return x.id;})),past=all.filter(function(x){return x.date<today&&!followIds.has(x.id);});
+ document.getElementById("past-wrap").hidden=!past.length;document.getElementById("past-events").innerHTML=past.map(eventHtml).join("");
+ renderFilters();renderFlags();renderSchedule();renderProgress();renderCompleted();renderGrades();renderPriorities();renderHistorical();
+ var notices=d.submission_notifications||[];
+ document.getElementById("schoology-submission-note").textContent=notices.length?notices.length+" recent Health & PE submissions reported by Schoology (Nov 9–11); teacher grading not verified.":"";
+ document.getElementById("header-date").textContent="Reviewed "+longDate(d.snapshot);
+ document.getElementById("calendar-range").textContent=(d.source_range_note||"Schoology reviewed through "+longDate(d.snapshot)+". Earlier items retained for reconciliation.")+" Reviewed: "+longDate(d.snapshot)+".";
+ var days=Math.floor((parseDate(today)-parseDate(d.snapshot))/86400000),note=document.getElementById("stale-warning");
+ note.classList.toggle("show",days>2);
+ note.textContent=days>2?"This board was last reviewed "+longDate(d.snapshot)+". Upcoming items may have changed. Run a new school check before relying on these dates.":"";
 }
 
 function courseInfo(course){
@@ -794,8 +907,8 @@ function openDetails(kind,value,view){
  else rows+=rowHtml("Class",course==="School calendar"||course==="School event"?"School event (not a class)":course==="Course to verify"?"Course not verified":course);
  if(item){
    rows+=rowHtml("Date",new Intl.DateTimeFormat("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric",timeZone:"UTC"}).format(parseDate(item.date)));
-   rows+=rowHtml("Status",item.source_status||(item.review?"Schoology overdue flag — status unverified":item.type||"Scheduled"));if(item.source)rows+=rowHtml("Source",item.source);if(item.observed_on)rows+=rowHtml("Last observed",longDate(item.observed_on));if(item.recovery_deadline)rows+=rowHtml(item.recovery_deadline_status==="superseded_for_janie"?"Former recovery cutoff — waived":"Recovery cutoff",longDate(item.recovery_deadline));if(item.historical_only)rows+=rowHtml("Historical date / exception",item.date_status||"Historical only");if(item.recovery_deadline_note)rows+=rowHtml("Teacher-approved concession",item.recovery_deadline_note);
-    if(trackable(item))rows+=rowHtml("My progress",item.family_completed_on?"Family-reported complete "+longDate(item.family_completed_on)+"; school status unverified":isComplete(item.id)?"Marked complete on this device":"Not marked complete");
+   rows+=rowHtml("Status",item.source_status||(item.review?"Schoology overdue flag — status unverified":item.type||"Scheduled"));if(item.source)rows+=rowHtml("Source",item.source);if(item.observed_on)rows+=rowHtml("Last observed",longDate(item.observed_on));if(item.recovery_deadline)rows+=rowHtml(item.recovery_deadline_status==="superseded_for_janie"?"Former recovery cutoff — waived":"Recovery cutoff",longDate(item.recovery_deadline));if(item.historical_only)rows+=rowHtml("Historical date / exception",item.date_status||"Historical only");if(item.recovery_deadline_note)rows+=rowHtml("Teacher-approved concession",item.recovery_deadline_note);if(item.school_confirmation)rows+=rowHtml("School record (dated)",item.school_confirmation.label+" · as of "+longDate(item.school_confirmation.as_of));
+    if(trackable(item))rows+=rowHtml("Family progress",item.family_completed_on?"Marked done by family "+longDate(item.family_completed_on):isComplete(item.id)?"Marked done by family on this device":"Not marked done by family");
  }
  var note=item?(item.next||item.action||""):"";
  var detail=item?(item.detail||""):(info?info.verification||"":"Teacher and period details have not been verified for this item.");
