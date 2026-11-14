@@ -78,7 +78,9 @@
       "detail": "Original Unit 2 Test due Oct 29; ParentVUE showed 66/100 graded on Nov 9 (not missing). The Nov 19 retake cutoff remains; correction/retake completion is unverified.",
       "source": "Teacher / ParentVUE",
       "source_ref": "JDL-0001",
-      "source_status": "recovery deadline; action unconfirmed"
+      "source_status": "recovery deadline; action unconfirmed",
+      "historical_only": true,
+      "date_status": "Superseded for Janie by Nov 13 teacher instructions; Nov 19 is not a firm deadline."
     },
     {
       "id": "algebra-u2-slope-corrections",
@@ -91,7 +93,9 @@
       "detail": "Original Unit 2 Slope Quiz due Oct 21; ParentVUE showed 50/100 graded on Nov 9 (not missing). Teacher note says corrections may recover points by Nov 19; completion is unverified.",
       "source": "Teacher / ParentVUE",
       "source_ref": "JDL-0002",
-      "source_status": "recovery deadline; action unconfirmed"
+      "source_status": "recovery deadline; action unconfirmed",
+      "historical_only": true,
+      "date_status": "Superseded for Janie by Nov 13 teacher instructions; Nov 19 is not a firm deadline."
     },
     {
       "id": "algebra-parallel-perp-hw",
@@ -104,7 +108,9 @@
       "detail": "Original due date Oct 27; ParentVUE showed Not Turned In, 0/1 on Nov 9. Teacher note allows full credit through Nov 19; later submission/status is unverified.",
       "source": "Teacher / ParentVUE",
       "source_ref": "JDL-0003",
-      "source_status": "recovery deadline; action unconfirmed"
+      "source_status": "recovery deadline; action unconfirmed",
+      "historical_only": true,
+      "date_status": "Superseded for Janie by Nov 13 teacher instructions; Nov 19 is not a firm deadline."
     },
     {
       "id": "algebra-u2-linear-functions-review",
@@ -117,7 +123,9 @@
       "detail": "Original due date Oct 27; ParentVUE showed Not Turned In, 0/1 on Nov 9. Teacher note lists Nov 19 as a full-credit cutoff; later submission/status is unverified.",
       "source": "Teacher / ParentVUE",
       "source_ref": "JDL-0004",
-      "source_status": "recovery deadline; action unconfirmed"
+      "source_status": "recovery deadline; action unconfirmed",
+      "historical_only": true,
+      "date_status": "Superseded for Janie by Nov 13 teacher instructions; Nov 19 is not a firm deadline."
     },
     {
       "id": "algebra-u2-d4-practice",
@@ -130,7 +138,9 @@
       "detail": "Original due date Oct 21; ParentVUE showed Not Turned In, 0/1 on Nov 9. Teacher note lists Nov 19 as a full-credit cutoff; later submission/status is unverified.",
       "source": "Teacher / ParentVUE",
       "source_ref": "JDL-0005",
-      "source_status": "recovery deadline; action unconfirmed"
+      "source_status": "recovery deadline; action unconfirmed",
+      "historical_only": true,
+      "date_status": "Superseded for Janie by Nov 13 teacher instructions; Nov 19 is not a firm deadline."
     },
     {
       "id": "positive-posts",
@@ -167,7 +177,9 @@
       "action": "Check whether remediation or a retake is needed; plan before the weekend.",
       "detail": "Optional deadline; applicability not confirmed.",
       "source": "both",
-      "last_seen_in_digest": "2026-11-09"
+      "last_seen_in_digest": "2026-11-09",
+      "historical_only": true,
+      "date_status": "Not needed per Nov 13 Biology teacher guidance. Original school schedule date retained for provenance."
     },
     {
       "id": "biology-5",
@@ -309,15 +321,16 @@
       "date": "2026-09-09",
       "course": "Marketing",
       "title": "Customer Persona Assignment Submission",
-      "review": "verify",
-      "next": "Confirm submission and whether work remains.",
+      "review": "priority",
+      "next": "Teacher confirmed Not Turned In (zero) on Nov 13. An attempt can earn at least 50%; confirm current status and any new cutoff.",
       "syllabus_timing": {
         "summary": "Two-week reference: Sep 23.",
         "explanation": "Marketing syllabus: assignments submitted within 14 days of the listed Sep 9 date would reach a Sep 23 reference date, with a stated 10% late penalty. Confirm the actual due date, submission status and whether the teacher has directed any further action.",
         "reference_date": "2026-09-23",
         "color_basis": "dated"
       },
-      "last_seen_in_digest": "2026-11-09"
+      "last_seen_in_digest": "2026-11-09",
+      "display_status": "Teacher-confirmed zero as of Nov 13"
     },
     {
       "id": "mkt-exit",
@@ -325,14 +338,15 @@
       "course": "Marketing",
       "title": "Exit Ticket",
       "review": "reconcile",
-      "next": "Previously reported as graded; check whether flag is stale.",
+      "next": "Teacher confirmed 9/10 graded; older Schoology overdue flag appears stale.",
       "syllabus_timing": {
         "summary": "Two-week reference: Oct 6.",
         "explanation": "Marketing's two-week rule would put the reference date at Oct 6 for the Sep 22 listed date, with a stated 10% late penalty. This item was previously reported as graded; reconcile the Schoology flag before asking for work to be redone.",
         "reference_date": "2026-10-06",
         "color_basis": "dated"
       },
-      "last_seen_in_digest": "2026-11-09"
+      "last_seen_in_digest": "2026-11-09",
+      "display_status": "Graded 9/10 — older flag"
     },
     {
       "id": "mkt-brand",
@@ -355,14 +369,15 @@
       "course": "Marketing",
       "title": "Fall Product Summative",
       "review": "priority",
-      "next": "Confirm whether work remains and what recovery options exist.",
+      "next": "Teacher confirmed Not Turned In (zero) on Nov 13. An attempt can earn at least 50%; confirm current status and any new cutoff.",
       "syllabus_timing": {
         "summary": "Two-week reference: Oct 22; ask about reassessment.",
         "explanation": "The Oct 8 listed date plus Marketing's 14-day late-work window gives an Oct 22 reference date and a stated 10% late penalty. Because this is labeled summative, separately ask whether later demonstrated mastery can replace an earlier major-assessment score or whether a teacher-scheduled retake with remediation applies. No option is guaranteed.",
         "reference_date": "2026-10-22",
         "color_basis": "dated"
       },
-      "last_seen_in_digest": "2026-11-09"
+      "last_seen_in_digest": "2026-11-09",
+      "display_status": "Teacher-confirmed zero as of Nov 13"
     },
     {
       "id": "mkt-promo",
@@ -384,104 +399,116 @@
       "date": "2026-10-29",
       "course": "Algebra 1",
       "title": "Unit 2 Test",
-      "review": "priority",
-      "display_status": "Graded 66/100; retake pending",
+      "review": "reconcile",
+      "display_status": "Graded test — corrections plan",
       "source": "ParentVUE gradebook; teacher/TalkingPoints recovery record",
       "source_ref": "JDL-0001",
       "source_status": "Graded 66/100 in ParentVUE on Nov 9; retake/correction completion unverified. Graded, not missing.",
       "observed_on": "2026-11-09",
       "recovery_deadline": "2026-11-19",
-      "next": "ParentVUE showed 66/100 graded on Nov 9 (not missing). Teacher/TalkingPoints set a Nov 19 retake cutoff; correction/retake completion is unverified.",
-      "detail": "Original test due Oct 29. Nov 19 is a separate recovery cutoff, not the original due date. The item-level status has not been rechecked since Nov 9."
+      "next": "Teacher says Unit 2 test corrections are useful, but the former Nov 19 cutoff is waived for Janie. A retake is not a current firm requirement.",
+      "detail": "Original test due Oct 29. Nov 19 is a separate recovery cutoff, not the original due date. The item-level status has not been rechecked since Nov 9.",
+      "recovery_deadline_status": "superseded_for_janie",
+      "recovery_update_as_of": "2026-11-13"
     },
     {
       "id": "algebra-u2-slope-corrections",
       "date": "2026-10-21",
       "course": "Algebra 1",
       "title": "Unit 2 Quiz — Slope",
-      "review": "priority",
-      "display_status": "Graded 50/100; corrections pending",
+      "review": "reconcile",
+      "display_status": "Needs teacher reconciliation",
       "source": "ParentVUE gradebook; teacher recovery note",
       "source_ref": "JDL-0002",
       "source_status": "Graded 50/100 in ParentVUE on Nov 9; teacher note says corrections may recover points by Nov 19. Graded, not missing; correction completion unverified.",
       "observed_on": "2026-11-09",
       "recovery_deadline": "2026-11-19",
-      "next": "ParentVUE showed 50/100 graded on Nov 9 (not missing). Teacher note: corrections may recover points by Nov 19; completion is unverified.",
-      "detail": "Original quiz due Oct 21. The Nov 19 date is a separate correction-credit cutoff. Exact correction procedure and current completion have not been rechecked."
+      "next": "Teacher says only tests are required; old Nov 19 cutoff is waived for Janie. Homework and quiz excusals may be arranged but are not confirmed.",
+      "detail": "Original quiz due Oct 21. The Nov 19 date is a separate correction-credit cutoff. Exact correction procedure and current completion have not been rechecked.",
+      "recovery_deadline_status": "superseded_for_janie",
+      "recovery_update_as_of": "2026-11-13"
     },
     {
       "id": "algebra-parallel-perp-hw",
       "date": "2026-10-27",
       "course": "Algebra 1",
       "title": "U2 D6 HW — Parallel & Perpendicular Lines",
-      "review": "priority",
-      "display_status": "Not Turned In; 0/1 (observed Nov 9)",
+      "review": "reconcile",
+      "display_status": "Needs teacher reconciliation",
       "source": "ParentVUE gradebook; teacher recovery note",
       "source_ref": "JDL-0003",
       "source_status": "ParentVUE showed Not Turned In; 0/1 on Nov 9. Teacher note says submit by Nov 19 for full credit; later status unverified.",
       "observed_on": "2026-11-09",
       "recovery_deadline": "2026-11-19",
-      "next": "ParentVUE showed Not Turned In, 0/1 on Nov 9. Teacher note allows full credit through Nov 19; recheck for a later submission or status change.",
-      "detail": "Original due date Oct 27. The Nov 19 date is a separate full-credit late-work cutoff. The item-level status has not been rechecked since Nov 9."
+      "next": "Teacher says only tests are required; old Nov 19 cutoff is waived for Janie. Homework and quiz excusals may be arranged but are not confirmed.",
+      "detail": "Original due date Oct 27. The Nov 19 date is a separate full-credit late-work cutoff. The item-level status has not been rechecked since Nov 9.",
+      "recovery_deadline_status": "superseded_for_janie",
+      "recovery_update_as_of": "2026-11-13"
     },
     {
       "id": "algebra-u2-linear-functions-review",
       "date": "2026-10-27",
       "course": "Algebra 1",
       "title": "U2 Review — Linear Functions",
-      "review": "priority",
-      "display_status": "Not Turned In; 0/1 (observed Nov 9)",
+      "review": "reconcile",
+      "display_status": "Needs teacher reconciliation",
       "source": "ParentVUE gradebook; teacher recovery note",
       "source_ref": "JDL-0004",
       "source_status": "ParentVUE showed Not Turned In; 0/1 on Nov 9. Teacher note lists Nov 19 as a full-credit cutoff; later status unverified.",
       "observed_on": "2026-11-09",
       "recovery_deadline": "2026-11-19",
-      "next": "ParentVUE showed Not Turned In, 0/1 on Nov 9. Teacher note allows full credit through Nov 19; recheck whether it has since been submitted or adjusted.",
-      "detail": "Original due date Oct 27. The Nov 19 date is a separate full-credit late-work cutoff. The item-level status has not been rechecked since Nov 9."
+      "next": "Teacher says only tests are required; old Nov 19 cutoff is waived for Janie. Homework and quiz excusals may be arranged but are not confirmed.",
+      "detail": "Original due date Oct 27. The Nov 19 date is a separate full-credit late-work cutoff. The item-level status has not been rechecked since Nov 9.",
+      "recovery_deadline_status": "superseded_for_janie",
+      "recovery_update_as_of": "2026-11-13"
     },
     {
       "id": "algebra-u2-d4-practice",
       "date": "2026-10-21",
       "course": "Algebra 1",
       "title": "U2 D4 Practice Quiz",
-      "review": "priority",
-      "display_status": "Not Turned In; 0/1 (observed Nov 9)",
+      "review": "reconcile",
+      "display_status": "Needs teacher reconciliation",
       "source": "ParentVUE gradebook; teacher recovery note",
       "source_ref": "JDL-0005",
       "source_status": "ParentVUE showed Not Turned In; 0/1 on Nov 9. Teacher note lists Nov 19 as a full-credit cutoff; later status unverified.",
       "observed_on": "2026-11-09",
       "recovery_deadline": "2026-11-19",
-      "next": "ParentVUE showed Not Turned In, 0/1 on Nov 9. Teacher note allows full credit through Nov 19; recheck whether it has since been submitted or adjusted.",
-      "detail": "Original due date Oct 21. The Nov 19 date is a separate full-credit late-work cutoff. The item-level status has not been rechecked since Nov 9."
+      "next": "Teacher says only tests are required; old Nov 19 cutoff is waived for Janie. Homework and quiz excusals may be arranged but are not confirmed.",
+      "detail": "Original due date Oct 21. The Nov 19 date is a separate full-credit late-work cutoff. The item-level status has not been rechecked since Nov 9.",
+      "recovery_deadline_status": "superseded_for_janie",
+      "recovery_update_as_of": "2026-11-13"
     },
     {
       "id": "bio-safety",
       "date": "2026-08-28",
       "course": "Biology",
       "title": "FCPS Science Safety Agreement Form",
-      "review": "verify",
-      "next": "Check whether the administrative form is complete.",
+      "review": "reconcile",
+      "next": "Teacher plans to correct misleading form status; no student submission is expected solely from the old flag.",
       "syllabus_timing": {
         "summary": "Administrative form: verify directly.",
         "explanation": "The Aug 28 item is a science safety agreement form. Do not apply Biology's summative late-work or reassessment rule to an administrative form without teacher confirmation. Ask whether the form is already on file.",
         "color_basis": "unverified"
       },
-      "last_seen_in_digest": "2026-11-09"
+      "last_seen_in_digest": "2026-11-09",
+      "display_status": "Teacher correction pending"
     },
     {
       "id": "bio-unit2",
       "date": "2026-09-25",
       "course": "Biology",
       "title": "Unit 2 Assessment — Water and Macromolecules",
-      "review": "priority",
-      "next": "Confirm status and any available makeup opportunity.",
+      "review": "reconcile",
+      "next": "Teacher says Unit 2 can be taken later without strict deadline; excusal possible, not yet confirmed.",
       "syllabus_timing": {
         "summary": "Q1 retake reference: Oct 30; confirm test status.",
         "explanation": "This Sep 25 entry is an assessment, not necessarily late written work. Biology's retake policy requires remediation and completion within the same quarter; the first quarter ended Oct 30. That does not establish the student's eligibility or whether a makeup or retake was arranged. Check the SIS assessment entry and teacher directions.",
         "reference_date": "2026-10-30",
         "color_basis": "dated"
       },
-      "last_seen_in_digest": "2026-11-09"
+      "last_seen_in_digest": "2026-11-09",
+      "display_status": "Flexible / verify"
     },
     {
       "id": "photo-zine",
@@ -489,29 +516,31 @@
       "course": "Photography",
       "title": "ZINE UNIT — Submit on Paper",
       "review": "reconcile",
-      "next": "Paper submission may not clear the online flag.",
+      "next": "Teacher requests waiting for planned digital/at-home alternatives before chasing old darkroom flags. Not yet excused.",
       "syllabus_timing": {
         "summary": "Q1 cutoff: Oct 30; paper status unknown.",
         "explanation": "The Photography syllabus sets the first-quarter missing-work cutoff at Oct 30, with a 10% late penalty. This Sep 3 item specifically calls for paper submission, which may not clear a Schoology flag. If it was submitted as a summative project, later revisions may be possible; verify both facts with the teacher.",
         "reference_date": "2026-10-30",
         "color_basis": "dated"
       },
-      "last_seen_in_digest": "2026-11-09"
+      "last_seen_in_digest": "2026-11-09",
+      "display_status": "Teacher plan pending"
     },
     {
       "id": "photo-enlarger",
       "date": "2026-09-08",
       "course": "Photography",
       "title": "Learn the Enlarger",
-      "review": "verify",
-      "next": "Check status with teacher before redoing anything.",
+      "review": "reconcile",
+      "next": "Teacher requests waiting for planned digital/at-home alternatives before chasing old darkroom flags. Not yet excused.",
       "syllabus_timing": {
         "summary": "Q1 cutoff: Oct 30; check work type.",
         "explanation": "The Photography syllabus uses an Oct 30 first-quarter missing-work cutoff and a 10% late penalty. However, studio practice cannot generally be made up, while previously submitted summative projects may be revised. Determine what this Sep 8 activity involved and whether it was completed in class before applying either rule.",
         "reference_date": "2026-10-30",
         "color_basis": "dated"
       },
-      "last_seen_in_digest": "2026-11-09"
+      "last_seen_in_digest": "2026-11-09",
+      "display_status": "Teacher plan pending"
     },
     {
       "id": "photo-portfolio",
@@ -519,43 +548,46 @@
       "course": "Photography",
       "title": "Process Portfolio — Ongoing All Year",
       "review": "reconcile",
-      "next": "Ongoing item; confirm what the dated flag means.",
+      "next": "Teacher requests waiting for planned digital/at-home alternatives before chasing old darkroom flags. Not yet excused.",
       "syllabus_timing": {
         "summary": "Ongoing portfolio: Oct 9 is not a confirmed cutoff.",
         "explanation": "Although Photography's general first-quarter missing-work cutoff was Oct 30, this Oct 9 flag is explicitly for a process portfolio continuing all year. Previously submitted summative work may be revised. Confirm the particular checkpoint, physical/digital submission status and whether any Q1 formative item was separately closed.",
         "color_basis": "unverified"
       },
-      "last_seen_in_digest": "2026-11-09"
+      "last_seen_in_digest": "2026-11-09",
+      "display_status": "Teacher plan pending"
     },
     {
       "id": "history-person",
       "date": "2026-10-21",
       "course": "World History",
       "title": "Person of the Century",
-      "review": "verify",
-      "next": "Confirm submission and any follow-up.",
+      "review": "reconcile",
+      "next": "Teacher reportedly allows a winter-break completion; accepted cutoff unknown. Alert teacher after any late submission.",
       "syllabus_timing": {
         "summary": "Two-week reference: Nov 4.",
         "explanation": "World History's written 14-day late-work period applies to formative and summative submissions, with a stated 10% penalty. The Oct 21 listed date gives a Nov 4 reference date. Confirm whether the item was already submitted and whether the actual class deadline or any exceptions differ.",
         "reference_date": "2026-11-04",
         "color_basis": "dated"
       },
-      "last_seen_in_digest": "2026-11-09"
+      "last_seen_in_digest": "2026-11-09",
+      "display_status": "Recovery timing not confirmed"
     },
     {
       "id": "eng-bookthief",
       "date": "2026-11-05",
       "course": "English Honors",
       "title": "The Book Thief Pre-Reading WebQuest",
-      "review": "verify",
-      "next": "Recent flag; verify whether work remains.",
+      "review": "priority",
+      "next": "Teacher said Nov 13 it was not submitted and offered grading for a Saturday-night Nov 14 submission. Check current status.",
       "syllabus_timing": {
         "summary": "If summative: Nov 19; category not verified.",
         "explanation": "English Honors accepts summative work within two weeks of the listed Nov 5 date, giving a Nov 19 reference date with a 10% late penalty. Its syllabus instead states that late formative work receives zero. This WebQuest's category and actual submission status have not been verified; do not apply the summative window automatically.",
         "reference_date": "2026-11-19",
         "color_basis": "conditional"
       },
-      "last_seen_in_digest": "2026-11-09"
+      "last_seen_in_digest": "2026-11-09",
+      "display_status": "Teacher deadline Nov 14; current status to verify"
     },
     {
       "id": "mkt-promotion-submission",
@@ -868,5 +900,152 @@
         }
       ]
     }
+  },
+  "recovery_priorities": {
+    "reviewed_on": "2026-11-13",
+    "owner": "Kyle's Operation Shay (editorial reconciliation)",
+    "scope_note": "Curated family academic-action view as of Nov 13. Priority states are source-dated, not synchronized with FCPS. No private teacher-email or Drive links appear in this public file.",
+    "items": [
+      {
+        "id": "RP-001",
+        "course": "English Honors",
+        "group": "Immediate",
+        "title": "Submit The Book Thief Websearch",
+        "short": "Submit the Websearch / Pre-Reading WebQuest in Schoology, then confirm it registered.",
+        "date_label": "Sat, Nov 14 — Saturday night; exact time not given",
+        "date": "2026-11-14",
+        "date_kind": "teacher credit opportunity",
+        "status": "Needs verification",
+        "reason": "The teacher offered a short window to earn a grade on outstanding work.",
+        "teacher_guidance": "Mr. Mohan said on Nov 13 that it had not been submitted and that he would grade it if received by Saturday night, before Sunday grading.",
+        "next_step": "Check whether Janie has now submitted it; if not, submit if possible and confirm the school record.",
+        "uncertainty": "ParentVUE called it The Book Thief Websearch; Schoology called it Pre-Reading WebQuest. Likely the same work, but the matching identity and current submission status are not independently verified.",
+        "related_assignment_ids": [
+          "eng-bookthief"
+        ],
+        "source_as_of": "2026-11-13",
+        "evidence": "Teacher email and ParentVUE/Schoology observations"
+      },
+      {
+        "id": "RP-002",
+        "course": "Marketing",
+        "group": "High-impact",
+        "title": "Recover Marketing summative credit",
+        "short": "Start with Customer Persona or Fall Product Summative; choose one manageable attempt.",
+        "date_label": "Date pending — no new teacher cutoff provided",
+        "date": null,
+        "date_kind": "unspecified recovery window",
+        "status": "Needs action",
+        "reason": "The two zero-credit summatives together accounted for 70% of the first-quarter grade.",
+        "teacher_guidance": "Mrs. Robinson confirmed both as Not Turned In with zeros. An attempted submission can earn at least 50%; stronger rubric work may earn more. Promotional Mix and CTE Promotion attempts can earn at least 50%, up to 90% with careful work.",
+        "next_step": "Open one of the two high-weight summative rubrics, make an attainable submission plan, and ask whether late work changes the finalized Q1 mark or only the rolling grade.",
+        "uncertainty": "The teacher supplied neither a new firm cutoff nor an upper cap for the two summatives. Exit Ticket was graded 9/10; several other Marketing items are excused. The CTE Promotion title is not independently matched to the existing Schoology flag.",
+        "related_assignment_ids": [
+          "mkt-persona",
+          "mkt-fall",
+          "mkt-promo"
+        ],
+        "source_as_of": "2026-11-13",
+        "evidence": "Marketing teacher email"
+      },
+      {
+        "id": "RP-003",
+        "course": "Algebra 1",
+        "group": "High-impact",
+        "title": "Focus on Unit 1 and Unit 2 test corrections",
+        "short": "Plan Unit 1 and Unit 2 corrections; a Unit 1 retake is optional.",
+        "date_label": "Flexible — former Nov 19 cutoff waived for Janie",
+        "date": null,
+        "date_kind": "teacher-approved flexibility",
+        "status": "Needs action",
+        "reason": "The teacher identified tests, rather than all past homework and quizzes, as the necessary missing work.",
+        "teacher_guidance": "Ms. Dineen said the November 19 deadline will not bind Janie. Practice tests, quizzes, and review guides can support corrections. Homework and quiz excusals are possible if agreed upon.",
+        "next_step": "Choose a manageable test-correction sequence and have Heather coordinate any needed teacher clarification.",
+        "uncertainty": "Homework/quiz excusals were offered but have not been confirmed in the gradebook. The former November 19 deadline is historical, not a current cutoff.",
+        "related_assignment_ids": [
+          "algebra-u2-retake-nov19"
+        ],
+        "source_as_of": "2026-11-13",
+        "evidence": "Algebra teacher email"
+      },
+      {
+        "id": "RP-004",
+        "course": "World History",
+        "group": "Upcoming",
+        "title": "Study for the Unit 3 Test",
+        "short": "Use the Unit 3 study guide for the Friday, November 20 test.",
+        "date_label": "Fri, Nov 20 — scheduled Unit 3 Test",
+        "date": "2026-11-20",
+        "date_kind": "scheduled school assessment",
+        "status": "Needs action",
+        "reason": "A scheduled assessment is a more immediate priority than older, recoverable work.",
+        "teacher_guidance": "Parent-reported guidance from Ms. Dougherty emphasizes the Unit 3 study guide. Person of the Year can reportedly be completed over winter break; a submitted late assignment should be brought to the teacher's attention.",
+        "next_step": "Start short study-guide sessions; check the original test instructions and any testing arrangements.",
+        "uncertainty": "World History guidance came through a parent report, not reviewed written teacher instructions. The earlier Africa essay was reportedly completed with a B. Winter-break cutoff is unknown; a later in-class essay is expected Dec 7 or 8, not two separate events.",
+        "related_assignment_ids": [
+          "history-unit3-test",
+          "history-person"
+        ],
+        "source_as_of": "2026-11-13",
+        "evidence": "Parent-reported teacher guidance and Schoology test date"
+      },
+      {
+        "id": "RP-005",
+        "course": "English Honors",
+        "group": "Upcoming",
+        "title": "Prepare for The Book Thief oral Q&A",
+        "short": "Confirm the assigned passage and prepare for a one-on-one FLEX Q&A.",
+        "date_label": "Mon, Nov 23 — teacher-scheduled FLEX Q&A",
+        "date": "2026-11-23",
+        "date_kind": "teacher-scheduled assessment",
+        "status": "Needs action",
+        "reason": "The oral Q&A counts toward the second-quarter oral summative.",
+        "teacher_guidance": "Mr. Mohan scheduled a one-on-one question-and-answer session during FLEX on November 23.",
+        "next_step": "Confirm the passage, prepare a few manageable notes and questions, and coordinate a change only if needed.",
+        "uncertainty": "The exact passage, preparation details, and eventual attendance are not yet confirmed. Do not assume the existing ParentVUE oral row is necessarily this same scheduled activity.",
+        "related_assignment_ids": [],
+        "source_as_of": "2026-11-13",
+        "evidence": "English teacher email"
+      },
+      {
+        "id": "RP-006",
+        "course": "Photography",
+        "group": "Flexible",
+        "title": "Wait for the at-home Photography plan",
+        "short": "Do not chase every old overdue flag while the teacher develops alternatives.",
+        "date_label": "Nov 16–17 — expected teacher follow-up, not a deadline",
+        "date": null,
+        "date_kind": "tentative teacher follow-up",
+        "status": "Waiting for teacher",
+        "reason": "An individualized digital-project plan may be a more productive use of effort than clearing old darkroom flags.",
+        "teacher_guidance": "Ms. Kahnell plans to consider digital prompts and independent home projects, subject to school coordination. Later darkroom catch-up remains an option.",
+        "next_step": "Heather can share creative interests and watch for teacher-issued prompts.",
+        "uncertainty": "No alternative plan has been issued or approved yet. Earlier assignments are not thereby excused. The expected Monday/Tuesday reply is not a binding deadline.",
+        "related_assignment_ids": [],
+        "source_as_of": "2026-11-13",
+        "evidence": "Photography teacher email"
+      },
+      {
+        "id": "RP-007",
+        "course": "Biology",
+        "group": "Monitor",
+        "title": "Stay current; avoid unnecessary Biology catch-up",
+        "short": "No Unit 4 remediation or retake needed; monitor Unit 2 and the safety-form correction.",
+        "date_label": "No strict recovery deadline supplied",
+        "date": null,
+        "date_kind": "monitor",
+        "status": "Needs verification",
+        "reason": "The teacher says Unit 4 went well and does not recommend catching up old work unnecessarily.",
+        "teacher_guidance": "Ms. Camire said Unit 2 can be taken later without a strict deadline or considered for excusal if necessary. She intends to correct the misleading Science Safety Agreement status; flexible at-home notes and practice are available.",
+        "next_step": "Stay current where reasonable, then verify whether Unit 2 is eventually completed or formally excused.",
+        "uncertainty": "Unit 2 excusal and safety-form gradebook correction were not yet confirmed completed; do not add optional Unit 4 remediation back to the priority queue.",
+        "related_assignment_ids": [
+          "bio-unit2",
+          "bio-safety"
+        ],
+        "source_as_of": "2026-11-13",
+        "evidence": "Biology teacher email"
+      }
+    ]
   }
 }
