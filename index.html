@@ -495,6 +495,15 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 .event .completion-row{margin-top:9px}
 @media(max-width:650px){.event{grid-template-columns:55px minmax(0,1fr);padding:12px}.event:last-child{padding:12px}.card-context-line{font-size:12px}}
 
+
+/* Linked recovery and dated cards share the same assignment title, record content, and completion state. */
+.priority-item.priority-consistent{border:1px solid #dde6f1;border-radius:16px;background:var(--paper);padding:17px 18px}
+.priority-item.priority-consistent.priority-immediate{border-left:4px solid #b83c3c}
+.priority-item.priority-consistent h3{font-size:16px;line-height:1.3;letter-spacing:-.25px;margin:6px 0 9px}
+.priority-item.priority-consistent .card-context{margin:8px 0 10px}
+.priority-item.priority-consistent .priority-direct{justify-content:flex-start}
+@media(max-width:650px){.priority-item.priority-consistent{padding:14px}}
+
 </style>
 </head>
 <body>
@@ -874,18 +883,29 @@ function priorityFamilyDone(p){
  return (p.id==="RP-001"||p.id==="RP-004")&&p.related_assignment_ids&&p.related_assignment_ids.length===1&&isComplete(p.related_assignment_ids[0]);
 }
 function priorityItemHtml(p,index,all){
- var linked=(p.related_assignment_ids||[]).map(function(id){var x=all.find(function(y){return y.id===id;});return x?assignmentButton(x,"priority-related-item",(data.flagged||[]).some(function(y){return y.id===id;})?"flagged":"upcoming"):"";}).filter(Boolean).join("");
- var direct=(p.id==="RP-001"||p.id==="RP-004")&&p.related_assignment_ids&&p.related_assignment_ids.length===1?all.find(function(x){return x.id===p.related_assignment_ids[0];}):null;
- var detail='<p><strong>Why:</strong> '+escapeHTML(p.reason||"")+'</p><p><strong>Uncertainty:</strong> '+escapeHTML(p.uncertainty||"")+'</p>'+
+ // A recovery priority linked to one known assignment uses that assignment's display identity.
+ // The source's alternative names and verification caveats remain in the disclosure.
+ var matching=(p.id==="RP-001"||p.id==="RP-004")&&
+   Array.isArray(p.related_assignment_ids)&&p.related_assignment_ids.length===1;
+ var linkedId=matching?p.related_assignment_ids[0]:null;
+ var direct=matching?reviewedRecoveryViews(data).concat(all).find(function(x){return x.id===linkedId;}):null;
+ var linked=(p.related_assignment_ids||[]).map(function(id){
+  var x=all.find(function(y){return y.id===id;});
+  return x?assignmentButton(x,"priority-related-item",(data.flagged||[]).some(function(y){return y.id===id;})?"flagged":"upcoming"):"";
+ }).filter(Boolean).join("");
+ var detail='<p><strong>Why:</strong> '+escapeHTML(p.reason||"")+'</p>'+
+ '<p><strong>Uncertainty:</strong> '+escapeHTML(p.uncertainty||"")+'</p>'+
  (p.historical_reference?'<p><strong>Original date / teacher exception:</strong> '+escapeHTML(p.historical_reference)+'</p>':"")+
- (linked?'<p><strong>Existing assignments:</strong></p><div class="priority-related">'+linked+'</div>':"")+
+ (!direct&&linked?'<p><strong>Existing assignments:</strong></p><div class="priority-related">'+linked+'</div>':"")+
  '<p><strong>Evidence:</strong> '+escapeHTML(p.evidence||"")+' · as of '+escapeHTML(p.source_as_of?longDate(p.source_as_of):"date unavailable")+'</p>';
  var groupClass=(p.group||"").toLowerCase().replace(/[^a-z]+/g,"-");
- return '<article class="priority-item'+(p.group==="Immediate"?' priority-immediate':'')+'"><div class="priority-item-top"><span class="priority-rank">'+String(index+1).padStart(2,"0")+'</span>'+
+ return '<article class="priority-item'+(p.group==="Immediate"?' priority-immediate':'')+(direct?' priority-consistent':'')+'"><div class="priority-item-top"><span class="priority-rank">'+String(index+1).padStart(2,"0")+'</span>'+
  '<span class="priority-course"><span class="course-icon '+iconStyle(p.course)+'" aria-hidden="true">'+icon(p.course)+'</span>'+escapeHTML(p.course)+'</span><span class="priority-group group-'+groupClass+'">'+escapeHTML(p.group||"Review")+'</span></div>'+
- '<h3>'+escapeHTML(p.title)+'</h3><p class="priority-short">'+escapeHTML(p.short||"")+'</p><p class="priority-date">'+escapeHTML(p.date_label||"Date pending")+'</p>'+
+ '<h3>'+(direct?assignmentButton(direct):escapeHTML(p.title))+'</h3>'+
+ (direct?assignmentContextHtml(direct):
+ '<p class="priority-short">'+escapeHTML(p.short||"")+'</p><p class="priority-date">'+escapeHTML(p.date_label||"Date pending")+'</p>'+
  (p.next_step?'<p class="priority-next"><strong>Next step:</strong> '+escapeHTML(p.next_step)+'</p>':"")+
- (p.teacher_guidance?'<p class="priority-teacher"><strong>Teacher guidance:</strong> '+escapeHTML(p.teacher_guidance)+'</p>':"")+
+ (p.teacher_guidance?'<p class="priority-teacher"><strong>Teacher guidance:</strong> '+escapeHTML(p.teacher_guidance)+'</p>':""))+
  (direct?'<div class="priority-direct">'+completeButton(direct,false)+'</div>':"")+
  '<details class="priority-details"><summary>Sources &amp; additional details</summary><div class="priority-detail-content">'+detail+'</div></details></article>';
 }
