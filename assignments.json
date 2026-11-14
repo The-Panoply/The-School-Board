@@ -80,7 +80,14 @@
       "source_ref": "JDL-0001",
       "source_status": "Historical recovery window — teacher-approved waiver Nov 13",
       "historical_only": true,
-      "date_status": "Original recovery cutoff: November 19, 2026. Ms. Dineen expressly waived this for Janie on November 13. Historical reference only; new cutoff not set."
+      "date_status": "Original recovery cutoff: November 19, 2026. Ms. Dineen expressly waived this for Janie on November 13. Historical reference only; new cutoff not set.",
+      "school_confirmation": {
+        "state": "graded",
+        "label": "Graded 66/100 • ParentVUE Nov 9",
+        "as_of": "2026-11-09",
+        "source": "ParentVUE",
+        "note": "Source-specific status at the stated observation date; not a live gradebook or family completion."
+      }
     },
     {
       "id": "algebra-u2-slope-corrections",
@@ -95,7 +102,14 @@
       "source_ref": "JDL-0002",
       "source_status": "Historical recovery window — teacher-approved waiver Nov 13",
       "historical_only": true,
-      "date_status": "Original recovery cutoff: November 19, 2026. Ms. Dineen expressly waived this for Janie on November 13. Historical reference only; new cutoff not set."
+      "date_status": "Original recovery cutoff: November 19, 2026. Ms. Dineen expressly waived this for Janie on November 13. Historical reference only; new cutoff not set.",
+      "school_confirmation": {
+        "state": "graded",
+        "label": "Graded 50/100 • ParentVUE Nov 9",
+        "as_of": "2026-11-09",
+        "source": "ParentVUE",
+        "note": "Source-specific status at the stated observation date; not a live gradebook or family completion."
+      }
     },
     {
       "id": "algebra-parallel-perp-hw",
@@ -152,7 +166,14 @@
       "action": "Schoology shows submitted Nov 5; grade is N/A. ParentVUE shows a same-title Nov 3 row not graded; confirm whether these are the same item.",
       "detail": "Schoology assignment 8638370734: due Nov 19 at 11:59 p.m.; submitted on time Nov 5 at 2:16 p.m.; grade N/A. Schoology parent Home lists it as recently completed/submitted but not graded. ParentVUE shows a same-title row due Nov 3 and Not Graded. Whether the ParentVUE row is stale or separate is unresolved.",
       "source": "Authenticated Schoology parent assignment page; ParentVUE comparison",
-      "source_ref": "SCHOOL-045, SCHOOL-047; ASG-056, ASG-071, ASG-074"
+      "source_ref": "SCHOOL-045, SCHOOL-047; ASG-056, ASG-071, ASG-074",
+      "school_confirmation": {
+        "state": "submitted",
+        "label": "Submitted Nov 5 • Schoology observation",
+        "as_of": "2026-11-12",
+        "source": "Schoology",
+        "note": "Source-specific status at the stated observation date; not a live gradebook or family completion."
+      }
     },
     {
       "id": "history-unit3-test",
@@ -331,7 +352,14 @@
         "color_basis": "dated"
       },
       "last_seen_in_digest": "2026-11-09",
-      "display_status": "Teacher-confirmed zero as of Nov 13"
+      "display_status": "Teacher-confirmed zero as of Nov 13",
+      "school_confirmation": {
+        "state": "not_submitted",
+        "label": "Not turned in • teacher-confirmed Nov 13",
+        "as_of": "2026-11-13",
+        "source": "Marketing teacher",
+        "note": "Source-specific status at the stated observation date; not a live gradebook or family completion."
+      }
     },
     {
       "id": "mkt-exit",
@@ -347,7 +375,14 @@
         "color_basis": "dated"
       },
       "last_seen_in_digest": "2026-11-09",
-      "display_status": "Graded 9/10 — older flag"
+      "display_status": "Graded 9/10 — older flag",
+      "school_confirmation": {
+        "state": "graded",
+        "label": "Graded 9/10 • teacher-confirmed Nov 13",
+        "as_of": "2026-11-13",
+        "source": "Marketing teacher",
+        "note": "Source-specific status at the stated observation date; not a live gradebook or family completion."
+      }
     },
     {
       "id": "mkt-brand",
@@ -362,7 +397,14 @@
         "reference_date": "2026-10-14",
         "color_basis": "dated"
       },
-      "last_seen_in_digest": "2026-11-09"
+      "last_seen_in_digest": "2026-11-09",
+      "school_confirmation": {
+        "state": "reported_excused",
+        "label": "Excusal reported • verify in gradebook",
+        "as_of": "2026-11-13",
+        "source": "Earlier family/school reconciliation",
+        "note": "Prior report only; do not present as independently verified school excusal."
+      }
     },
     {
       "id": "mkt-fall",
@@ -378,7 +420,14 @@
         "color_basis": "dated"
       },
       "last_seen_in_digest": "2026-11-09",
-      "display_status": "Teacher-confirmed zero as of Nov 13"
+      "display_status": "Teacher-confirmed zero as of Nov 13",
+      "school_confirmation": {
+        "state": "not_submitted",
+        "label": "Not turned in • teacher-confirmed Nov 13",
+        "as_of": "2026-11-13",
+        "source": "Marketing teacher",
+        "note": "Source-specific status at the stated observation date; not a live gradebook or family completion."
+      }
     },
     {
       "id": "mkt-promo",
@@ -411,7 +460,14 @@
       "detail": "Original test due Oct 29. Nov 19 is a separate recovery cutoff, not the original due date. The item-level status has not been rechecked since Nov 9. Teacher confirmed Nov 13 that Janie is not bound by the original Nov 19 date; this remains visible solely for historical comparison.",
       "recovery_deadline_status": "superseded_for_janie",
       "recovery_update_as_of": "2026-11-13",
-      "recovery_deadline_note": "Original November 19, 2026 cutoff retained as historical evidence. Teacher explicitly waived it for Janie on November 13; no new firm cutoff given."
+      "recovery_deadline_note": "Original November 19, 2026 cutoff retained as historical evidence. Teacher explicitly waived it for Janie on November 13; no new firm cutoff given.",
+      "school_confirmation": {
+        "state": "graded",
+        "label": "Graded 66/100 • ParentVUE Nov 9",
+        "as_of": "2026-11-09",
+        "source": "ParentVUE",
+        "note": "Source-specific status at the stated observation date; not a live gradebook or family completion."
+      }
     },
     {
       "id": "algebra-u2-slope-corrections",
@@ -429,7 +485,14 @@
       "detail": "Original quiz due Oct 21. The Nov 19 date is a separate correction-credit cutoff. Exact correction procedure and current completion have not been rechecked. Teacher confirmed Nov 13 that Janie is not bound by the original Nov 19 date; this remains visible solely for historical comparison.",
       "recovery_deadline_status": "superseded_for_janie",
       "recovery_update_as_of": "2026-11-13",
-      "recovery_deadline_note": "Original November 19, 2026 cutoff retained as historical evidence. Teacher explicitly waived it for Janie on November 13; no new firm cutoff given."
+      "recovery_deadline_note": "Original November 19, 2026 cutoff retained as historical evidence. Teacher explicitly waived it for Janie on November 13; no new firm cutoff given.",
+      "school_confirmation": {
+        "state": "graded",
+        "label": "Graded 50/100 • ParentVUE Nov 9",
+        "as_of": "2026-11-09",
+        "source": "ParentVUE",
+        "note": "Source-specific status at the stated observation date; not a live gradebook or family completion."
+      }
     },
     {
       "id": "algebra-parallel-perp-hw",
@@ -498,7 +561,14 @@
         "color_basis": "unverified"
       },
       "last_seen_in_digest": "2026-11-09",
-      "display_status": "Teacher correction pending"
+      "display_status": "Teacher correction pending",
+      "school_confirmation": {
+        "state": "teacher_correction_pending",
+        "label": "Teacher correction pending",
+        "as_of": "2026-11-13",
+        "source": "Biology teacher",
+        "note": "Teacher is correcting an administrative status; this is not evidence of student missing work."
+      }
     },
     {
       "id": "bio-unit2",
@@ -593,7 +663,14 @@
         "color_basis": "conditional"
       },
       "last_seen_in_digest": "2026-11-09",
-      "display_status": "Teacher deadline Nov 14; current status to verify"
+      "display_status": "Teacher deadline Nov 14; current status to verify",
+      "school_confirmation": {
+        "state": "not_submitted",
+        "label": "Not submitted • teacher report Nov 13",
+        "as_of": "2026-11-13",
+        "source": "English teacher",
+        "note": "Source-specific status at the stated observation date; not a live gradebook or family completion."
+      }
     },
     {
       "id": "mkt-promotion-submission",
