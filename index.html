@@ -504,6 +504,18 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 .priority-item.priority-consistent .priority-direct{justify-content:flex-start}
 @media(max-width:650px){.priority-item.priority-consistent{padding:14px}}
 
+
+/* Dark-mode contrast repair for assignment context added November 13.
+   Do not use fixed light-mode ink on the dark card background. */
+@media(prefers-color-scheme:dark){
+ .card-context-line,.priority-next,.priority-teacher{color:var(--muted)}
+ .card-context-line strong,.priority-next strong,.priority-teacher strong{color:var(--ink)}
+ .card-context-line.card-next,.card-context-line.card-teacher{color:#d5e3f2}
+ .card-context-line.card-teacher,.priority-teacher{border-left-color:#7296bd}
+ .event,.event:last-child{background:var(--paper);border-color:var(--line)}
+ .priority-item.priority-consistent{background:var(--paper);border-color:var(--line)}
+}
+
 </style>
 </head>
 <body>
