@@ -516,6 +516,23 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
  .priority-item.priority-consistent{background:var(--paper);border-color:var(--line)}
 }
 
+
+/* Compact assignment cards. Extra teacher/source records are hidden until expanded. */
+.card-brief-status{margin:6px 0 0}
+.card-brief-status .school-confirmation{font-size:11px;line-height:1.45}
+.assignment-details{margin-top:10px}
+.assignment-details .priority-detail-content{padding:10px 1px 4px;overflow-wrap:anywhere}
+.assignment-details .priority-detail-content p{font-size:11px;line-height:1.55}
+.followup-action{font-size:11px;line-height:1.55;color:var(--muted);margin:5px 0 0}
+.priority-item.priority-consistent .priority-short{font-size:13px;line-height:1.55}
+.priority-item.priority-consistent .card-brief-status{margin-top:6px}
+.event .assignment-details{margin-top:11px}
+@media(prefers-color-scheme:dark){
+ .followup-action{color:var(--muted)}
+ .assignment-details .priority-detail-content{color:var(--muted)}
+ .assignment-details .priority-detail-content strong{color:var(--ink)}
+}
+
 </style>
 </head>
 <body>
@@ -785,52 +802,79 @@ function when(s,today){if(s===today)return "Today";if(s===isoAdd(today,1))return
 function classButton(course,display,extra){var smallIcon=extra==="event-class"||extra==="flag-class"?'<span class="course-icon inline-course-icon '+iconStyle(course)+'" aria-hidden="true">'+icon(course)+'</span>':"";return '<button class="item-link '+(extra||"")+'" type="button" data-course="'+escapeHTML(course)+'" aria-label="View class details: '+escapeHTML(course)+'">'+smallIcon+escapeHTML(display||course)+'</button>';}
 function assignmentButton(x,extra,view){return '<button class="item-link '+(extra||"")+'" type="button" data-assignment="'+escapeHTML(x.id)+'"'+(view?' data-assignment-view="'+escapeHTML(view)+'"':'')+' aria-label="View assignment details: '+escapeHTML(x.title)+'">'+escapeHTML(x.title)+(isComplete(x.id)?'<span class="completion-mark" aria-hidden="true">✓</span>':'')+'</button>';}
 
+function compactSchoolStatusHTML(x){
+ // Show the source's dated status once; do not prepend a duplicate generic status.
+ var c=x&&x.school_confirmation;
+ if(!c||!c.state)return "";
+ var label=c.label||({graded:"Graded",submitted:"Submitted to school",excused:"Excused",reported_excused:"Reported excused — verify",not_submitted:"Not submitted at last check",teacher_correction_pending:"Teacher correction pending"}[c.state]||"School status not verified");
+ var dated=c.as_of?displayDate(c.as_of):"";
+ if(dated&&label.toLowerCase().indexOf(dated.toLowerCase())<0)label+=" · as of "+dated;
+ return '<span class="school-confirmation'+(/^(graded|submitted|excused)$/.test(c.state)?" confirmed":"")+'">'+escapeHTML(label)+'</span>';
+}
+function compactAssignmentSummaryHTML(x,cssClass){
+ var instruction=x.action||x.next||"";
+ return (instruction?'<p class="'+cssClass+'">'+escapeHTML(instruction)+'</p>':"")+
+ (compactSchoolStatusHTML(x)?'<div class="card-brief-status">'+compactSchoolStatusHTML(x)+'</div>':"");
+}
 function assignmentContextHtml(x){
- // Source-specific context; dates and school-state claims retain their qualifications.
+ // The same assignment ID always produces the same collapsed guidance and details.
  var lines=[];
- function add(label,value,cl){
+ function add(label,value){
   if(value==null||value==="")return;
-  lines.push('<p class="card-context-line '+(cl||"")+'"><strong>'+escapeHTML(label)+':</strong> '+escapeHTML(value)+'</p>');
+  lines.push('<p><strong>'+escapeHTML(label)+':</strong> '+escapeHTML(value)+'</p>');
  }
- add("What to do",x.action||x.next,"card-next");
- if(x.original_date)add("Original listed date",longDate(x.original_date));
  var related=((data.recovery_priorities||{}).items||[]).filter(function(p){
   return (p.related_assignment_ids||[]).indexOf(x.id)!==-1;
  });
  related.forEach(function(p){
-  // Keep the source of the recovery guidance visible even when the linked plan is elsewhere.
-  if(!x.teacher_recovery_view)add("Recovery focus",p.short);
-  add("Teacher guidance",p.teacher_guidance,"card-teacher");
+  add("Teacher guidance",p.teacher_guidance);
+  add("Why this matters",p.reason);
   add("Next step",p.next_step);
   add("Recovery timing",p.date_label);
   add("Still to confirm",p.uncertainty);
   add("Original date / teacher exception",p.historical_reference);
+  add("Evidence",p.evidence);
+  if(p.source_as_of)add("Teacher guidance reviewed",longDate(p.source_as_of));
  });
- add("Assignment details",x.detail);
+ if(x.original_date)add("Original listed date",longDate(x.original_date));
+ add("Original instructions",x.detail);
  if(x.recovery_deadline){
   add(x.recovery_deadline_status==="superseded_for_janie"?"Former cutoff — waived":"Recovery cutoff",longDate(x.recovery_deadline));
  }
  add("Teacher-approved exception",x.recovery_deadline_note);
  if(x.syllabus_timing)add("Syllabus timing — not a new deadline",x.syllabus_timing.explanation||x.syllabus_timing.summary);
  add("Record note",x.source_status||x.status_note);
- if(x.school_confirmation)add("School status context",x.school_confirmation.note);
+ if(x.school_confirmation){
+  var c=x.school_confirmation;
+  add("School record",c.label+(c.as_of?" · as of "+longDate(c.as_of):""));
+  add("School record source",c.source);
+  add("School status qualification",c.note);
+ }
  add("Source",[x.source,x.source_ref].filter(Boolean).join(" · "));
  var seen=x.observed_on||x.last_seen_in_digest||x.recovery_source_as_of;
- if(seen)add("Last observed",/^\d{4}-\d{2}-\d{2}$/.test(seen)?longDate(seen):seen);
- var status=(trackable(x)||x.school_confirmation)?schoolConfirmationHTML(x):"";
- return '<div class="card-context">'+lines.join("")+(status?'<div class="card-context-school">'+status+'</div>':"")+'</div>';
+ if(seen)add("Record last observed",/^\d{4}-\d{2}-\d{2}$/.test(seen)?longDate(seen):seen);
+ if(!lines.length)add("Additional details","No further teacher guidance is recorded for this item.");
+ return '<details class="priority-details assignment-details"><summary>Teacher guidance &amp; details</summary><div class="priority-detail-content">'+lines.join("")+'</div></details>';
 }
-
+function priorityPlanDetailsHtml(p,linked){
+ var detail='<p><strong>Teacher guidance:</strong> '+escapeHTML(p.teacher_guidance||"Not separately verified")+'</p>'+
+ '<p><strong>Why:</strong> '+escapeHTML(p.reason||"")+'</p>'+
+ '<p><strong>Uncertainty:</strong> '+escapeHTML(p.uncertainty||"")+'</p>'+
+ (p.historical_reference?'<p><strong>Original date / teacher exception:</strong> '+escapeHTML(p.historical_reference)+'</p>':"")+
+ (linked?'<p><strong>Existing assignments:</strong></p><div class="priority-related">'+linked+'</div>':"")+
+ '<p><strong>Evidence:</strong> '+escapeHTML(p.evidence||"")+' · as of '+escapeHTML(p.source_as_of?longDate(p.source_as_of):"date unavailable")+'</p>';
+ return '<details class="priority-details assignment-details"><summary>Teacher guidance &amp; details</summary><div class="priority-detail-content">'+detail+'</div></details>';
+}
 function focusHtml(x,today){
  var optional=/Optional/i.test(x.type),weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(parseDate(x.date));
  return '<article class="focus-card"><span class="course-icon '+iconStyle(x.course)+'" aria-hidden="true">'+icon(x.course)+'</span><div class="card-main"><div class="focus-meta"><span>'+classButton(x.course,x.course.toUpperCase(),"focus-class")+'</span><span class="chip '+(optional?"optional":"")+'"><span class="chip-main">'+escapeHTML(when(x.date,today))+'</span><span class="chip-day">'+escapeHTML(weekday)+'</span></span></div>'+
- '<h3 class="focus-title">'+assignmentButton(x)+'</h3>'+assignmentContextHtml(x)+
- '<div class="focus-bottom-row">'+completeButton(x,false)+'</div></div></article>';
+ '<h3 class="focus-title">'+assignmentButton(x)+'</h3>'+compactAssignmentSummaryHTML(x,"focus-action")+
+ '<div class="focus-bottom-row">'+completeButton(x,false)+'</div>'+assignmentContextHtml(x)+'</div></article>';
 }
 function eventHtml(x){
  var dt=parseDate(x.date),mon=monthFmt.format(dt),day=dt.getUTCDate(),weekday=new Intl.DateTimeFormat("en-US",{weekday:"long",timeZone:"UTC"}).format(dt);
  return '<article class="event"><div class="event-date" aria-label="'+escapeHTML(weekday+", "+displayDate(x.date))+'"><div class="date-mon">'+escapeHTML(mon)+'</div><div class="date-day">'+day+'</div><div class="date-weekday">'+escapeHTML(weekday)+'</div></div><div class="card-main"><h3 class="event-title">'+assignmentButton(x)+'</h3><div class="event-meta">'+classButton(x.course,x.course,"event-class")+' · '+escapeHTML(x.type)+(x.end?' · through '+escapeHTML(displayDate(x.end)):'')+'</div>'+
- assignmentContextHtml(x)+completeButton(x,false)+'</div></article>';
+ compactAssignmentSummaryHTML(x,"event-action")+completeButton(x,false)+assignmentContextHtml(x)+'</div></article>';
 }
 function syllabusTimingTone(x){
  var p=x.syllabus_timing||{};
@@ -849,7 +893,7 @@ function recordGroup(x){
 }
 function flagHtml(x){
  return '<article class="flag"><div class="flag-heading">'+classButton(x.course,x.course,"flag-class")+'<span class="flag-date">Original '+escapeHTML(displayDate(x.date))+'</span></div>'+
- '<h3 class="flag-title">'+assignmentButton(x,"","flagged")+'</h3>'+assignmentContextHtml(x)+completeButton(x,false)+'</article>';
+ '<h3 class="flag-title">'+assignmentButton(x,"","flagged")+'</h3>'+compactAssignmentSummaryHTML(x,"flag-next")+completeButton(x,false)+assignmentContextHtml(x)+'</article>';
 }
 function renderFlags(){
  var items=(data.flagged||[]).filter(function(x){return selectedCourse==="All"||x.course===selectedCourse;});
@@ -889,37 +933,28 @@ function linkedPriorityIds(){
 function followupHtml(x){
  return '<article class="followup-item"><div class="followup-main">'+assignmentButton(x,"","upcoming")+
  '<span class="followup-meta">'+escapeHTML(x.course)+' · original '+escapeHTML(displayDate(x.original_date||x.date))+'</span>'+
- assignmentContextHtml(x)+'</div>'+completeButton(x,false)+'</article>';
+ compactAssignmentSummaryHTML(x,"followup-action")+assignmentContextHtml(x)+'</div>'+completeButton(x,false)+'</article>';
 }
 function priorityFamilyDone(p){
  return (p.id==="RP-001"||p.id==="RP-004")&&p.related_assignment_ids&&p.related_assignment_ids.length===1&&isComplete(p.related_assignment_ids[0]);
 }
 function priorityItemHtml(p,index,all){
- // A recovery priority linked to one known assignment uses that assignment's display identity.
- // The source's alternative names and verification caveats remain in the disclosure.
- var matching=(p.id==="RP-001"||p.id==="RP-004")&&
-   Array.isArray(p.related_assignment_ids)&&p.related_assignment_ids.length===1;
+ var matching=(p.id==="RP-001"||p.id==="RP-004")&&Array.isArray(p.related_assignment_ids)&&p.related_assignment_ids.length===1;
  var linkedId=matching?p.related_assignment_ids[0]:null;
  var direct=matching?reviewedRecoveryViews(data).concat(all).find(function(x){return x.id===linkedId;}):null;
  var linked=(p.related_assignment_ids||[]).map(function(id){
   var x=all.find(function(y){return y.id===id;});
   return x?assignmentButton(x,"priority-related-item",(data.flagged||[]).some(function(y){return y.id===id;})?"flagged":"upcoming"):"";
  }).filter(Boolean).join("");
- var detail='<p><strong>Why:</strong> '+escapeHTML(p.reason||"")+'</p>'+
- '<p><strong>Uncertainty:</strong> '+escapeHTML(p.uncertainty||"")+'</p>'+
- (p.historical_reference?'<p><strong>Original date / teacher exception:</strong> '+escapeHTML(p.historical_reference)+'</p>':"")+
- (!direct&&linked?'<p><strong>Existing assignments:</strong></p><div class="priority-related">'+linked+'</div>':"")+
- '<p><strong>Evidence:</strong> '+escapeHTML(p.evidence||"")+' · as of '+escapeHTML(p.source_as_of?longDate(p.source_as_of):"date unavailable")+'</p>';
  var groupClass=(p.group||"").toLowerCase().replace(/[^a-z]+/g,"-");
  return '<article class="priority-item'+(p.group==="Immediate"?' priority-immediate':'')+(direct?' priority-consistent':'')+'"><div class="priority-item-top"><span class="priority-rank">'+String(index+1).padStart(2,"0")+'</span>'+
  '<span class="priority-course"><span class="course-icon '+iconStyle(p.course)+'" aria-hidden="true">'+icon(p.course)+'</span>'+escapeHTML(p.course)+'</span><span class="priority-group group-'+groupClass+'">'+escapeHTML(p.group||"Review")+'</span></div>'+
  '<h3>'+(direct?assignmentButton(direct):escapeHTML(p.title))+'</h3>'+
- (direct?assignmentContextHtml(direct):
+ (direct?compactAssignmentSummaryHTML(direct,"priority-short"):
  '<p class="priority-short">'+escapeHTML(p.short||"")+'</p><p class="priority-date">'+escapeHTML(p.date_label||"Date pending")+'</p>'+
- (p.next_step?'<p class="priority-next"><strong>Next step:</strong> '+escapeHTML(p.next_step)+'</p>':"")+
- (p.teacher_guidance?'<p class="priority-teacher"><strong>Teacher guidance:</strong> '+escapeHTML(p.teacher_guidance)+'</p>':""))+
+ (p.next_step?'<p class="priority-next"><strong>Next step:</strong> '+escapeHTML(p.next_step)+'</p>':""))+
  (direct?'<div class="priority-direct">'+completeButton(direct,false)+'</div>':"")+
- '<details class="priority-details"><summary>Sources &amp; additional details</summary><div class="priority-detail-content">'+detail+'</div></details></article>';
+ (direct?assignmentContextHtml(direct):priorityPlanDetailsHtml(p,linked))+'</article>';
 }
 function renderPriorities(){
  var snap=data.recovery_priorities||{},items=Array.isArray(snap.items)?snap.items:[],all=(data.flagged||[]).concat(data.upcoming||[]);
