@@ -710,6 +710,39 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
  }
 }
 
+
+/* Native, accessible disclosure for Needs Follow-Up in This Week. */
+details.followup-wrap > summary.followup-heading{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:12px;
+ cursor:pointer;
+ list-style:none;
+ border-radius:8px;
+ padding:8px 5px;
+ color:var(--blue);
+ user-select:none;
+}
+details.followup-wrap > summary.followup-heading::-webkit-details-marker{display:none}
+details.followup-wrap > summary.followup-heading::after{
+ content:"▾";
+ display:inline-block;
+ font-size:15px;
+ line-height:1;
+ transform:rotate(-90deg);
+ transition:transform .15s ease;
+}
+details.followup-wrap[open] > summary.followup-heading::after{transform:rotate(0)}
+details.followup-wrap > summary.followup-heading:focus-visible{
+ outline:2px solid var(--blue);
+ outline-offset:2px;
+}
+details.followup-wrap > .followup-list{margin-top:7px}
+@media(prefers-reduced-motion:reduce){
+ details.followup-wrap > summary.followup-heading::after{transition:none}
+}
+
 </style>
 </head>
 <body>
@@ -738,7 +771,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
         <span class="section-icon" aria-hidden="true">☀</span>
       </div>
       <div id="focus" class="focus-list"><div class="empty">Loading upcoming school items…</div></div>
-      <div id="followup-wrap" class="followup-wrap" hidden><div class="followup-heading"><strong id="followup-count">Needs Follow-Up</strong></div><div id="followup-preview" class="followup-list"></div></div>
+      <details id="followup-wrap" class="followup-wrap" hidden><summary class="followup-heading"><strong id="followup-count">Needs Follow-Up</strong></summary><div id="followup-preview" class="followup-list"></div></details>
     </section>
     <section class="panel priority-panel pad" aria-labelledby="priority-title">
       <div class="section-head priority-heading">
