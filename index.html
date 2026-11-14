@@ -642,6 +642,72 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
  .task-card.focus-card .task-title{font-size:15px}
 }
 
+
+/* Completion-layout repair: two columns only (icon + content), with the action
+   beside the title INSIDE the content grid. Dates retain the entire first row. */
+.task-card{display:flex!important;align-items:flex-start!important}
+.task-card>.task-content{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) max-content;
+  column-gap:9px;
+  row-gap:0;
+  min-width:0;
+  flex:1 1 auto!important;
+}
+.task-card>.task-content>.task-meta{grid-column:1/-1;grid-row:1;min-width:0}
+.task-card>.task-content>.task-title{grid-column:1;grid-row:2;min-width:0;overflow-wrap:anywhere}
+.task-card>.task-content>.task-actions{
+  grid-column:2;
+  grid-row:2;
+  align-self:start;
+  justify-self:end;
+  display:block;
+  margin:0!important;
+  padding:0;
+  flex:none!important;
+  width:auto;
+  max-width:none;
+}
+.task-card>.task-content> :not(.task-meta):not(.task-title):not(.task-actions){
+  grid-column:1/-1;
+  min-width:0;
+}
+.task-card>.task-content>.task-actions .completion-row{
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  justify-content:flex-end;
+  margin:0!important;
+  padding:0;
+  gap:0;
+}
+.task-card>.task-content>.task-actions .complete-toggle,
+.task-card>.task-content>.task-actions .completed-undo{
+  font-size:9.5px!important;
+  font-weight:750;
+  line-height:1.25!important;
+  padding:5px 7px!important;
+  min-height:30px!important;
+  max-width:none!important;
+  width:auto!important;
+  white-space:nowrap!important;
+  word-break:normal;
+  overflow-wrap:normal;
+  text-align:center;
+  border-radius:6px;
+}
+.task-card>.task-content>.task-meta .task-date,
+.task-card>.task-content>.task-meta .chip{flex-shrink:0}
+@media(max-width:520px){
+ .task-card>.task-content{column-gap:6px}
+ .task-card>.task-content>.task-actions .complete-toggle,
+ .task-card>.task-content>.task-actions .completed-undo{
+   font-size:9px!important;
+   padding:4px 5px!important;
+   min-height:30px!important;
+ }
+}
+/* The previously separate third-column selectors are intentionally not used. */
+
 </style>
 </head>
 <body>
@@ -822,8 +888,18 @@ function undoLocalCompletion(id){
 }
 function completeButton(x,inside){
  if(!trackable(x))return "";
- if(x.family_completed_on)return '<div class="'+(inside?'detail-complete':'completion-row')+'"><span class="complete-toggle is-complete" aria-label="Family-reported completed on '+escapeHTML(longDate(x.family_completed_on))+'">✓ Marked done by family '+escapeHTML(displayDate(x.family_completed_on))+'</span>'+(inside?'<p class="share-muted">Family-reported completion; school record not independently verified.</p>':'')+'</div>';
- return '<div class="'+(inside?'detail-complete':'completion-row')+'"><button class="complete-toggle'+(isComplete(x.id)?' is-complete':'')+'" type="button" data-complete="'+escapeHTML(x.id)+'" aria-pressed="'+(isComplete(x.id)?'true':'false')+'">'+(isComplete(x.id)?'✓ Marked done by family · Undo':'Mark Complete')+'</button>'+(inside?'<p class="share-muted">Marked done by family does not mean submitted, graded, or excused.</p>':'')+'</div>';
+ if(x.family_completed_on){
+  var recordedLabel=inside?"✓ Marked done by family "+displayDate(x.family_completed_on):"✓ Family marked done";
+  return '<div class="'+(inside?'detail-complete':'completion-row')+'"><span class="complete-toggle is-complete" aria-label="Family-reported completed on '+
+   escapeHTML(longDate(x.family_completed_on))+'">'+escapeHTML(recordedLabel)+'</span>'+
+   (inside?'<p class="share-muted">Family-reported completion; school record not independently verified.</p>':"")+'</div>';
+ }
+ var marked=isComplete(x.id);
+ return '<div class="'+(inside?'detail-complete':'completion-row')+'"><button class="complete-toggle'+(marked?' is-complete':'')+
+ '" type="button" data-complete="'+escapeHTML(x.id)+'" aria-pressed="'+(marked?'true':'false')+'"'+
+ (marked?' aria-label="Undo family completion for '+escapeHTML(x.title)+'"':' aria-label="Mark complete: '+escapeHTML(x.title)+'"')+'>'+
+ (marked?(inside?"✓ Marked done by family · Undo":"✓ Marked · Undo"):"Mark Complete")+'</button>'+
+ (inside?'<p class="share-muted">Marked done by family does not mean submitted, graded, or excused.</p>':"")+'</div>';
 }
 function updateCompletion(id){
  var item=allAssignments().find(function(x){return x.id===id;});if(!item||item.family_completed_on)return;
@@ -965,9 +1041,11 @@ function priorityPlanDetailsHtml(p,linked){
  return '<section class="modal-guidance"><h3>Recovery and teacher information</h3><div class="modal-guidance-content">'+detail+'</div></section>';
 }
 function taskCard(course,body,variant,action){
+ // The icon is the only peer of the content block. Completion is inside the content
+ // grid so it never steals horizontal space from the course name or date.
  return '<article class="task-card '+(variant||"")+'"><span class="course-icon task-icon '+iconStyle(course)+
- '" aria-hidden="true">'+icon(course)+'</span><div class="task-content">'+body+'</div>'+
- (action?'<div class="task-actions">'+action+'</div>':"")+'</article>';
+ '" aria-hidden="true">'+icon(course)+'</span><div class="task-content">'+body+
+ (action?'<div class="task-actions">'+action+'</div>':"")+'</div></article>';
 }
 function taskTop(course,date,tag){
  return '<div class="task-meta"><span class="task-course">'+classButton(course,course,"task-course-link")+'</span>'+
