@@ -429,7 +429,7 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
 .parent-review-card strong{display:block;font-size:12px;line-height:1.4}.parent-review-card p{font-size:11px;line-height:1.5;color:var(--muted);margin:3px 0}
 .parent-review-tag{font-size:10px;color:var(--blue);font-weight:750}
 .followup-wrap{margin-top:14px;padding-top:13px;border-top:1px solid var(--line)}.followup-heading strong{font-size:12px}
-.followup-heading p{font-size:10px;color:var(--muted);line-height:1.5;margin:3px 0 9px}
+.followup-heading p{font-size:10px;color:var(--muted);line-height:1.5;margin:3px 0 9px}.followup-heading-copy{display:flex;flex-direction:column;gap:3px;min-width:0}.followup-explainer{font-size:11px;color:var(--muted);line-height:1.4;font-weight:400}
 .followup-list{display:grid;gap:6px}.followup-item{display:flex;align-items:center;flex-wrap:wrap;gap:8px 11px;padding:8px 10px;border:1px solid var(--line);background:var(--paper);border-radius:9px}
 .followup-main{flex:1 1 175px;min-width:0}.followup-main .item-link{font-size:11px;font-weight:750}
 .followup-meta{display:block;font-size:10px;line-height:1.4;color:var(--muted)}.followup-item .completion-row{margin:0}
@@ -771,7 +771,7 @@ details.followup-wrap > .followup-list{margin-top:7px}
         <span class="section-icon" aria-hidden="true">☀</span>
       </div>
       <div id="focus" class="focus-list"><div class="empty">Loading upcoming school items…</div></div>
-      <details id="followup-wrap" class="followup-wrap" hidden><summary class="followup-heading"><strong id="followup-count">Needs Follow-Up</strong></summary><div id="followup-preview" class="followup-list"></div></details>
+      <details id="followup-wrap" class="followup-wrap" hidden><summary class="followup-heading"><span class="followup-heading-copy"><strong id="followup-count">Needs Follow-Up</strong><span class="followup-explainer">Past their listed due dates and not marked complete here. They may already have been submitted to school.</span></span></summary><div id="followup-preview" class="followup-list"></div></details>
     </section>
     <section class="panel priority-panel pad" aria-labelledby="priority-title">
       <div class="section-head priority-heading">
