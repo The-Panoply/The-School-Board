@@ -879,8 +879,29 @@ function loadProgress(){
 }
 function saveProgress(){try{localStorage.setItem(progressKey,JSON.stringify(completed));storageAvailable=true;}catch(e){storageAvailable=false;}}
 function trackable(x){return !!(x&&x.id&&!/^(School event|School calendar)$/i.test(x.course||"")&&!/^(Event|Break)$/i.test(x.type||""));}
-function isComplete(id){return Object.prototype.hasOwnProperty.call(completed,id)||!!(data&&(data.upcoming||[]).concat(data.flagged||[]).find(function(x){return x.id===id&&x.family_completed_on;}));}
-function allAssignments(){if(!data)return[];var seen=Object.create(null);return (data.upcoming||[]).concat(data.flagged||[]).filter(function(x){if(!trackable(x)||seen[x.id])return false;seen[x.id]=true;return true;});}
+function recordedFamilyCompletion(id){
+ if(!data)return null;
+ return (data.upcoming||[]).concat(data.flagged||[]).find(function(x){
+  return x.id===id&&!!x.family_completed_on;
+ })||null;
+}
+function isComplete(id){
+ return Object.prototype.hasOwnProperty.call(completed,id)||!!recordedFamilyCompletion(id);
+}
+function allAssignments(){
+ if(!data)return[];
+ var seen=Object.create(null);
+ return (data.upcoming||[]).concat(data.flagged||[]).filter(function(x){
+  if(!trackable(x)||seen[x.id])return false;
+  seen[x.id]=true;return true;
+ }).map(function(x){
+  var recorded=recordedFamilyCompletion(x.id);
+  return recorded&&!x.family_completed_on?Object.assign({},x,{
+   family_completed_on:recorded.family_completed_on,
+   family_completion_basis:recorded.family_completion_basis
+  }):x;
+ });
+}
 function completeList(){return allAssignments().filter(function(x){return isComplete(x.id);});}
 function pendingList(){
  return allAssignments().filter(function(x){return !x.family_completed_on&&Object.prototype.hasOwnProperty.call(completed,x.id);});
@@ -923,10 +944,11 @@ function undoLocalCompletion(id){
 }
 function completeButton(x,inside){
  if(!trackable(x))return "";
- if(x.family_completed_on){
-  var recordedLabel=inside?"✓ Marked done by family "+displayDate(x.family_completed_on):"✓ Family marked done";
+ var familyRecord=recordedFamilyCompletion(x.id);
+ if(familyRecord){
+  var recordedLabel=inside?"✓ Marked done by family "+displayDate(familyRecord.family_completed_on):"✓ Family marked done";
   return '<div class="'+(inside?'detail-complete':'completion-row')+'"><span class="complete-toggle is-complete" aria-label="Family-reported completed on '+
-   escapeHTML(longDate(x.family_completed_on))+'">'+escapeHTML(recordedLabel)+'</span>'+
+   escapeHTML(longDate(familyRecord.family_completed_on))+'">'+escapeHTML(recordedLabel)+'</span>'+
    (inside?'<p class="share-muted">Family-reported completion; school record not independently verified.</p>':"")+'</div>';
  }
  var marked=isComplete(x.id);
@@ -1056,7 +1078,8 @@ function assignmentContextHtml(x){
  add("Source",[x.source,x.source_ref].filter(Boolean).join(" · "));
  var seen=x.observed_on||x.last_seen_in_digest||x.recovery_source_as_of;
  if(seen)add("Record last observed",/^\d{4}-\d{2}-\d{2}$/.test(seen)?longDate(seen):seen);
- if(x.family_completed_on)add("Family completion recorded",longDate(x.family_completed_on));
+ var familyRecord=recordedFamilyCompletion(x.id);
+ if(familyRecord)add("Family completion recorded",longDate(familyRecord.family_completed_on));
  else if(isComplete(x.id))add("Family progress","Marked done by family on this device; school confirmation is separate");
  if(!lines.length)add("Additional details","No further teacher guidance is recorded for this item.");
  return '<section class="modal-guidance"><h3>Assignment information</h3><div class="modal-guidance-content">'+lines.join("")+'</div></section>';
@@ -1123,9 +1146,9 @@ function flagHtml(x){
  compactAssignmentSummaryHTML(x,"flag-next"),"flag",completeButton(x,false));
 }
 function renderFlags(){
- var items=(data.flagged||[]).filter(function(x){return selectedCourse==="All"||x.course===selectedCourse;});
+ var items=(data.flagged||[]).filter(function(x){return (selectedCourse==="All"||x.course===selectedCourse)&&!isComplete(x.id);});
  document.getElementById("flags").innerHTML=items.length?items.map(flagHtml).join(""):
-  '<p class="empty">No records in this subject.</p>';
+  '<p class="empty">No outstanding records in this subject.</p>';
 }
 function renderFilters(){var courses=["All"];data.flagged.forEach(function(x){if(courses.indexOf(x.course)===-1)courses.push(x.course);});var holder=document.getElementById("filters");holder.replaceChildren();courses.forEach(function(course){var b=document.createElement("button");b.type="button";b.className="filter"+(selectedCourse===course?" selected":"");b.innerHTML=course==="All"?"All subjects":'<span class="course-icon filter-course-icon '+iconStyle(course)+'" aria-hidden="true">'+icon(course)+'</span>'+escapeHTML(course);b.setAttribute("aria-pressed",selectedCourse===course?"true":"false");b.addEventListener("click",function(){selectedCourse=course;renderFilters();renderFlags();});holder.appendChild(b);});}
 function renderGrades(){
@@ -1159,7 +1182,13 @@ function followupHtml(x){
  compactAssignmentSummaryHTML(x,"followup-action"),"followup-item",completeButton(x,false));
 }
 function priorityFamilyDone(p){
- return (p.id==="RP-001"||p.id==="RP-004")&&p.related_assignment_ids&&p.related_assignment_ids.length===1&&isComplete(p.related_assignment_ids[0]);
+ var ids=Array.isArray(p.related_assignment_ids)?p.related_assignment_ids:[];
+ // Grouped concerns stay active until every identified student action is done.
+ // Adult/school verification concerns are never dismissed by a student completion.
+ return /^(RP-001|RP-002|RP-004|RP-005)$/.test(p.id)&&ids.length>0&&
+  ids.every(function(id){
+   return allAssignments().some(function(x){return x.id===id;})&&isComplete(id);
+  });
 }
 
 function priorityButton(p){
@@ -1168,7 +1197,7 @@ function priorityButton(p){
 }
 
 function priorityItemHtml(p,index,all){
- var linkedSingle=(p.id==="RP-001"||p.id==="RP-004")&&Array.isArray(p.related_assignment_ids)&&p.related_assignment_ids.length===1;
+ var linkedSingle=(p.id==="RP-001"||p.id==="RP-004"||p.id==="RP-005")&&Array.isArray(p.related_assignment_ids)&&p.related_assignment_ids.length===1;
  var id=linkedSingle?p.related_assignment_ids[0]:null;
  var direct=linkedSingle?reviewedRecoveryViews(data).concat(all).find(function(x){return x.id===id;}):null;
  var color=(p.group||"").toLowerCase().replace(/[^a-z]+/g,"-");
@@ -1184,7 +1213,7 @@ function priorityItemHtml(p,index,all){
 }
 function renderPriorities(){
  var items=((data.recovery_priorities||{}).items||[]),all=(data.flagged||[]).concat(data.upcoming||[]);
- var student=items.filter(function(p){return p.id!=="RP-006"&&p.id!=="RP-007";});
+ var student=items.filter(function(p){return p.id!=="RP-006"&&p.id!=="RP-007"&&!priorityFamilyDone(p);});
  document.getElementById("priority-list").innerHTML=student.length?student.map(function(p){
   return priorityItemHtml(p,items.indexOf(p),all);
  }).join(""):calmState("No immediate recovery moves","School status is tracked separately.",true);
@@ -1221,19 +1250,24 @@ function reviewedRecoveryViews(d){
   });
  }).filter(Boolean);
 }
+function needsStudentAction(x){
+ if(isComplete(x.id))return false;
+ var state=(x.school_confirmation||{}).state||"";
+ return !!x.teacher_recovery_view||!/^(submitted|graded|excused)$/.test(state);
+}
 function render(d){
  data=d;reconcileRecordedCompletions();
  var today=isoToday(),weekday=parseDate(today).getUTCDay();
  var weekStart=isoAdd(today,-((weekday+6)%7)),weekEnd=isoAdd(weekStart,6);
  var all=(d.upcoming||[]).filter(function(x){return !x.historical_only;}).slice().sort(function(a,b){return a.date.localeCompare(b.date);});
  var future=all.filter(function(x){return x.date>=today;});
- var weekly=future.filter(function(x){return x.date<=weekEnd&&trackable(x)&&!!x.source;});
+ var weekly=future.filter(function(x){return x.date<=weekEnd&&trackable(x)&&!!x.source&&needsStudentAction(x);});
  var recovery=reviewedRecoveryViews(d);
  recovery.filter(function(x){return x.date>=today&&x.date<=weekEnd;}).forEach(function(x){
   if(!weekly.some(function(y){return y.id===x.id;}))weekly.push(x);
  });
  weekly.sort(function(a,b){return a.date.localeCompare(b.date)||a.course.localeCompare(b.course);});
- var carryover=all.filter(function(x){return x.date<today&&trackable(x)&&!isComplete(x.id);});
+ var carryover=all.filter(function(x){return x.date<today&&trackable(x)&&needsStudentAction(x);});
  recovery.filter(function(x){return x.date<today&&!isComplete(x.id);}).forEach(function(x){
   if(!carryover.some(function(y){return y.id===x.id;}))carryover.push(x);
  });
@@ -1247,7 +1281,7 @@ function render(d){
  document.getElementById("followup-count").textContent="Needs Follow-Up";
  document.getElementById("followup-preview").innerHTML=carryover.map(followupHtml).join("");
  var weeklyIds=new Set(weekly.map(function(x){return x.id;}));
- var later=future.filter(function(x){return x.date>weekEnd&&!weeklyIds.has(x.id)&&!isComplete(x.id);});
+ var later=future.filter(function(x){return x.date>weekEnd&&!weeklyIds.has(x.id)&&needsStudentAction(x);});
  document.getElementById("upcoming").innerHTML=later.length?later.map(eventHtml).join(""):
   '<p class="empty">No later dates in this reviewed snapshot.</p>';
  renderFilters();renderFlags();renderSchedule();renderProgress();renderCompleted();renderGrades();renderPriorities();
