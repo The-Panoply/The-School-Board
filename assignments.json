@@ -1167,5 +1167,7 @@
     ]
   },
   "editorial_updated_on": "2026-11-15",
-  "editorial_update_basis": "Nov 14 HIN-0002 / JDI-027 and family Share Progress report; academic school snapshot remains Nov 13 (partial). No new live Schoology/ParentVUE review implied."
+  "editorial_update_basis": "Nov 14 HIN-0002 / JDI-027 and family Share Progress report; academic school snapshot remains Nov 13 (partial). No new live Schoology/ParentVUE review implied.",
+  "site_updated_on": "2026-11-15",
+  "site_update_date_rule": "Update site_updated_on whenever HTML, JSON, or other published website files change; snapshot remains the date school records were actually checked."
 }
