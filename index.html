@@ -754,7 +754,7 @@ details.followup-wrap > .followup-list{margin-top:7px}
         <span class="brand-name"><span class="wordmark-the">THE</span><span class="wordmark-main">SCHOOL BOARD</span></span>
       </a>
       <span class="brand-sub">A simpler school day</span>
-      <span class="mast-metadata" id="header-date">Website update date unavailable</span>
+      <span class="mast-metadata" id="header-date">Latest assignment snapshot</span>
     </div>
   </div>
 </header>
@@ -1285,11 +1285,11 @@ function render(d){
  document.getElementById("upcoming").innerHTML=later.length?later.map(eventHtml).join(""):
   '<p class="empty">No later dates in this reviewed snapshot.</p>';
  renderFilters();renderFlags();renderSchedule();renderProgress();renderCompleted();renderGrades();renderPriorities();
- document.getElementById("header-date").textContent="Website updated "+longDate(d.site_updated_on||d.editorial_updated_on||d.snapshot)+" · School records checked "+longDate(d.snapshot);
+ document.getElementById("header-date").textContent="Reviewed "+longDate(d.site_updated_on||d.editorial_updated_on||d.snapshot);
  var days=Math.floor((parseDate(today)-parseDate(d.snapshot))/86400000),note=document.getElementById("stale-warning");
  note.classList.toggle("show",days>2);
- note.textContent=days>2?"School records were last checked "+longDate(d.snapshot)+
-  ". Assignment and grade information may have changed since then. The website update date above does not mean school records were rechecked.":"";
+ note.textContent=days>2?"This board was last reviewed "+longDate(d.snapshot)+
+  ". Upcoming items may have changed. Run a new school check before relying on these dates.":"";
 }
 function courseInfo(course){
  var text=String(course||"").toLowerCase();
