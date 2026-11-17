@@ -892,6 +892,14 @@ function loadProgress(){
 }
 function saveProgress(){try{localStorage.setItem(progressKey,JSON.stringify(completed));storageAvailable=true;}catch(e){storageAvailable=false;}}
 function trackable(x){return !!(x&&x.id&&!/^(School event|School calendar)$/i.test(x.course||"")&&!/^(Event|Break)$/i.test(x.type||""));}
+function reportedTeacherExcusal(id){
+ if(!data)return null;
+ return (data.upcoming||[]).concat(data.flagged||[]).find(function(x){
+  return x.id===id&&/^(reported_excused|excused)$/.test((x.school_confirmation||{}).state||"");
+ })||null;
+}
+function isTeacherExcused(id){return !!reportedTeacherExcusal(id);}
+function isResolved(id){return isComplete(id)||isTeacherExcused(id);}
 function recordedFamilyCompletion(id){
  if(!data)return null;
  return (data.upcoming||[]).concat(data.flagged||[]).find(function(x){
@@ -917,7 +925,7 @@ function allAssignments(){
 }
 function completeList(){return allAssignments().filter(function(x){return isComplete(x.id);});}
 function pendingList(){
- return allAssignments().filter(function(x){return !x.family_completed_on&&Object.prototype.hasOwnProperty.call(completed,x.id);});
+ return allAssignments().filter(function(x){return !x.family_completed_on&&!isTeacherExcused(x.id)&&Object.prototype.hasOwnProperty.call(completed,x.id);});
 }
 function reconcileRecordedCompletions(){
  // A local completion is acknowledged only after the shared GitHub data confirms it.
@@ -937,9 +945,22 @@ function renderProgress(){
  document.getElementById("progress-device").hidden=storageAvailable;
 }
 function renderCompleted(){
- var items=pendingList().concat(allAssignments().filter(function(x){return !!x.family_completed_on;}));
- document.getElementById("completed-total").textContent=items.length?items.length+" completed":"";
+ var family=pendingList().concat(allAssignments().filter(function(x){return !!x.family_completed_on;}));
+ var familyIds=new Set(family.map(function(x){return x.id;}));
+ var excused=allAssignments().filter(function(x){return isTeacherExcused(x.id)&&!familyIds.has(x.id);});
+ var items=family.concat(excused);
+ document.getElementById("completed-total").textContent=items.length?
+  family.length+" completed"+(excused.length?" · "+excused.length+" excused":""):"";
  document.getElementById("completed-items").innerHTML=items.length?items.map(function(x){
+  var exemption=reportedTeacherExcusal(x.id);
+  if(exemption){
+   var verified=(exemption.school_confirmation||{}).state==="excused";
+   var status=verified?"Excused by teacher · verified in school record":
+    "Excused by teacher · reported by parent "+displayDate((exemption.school_confirmation||{}).as_of)+" · school verification pending";
+   return taskCard(x.course,taskTop(x.course,null,'<span class="completed-status">Excused</span>')+
+    taskTitle(x)+'<p class="completed-note">'+escapeHTML(status)+'. Not marked as submitted or completed by Janie.</p>',
+    "completed-entry","");
+  }
   var recorded=!!x.family_completed_on;
   var status=recorded?"Marked done by family · recorded "+displayDate(x.family_completed_on):
    "Marked done by family · ready to share";
@@ -947,7 +968,7 @@ function renderCompleted(){
   return taskCard(x.course,taskTop(x.course,null,'<span class="completed-status">Completed</span>')+
    taskTitle(x)+'<p class="completed-note">'+escapeHTML(status)+' · School confirmation is separate.</p>',
    "completed-entry",undo);
- }).join(""):'<p class="completed-empty">Nothing marked complete yet.</p>';
+ }).join(""):'<p class="completed-empty">Nothing marked complete or excused yet.</p>';
 }
 function undoLocalCompletion(id){
  var x=allAssignments().find(function(item){return item.id===id;});
@@ -956,7 +977,7 @@ function undoLocalCompletion(id){
  if(document.getElementById("share-dialog").open)refreshPreview();
 }
 function completeButton(x,inside){
- if(!trackable(x))return "";
+ if(!trackable(x)||isTeacherExcused(x.id))return "";
  var familyRecord=recordedFamilyCompletion(x.id);
  if(familyRecord){
   var recordedLabel=inside?"✓ Marked done by family "+displayDate(familyRecord.family_completed_on):"✓ Family marked done";
@@ -972,7 +993,7 @@ function completeButton(x,inside){
  (inside?'<p class="share-muted">Marked done by family does not mean submitted, graded, or excused.</p>':"")+'</div>';
 }
 function updateCompletion(id){
- var item=allAssignments().find(function(x){return x.id===id;});if(!item||item.family_completed_on)return;
+ var item=allAssignments().find(function(x){return x.id===id;});if(!item||item.family_completed_on||isTeacherExcused(id))return;
  if(isComplete(id))delete completed[id];else completed[id]=new Date().toISOString();
  saveProgress();render(data);
  var dlg=document.getElementById("detail-dialog");
@@ -1159,7 +1180,7 @@ function flagHtml(x){
  compactAssignmentSummaryHTML(x,"flag-next"),"flag",completeButton(x,false));
 }
 function renderFlags(){
- var items=(data.flagged||[]).filter(function(x){return (selectedCourse==="All"||x.course===selectedCourse)&&!isComplete(x.id);});
+ var items=(data.flagged||[]).filter(function(x){return (selectedCourse==="All"||x.course===selectedCourse)&&!isResolved(x.id);});
  document.getElementById("flags").innerHTML=items.length?items.map(flagHtml).join(""):
   '<p class="empty">No outstanding records in this subject.</p>';
 }
@@ -1252,7 +1273,7 @@ function reviewedRecoveryViews(d){
    /^\d{4}-\d{2}-\d{2}$/.test(p.source_as_of||"")&&Array.isArray(p.related_assignment_ids)&&p.related_assignment_ids.length===1;
  }).map(function(p){
   var original=source.find(function(x){return x.id===p.related_assignment_ids[0];});
-  if(!original||original.historical_only||/^(submitted|graded|excused)$/.test((original.school_confirmation||{}).state||""))return null;
+  if(!original||original.historical_only||/^(submitted|graded|excused|reported_excused)$/.test((original.school_confirmation||{}).state||""))return null;
   return Object.assign({},original,{
    date:p.date,
    original_date:original.date,
@@ -1264,9 +1285,9 @@ function reviewedRecoveryViews(d){
  }).filter(Boolean);
 }
 function needsStudentAction(x){
- if(isComplete(x.id))return false;
+ if(isResolved(x.id))return false;
  var state=(x.school_confirmation||{}).state||"";
- return !!x.teacher_recovery_view||!/^(submitted|graded|excused)$/.test(state);
+ return !!x.teacher_recovery_view||!/^(submitted|graded|excused|reported_excused)$/.test(state);
 }
 function render(d){
  data=d;reconcileRecordedCompletions();
@@ -1276,12 +1297,12 @@ function render(d){
  var future=all.filter(function(x){return x.date>=today;});
  var weekly=future.filter(function(x){return x.date<=weekEnd&&trackable(x)&&!!x.source&&needsStudentAction(x);});
  var recovery=reviewedRecoveryViews(d);
- recovery.filter(function(x){return x.date>=today&&x.date<=weekEnd;}).forEach(function(x){
+ recovery.filter(function(x){return x.date>=today&&x.date<=weekEnd&&needsStudentAction(x);}).forEach(function(x){
   if(!weekly.some(function(y){return y.id===x.id;}))weekly.push(x);
  });
  weekly.sort(function(a,b){return a.date.localeCompare(b.date)||a.course.localeCompare(b.course);});
  var carryover=all.filter(function(x){return x.date<today&&trackable(x)&&needsStudentAction(x);});
- recovery.filter(function(x){return x.date<today&&!isComplete(x.id);}).forEach(function(x){
+ recovery.filter(function(x){return x.date<today&&needsStudentAction(x);}).forEach(function(x){
   if(!carryover.some(function(y){return y.id===x.id;}))carryover.push(x);
  });
  carryover.sort(function(a,b){return b.date.localeCompare(a.date);});
