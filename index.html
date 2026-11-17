@@ -756,6 +756,60 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
  #followup-wrap>summary::after{transition:none}
 }
 
+
+/* Completed uses the same disclosure card, chevron, and spacing as the other lists. */
+.school-main>.completed-panel{margin-top:22px;padding:0;border:0;background:transparent;box-shadow:none}
+#completed-details{
+ border:1px solid #d9e2ef;
+ border-radius:16px;
+ box-shadow:0 1px 4px rgba(39,63,94,.05);
+ background:var(--paper);
+ overflow:hidden;
+}
+#completed-details>summary{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ min-height:48px;
+ gap:10px;
+ padding:13px 17px;
+ cursor:pointer;
+ list-style:none;
+ background:var(--blue-soft);
+ color:var(--ink);
+}
+#completed-details>summary::-webkit-details-marker{display:none}
+#completed-details>summary .disclosure-title{font-weight:800;font-size:14px}
+#completed-details>summary .completed-total{margin-left:auto;padding:0;min-width:0;text-align:right;white-space:normal}
+#completed-details>summary::after{
+ content:"";
+ width:9px;height:9px;
+ display:block;flex:none;
+ border-right:2px solid var(--blue);
+ border-bottom:2px solid var(--blue);
+ border-top:0;border-left:0;
+ transform:rotate(45deg);
+ margin:0 4px 4px 8px;
+ transition:transform .15s ease;
+}
+#completed-details[open]>summary::after{transform:rotate(225deg);margin-bottom:-4px}
+#completed-details>summary:hover{filter:brightness(.985)}
+#completed-details>summary:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+#completed-details>.completed-body{padding:15px 18px 18px}
+#completed-details>.completed-body .completed-intro{margin:0 0 12px}
+@media(max-width:520px){
+ .school-main>.completed-panel{padding:0}
+ #completed-details>summary{padding:13px 14px}
+ #completed-details>.completed-body{padding:12px 14px 16px}
+}
+@media(prefers-color-scheme:dark){
+ #completed-details>summary{background:#2b3b53}
+ #completed-details>summary:hover{filter:brightness(1.12)}
+}
+@media(prefers-reduced-motion:reduce){
+ #completed-details>summary::after{transition:none}
+}
+
 </style>
 </head>
 <body>
@@ -802,13 +856,15 @@ details summary{list-style:none;cursor:pointer}details summary::-webkit-details-
       <div id="upcoming"><div class="empty">Loading calendar items…</div></div>
     </section>
     <section class="panel completed-panel" aria-labelledby="completed-heading">
-      <div class="completed-header">
-        <div><h2 id="completed-heading" class="completed-heading">Completed</h2><p class="completed-intro">Review completed items here. Accidental marks can be undone before sharing.</p></div>
-        <span class="completed-total" id="completed-total" aria-live="polite"></span>
-      </div>
-      <div id="completed-items" class="completed-items" aria-live="polite">
-        <p class="completed-empty">Loading completed items…</p>
-      </div>
+      <details class="disclosure" id="completed-details">
+        <summary aria-label="Expand or collapse completed assignment records"><span class="disclosure-title" id="completed-heading">Completed</span><span class="completed-total" id="completed-total" aria-live="polite"></span></summary>
+        <div class="disclosure-body completed-body">
+          <p class="completed-intro">Review completed items here. Accidental marks can be undone before sharing.</p>
+          <div id="completed-items" class="completed-items" aria-live="polite">
+            <p class="completed-empty">Loading completed items…</p>
+          </div>
+        </div>
+      </details>
     </section>
     <section class="panel parent-panel pad" aria-labelledby="parent-title"><div class="section-head"><div><h2 class="section-title" id="parent-title">For Parents</h2></div><span class="section-icon" aria-hidden="true">✓</span></div><div class="parent-review-list-heading">Waiting for school</div><div id="parent-review-list" class="parent-review-list"><p class="empty">Loading adult follow-ups…</p></div><div class="parent-records">
       <details class="disclosure" id="older-details">
