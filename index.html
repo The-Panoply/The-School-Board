@@ -948,26 +948,31 @@ function renderCompleted(){
  var family=pendingList().concat(allAssignments().filter(function(x){return !!x.family_completed_on;}));
  var familyIds=new Set(family.map(function(x){return x.id;}));
  var excused=allAssignments().filter(function(x){return isTeacherExcused(x.id)&&!familyIds.has(x.id);});
- var items=family.concat(excused);
- document.getElementById("completed-total").textContent=items.length?
-  family.length+" completed"+(excused.length?" · "+excused.length+" excused":""):"";
+ var excusedIds=new Set(excused.map(function(x){return x.id;}));
+ var school=allAssignments().filter(function(x){return !!x.school_record_completed&&!familyIds.has(x.id)&&!excusedIds.has(x.id);});
+ var items=family.concat(excused,school);
+ document.getElementById("completed-total").textContent=items.length?family.length+" completed · "+excused.length+" excused · "+school.length+" school-recorded":"";
  document.getElementById("completed-items").innerHTML=items.length?items.map(function(x){
-  var exemption=reportedTeacherExcusal(x.id);
-  if(exemption){
-   var verified=(exemption.school_confirmation||{}).state==="excused";
-   var status=verified?"Excused by teacher · verified in school record":
-    "Excused by teacher · reported by parent "+displayDate((exemption.school_confirmation||{}).as_of)+" · school verification pending";
+  var excusal=reportedTeacherExcusal(x.id);
+  if(excusal){
+   var c=excusal.school_confirmation||{},verified=c.state==="excused";
+   var msg=verified?"Excused by teacher · verified in ParentVUE "+displayDate(c.as_of):
+    "Excused by teacher · parent report "+displayDate(c.as_of)+" · school confirmation pending";
    return taskCard(x.course,taskTop(x.course,null,'<span class="completed-status">Excused</span>')+
-    taskTitle(x)+'<p class="completed-note">'+escapeHTML(status)+'. Not marked as submitted or completed by Janie.</p>',
-    "completed-entry","");
+    taskTitle(x)+'<p class="completed-note">'+escapeHTML(msg)+'. Not marked completed or submitted by family.</p>',"completed-entry","");
   }
-  var recorded=!!x.family_completed_on;
-  var status=recorded?"Marked done by family · recorded "+displayDate(x.family_completed_on):
-   "Marked done by family · ready to share";
+  if(x.school_record_completed&&!familyIds.has(x.id)){
+   var c=x.school_confirmation||{},submitted=c.state==="submitted",word=submitted?"Submitted":"Graded";
+   return taskCard(x.course,taskTop(x.course,null,'<span class="completed-status">'+word+'</span>')+
+    taskTitle(x)+'<p class="completed-note">'+escapeHTML((c.label||word)+(submitted?" · grade pending":"")+
+    " · "+(c.source||"school record"))+'. School-recorded, not a family completion mark.</p>',"completed-entry","");
+  }
+  var recorded=!!x.family_completed_on,base=recorded?"Marked done by family · recorded "+displayDate(x.family_completed_on):"Marked done by family · ready to share";
+  var c=x.school_confirmation||{},schoolNote=recorded&&/^(graded|submitted)$/.test(c.state||"")?
+   " · "+(c.label||"School status recorded"):" · School confirmation is separate";
   var undo=recorded?"":'<button class="completed-undo" type="button" data-undo-completion="'+escapeHTML(x.id)+'">Undo completion</button>';
   return taskCard(x.course,taskTop(x.course,null,'<span class="completed-status">Completed</span>')+
-   taskTitle(x)+'<p class="completed-note">'+escapeHTML(status)+' · School confirmation is separate.</p>',
-   "completed-entry",undo);
+   taskTitle(x)+'<p class="completed-note">'+escapeHTML(base+schoolNote)+'.</p>',"completed-entry",undo);
  }).join(""):'<p class="completed-empty">Nothing marked complete or excused yet.</p>';
 }
 function undoLocalCompletion(id){
