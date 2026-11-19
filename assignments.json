@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "snapshot": "2026-11-17",
-  "source_note": "Janie-only reviewed snapshot from authenticated ParentVUE Q2 grade summaries and selected assignment details observed Nov 13, 2026, plus Schoology parent Home activity/events observed Nov 13 and existing authenticated assignment-detail observations from Nov 12. This is a bounded, partial snapshot: Schoology course-by-course assignment pages and announcements were not all inspected. Older Schoology email flags remain flags, not proof of missing work. Today & Tomorrow past-dated items stay in place with Needs Follow-up until family action. Five Algebra 1 assignments with Nov 19 recovery opportunities are also listed in Overdue using their original due dates and last observed statuses; their recovery cutoffs remain on the horizon. Each is one assignment shown in two views. ParentVUE item statuses shown here were last observed Nov 9 and have not been rechecked since. | Nov17 authenticated ParentVUE seven-course Q2 summary and selected ParentVUE/Schoology assignment details (ASG-097–114). Partial review, not complete school synchronization. Overdue flags and blank submission panes alone do not prove missing work.",
+  "snapshot": "2026-11-18",
+  "source_note": "Janie-only reviewed snapshot from authenticated ParentVUE Q2 grade summaries and selected assignment details observed Nov 13, 2026, plus Schoology parent Home activity/events observed Nov 13 and existing authenticated assignment-detail observations from Nov 12. This is a bounded, partial snapshot: Schoology course-by-course assignment pages and announcements were not all inspected. Older Schoology email flags remain flags, not proof of missing work. Today & Tomorrow past-dated items stay in place with Needs Follow-up until family action. Five Algebra 1 assignments with Nov 19 recovery opportunities are also listed in Overdue using their original due dates and last observed statuses; their recovery cutoffs remain on the horizon. Each is one assignment shown in two views. ParentVUE item statuses shown here were last observed Nov 9 and have not been rechecked since. | Nov17 authenticated ParentVUE seven-course Q2 summary and selected ParentVUE/Schoology assignment details (ASG-097–114). Partial review, not complete school synchronization. Overdue flags and blank submission panes alone do not prove missing work. | Nov 18 23:35 EST update from partial ParentVUE seven-course working-grade summary plus specific ParentVUE and Schoology item pages (ASG-115–118); current school-status review is not comprehensive.",
   "upcoming": [
     {
       "id": "biology-4",
@@ -77,11 +77,18 @@
       "title": "Unit 3 Quiz (Period 1)",
       "type": "Quiz",
       "importance": "normal",
-      "action": "Review Unit 3 material and confirm any testing support needed.",
-      "detail": "The November 12 Janie-specific Schoology digest lists a Unit 3 Quiz for Period 1 on Nov 18. A separate period-8 quiz on Nov 19 is not assumed applicable.",
+      "action": "ParentVUE lists the Unit 3 formative quiz for Nov 18 (100 points). Verify whether it took place; no grade or submission status was visible.",
+      "detail": "Earlier Janie-specific Schoology digest listed Unit 3 Quiz for Period 1 on Nov 18. On Nov 18 ParentVUE Upcoming lists U3 Quiz as a 100-point formative on Nov 18 without score or submission status. A separate Schoology Nov 19 event says Period 8, which does not match Janie's verified Period 1. Do not create an additional Nov 19 deadline or infer completion. (JDL-0008; ASG-118)",
       "source": "Schoology daily digest",
-      "source_ref": "JDL-0008; EMAIL-029",
-      "source_status": "scheduled; completion unverified"
+      "source_ref": "JDL-0008; EMAIL-029; ASG-118",
+      "source_status": "ParentVUE Nov 18 upcoming formative, completion unverified; Nov 19 Schoology event concerns another section (Pd8).",
+      "school_confirmation": {
+        "state": "status_unverified",
+        "label": "ParentVUE Nov 18 · completion not verified",
+        "as_of": "2026-11-18",
+        "source": "Authenticated ParentVUE and Schoology event observation Nov 18",
+        "note": "Nov 19 Schoology event is labeled Period 8, not Janie's verified Period 1. No submission or grade confirmed."
+      }
     },
     {
       "id": "algebra-u2-retake-nov19",
@@ -408,15 +415,28 @@
     },
     {
       "id": "hpe-build-menu",
-      "date": "2026-11-16",
+      "date": "2026-12-01",
       "course": "Health & PE 9",
       "title": "Build a Menu Project",
       "type": "Assignment",
       "importance": "normal",
-      "action": "Complete the 20-point project by Nov 16.",
-      "detail": "ParentVUE lists this as an upcoming summative assignment worth 20 points. No submission status or instructions were displayed in the summary.",
-      "source": "ParentVUE current Q2 gradebook",
-      "source_ref": "SCHOOL-046; ASG-072"
+      "action": "Schoology now lists Dec 1 at 11:59 p.m., but ParentVUE lists Nov 16. Confirm the applicable date and complete the project if still needed; submission status is unverified.",
+      "detail": "Nov 18 Schoology Build a Menu Project (Summative) (11/21–11/24), posted Nov 13, is due Dec 1 at 11:59 p.m.; Grade N/A, no comments, and no visible student submission row. ParentVUE Recent History shows Build a Menu Project due Nov 16, Not Graded. Dates conflict, and item identity across platforms is not confirmed. A blank submissions panel is not proof of missing work. (ASG-115; prior ASG-072)",
+      "source": "Authenticated Schoology assignment page and ParentVUE Recent History",
+      "source_ref": "SCHOOL-046; ASG-072; ASG-115",
+      "source_reported_due_dates": {
+        "schoology": "2026-12-01T23:59",
+        "parentvue": "2026-11-16",
+        "status": "Conflicting source dates; same-item identity unconfirmed"
+      },
+      "date_status": "Schoology due Dec 1, 11:59 p.m.; ParentVUE due Nov 16; verify the conflict.",
+      "school_confirmation": {
+        "state": "status_unverified",
+        "label": "Schoology due Dec 1 · ParentVUE Nov 16 conflict; Grade N/A",
+        "as_of": "2026-11-18",
+        "source": "Schoology / ParentVUE Nov 18 authenticated",
+        "note": "Schoology has no visible submission or grade; ParentVUE has Not Graded. Submission is not established either way."
+      }
     },
     {
       "id": "eng-bookthief-flex-qa-2026-11-23",
@@ -564,6 +584,25 @@
         "note": "Source-specific status; do not infer unrelated school submissions or due-date confirmation."
       },
       "school_record_completed": true
+    },
+    {
+      "id": "bio-cell-energy-checkin",
+      "date": "2026-11-18",
+      "course": "Biology",
+      "title": "Cell Energy check-in",
+      "type": "Assessment",
+      "importance": "normal",
+      "action": "Check whether the 1-point Cell Energy check-in was completed; ParentVUE only lists it as upcoming, without a grade or submission status.",
+      "detail": "ParentVUE Grade Book > All Classes upcoming item due Nov 18, one point. Nov 18 11:35 p.m. EST observation did not show submission, score, time, or teacher feedback. Do not assume missing or submitted.",
+      "source": "Authenticated ParentVUE Grade Book > All Classes",
+      "source_ref": "ASG-116",
+      "school_confirmation": {
+        "state": "status_unverified",
+        "label": "Listed upcoming · ParentVUE Nov 18, no completion information",
+        "as_of": "2026-11-18",
+        "source": "ParentVUE Nov 18 authenticated",
+        "note": "One-point item; completion, grade and exact due time unavailable."
+      }
     }
   ],
   "flagged": [
@@ -982,6 +1021,24 @@
       },
       "source": "Authenticated Schoology parent view",
       "source_ref": "ASG-099"
+    },
+    {
+      "id": "mkt-business-org-structures-roleplay",
+      "date": "2026-11-17",
+      "course": "Marketing",
+      "title": "Business Organization Structures Roleplay",
+      "review": "reconcile",
+      "next": "ParentVUE shows Not Graded. This alone does not mean the work is missing or needs to be redone; status should be verified if necessary.",
+      "detail": "Nov 18 authenticated ParentVUE Q2 Recent History reports Nov 17 Business Organization Structures Roleplay as Not Graded. No submitted/missing designation or feedback was captured. A current ungraded item is not automatically an unfinished assignment.",
+      "source": "Authenticated ParentVUE Q2 Recent History",
+      "source_ref": "ASG-117",
+      "school_confirmation": {
+        "state": "not_graded",
+        "label": "Not Graded · ParentVUE Nov 18; submission unknown",
+        "as_of": "2026-11-18",
+        "source": "ParentVUE recent history Nov 18 authenticated",
+        "note": "The record does not establish whether submitted or missing; student action unverified."
+      }
     }
   ],
   "classes": [
@@ -1095,7 +1152,7 @@
   "rolling_gradebook_note": "All seven syllabi describe rolling grades. Quarter marks are progress snapshots; the final course grade is not described as an average of quarterly grades. SIS/ParentVUE is the gradebook of record.",
   "syllabus_timing_notice": "Date comparisons use the Nov 9, 2026 Schoology daily summary, the previously reviewed Nov 8 calendar snapshot, and the 2026–27 course syllabi. A Schoology flag or listed date does not prove that work is missing, a due date is final, or any specific credit option applies. Check SIS/ParentVUE and the teacher's current instructions.",
   "syllabus_timing_reviewed": "2026-11-08",
-  "source_range_note": "ParentVUE: Q2 summary grades and course detail/recent history/upcoming items; selected assignment rows Nov 5–17. Schoology: parent Home recent activity/upcoming events Nov 13; prior Nov 12 assignment details. Course-wide instructions, teacher announcements, complete submission records, and all Schoology course assignment pages were not captured.",
+  "source_range_note": "ParentVUE: Q2 summary grades and course detail/recent history/upcoming items; selected assignment rows Nov 5–17. Schoology: parent Home recent activity/upcoming events Nov 13; prior Nov 12 assignment details. Course-wide instructions, teacher announcements, complete submission records, and all Schoology course assignment pages were not captured. | Nov 18: selected ParentVUE Q2 summary, recent/upcoming assignment rows and Schoology HPE Build a Menu detail; not a course-by-course all-items rescan.",
   "submission_notifications": [
     {
       "course": "Health & PE 9",
@@ -1126,12 +1183,12 @@
   "reconciliation_note": "Nov 12 Schoology digest listed 13 Janie overdue flags. All 12 previously tracked flags were retained; one Marketing Promotion Assignment Submission was added (two notifications for the same Schoology ID, disputed due time). The older Positive Posts calendar-only entry remains pending confirmation. Biology Unit 4 Test was family-reported completed Nov 9, independently corroborated as scored in Nov 9 Schoology digest; the public board intentionally does not publish the score.",
   "schoology_last_digest_id": "1a1d1d1f969f07f6",
   "grade_snapshot": {
-    "as_of": "2026-11-17",
+    "as_of": "2026-11-18",
     "grading_period": "2026–27 Second Quarter",
-    "source": "FCPS ParentVUE authenticated Q2 summary, Nov 17 at 1:21 a.m. EST",
-    "source_scope": "Seven graded courses for Genevieve; partial school record. Advisory no grade. Nov17 observation appended to JDI-025.",
-    "status": "Q2 working grades — not final",
-    "note": "Summary percentages are used where ParentVUE details round. Q1 finalized letters remain historical. Nov17 Algebra 62.1% D and zero missing, English 74.5% C, Biology 79.2% C+.",
+    "source": "FCPS ParentVUE authenticated Q2 summary · observed Nov 18, 2026 at 11:35 p.m. EST",
+    "source_scope": "Seven Genevieve-specific Q2 working course grades and no-grade Advisory as of Nov 18. Schoology and assignment details inspected only in limited relevant views; partial snapshot.",
+    "status": "Q2 working grades — not finalized",
+    "note": "Nov 18 ParentVUE summary shows Health & PE 90.6% A−, up from 90.2% on Nov 17. All six other graded-course summary values and missing counts are unchanged. Health & PE detailed gradebook was not reopened; summary/detail rounding differences remain possible. Q1 finalized grades retained unchanged.",
     "marks": [
       {
         "period": 1,
@@ -1184,7 +1241,7 @@
       {
         "period": 8,
         "course": "Health & PE 9",
-        "score_pct": 90.2,
+        "score_pct": 90.6,
         "letter": "A−",
         "missing_count": 0,
         "q1_final": "A−"
@@ -1429,8 +1486,8 @@
       }
     ]
   },
-  "editorial_updated_on": "2026-11-17",
-  "editorial_update_basis": "Nov17 Superintendent authenticated ParentVUE Q2 working-grade observations (JDI-025) and bounded Schoology/ParentVUE item evidence ASG-097–114 (JDI-020). Prior family marks, teachers' offers, and historical source statuses preserved.",
-  "site_updated_on": "2026-11-17",
+  "editorial_updated_on": "2026-11-18",
+  "editorial_update_basis": "Superintendent Nov 18 23:35 EST authenticated ParentVUE Q2 summaries (PVS-20261118-Q2) and selected Nov 18 ParentVUE / Schoology assignment evidence ASG-115–118; one changed grade and four reconciled/new assignment records. No unverified submissions promoted to completion.",
+  "site_updated_on": "2026-11-18",
   "site_update_date_rule": "Update site_updated_on whenever HTML, JSON, or other published website files change; snapshot remains the date school records were actually checked."
 }
